@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-    {% block head %}
+{% block head %}
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,175 +23,175 @@
             <link rel="stylesheet" type="text/css" href="{{ asset('build/css/style.css') }}" media="all" />
         {% endblock %}
     </head>
-    {% endblock %}<!-- ./END BLOCK head -->
-    {% block body %}
-    <body>
-    <!-- Preloader -->
-    <div class="preloader"></div>
-    
-    {% block top_header_area %}<!-- Top Header_Area -->
-	<section class="top_header_area" id="page-top">
-	    <div class="container-fluid">
-            <a class="navbar-brand" href="{{ path('home') }}"><img src="{{ asset('build/images/logo.png') }}" alt=""></a>
-            <ul class="nav navbar-nav top_nav">
-                <li><a href="#"><i class="fa fa-clock-o"></i>Mon - Sat 12:00 - 20:00</a></li>
-                <li><a href="#"><i class="fa fa-phone"></i>+1 (168) 314 5016</a></li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i>info@thethemspro.com</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right social_nav">
-                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                <li><a href="#" class="nav_searchFrom"><i class="fa fa-search"></i></a></li>
-            </ul>
-	    </div>
-	</section>
-    {% endblock %}<!-- End Top Header_Area -->
-    
-    {% block nav %}<!-- Header_Area -->
-	<nav class="navbar navbar-default header_aera" id="main_navbar">
-        <div class="container-fluid">
-            <!-- searchForm -->
-            <div class="searchForm">
-                <form action="#" class="row m0">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                        <input type="search" name="search" class="form-control" placeholder="Rechercher ...">
-                        <span class="input-group-addon form_hide"><i class="fa fa-times"></i></span>
-                    </div>
-                </form>
-            </div><!-- End searchForm -->
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="col-md-2 p0">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#min_navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-            </div>
+{% endblock %}<!-- ./END BLOCK head -->
+{% block body %}
+<body>
+<!-- Preloader -->
+<div class="preloader"></div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="col-md-12 p0">
-                <div class="collapse navbar-collapse" id="min_navbar">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li class="dropdown submenu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="index-2.html">Home 2</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown submenu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us</a>
-                            <ul class="dropdown-menu other_dropdwn">
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="about-2.html">About Us-2</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown submenu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services</a>
-                            <ul class="dropdown-menu other_dropdwn">
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="services-2.html">Services-2</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Gallery</a></li>
-                        <li class="dropdown submenu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="blog-2.html">Blog-2</a></li>
-                            </ul>
-                        </li>
-                            <li><a href="/login">Admin</a></li>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="{{ path('home') }}">Contact</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Connection</b> <span class="caret"></span></a>
-                            <ul id="login-dp" class="dropdown-menu">
-                                <li>
-                                    <div class="row">
-                                            <div class="col-md-12">
-                                                <p>Connection avec :</p>
-                                                <div class="social-buttons">
-                                                    <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                                                    <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
-                                                </div>
-                                                <p>ou</p>
-                                                <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                                        <div class="form-group">
-                                                            <label class="sr-only" for="exampleInputEmail2">Email</label>
-                                                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="sr-only" for="exampleInputPassword2">Mot de passe</label>
-                                                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Mot de passe" required>
-                                                            <div class="help-block text-right"><a href="">Mot de passe oublié ?</a></div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <button type="submit" class="btn btn-primary btn-block">Connection</button>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                            <input type="checkbox"> Rester connecter
-                                                            </label>
-                                                        </div>
-                                                </form>
-                                            </div>
-                                            <div class="bottom text-center">
-                                                <a href="#"><b>Crée un compte</b></a>
-                                            </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
+{% block top_header_area %}<!-- Top Header_Area -->
+<section class="top_header_area" id="page-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('home') }}"><img src="{{ asset('build/images/logo.png') }}" alt=""></a>
+        <ul class="nav navbar-nav top_nav">
+            <li><a href="#"><i class="fa fa-clock-o"></i>Mon - Sat 12:00 - 20:00</a></li>
+            <li><a href="#"><i class="fa fa-phone"></i>+1 (168) 314 5016</a></li>
+            <li><a href="#"><i class="fa fa-envelope-o"></i>info@thethemspro.com</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right social_nav">
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+            <li><a href="#" class="nav_searchFrom"><i class="fa fa-search"></i></a></li>
+        </ul>
+    </div>
+</section>
+{% endblock %}<!-- End Top Header_Area -->
+
+{% block nav %}<!-- Header_Area -->
+<nav class="navbar navbar-default header_aera" id="main_navbar">
+    <div class="container-fluid">
+        <!-- searchForm -->
+        <div class="searchForm">
+            <form action="#" class="row m0">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    <input type="search" name="search" class="form-control" placeholder="Rechercher ...">
+                    <span class="input-group-addon form_hide"><i class="fa fa-times"></i></span>
+                </div>
+            </form>
+        </div><!-- End searchForm -->
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="col-md-2 p0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#min_navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             </div>
-        </div><!-- /.container -->
-    </nav>
-    {% endblock %}<!-- End Header_Area -->
-    {% block slider %}
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="col-md-12 p0">
+            <div class="collapse navbar-collapse" id="min_navbar">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index-2.html">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us</a>
+                        <ul class="dropdown-menu other_dropdwn">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="about-2.html">About Us-2</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services</a>
+                        <ul class="dropdown-menu other_dropdwn">
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="services-2.html">Services-2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Gallery</a></li>
+                    <li class="dropdown submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="blog-2.html">Blog-2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/login">Admin</a></li>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Connection</b> <span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>Connection avec :</p>
+                                        <div class="social-buttons">
+                                            <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                            <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                        </div>
+                                        <p>ou</p>
+                                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="exampleInputEmail2">Email</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="exampleInputPassword2">Mot de passe</label>
+                                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Mot de passe" required>
+                                                <div class="help-block text-right"><a href="">Mot de passe oublié ?</a></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary btn-block">Connection</button>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> Rester connecter
+                                                </label>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="bottom text-center">
+                                        <a href="#"><b>Crée un compte</b></a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </div><!-- /.container -->
+</nav>
+{% endblock %}<!-- End Header_Area -->
+{% block slider %}
     <!-- Slider area -->
     <section class="slider_area row m0">
         <div class="slider_inner">
             <div data-thumb="{{ asset('build/images/slider-1.jpg') }}" data-src="{{ asset('build/images/slider-1.jpg') }}">
                 <div class="camera_caption">
-                   <div class="container">
+                    <div class="container">
                         <h5 class=" wow fadeInUp animated">Welcome to our</h5>
                         <h3 class=" wow fadeInUp animated" data-wow-delay="0.5s">CLEAN, MODERN, MULTIPURPOSE THEME</h3>
                         <p class=" wow fadeInUp animated" data-wow-delay="0.8s">Our team of professionals will help you turn your dream home or flat into a reality fast. The Love Boat promises something for everyone. Now the world don't move to the beat of just one</p>
                         <a class=" wow fadeInUp animated" data-wow-delay="1s" href="#">Read More</a>
-                   </div>
+                    </div>
                 </div>
             </div>
             <div data-thumb="{{ asset('build/images/slider-2.jpg') }}" data-src="{{ asset('build/images/slider-2.jpg') }}">
                 <div class="camera_caption">
-                   <div class="container">
+                    <div class="container">
                         <h5 class=" wow fadeInUp animated">Welcome to our</h5>
                         <h3 class=" wow fadeInUp animated" data-wow-delay="0.5s">CLEAN ,MODERN, MULTIPURPOSE THEME</h3>
                         <p class=" wow fadeInUp animated" data-wow-delay="0.8s">Our team of professionals will help you turn your dream home or flat into a reality fast. The Love Boat promises something for everyone. Now the world don't move to the beat of just one</p>
                         <a class=" wow fadeInUp animated" data-wow-delay="1s" href="#">Read More</a>
-                   </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    {% endblock %}<!-- End Slider area -->
-    {% block professional_builder %}<!-- Professional Builde -->
+{% endblock %}<!-- End Slider area -->
+{% block professional_builder %}<!-- Professional Builde -->
     <section class="professional_builder row">
         <div class="container">
-           <div class="row builder_all">
+            <div class="row builder_all">
                 <div class="col-md-3 col-sm-6 builder">
                     <i class="fa fa-home" aria-hidden="true"></i>
                     <h4>Professional Builde</h4>
@@ -212,11 +212,11 @@
                     <h4>We Are Pasionate</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
                 </div>
-           </div>
+            </div>
         </div>
     </section>
-    {% endblock %}<!-- End Professional Builde -->
-    {% block about %}<!-- About Us Area -->
+{% endblock %}<!-- End Professional Builde -->
+{% block about %}<!-- About Us Area -->
     <section class="about_us_area row">
         <div class="container">
             <div class="tittle wow fadeInUp">
@@ -237,8 +237,8 @@
             </div>
         </div>
     </section>
-    {% endblock %}<!-- End About Us Area -->
-    {% block what %}<!-- What ew offer Area -->
+{% endblock %}<!-- End About Us Area -->
+{% block what %}<!-- What ew offer Area -->
     <section class="what_we_area row">
         <div class="container">
             <div class="tittle wow fadeInUp">
@@ -247,40 +247,40 @@
             </div>
             <div class="row construction_iner">
                 <div class="col-md-4 col-sm-6 construction">
-                   <div class="cns-img">
+                    <div class="cns-img">
                         <img src="{{ asset('build/images/cns-1.jpg') }}" alt="">
-                   </div>
-                   <div class="cns-content">
+                    </div>
+                    <div class="cns-content">
                         <i class="fa fa-home" aria-hidden="true"></i>
                         <a href="#">BUILDING CONSTRUCTION</a>
                         <p>Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem Ipsum has been the industry's standard dummy </p>
-                   </div>
+                    </div>
                 </div>
                 <div class="col-md-4 col-sm-6 construction">
-                   <div class="cns-img">
+                    <div class="cns-img">
                         <img src="{{ asset('build/images/cns-2.jpg') }}" alt="">
-                   </div>
-                   <div class="cns-content">
+                    </div>
+                    <div class="cns-content">
                         <i class="fa fa-keyboard-o" aria-hidden="true"></i>
                         <a href="#">PROJECT PLANNING</a>
                         <p>Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem Ipsum has been the industry's standard dummy </p>
-                   </div>
+                    </div>
                 </div>
                 <div class="col-md-4 col-sm-6 construction">
-                   <div class="cns-img">
+                    <div class="cns-img">
                         <img src="{{ asset('build/images/cns-3.jpg') }}" alt="">
-                   </div>
-                   <div class="cns-content">
+                    </div>
+                    <div class="cns-content">
                         <i class="fa fa-gavel" aria-hidden="true"></i>
                         <a href="#">HOUSE RENOVATION</a>
                         <p>Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem Ipsum has been the industry's standard dummy </p>
-                   </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    {% endblock %}<!-- End What ew offer Area -->
-    {% block feature %}<!-- Our Features Area -->
+{% endblock %}<!-- End What ew offer Area -->
+{% block feature %}<!-- Our Features Area -->
     <section class="our_feature_area">
         <div class="container">
             <div class="tittle wow fadeInUp">
@@ -293,7 +293,7 @@
                 </div>
                 <div class="col-md-6 feature_content">
                     <div class="subtittle">
-                        <h2>WHY CHOOSE US</h2>
+                        <h2>WHY CHOOSE Quentin</h2>
                         <h5>There are many variations of passages of Lorem Ipsum available.</h5>
                     </div>
                     <div class="media">
@@ -303,7 +303,7 @@
                             </a>
                         </div>
                         <div class="media-body">
-                            <a href="#">30+ YEARS OF EXPERIENCE</a>
+                            <a href="#">30+ YEARS OF Corentin</a>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting indus-try. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
                         </div>
                     </div>
@@ -314,7 +314,7 @@
                             </a>
                         </div>
                         <div class="media-body">
-                            <a href="#">QUALIFIED EXPERTS</a>
+                            <a href="#">QUALIFIED alexandre</a>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting indus-try. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
                         </div>
                     </div>
@@ -333,8 +333,8 @@
             </div>
         </div>
     </section>
-    {% endblock %}<!-- End Our Features Area -->
-    {% block services %}<!-- Our Services Area -->
+{% endblock %}<!-- End Our Features Area -->
+{% block services %}<!-- Our Services Area -->
     <section class="our_services_area">
         <div class="container">
             <div class="tittle wow fadeInUp">
@@ -353,10 +353,10 @@
                     </ul>
                 </div>
                 <div class="portfolio_item">
-                   <div class="grid-sizer"></div>
+                    <div class="grid-sizer"></div>
                     <div class="single_facilities col-xs-4 p0 painting photography adversting">
-                       <div class="single_facilities_inner">
-                          	<img src="{{ asset('build/images/gallery/sv-1.jpg') }}" alt="">
+                        <div class="single_facilities_inner">
+                            <img src="{{ asset('build/images/gallery/sv-1.jpg') }}" alt="">
                             <div class="gallery_hover">
                                 <h4>Construction</h4>
                                 <ul>
@@ -367,8 +367,8 @@
                         </div>
                     </div>
                     <div class="single_facilities col-xs-4 p0 webdesign">
-                       <div class="single_facilities_inner">
-                          	<img src="{{ asset('build/images/gallery/sv-2.jpg') }}" alt="">
+                        <div class="single_facilities_inner">
+                            <img src="{{ asset('build/images/gallery/sv-2.jpg') }}" alt="">
                             <div class="gallery_hover">
                                 <h4>Construction</h4>
                                 <ul>
@@ -379,8 +379,8 @@
                         </div>
                     </div>
                     <div class="single_facilities col-xs-4 painting p0 photography branding">
-                       <div class="single_facilities_inner">
-                          	<img src="{{ asset('build/images/gallery/sv-3.jpg') }}" alt="">
+                        <div class="single_facilities_inner">
+                            <img src="{{ asset('build/images/gallery/sv-3.jpg') }}" alt="">
                             <div class="gallery_hover">
                                 <h4>Construction</h4>
                                 <ul>
@@ -391,8 +391,8 @@
                         </div>
                     </div>
                     <div class="single_facilities col-xs-4 p0 adversting webdesign adversting">
-                       <div class="single_facilities_inner">
-                          	<img src="{{ asset('build/images/gallery/sv-4.jpg') }}" alt="">
+                        <div class="single_facilities_inner">
+                            <img src="{{ asset('build/images/gallery/sv-4.jpg') }}" alt="">
                             <div class="gallery_hover">
                                 <h4>Construction</h4>
                                 <ul>
@@ -403,8 +403,8 @@
                         </div>
                     </div>
                     <div class="single_facilities col-xs-4 p0 painting adversting branding">
-                       <div class="single_facilities_inner">
-                          	<img src="{{ asset('build/images/gallery/sv-5.jpg') }}" alt="">
+                        <div class="single_facilities_inner">
+                            <img src="{{ asset('build/images/gallery/sv-5.jpg') }}" alt="">
                             <div class="gallery_hover">
                                 <h4>Construction</h4>
                                 <ul>
@@ -415,8 +415,8 @@
                         </div>
                     </div>
                     <div class="single_facilities col-xs-4 p0 webdesign photography magazine adversting">
-                       <div class="single_facilities_inner">
-                          	<img src="{{ asset('build/images/gallery/sv-6.jpg') }}" alt="">
+                        <div class="single_facilities_inner">
+                            <img src="{{ asset('build/images/gallery/sv-6.jpg') }}" alt="">
                             <div class="gallery_hover">
                                 <h4>Construction</h4>
                                 <ul>
@@ -430,8 +430,8 @@
             </div>
         </div>
     </section>
-    {% endblock %}<!-- End Our Services Area -->
-    {% block team %}<!-- Our Team Area -->
+{% endblock %}<!-- End Our Services Area -->
+{% block team %}<!-- Our Team Area -->
     <section class="our_team_area">
         <div class="container">
             <div class="tittle wow fadeInUp">
@@ -440,7 +440,7 @@
             </div>
             <div class="row team_row">
                 <div class="col-md-3 col-sm-6 wow fadeInUp">
-                   <div class="team_membar">
+                    <div class="team_membar">
                         <img src="{{ asset('build/images/team/tm-1.jpg') }}" alt="">
                         <div class="team_content">
                             <ul>
@@ -451,10 +451,10 @@
                             <a href="#" class="name">Prodip Ghosh</a>
                             <h6>Founder &amp; CEO</h6>
                         </div>
-                   </div>
+                    </div>
                 </div>
                 <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
-                   <div class="team_membar">
+                    <div class="team_membar">
                         <img src="{{ asset('build/images/team/tm-2.jpg') }}" alt="">
                         <div class="team_content">
                             <ul>
@@ -465,10 +465,10 @@
                             <a href="#" class="name">Emran Khan</a>
                             <h6>Web-Developer</h6>
                         </div>
-                   </div>
+                    </div>
                 </div>
                 <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                   <div class="team_membar">
+                    <div class="team_membar">
                         <img src="{{ asset('build/images/team/tm-3.jpg') }}" alt="">
                         <div class="team_content">
                             <ul>
@@ -479,10 +479,10 @@
                             <a href="#" class="name">Prodip Ghosh</a>
                             <h6>Founder &amp; CEO</h6>
                         </div>
-                   </div>
+                    </div>
                 </div>
                 <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay="0.4s">
-                   <div class="team_membar">
+                    <div class="team_membar">
                         <img src="{{ asset('build/images/team/tm-4.jpg') }}" alt="">
                         <div class="team_content">
                             <ul>
@@ -493,13 +493,13 @@
                             <a href="#" class="name">Jakaria Khan</a>
                             <h6>Founder &amp; CEO</h6>
                         </div>
-                   </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    {% endblock %}<!-- End Our Team Area -->
-    {% block achievments %}<!-- Our Achievments Area -->
+{% endblock %}<!-- End Our Team Area -->
+{% block achievments %}<!-- Our Achievments Area -->
     <section class="our_achievments_area" data-stellar-background-ratio="0.3">
         <div class="container">
             <div class="tittle wow fadeInUp">
@@ -530,8 +530,8 @@
             </div>
         </div>
     </section>
-    {% endblock %}<!-- End Our Achievments Area -->
-    {% block testimonial %}<!-- Our Testimonial Area -->
+{% endblock %}<!-- End Our Achievments Area -->
+{% block testimonial %}<!-- Our Testimonial Area -->
     <section class="testimonial_area row">
         <div class="container">
             <div class="tittle wow fadeInUp">
@@ -626,8 +626,8 @@
             </div>
         </div>
     </section>
-    {% endblock %}<!-- End Our testimonial Area -->
-    {% block featured %}<!-- Our Featured Works Area -->
+{% endblock %}<!-- End Our testimonial Area -->
+{% block featured %}<!-- Our Featured Works Area -->
     <section class="featured_works row" data-stellar-background-ratio="0.3">
         <div class="tittle wow fadeInUp">
             <h2>Our Featured Works</h2>
@@ -692,8 +692,8 @@
             </div>
         </div>
     </section>
-    {% endblock %}<!-- End Our Featured Works Area -->
-    {% block blog %}<!-- Our Latest Blog Area -->
+{% endblock %}<!-- End Our Featured Works Area -->
+{% block blog %}<!-- Our Latest Blog Area -->
     <section class="latest_blog_area">
         <div class="container">
             <div class="tittle wow fadeInUp">
@@ -722,8 +722,8 @@
             </div>
         </div>
     </section>
-    {% endblock %}<!-- End Our Latest Blog Area -->
-    {% block partners %}<!-- Our Partners Area -->
+{% endblock %}<!-- End Our Latest Blog Area -->
+{% block partners %}<!-- Our Partners Area -->
     <section class="our_partners_area">
         <div class="container">
             <div class="tittle wow fadeInUp">
@@ -752,13 +752,13 @@
             </div>
         </div>
     </section>
-    {% endblock %}<!-- End Our Partners Area -->
-    {% block scroll %}<!-- Scroll to Top Button-->
+{% endblock %}<!-- End Our Partners Area -->
+{% block scroll %}<!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
+        <i class="fa fa-angle-up"></i>
     </a>
-    {% endblock %}
-    {% block footer %}<!-- Footer Area -->
+{% endblock %}
+{% block footer %}<!-- Footer Area -->
     <footer class="footer_area">
         <div class="container">
             <div class="footer_row row">
@@ -806,31 +806,31 @@
             <p>Copyright 2018 All rights reserved</p>
         </div>
     </footer>
-    {% endblock %}<!-- End Footer Area -->
-    {% endblock %}
-        {% block javascripts %}
-            <!-- jQuery JS -->
-            <script src="{{ asset('build/js/jquery-1.12.0.min.js') }}"></script>
-            <!-- Bootstrap JS -->
-            <script src="{{ asset('build/js/bootstrap.min.js') }}"></script>
-            <!-- Animate JS -->
-            <script src="{{ asset('build/vendors/animate/wow.min.js') }}"></script>
-            <!-- Camera Slider -->
-            <script src="{{ asset('build/vendors/camera-slider/jquery.easing.1.3.js') }}"></script>
-            <script src="{{ asset('build/vendors/camera-slider/camera.min.js') }}"></script>
-            <!-- Isotope JS -->
-            <script src="{{ asset('build/vendors/isotope/imagesloaded.pkgd.min.js') }}"></script>
-            <script src="{{ asset('build/vendors/isotope/isotope.pkgd.min.js') }}"></script>
-            <!-- Progress JS -->
-            <script src="{{ asset('build/vendors/Counter-Up/jquery.counterup.min.js') }}"></script>
-            <script src="{{ asset('build/vendors/Counter-Up/waypoints.min.js') }}"></script>
-            <!-- Owlcarousel JS -->
-            <script src="{{ asset('build/vendors/owl_carousel/owl.carousel.min.js') }}"></script>
-            <!-- Stellar JS -->
-            <script src="{{ asset('build/vendors/stellar/jquery.stellar.js') }}"></script>
-            <!-- Theme JS -->
-            <script src="{{ asset('build/js/min/theme.min.js') }}"></script>
-        {% endblock %}
-    </body>
+{% endblock %}
+{% endblock %}
+{% block javascripts %}
+    <!-- jQuery JS -->
+    <script src="{{ asset('build/js/jquery-1.12.0.min.js') }}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{ asset('build/js/bootstrap.min.js') }}"></script>
+    <!-- Animate JS -->
+    <script src="{{ asset('build/vendors/animate/wow.min.js') }}"></script>
+    <!-- Camera Slider -->
+    <script src="{{ asset('build/vendors/camera-slider/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('build/vendors/camera-slider/camera.min.js') }}"></script>
+    <!-- Isotope JS -->
+    <script src="{{ asset('build/vendors/isotope/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('build/vendors/isotope/isotope.pkgd.min.js') }}"></script>
+    <!-- Progress JS -->
+    <script src="{{ asset('build/vendors/Counter-Up/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('build/vendors/Counter-Up/waypoints.min.js') }}"></script>
+    <!-- Owlcarousel JS -->
+    <script src="{{ asset('build/vendors/owl_carousel/owl.carousel.min.js') }}"></script>
+    <!-- Stellar JS -->
+    <script src="{{ asset('build/vendors/stellar/jquery.stellar.js') }}"></script>
+    <!-- Theme JS -->
+    <script src="{{ asset('build/js/min/theme.min.js') }}"></script>
+{% endblock %}
+</body>
 </html>
  
