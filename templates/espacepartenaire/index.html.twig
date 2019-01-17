@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace partenaire{% endblock %}
+
+{% block body %}
+    <section class="what_we_area row">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="tittlefont">ESPACE PARTENAIRE</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <a class="container" href="#">
+                        <img class="card-img-top" style="width:100%; min-height: 240px" src="{{ asset('build/images/calculator-385506_1920.jpg') }}" alt="Card image cap">
+                        <div class="centered"><h4>MON COMPTE</h4><br></div>
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <a class="container" href="#">
+                        <img class="card-img-top" style="width:100%; min-height: 240px" src="{{ asset('build/images/clock-1274699_1920.jpg') }}" alt="">
+                        <div class="centered"><h4>MES DISPONIBLITÉS</h4><br></div>
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <a class="container" href="#">
+                        <img class="card-img-top" style="width:100%; min-height: 240px" src="{{ asset('build/images/laptop-3196481_1920.jpg') }}" alt="">
+                        <div class="centered"><h4>MA FORMULE</h4><br></div>
+                    </a><br>
+                </div>
+                <div class="col-lg-4 col-lg-offset-1">
+                    <a class="container" href="#">
+                        <img class="card-img-top" style="width:100%; min-height: 240px" src="{{ asset('build/images/house-1407562_1920.jpg') }}" alt="">
+                        <div class="centered"><h4>MES DEMANDES DE DEVIS</h4><br></div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2">
+                    <a class="container" href="#">
+                        <img class="card-img-top" style="width:100%; min-height: 240px" src="{{ asset('build/images/wrench-717684_1920.jpg') }}" alt="">
+                        <div class="centered"><h4>MES DEVIS</h4><br></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
