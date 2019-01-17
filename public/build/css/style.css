@@ -709,7 +709,7 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
   position: relative;
 }
 .what_we_area .construction_iner .construction .cns-content a {
-  font: 700 18px "Roboto", sans-serif;
+  font: 700 20px "Roboto", sans-serif;
   text-transform: uppercase;
   color: #222222;
   padding-top: 17px;
@@ -721,7 +721,7 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
   padding-top: 20px;
 }
 .what_we_area .construction_iner .construction:hover a, .what_we_area .construction_iner .construction:focus a {
-  color: #f6b60b;
+  color: #000000;
 }
 .what_we_area .construction_iner .construction:hover i, .what_we_area .construction_iner .construction:focus i {
   font-size: 35px;
@@ -2745,4 +2745,14 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
       background-color: inherit;
       border-top:0 none;
   }
+}
+
+/* MODIF ALEX */
+.tittlefont{
+    padding-top: 100px;
+    padding-bottom: 75px;
+}
+
+.tittlefont{
+  font-family: Lato, serif;
 }
