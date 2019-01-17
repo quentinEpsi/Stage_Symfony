@@ -1,0 +1,8 @@
+#################### BDD :
+Pensez à rajouter l'auto increment
+
+Formules
+DELETE FROM `formules`;INSERT INTO `formules` (`Id_formule`, `Nom_formule`, `Montant_paiement`) VALUES ('1', 'Gratuit', '0'),('2', 'Esprit libre', '5'), ('3', 'Abonnement', '4');
+
+Service    
+DELETE FROM `service`;INSERT INTO `service` (`Id_service`, `Nom_service`) VALUES ('1',"Ouverture de porte bloquée, claquée ou sans clé"), ('2',"Ouverture de coffre-fort bloqué"), ('3',"Réparation de tous types d’ouvrage de serrurerie : barillet, cylindre, pêne, serrure, verrou"), ('4',"Changement de serrure"), ('5',"Installation de porte blindée, de portique, de portail, de rideaux métalliques ou de porte coupe-feu"), ('6',"Blindage de porte et/ou de fenêtre"), ('7',"Réalisation de double de clé"), ('8',"Autres");
