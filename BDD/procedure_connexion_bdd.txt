@@ -1,0 +1,98 @@
+https://symfony.com/doc/current/doctrine.html
+https://symfony.com/doc/current/doctrine/reverse_engineering.html
+https://www.youtube.com/watch?v=kfiKn5c9l84
+
+CMD :
+--Installing Doctrine
+	$ composer require symfony/orm-pack
+	$ composer require symfony/maker-bundle --dev
+
+In the file ".env" located in the root of symfony :
+//DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name"
+	DATABASE_URL="mysql://admin:admin@127.0.0.1:3306/stage"
+
+CMD :
+Creating the database in mysql
+	$ php bin/console doctrine:database:create
+
+Creating Entities from the database for symfony
+	$ php bin/console doctrine:mapping:import App\Entity annotation --path=src/Entity
+
+Creating Getter/Setter of the database of symfony
+	$ php bin/console make:entity --regenerate App
+	
+Preparing to migrate the database of symfony
+	$ php bin/console doctrine:migrations:diff
+	
+Migrate the database of symfony
+	$ php bin/console doctrine:migrations:migrate
+	
+	
+To reinitialize the database of symfony :
+Delete all the files of src/Entity except gitignore
+Come back to "Creating Entities" and pursue the steps
+
+--Utilising the database in Symfony:
+In your controller, add: 
+	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+	use App\Entity\my-file-with-functions-i-need;
+
+-In one of your fonctions, to put data in your database, write:
+	$entityManager = $this->getDoctrine()->getManager();
+	$my-class = new my-file-with-functions-i-need();
+	
+	$my-class->set______(_____);
+	$my-class->set______(______);
+	
+	$entityManager->persist($my-class);   // tell Doctrine you want to (eventually) save the Product (no queries yet)
+	
+	$entityManager->flush(); // executes the queries (i.e. the INSERT query)
+	
+PS : Doctrine is smart enough to know if it should INSERT or UPDATE your entity.
+Exemple:
+
+class ProductController extends AbstractController
+{
+    /**
+     * @Route("/product", name="product")
+     */
+    public function index()
+    {
+        // you can fetch the EntityManager via $this->getDoctrine()
+        // or you can add an argument to your action: index(EntityManagerInterface $entityManager)
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $product = new Product();
+        $product->setName('Keyboard');
+        $product->setPrice(1999);
+        $product->setDescription('Ergonomic and stylish!');
+
+        // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($product);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+        return new Response('Saved new product with id '.$product->getId());
+    }
+}
+
+
+
+-To select data, in your controller function, 
+	Look for one product with the id $id: 
+		$ product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+	
+	Look for a single Product by name
+		$ product = $repository->findOneBy(['name' => 'Keyboard']);
+		
+	Find by name and price
+		$ product = $repository->findOneBy(['name' => 'Keyboard','price' => 1999]);
+
+	Look for multiple Product objects matching the name, ordered by price
+		$ products = $repository->findBy(['name' => 'Keyboard'],['price' => 'ASC']);
+
+	Look for *all* Product objects
+		$ products = $repository->findAll();
+
+PS: You can also add custom methods for more complex queries -> https://symfony.com/doc/current/doctrine.html#doctrine-queries 
