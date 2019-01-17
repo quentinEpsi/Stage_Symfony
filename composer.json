@@ -25,6 +25,7 @@
         "symfony/twig-bundle": "*",
         "symfony/validator": "*",
         "symfony/web-link": "*",
+        "symfony/web-server-bundle": "*",
         "symfony/yaml": "*",
         "twig/twig": "^2.0"
     },
@@ -32,8 +33,7 @@
         "sensiolabs/security-checker": "^5.0",
         "symfony/dotenv": "*",
         "symfony/profiler-pack": "^1.0",
-        "symfony/test-pack": "*",
-        "symfony/web-server-bundle": "4.1.*"
+        "symfony/test-pack": "*"
     },
     "config": {
         "preferred-install": {
