@@ -7,9 +7,15 @@
     <option name="TRACKING_ENABLED" value="true" />
 =======
     <list default="true" id="2f73a4d0-ef16-41eb-a824-e63adbb23e34" name="Default" comment="MAJ">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/css/bootstrapValidator.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/js/fr_FR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/js/reg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/stageb2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stageb2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/js/jquery-1.12.0.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/js/jquery-1.12.0.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/inscription/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/inscription/index.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
 >>>>>>> dev
@@ -42,13 +48,152 @@
               <folding />
 =======
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+<<<<<<< Updated upstream
+        <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="151" column="60" selection-start-line="151" selection-start-column="60" selection-end-line="151" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/build/js/jquery-1.12.0.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="1183" selection-start-line="4" selection-start-column="1183" selection-end-line="4" selection-end-column="1183" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/InscriptionController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+            <state relative-caret-position="180">
+              <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/Controller/InscriptionController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/FormulesController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/formules/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
+>>>>>>> Stashed changes
               <folding>
-                <element signature="e#335#364#0#PHP" expanded="true" />
+                <element signature="e#12#26#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/build/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="358">
+              <caret line="2739" column="9" selection-start-line="2739" selection-start-column="9" selection-end-line="2739" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="806" column="14" selection-start-line="806" selection-start-column="14" selection-end-line="806" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/inscription/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#12#26#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/inscription/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="439">
+              <caret line="65" column="35" selection-start-line="65" selection-start-column="35" selection-end-line="65" selection-end-column="35" />
+              <folding>
+                <element signature="e#12#26#0#Twig" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#10;n#fieldset#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/build/js/fr_FR.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5400">
+              <caret line="360" selection-start-line="360" selection-end-line="360" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/build/js/google_map.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/build/js/html5shiv.min.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/build/js/bootstrap.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/build/js/reg.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="1" selection-start-column="1" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/build/js/respond.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
               </folding>
 >>>>>>> dev
             </state>
@@ -58,12 +203,38 @@
     </leaf>
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="FrameworkCommandLineHistory">
     <commandsHistory>
       <command text="php  bin/console server:run" />
     </commandsHistory>
   </component>
 =======
+>>>>>>> dev
+=======
+<<<<<<< Updated upstream
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>jquerry</find>
+      <find>jquerr</find>
+      <find>jquer</find>
+      <find>créé</find>
+      <find>bg</find>
+=======
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>what</find>
+      <find>tittle</find>
+>>>>>>> Stashed changes
+    </findStrings>
+  </component>
 >>>>>>> dev
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,6 +245,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
 <<<<<<< HEAD
         <option value="$PROJECT_DIR$/test_new_file.txt" />
@@ -81,8 +253,31 @@
         <option value="$PROJECT_DIR$/src/Controller/InscriptionController.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
 >>>>>>> dev
+=======
+        <option value="$PROJECT_DIR$/.gitignore" />
+<<<<<<< Updated upstream
+        <option value="$PROJECT_DIR$/src/Controller/InscriptionController.php" />
+        <option value="$PROJECT_DIR$/public/css/reg.css" />
+        <option value="$PROJECT_DIR$/public/build/css/bootstrapValidator.min.css" />
+        <option value="$PROJECT_DIR$/public/build/js/fr_FR.js" />
+        <option value="$PROJECT_DIR$/public/build/js/reg.js" />
+        <option value="$PROJECT_DIR$/public/build/js/jquery-1.12.0.min.js" />
+        <option value="$PROJECT_DIR$/public/build/js/min/bootstrapValidator.min.js" />
+        <option value="$PROJECT_DIR$/public/build/js/bootstrapValidator.min.js" />
+        <option value="$PROJECT_DIR$/public/build/js/min/jquerry.js" />
+        <option value="$PROJECT_DIR$/public/build/js/jquerry.js" />
+        <option value="$PROJECT_DIR$/templates/base.html.twig" />
+        <option value="$PROJECT_DIR$/templates/inscription/index.html.twig" />
+=======
+        <option value="$PROJECT_DIR$/templates/formules/index.html.twig" />
+        <option value="$PROJECT_DIR$/public/build/css/style.css" />
+>>>>>>> Stashed changes
+>>>>>>> dev
       </list>
     </option>
+  </component>
+  <component name="PhpServers">
+    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -186,6 +381,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="x" value="175" />
     <option name="y" value="116" />
     <option name="width" value="923" />
@@ -208,6 +404,14 @@
     <option name="y" value="55" />
     <option name="width" value="1421" />
     <option name="height" value="918" />
+=======
+    <option name="x" value="-8" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+>>>>>>> dev
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -231,10 +435,31 @@
 =======
               <item name="stageb2" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< Updated upstream
             <path>
               <item name="stageb2" type="b2602c69:ProjectViewProjectNode" />
               <item name="stageb2" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="stageb2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="stageb2" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="stageb2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="stageb2" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="stageb2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="stageb2" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="stageb2" type="b2602c69:ProjectViewProjectNode" />
@@ -265,6 +490,8 @@
               <item name="pages" type="462c0819:PsiDirectoryNode" />
 >>>>>>> dev
             </path>
+=======
+>>>>>>> Stashed changes
           </expand>
           <select />
         </subPane>
@@ -278,7 +505,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="reference.idesettings.emmet" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/build/js" />
+      <recent name="$PROJECT_DIR$/public/build/css" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -310,9 +543,18 @@
       <updated>1547650555742</updated>
       <workItem from="1547650556896" duration="312000" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1547713050137" duration="473000" />
 =======
       <workItem from="1547713260487" duration="954000" />
+>>>>>>> dev
+=======
+<<<<<<< Updated upstream
+      <workItem from="1547713260487" duration="8626000" />
+=======
+      <workItem from="1547713260487" duration="954000" />
+      <workItem from="1547717058175" duration="8424000" />
+>>>>>>> Stashed changes
 >>>>>>> dev
     </task>
     <task id="LOCAL-00001" summary="MAJ">
@@ -322,10 +564,32 @@
       <option name="project" value="LOCAL" />
       <updated>1547713699399</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="MAJ">
+      <created>1547714301289</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1547714301290</updated>
+    </task>
+    <task id="LOCAL-00003" summary="MAJ">
+      <created>1547714313115</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1547714313115</updated>
+    </task>
+    <task id="LOCAL-00004" summary="MAJ">
+      <created>1547719236872</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1547719236872</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="785000" />
   </component>
@@ -354,26 +618,40 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
 =======
     <option name="totallyTimeSpent" value="1266000" />
+=======
+<<<<<<< Updated upstream
+    <option name="totallyTimeSpent" value="8938000" />
+>>>>>>> dev
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
-    <editor active="true" />
+=======
+    <option name="totallyTimeSpent" value="9690000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+>>>>>>> Stashed changes
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21367522" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21677852" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32941177" />
+<<<<<<< Updated upstream
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32941177" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32941177" />
+=======
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3286119" />
+>>>>>>> Stashed changes
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -398,6 +676,7 @@
 >>>>>>> dev
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
@@ -426,6 +705,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> dev
     <entry file="file://$PROJECT_DIR$/templates/pages/inscription.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -436,20 +717,172 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/css/reg.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/css/bootstrapValidator.min.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Validator/Validator.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Validator/.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/js/min/bootstrapValidator.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/js/bootstrapValidator.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/js/jquery-1.12.0.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/js/jquery-1.12.0.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="49" selection-end-line="1" selection-end-column="86841" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/js/min/theme.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/js/bootstrap.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/js/fr_FR.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5400">
+          <caret line="360" selection-start-line="360" selection-end-line="360" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/js/google_map.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/js/html5shiv.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/js/reg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/js/respond.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/InscriptionController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+<<<<<<< Updated upstream
+        <state relative-caret-position="180">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+=======
+        <state relative-caret-position="136">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/FormulesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/routing/Route.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/inscription/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+>>>>>>> Stashed changes
           <folding>
-            <element signature="e#335#364#0#PHP" expanded="true" />
+            <element signature="e#12#26#0#Twig" expanded="true" />
           </folding>
 >>>>>>> dev
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
+    <entry file="file://$PROJECT_DIR$/public/build/js/jquery-1.12.0.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="1183" selection-start-line="4" selection-start-column="1183" selection-end-line="4" selection-end-column="1183" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="151" column="60" selection-start-line="151" selection-start-column="60" selection-end-line="151" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/inscription/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="65" column="35" selection-start-line="65" selection-start-column="35" selection-end-line="65" selection-end-column="35" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#10;n#fieldset#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="806" column="14" selection-start-line="806" selection-start-column="14" selection-end-line="806" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/formules/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+>>>>>>> Stashed changes
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< Updated upstream
+=======
+    <entry file="file://$PROJECT_DIR$/public/build/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="2739" column="9" selection-start-line="2739" selection-start-column="9" selection-end-line="2739" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> Stashed changes
   </component>
 </project>
