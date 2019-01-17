@@ -69,12 +69,12 @@ $(document).ready(function() {
             },
             telephone: {
                 validators: {
+                    notEmpty: {
+                        message: 'Veuillez saisir votre numéro de téléphone'
+                    },
                     stringLength: {
                         min: 8,
                         max: 10,
-                        notEmpty: {
-                            message: 'Veuillez saisir votre numéro de téléphone'
-                        }
                     }
                 }
             },
