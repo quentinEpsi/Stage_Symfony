@@ -14,6 +14,7 @@ class InscriptionController extends AbstractController
     {
         return $this->render('inscription/index.html.twig', [
             'controller_name' => 'InscriptionController',
+
         ]);
     }
 }

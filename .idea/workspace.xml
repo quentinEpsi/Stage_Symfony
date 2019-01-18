@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2f73a4d0-ef16-41eb-a824-e63adbb23e34" name="Default" comment="update">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="2f73a4d0-ef16-41eb-a824-e63adbb23e34" name="Default" comment="Traduction en Français de la page de bienvenue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/css/reg.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/css/reg.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/js/reg.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/js/reg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/InscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InscriptionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/inscription/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/inscription/index.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,50 +22,30 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/HomeController.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/InscriptionController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+            <state>
+              <caret column="5" selection-start-column="5" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/InscriptionController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/inscription/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/EspacePartenaireController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/espacepartenaire/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="36" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/build/css/reg.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="4" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="4" />
+            <state relative-caret-position="1980">
+              <caret line="132" column="35" selection-start-line="132" selection-start-column="35" selection-end-line="132" selection-end-column="35" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -70,8 +53,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/build/js/reg.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
-              <caret line="65" column="72" selection-start-line="65" selection-start-column="72" selection-end-line="65" selection-end-column="72" />
+            <state relative-caret-position="738">
+              <caret line="87" column="32" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/build/css/reg.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="858">
+              <caret line="386" column="58" selection-start-line="386" selection-start-column="58" selection-end-line="386" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -98,6 +90,10 @@
       <find>button</find>
       <find>valeur</find>
       <find>btn</find>
+      <find>alex</find>
+      <find>HOME</find>
+      <find>logo</find>
+      <find>Connection</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -107,7 +103,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/Controller/InscriptionController.php" />
         <option value="$PROJECT_DIR$/public/css/reg.css" />
         <option value="$PROJECT_DIR$/public/build/css/bootstrapValidator.min.css" />
         <option value="$PROJECT_DIR$/public/build/js/fr_FR.js" />
@@ -116,14 +111,19 @@
         <option value="$PROJECT_DIR$/public/build/js/bootstrapValidator.min.js" />
         <option value="$PROJECT_DIR$/public/build/js/min/jquerry.js" />
         <option value="$PROJECT_DIR$/public/build/js/jquerry.js" />
-        <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/config/routes.yaml" />
         <option value="$PROJECT_DIR$/templates/inscription/mention.html" />
         <option value="$PROJECT_DIR$/src/Controller/MentionsLegalesController.php" />
         <option value="$PROJECT_DIR$/templates/mentions_legales/index.html.twig" />
-        <option value="$PROJECT_DIR$/public/build/css/reg.css" />
+        <option value="$PROJECT_DIR$/src/Controller/EspacePartenaireController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/EspacepartenaireController.php" />
+        <option value="$PROJECT_DIR$/templates/espacepartenaire/index.html.twig" />
+        <option value="$PROJECT_DIR$/templates/pages/home.html.twig" />
+        <option value="$PROJECT_DIR$/templates/base.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/InscriptionController.php" />
         <option value="$PROJECT_DIR$/public/build/js/reg.js" />
         <option value="$PROJECT_DIR$/templates/inscription/index.html.twig" />
+        <option value="$PROJECT_DIR$/public/build/css/reg.css" />
       </list>
     </option>
   </component>
@@ -240,6 +240,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -297,7 +298,7 @@
               <item name="stageb2" type="b2602c69:ProjectViewProjectNode" />
               <item name="stageb2" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="espace_partenaire" type="462c0819:PsiDirectoryNode" />
+              <item name="espacepartenaire" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="stageb2" type="b2602c69:ProjectViewProjectNode" />
@@ -321,7 +322,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -360,7 +360,8 @@
       <workItem from="1547650556896" duration="312000" />
       <workItem from="1547713260487" duration="13593000" />
       <workItem from="1547734198150" duration="2472000" />
-      <workItem from="1547800918065" duration="213000" />
+      <workItem from="1547800918065" duration="486000" />
+      <workItem from="1547801468616" duration="6296000" />
     </task>
     <task id="LOCAL-00001" summary="MAJ">
       <created>1547713699399</created>
@@ -404,17 +405,52 @@
       <option name="project" value="LOCAL" />
       <updated>1547735072331</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="update NOW">
+      <created>1547801190069</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1547801190069</updated>
+    </task>
+    <task id="LOCAL-00008" summary="update">
+      <created>1547801234942</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1547801234942</updated>
+    </task>
+    <task id="LOCAL-00009" summary="update">
+      <created>1547801995601</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1547801995601</updated>
+    </task>
+    <task id="LOCAL-00010" summary="On casse peut être tout, alerte">
+      <created>1547802394118</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1547802394118</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Traduction en Français de la page de bienvenue">
+      <created>1547803628764</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1547803628764</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16590000" />
+    <option name="totallyTimeSpent" value="23159000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21855922" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22100122" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -425,9 +461,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32941177" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32941177" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4993895" weight="0.32941177" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4993895" weight="0.32941177" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50061053" side_tool="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -441,7 +477,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="MAJ" />
     <MESSAGE value="MAJ ENCORE" />
-    <option name="LAST_COMMIT_MESSAGE" value="MAJ ENCORE" />
+    <MESSAGE value="update NOW" />
+    <MESSAGE value="update" />
+    <MESSAGE value="On casse peut être tout, alerte" />
+    <MESSAGE value="Traduction en Français de la page de bienvenue" />
+    <option name="LAST_COMMIT_MESSAGE" value="Traduction en Français de la page de bienvenue" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/templates/pages/inscription.html.twig">
@@ -494,13 +534,6 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2265">
-          <caret line="151" column="60" selection-start-line="151" selection-start-column="60" selection-end-line="151" selection-end-column="60" />
         </state>
       </provider>
     </entry>
@@ -558,48 +591,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/InscriptionController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/EspacePartenaireController.php">
+    <entry file="file://$PROJECT_DIR$/src/Controller/EspacepartenaireController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/build/css/reg.css">
+    <entry file="file://$PROJECT_DIR$/public/build/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="4" />
+        <state relative-caret-position="50">
+          <caret line="2746" column="3" selection-start-line="2746" selection-start-column="3" selection-end-line="2746" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/css/404.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/espacepartenaire/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+          <folding>
+            <element signature="e#509#546#0#HTML" expanded="true" />
+            <element signature="e#873#910#0#HTML" expanded="true" />
+            <element signature="e#1226#1263#0#HTML" expanded="true" />
+            <element signature="e#1593#1630#0#HTML" expanded="true" />
+            <element signature="e#1966#2003#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/pages/home.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="30" selection-start-column="30" selection-end-column="30" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/build/js/reg.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="65" column="72" selection-start-line="65" selection-start-column="72" selection-end-line="65" selection-end-column="72" />
+        <state relative-caret-position="738">
+          <caret line="87" column="32" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/espacepartenaire/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="36" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/inscription/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+        <state relative-caret-position="1980">
+          <caret line="132" column="35" selection-start-line="132" selection-start-column="35" selection-end-line="132" selection-end-column="35" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/css/reg.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="386" column="58" selection-start-line="386" selection-start-column="58" selection-end-line="386" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/InscriptionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
