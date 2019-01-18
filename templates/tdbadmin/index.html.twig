@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menu administrateur{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+    {% block stylesheets %}
+          <!-- Bootstrap CSS -->
+        <link href="{{ asset('build/css/bootstrap.min.css') }}" rel="stylesheet">
+            <!--Theme Styles CSS-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/css/style.css') }}" media="all" />
+    {% endblock %}
+
+   <div id="MenuGraphAdmin"> <h1>Menu administrateur</h1>
+
+
+    <div id="GraphAdmin1"></div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        // Chargement du graph via google
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        //les valeurs du graph
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Work',1],
+                ['Eat',1],
+                ['TV',1],
+                ['Gym',1],
+                ['Sleep',1]
+            ]);
+
+            // Changement de la taille et le titre du graphe
+            var options = {'title':'Consommation moyenne', 'width':550, 'height':400};
+
+            var chart = new google.visualization.PieChart(document.getElementById('GraphAdmin1'));
+            chart.draw(data, options);
+        }
+    </script>
+
+       <div id="BarreVerticale"></div>
+
+       <div id="GraphAdmin2"></div>
+
+       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+       <script type="text/javascript">
+           // Chargement du graph via google
+           google.charts.load('current', {'packages':['corechart']});
+           google.charts.setOnLoadCallback(drawChart);
+
+           //les valeurs du graph
+           function drawChart() {
+               var data = google.visualization.arrayToDataTable([
+                   ['Task', 'Hours per Day'],
+                   ['Work',10],
+                   ['Eat',20],
+                   ['TV',30],
+                   ['Gym',40],
+                   ['Sleep',0]
+               ]);
+
+               // Changement de la taille et le titre du graphe
+               var options = {'title':'Consommation moyenne', 'width':550, 'height':400};
+
+               var chart = new google.visualization.PieChart(document.getElementById('GraphAdmin2'));
+               chart.draw(data, options);
+           }
+       </script>
+   </div>
+    <div id="BarreHorizontale"></div>
+{% endblock %}

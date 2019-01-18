@@ -2792,3 +2792,25 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* MODIF VINCENT ---------------------------------------------------------------------- */
+
+/* tableau de bord admin */
+
+#MenuGraphAdmin{
+    text-align: center;
+    margin-top: 3%;
+}
+
+#BarreVerticale{
+  border-right: solid;
+}
+
+#GraphAdmin2{
+  text-align: right;
+
+}
+
+#BarreHorizontale{
+   border: solid;
+ }
