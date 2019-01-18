@@ -228,7 +228,11 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
+    <option name="y" value="20" />
+=======
     <option name="y" value="23" />
+>>>>>>> dev
     <option name="width" value="1680" />
     <option name="height" value="1027" />
   </component>

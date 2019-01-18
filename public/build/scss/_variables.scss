@@ -93,21 +93,13 @@ $p: #555555;
 }
 
 /* Subtittle */
-.subtittle{ 
+.subtittle{
     h2{
         font: 700 36px $roboto;
         color: $h2;
         text-transform: uppercase;
         position: relative;
         margin-bottom: 20px;
-        &:after{
-            content: "";
-            position: absolute;
-            height: 2px;
-            width: 80px;
-            background: $h2;
-            left: 0;
-            bottom: -22px;
         }
     }
     h5{
@@ -115,7 +107,6 @@ $p: #555555;
         color: $p;
         padding-top: 22px;
     }
-}
 /* Preloader */ 
 .preloader{
     position:fixed;
