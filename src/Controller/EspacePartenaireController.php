@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class EspacepartenaireController extends AbstractController
+class EspacePartenaireController extends AbstractController
 {
     /**
      * @Route("/espacepartenaire", name="espacepartenaire")
