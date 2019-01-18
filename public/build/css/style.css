@@ -2803,14 +2803,19 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
 }
 
 #BarreVerticale{
-  border-right: solid;
+  border: solid;
+  height: 100px;
+  width: 1px;
+  margin-left: 50%;
 }
 
 #GraphAdmin2{
-  text-align: right;
+
 
 }
 
 #BarreHorizontale{
-   border: solid;
+  margin-left:20%;
+  border:solid;
+  width:60%;
  }
