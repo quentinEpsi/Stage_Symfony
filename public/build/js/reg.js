@@ -27,16 +27,6 @@ $(document).ready(function() {
                     }
                 }
             },
-            user_name: {
-                validators: {
-                    stringLength: {
-                        min: 4,
-                    },
-                    notEmpty: {
-                        message: 'Veuillez saisir un nom d\'utilisateur'
-                    }
-                }
-            },
             password: {
                 validators: {
                     stringLength: {
@@ -78,33 +68,33 @@ $(document).ready(function() {
                     }
                 }
             },
-            campus: {
-                validators: {
-                    notEmpty: {
-                        message: 'Veuillez indiquer votre campus'
-                    }
-                }
-            },
 
-            classe: {
+            siren: {
                 validators: {
                     notEmpty: {
-                        message: 'Veuillez indiquer votre classe'
-                    }
-                }
-            },
-
-            datenaissance: {
-                validators: {
-                    notEmpty: {
-                        message: 'Veuillez indiquer votre date de naissance'
+                        message: 'Veuillez saisir votre numéro de SIREN valide'
                     },
-                    date:{
-                        format: 'YYYY-MM-DD',
-                        message: 'Cette date n\'est pas au bon format'
-                    }
                 }
             },
+
+            assurance: {
+                validators: {
+                    notEmpty: {
+                        message: 'Veuillez saisir votre numéro de SIREN valide'
+                    },
+                }
+            },
+
+            description_activite: {
+                validators: {
+                    notEmpty: {
+                        message: 'Veuillez saisir votre numéro de SIREN valide'
+                    },
+                }
+            },
+
+
+
 
         }
     })
