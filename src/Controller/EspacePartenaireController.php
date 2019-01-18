@@ -5,15 +5,15 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class EspacePartenaireController extends AbstractController
+class EspacepartenaireController extends AbstractController
 {
     /**
-     * @Route("/espace/partenaire", name="espace_partenaire")
+     * @Route("/espacepartenaire", name="espacepartenaire")
      */
     public function index()
     {
-        return $this->render('espace_partenaire/index.html.twig', [
-            'controller_name' => 'EspacePartenaireController',
+        return $this->render('espacepartenaire/index.html.twig', [
+            'controller_name' => 'EspacepartenaireController',
         ]);
     }
 }
