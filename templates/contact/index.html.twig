@@ -1,20 +1,168 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block title %}SR2F | Inscription{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<head>
+    {% block top_header_area %}
+    {% endblock %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('build/css/reg.css') }}" />
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    {% endblock %}
+    <meta charset="utf-8">
+    <title>SR2F | Inscription</title>
+</head>
+<body>
+<!-- Headrrrrrer -->
+<header id="header">
+    <div class="inner">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/ContactController.php'|file_link(0) }}">src/Controller/ContactController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/contact/index.html.twig'|file_link(0) }}">templates/contact/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <!-- <img src="./images/logotrue.png" width="44" height="32"> -->
+
+        <a href="index.php" class="logo"><strong>SR2F</strong></a>
+        <nav id="ALO">
+            <a href="/" class="buttonreg" style="font-size: 0.7em !important;padding-right: 8px;color: white!important;">&nbsp&nbspAccueil&nbsp&nbsp</a>
+
+        </nav>
+    </div>
+</header>
+
+
+<img id="img" src="{{ asset('build/images/banner-bg.jpg') }}">
+
+<div class="container">
+
+    <form class="well form-horizontal" method="post"  id="contact_form">
+        <fieldset>
+            <!-- Form Name -->
+            <legend><center><h2><b>Nous contacter</b></h2></center></legend><br>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" >Je suis un : </label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
+                        <select class="form-control" required>
+                            <option disabled selected>Choisir un statut..</option>
+                            <option value="">Artisan</option>
+                            <option value="">Client</option>
+                            <option value="">Autres</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input
+            NOM -->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Nom</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="nom" placeholder="Nom" class="form-control"  type="text">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input
+            PRENOM -->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Prénom</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="prenom" placeholder="Prénom" class="form-control"  type="text">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input
+            MAIL-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">E-Mail</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input name="mail" placeholder="Adresse e-mail" class="form-control"  type="text">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input
+            NUMERO TELEPHONE-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Numero de téléphone</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                        <input name="telephone" placeholder="0607080900" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input
+            OBJET-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Objet</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="password" placeholder="Objet de la demande" class="form-control"  type="password">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" >Description</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>
+                        {#<input name="description_activite" placeholder="Description.." class="form-control"  type="textarea">#}
+                        <textarea rows="4" cols="50" placeholder="Description de la demande" name="description_activite" form="contact_form"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+
+            <!-- Success message -->
+            <div class="alert alert-success" role="alert" id="success_message">Demande terminée<i class="glyphicon glyphicon-thumbs-up"></i></div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4"><br>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspENVOYER
+                        <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div><!-- /.container -->
+
+
+{% block javascripts %}
+    <!-- Scripts -->
+    <script src="{{ asset('build/js/jquery-1.12.0.min.js') }}"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="{{ asset('build/js/bootstrap.min.js') }}" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/language/fr_FR.js"></script>
+    <script src="{{ asset('build/js/reg.js') }}"></script>
+{% endblock %}
 {% endblock %}
