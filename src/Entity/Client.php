@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Client
  *
- * @ORM\Table(name="client", indexes={@ORM\Index(name="CLIENT_SERVICE_FK", columns={"Id_service"})})
+ * @ORM\Table(name="client", indexes={@ORM\Index(name="client_service_FK", columns={"Id_service"})})
  * @ORM\Entity
  */
 class Client
@@ -24,21 +26,21 @@ class Client
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom_client", type="string", length=50, nullable=false)
+     * @ORM\Column(name="Nom_client", type="string", length=100, nullable=false)
      */
     private $nomClient;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Prenom_client", type="string", length=50, nullable=false)
+     * @ORM\Column(name="Prenom_client", type="string", length=100, nullable=false)
      */
     private $prenomClient;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Adresse_intervention", type="string", length=100, nullable=false)
+     * @ORM\Column(name="Adresse_intervention", type="string", length=150, nullable=false)
      */
     private $adresseIntervention;
 
@@ -59,30 +61,44 @@ class Client
     /**
      * @var string
      *
-     * @ORM\Column(name="Description_supp", type="string", length=250, nullable=false)
+     * @ORM\Column(name="Description_sup", type="string", length=250, nullable=false)
      */
-    private $descriptionSupp;
+    private $descriptionSup;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Date_proposition", type="date", nullable=false)
+     * @ORM\Column(name="Date_proposition", type="datetime", nullable=false)
      */
     private $dateProposition;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Date_realisation", type="date", nullable=false)
+     * @ORM\Column(name="Date_realisation_debut", type="datetime", nullable=false)
      */
-    private $dateRealisation;
+    private $dateRealisationDebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date_realisation_fin", type="datetime", nullable=false)
+     */
+    private $dateRealisationFin;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Etat_avancement", type="string", length=50, nullable=false)
+     * @ORM\Column(name="Etat_avancement", type="string", length=250, nullable=false)
      */
     private $etatAvancement;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Liste_id_artisan", type="string", length=400, nullable=false)
+     */
+    private $listeIdArtisan;
 
     /**
      * @var \Service
@@ -93,6 +109,29 @@ class Client
      * })
      */
     private $idService;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Artisan", inversedBy="idClient")
+     * @ORM\JoinTable(name="visualise",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="Id_client", referencedColumnName="Id_client")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="Id_artisan", referencedColumnName="Id_artisan")
+     *   }
+     * )
+     */
+    private $idArtisan;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idArtisan = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     public function getIdClient(): ?int
     {
@@ -159,14 +198,14 @@ class Client
         return $this;
     }
 
-    public function getDescriptionSupp(): ?string
+    public function getDescriptionSup(): ?string
     {
-        return $this->descriptionSupp;
+        return $this->descriptionSup;
     }
 
-    public function setDescriptionSupp(string $descriptionSupp): self
+    public function setDescriptionSup(string $descriptionSup): self
     {
-        $this->descriptionSupp = $descriptionSupp;
+        $this->descriptionSup = $descriptionSup;
 
         return $this;
     }
@@ -183,14 +222,26 @@ class Client
         return $this;
     }
 
-    public function getDateRealisation(): ?\DateTimeInterface
+    public function getDateRealisationDebut(): ?\DateTimeInterface
     {
-        return $this->dateRealisation;
+        return $this->dateRealisationDebut;
     }
 
-    public function setDateRealisation(\DateTimeInterface $dateRealisation): self
+    public function setDateRealisationDebut(\DateTimeInterface $dateRealisationDebut): self
     {
-        $this->dateRealisation = $dateRealisation;
+        $this->dateRealisationDebut = $dateRealisationDebut;
+
+        return $this;
+    }
+
+    public function getDateRealisationFin(): ?\DateTimeInterface
+    {
+        return $this->dateRealisationFin;
+    }
+
+    public function setDateRealisationFin(\DateTimeInterface $dateRealisationFin): self
+    {
+        $this->dateRealisationFin = $dateRealisationFin;
 
         return $this;
     }
@@ -207,6 +258,18 @@ class Client
         return $this;
     }
 
+    public function getListeIdArtisan(): ?string
+    {
+        return $this->listeIdArtisan;
+    }
+
+    public function setListeIdArtisan(string $listeIdArtisan): self
+    {
+        $this->listeIdArtisan = $listeIdArtisan;
+
+        return $this;
+    }
+
     public function getIdService(): ?Service
     {
         return $this->idService;
@@ -219,5 +282,30 @@ class Client
         return $this;
     }
 
+    /**
+     * @return Collection|Artisan[]
+     */
+    public function getIdArtisan(): Collection
+    {
+        return $this->idArtisan;
+    }
+
+    public function addIdArtisan(Artisan $idArtisan): self
+    {
+        if (!$this->idArtisan->contains($idArtisan)) {
+            $this->idArtisan[] = $idArtisan;
+        }
+
+        return $this;
+    }
+
+    public function removeIdArtisan(Artisan $idArtisan): self
+    {
+        if ($this->idArtisan->contains($idArtisan)) {
+            $this->idArtisan->removeElement($idArtisan);
+        }
+
+        return $this;
+    }
 
 }

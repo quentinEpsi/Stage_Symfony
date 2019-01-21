@@ -26,22 +26,14 @@ class Service
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom_service", type="string", length=50, nullable=false)
+     * @ORM\Column(name="Nom_service", type="string", length=250, nullable=false)
      */
     private $nomService;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Artisan", inversedBy="idService")
-     * @ORM\JoinTable(name="appartient",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="Id_service", referencedColumnName="Id_service")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="Id_artisan", referencedColumnName="Id_artisan")
-     *   }
-     * )
+     * @ORM\ManyToMany(targetEntity="Artisan", mappedBy="idService")
      */
     private $idArtisan;
 
@@ -82,6 +74,7 @@ class Service
     {
         if (!$this->idArtisan->contains($idArtisan)) {
             $this->idArtisan[] = $idArtisan;
+            $idArtisan->addIdService($this);
         }
 
         return $this;
@@ -91,6 +84,7 @@ class Service
     {
         if ($this->idArtisan->contains($idArtisan)) {
             $this->idArtisan->removeElement($idArtisan);
+            $idArtisan->removeIdService($this);
         }
 
         return $this;

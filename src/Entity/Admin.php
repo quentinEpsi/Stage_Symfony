@@ -35,6 +35,13 @@ class Admin
      */
     private $motdepasseAdmin;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="Reinitialisation_mdp_admin", type="boolean", nullable=false)
+     */
+    private $reinitialisationMdpAdmin;
+
     public function getIdAdmin(): ?int
     {
         return $this->idAdmin;
@@ -60,6 +67,18 @@ class Admin
     public function setMotdepasseAdmin(string $motdepasseAdmin): self
     {
         $this->motdepasseAdmin = $motdepasseAdmin;
+
+        return $this;
+    }
+
+    public function getReinitialisationMdpAdmin(): ?bool
+    {
+        return $this->reinitialisationMdpAdmin;
+    }
+
+    public function setReinitialisationMdpAdmin(bool $reinitialisationMdpAdmin): self
+    {
+        $this->reinitialisationMdpAdmin = $reinitialisationMdpAdmin;
 
         return $this;
     }

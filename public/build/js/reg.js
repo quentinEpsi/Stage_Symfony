@@ -39,11 +39,12 @@ $(document).ready(function() {
             },
             confirm_password: {
                 validators: {
-                    stringLength: {
-                        min: 8,
-                    },
                     notEmpty: {
                         message: 'Confirmez votre mot de passe'
+                    },
+                    identical: {
+                        field: 'password',
+                        message: 'Le mot de passe et sa confirmation ne sont pas les mêmes'
                     }
                 }
             },
@@ -85,13 +86,13 @@ $(document).ready(function() {
                 }
             },
 
-            description_activite: {
+/*            description_activite: {
                 validators: {
                     notEmpty: {
                         message: 'Veuillez saisir votre numéro de SIREN valide'
                     },
                 }
-            },
+            },*/
 
 
 

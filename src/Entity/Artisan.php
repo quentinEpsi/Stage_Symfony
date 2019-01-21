@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Artisan
  *
- * @ORM\Table(name="artisan", indexes={@ORM\Index(name="ARTISAN_FORMULES_FK", columns={"Id_formule"})})
+ * @ORM\Table(name="artisan", indexes={@ORM\Index(name="artisan_formules_FK", columns={"Id_formule"})})
  * @ORM\Entity
  */
 class Artisan
@@ -26,35 +26,35 @@ class Artisan
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom", type="string", length=50, nullable=false)
+     * @ORM\Column(name="Nom", type="string", length=100, nullable=false)
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Raison_sociale", type="string", length=100, nullable=false)
+     * @ORM\Column(name="Raison_sociale", type="string", length=150, nullable=false)
      */
     private $raisonSociale;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="SIREN", type="string", length=10, nullable=false)
+     * @ORM\Column(name="SIREN", type="string", length=20, nullable=false)
      */
     private $siren;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Tel", type="string", length=10, nullable=false)
+     * @ORM\Column(name="Tel", type="string", length=16, nullable=false)
      */
     private $tel;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Mail", type="string", length=50, nullable=false)
+     * @ORM\Column(name="Mail", type="string", length=100, nullable=false)
      */
     private $mail;
 
@@ -68,14 +68,14 @@ class Artisan
     /**
      * @var string
      *
-     * @ORM\Column(name="Motdepasse", type="string", length=100, nullable=false)
+     * @ORM\Column(name="Motdepasse", type="string", length=150, nullable=false)
      */
     private $motdepasse;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Num_assurance", type="string", length=30, nullable=false)
+     * @ORM\Column(name="Num_assurance", type="string", length=20, nullable=false)
      */
     private $numAssurance;
 
@@ -87,16 +87,9 @@ class Artisan
     private $dateInscription;
 
     /**
-     * @var bool
+     * @var int
      *
-     * @ORM\Column(name="Confirmation_mail", type="boolean", nullable=false)
-     */
-    private $confirmationMail;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="Credit", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="Credit", type="integer", nullable=false)
      */
     private $credit;
 
@@ -106,6 +99,62 @@ class Artisan
      * @ORM\Column(name="Devis_max", type="integer", nullable=false)
      */
     private $devisMax;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="Disponibilite", type="integer", nullable=false)
+     */
+    private $disponibilite;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date_debut_arret_reception", type="datetime", nullable=false)
+     */
+    private $dateDebutArretReception;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date_fin_arret_reception", type="datetime", nullable=false)
+     */
+    private $dateFinArretReception;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date_fin_engagement", type="datetime", nullable=false)
+     */
+    private $dateFinEngagement;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="Avantage", type="integer", nullable=false)
+     */
+    private $avantage;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="Reinitialisation_mdp_artisan", type="boolean", nullable=false)
+     */
+    private $reinitialisationMdpArtisan;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="Validation_assurance", type="boolean", nullable=false)
+     */
+    private $validationAssurance;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="Validation_artisan", type="boolean", nullable=false)
+     */
+    private $validationArtisan;
 
     /**
      * @var \Formules
@@ -120,23 +169,24 @@ class Artisan
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Service", mappedBy="idArtisan")
+     * @ORM\ManyToMany(targetEntity="Service", inversedBy="idArtisan")
+     * @ORM\JoinTable(name="appartient",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="Id_artisan", referencedColumnName="Id_artisan")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="Id_service", referencedColumnName="Id_service")
+     *   }
+     * )
      */
     private $idService;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Horaires", mappedBy="idArtisan")
+     * @ORM\ManyToMany(targetEntity="Client", mappedBy="idArtisan")
      */
-    private $idHoraire;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Joursemaine", mappedBy="idArtisan")
-     */
-    private $idJour;
+    private $idClient;
 
     /**
      * Constructor
@@ -144,8 +194,7 @@ class Artisan
     public function __construct()
     {
         $this->idService = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->idHoraire = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->idJour = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idClient = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getIdArtisan(): ?int
@@ -261,24 +310,12 @@ class Artisan
         return $this;
     }
 
-    public function getConfirmationMail(): ?bool
-    {
-        return $this->confirmationMail;
-    }
-
-    public function setConfirmationMail(bool $confirmationMail): self
-    {
-        $this->confirmationMail = $confirmationMail;
-
-        return $this;
-    }
-
-    public function getCredit(): ?float
+    public function getCredit(): ?int
     {
         return $this->credit;
     }
 
-    public function setCredit(float $credit): self
+    public function setCredit(int $credit): self
     {
         $this->credit = $credit;
 
@@ -293,6 +330,102 @@ class Artisan
     public function setDevisMax(int $devisMax): self
     {
         $this->devisMax = $devisMax;
+
+        return $this;
+    }
+
+    public function getDisponibilite(): ?int
+    {
+        return $this->disponibilite;
+    }
+
+    public function setDisponibilite(int $disponibilite): self
+    {
+        $this->disponibilite = $disponibilite;
+
+        return $this;
+    }
+
+    public function getDateDebutArretReception(): ?\DateTimeInterface
+    {
+        return $this->dateDebutArretReception;
+    }
+
+    public function setDateDebutArretReception(\DateTimeInterface $dateDebutArretReception): self
+    {
+        $this->dateDebutArretReception = $dateDebutArretReception;
+
+        return $this;
+    }
+
+    public function getDateFinArretReception(): ?\DateTimeInterface
+    {
+        return $this->dateFinArretReception;
+    }
+
+    public function setDateFinArretReception(\DateTimeInterface $dateFinArretReception): self
+    {
+        $this->dateFinArretReception = $dateFinArretReception;
+
+        return $this;
+    }
+
+    public function getDateFinEngagement(): ?\DateTimeInterface
+    {
+        return $this->dateFinEngagement;
+    }
+
+    public function setDateFinEngagement(\DateTimeInterface $dateFinEngagement): self
+    {
+        $this->dateFinEngagement = $dateFinEngagement;
+
+        return $this;
+    }
+
+    public function getAvantage(): ?int
+    {
+        return $this->avantage;
+    }
+
+    public function setAvantage(int $avantage): self
+    {
+        $this->avantage = $avantage;
+
+        return $this;
+    }
+
+    public function getReinitialisationMdpArtisan(): ?bool
+    {
+        return $this->reinitialisationMdpArtisan;
+    }
+
+    public function setReinitialisationMdpArtisan(bool $reinitialisationMdpArtisan): self
+    {
+        $this->reinitialisationMdpArtisan = $reinitialisationMdpArtisan;
+
+        return $this;
+    }
+
+    public function getValidationAssurance(): ?bool
+    {
+        return $this->validationAssurance;
+    }
+
+    public function setValidationAssurance(bool $validationAssurance): self
+    {
+        $this->validationAssurance = $validationAssurance;
+
+        return $this;
+    }
+
+    public function getValidationArtisan(): ?bool
+    {
+        return $this->validationArtisan;
+    }
+
+    public function setValidationArtisan(bool $validationArtisan): self
+    {
+        $this->validationArtisan = $validationArtisan;
 
         return $this;
     }
@@ -321,7 +454,6 @@ class Artisan
     {
         if (!$this->idService->contains($idService)) {
             $this->idService[] = $idService;
-            $idService->addIdArtisan($this);
         }
 
         return $this;
@@ -331,63 +463,34 @@ class Artisan
     {
         if ($this->idService->contains($idService)) {
             $this->idService->removeElement($idService);
-            $idService->removeIdArtisan($this);
         }
 
         return $this;
     }
 
     /**
-     * @return Collection|Horaires[]
+     * @return Collection|Client[]
      */
-    public function getIdHoraire(): Collection
+    public function getIdClient(): Collection
     {
-        return $this->idHoraire;
+        return $this->idClient;
     }
 
-    public function addIdHoraire(Horaires $idHoraire): self
+    public function addIdClient(Client $idClient): self
     {
-        if (!$this->idHoraire->contains($idHoraire)) {
-            $this->idHoraire[] = $idHoraire;
-            $idHoraire->addIdArtisan($this);
+        if (!$this->idClient->contains($idClient)) {
+            $this->idClient[] = $idClient;
+            $idClient->addIdArtisan($this);
         }
 
         return $this;
     }
 
-    public function removeIdHoraire(Horaires $idHoraire): self
+    public function removeIdClient(Client $idClient): self
     {
-        if ($this->idHoraire->contains($idHoraire)) {
-            $this->idHoraire->removeElement($idHoraire);
-            $idHoraire->removeIdArtisan($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Joursemaine[]
-     */
-    public function getIdJour(): Collection
-    {
-        return $this->idJour;
-    }
-
-    public function addIdJour(Joursemaine $idJour): self
-    {
-        if (!$this->idJour->contains($idJour)) {
-            $this->idJour[] = $idJour;
-            $idJour->addIdArtisan($this);
-        }
-
-        return $this;
-    }
-
-    public function removeIdJour(Joursemaine $idJour): self
-    {
-        if ($this->idJour->contains($idJour)) {
-            $this->idJour->removeElement($idJour);
-            $idJour->removeIdArtisan($this);
+        if ($this->idClient->contains($idClient)) {
+            $this->idClient->removeElement($idClient);
+            $idClient->removeIdArtisan($this);
         }
 
         return $this;

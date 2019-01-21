@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Devis
  *
- * @ORM\Table(name="devis", indexes={@ORM\Index(name="DEVIS_ARTISAN_FK", columns={"Id_artisan"}), @ORM\Index(name="DEVIS_CLIENT0_FK", columns={"Id_client"})})
+ * @ORM\Table(name="devis", indexes={@ORM\Index(name="devis_client0_FK", columns={"Id_client"}), @ORM\Index(name="devis_artisan_FK", columns={"Id_artisan"})})
  * @ORM\Entity
  */
 class Devis
@@ -31,9 +31,23 @@ class Devis
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Date_envoi", type="date", nullable=false)
+     * @ORM\Column(name="Date_envoie", type="datetime", nullable=false)
      */
-    private $dateEnvoi;
+    private $dateEnvoie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Fichier_joint", type="string", length=100, nullable=false)
+     */
+    private $fichierJoint;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="modifier", type="boolean", nullable=false)
+     */
+    private $modifier;
 
     /**
      * @var \Artisan
@@ -72,14 +86,38 @@ class Devis
         return $this;
     }
 
-    public function getDateEnvoi(): ?\DateTimeInterface
+    public function getDateEnvoie(): ?\DateTimeInterface
     {
-        return $this->dateEnvoi;
+        return $this->dateEnvoie;
     }
 
-    public function setDateEnvoi(\DateTimeInterface $dateEnvoi): self
+    public function setDateEnvoie(\DateTimeInterface $dateEnvoie): self
     {
-        $this->dateEnvoi = $dateEnvoi;
+        $this->dateEnvoie = $dateEnvoie;
+
+        return $this;
+    }
+
+    public function getFichierJoint(): ?string
+    {
+        return $this->fichierJoint;
+    }
+
+    public function setFichierJoint(string $fichierJoint): self
+    {
+        $this->fichierJoint = $fichierJoint;
+
+        return $this;
+    }
+
+    public function getModifier(): ?bool
+    {
+        return $this->modifier;
+    }
+
+    public function setModifier(bool $modifier): self
+    {
+        $this->modifier = $modifier;
 
         return $this;
     }

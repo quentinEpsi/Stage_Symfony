@@ -16,7 +16,7 @@ Creating the database in mysql
 	$ php bin/console doctrine:database:create
 
 Creating Entities from the database for symfony
-	$ php bin/console doctrine:mapping:import App\Entity annotation --path=src/Entity
+	$ php bin/console doctrine:mapping:import App\\Entity annotation --path=src/Entity
 
 Creating Getter/Setter of the database of symfony
 	$ php bin/console make:entity --regenerate App
