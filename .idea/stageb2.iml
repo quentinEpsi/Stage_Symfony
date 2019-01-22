@@ -105,5 +105,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="bootstrapValidator" level="application" />
     <orderEntry type="library" name="fr_FR" level="application" />
+    <orderEntry type="library" name="bootstrapValidator" level="application" />
+    <orderEntry type="library" name="fr_FR" level="application" />
   </component>
 </module>
