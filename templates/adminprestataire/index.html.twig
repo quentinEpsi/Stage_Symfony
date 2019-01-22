@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau prestataires administrateur{% endblock %}
+
+{% block body %}
+<div class="who_we_area" style="text-align: center; padding-top: 50px;">
+    <h3>Liste des prestataires enregistrés</h3><br><br>
+    <div id="tableauprestataires" style="display: inline-block;">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr style="text-align: center">
+                <th scope="row">SIREN</th>
+                <th scope="row">Secteur(s)</th>
+                <th scope="row">Nom</th>
+                <th scope="row">Prénom</th>
+                <th scope="row">Raison sociale</th>
+                <th scope="row">Téléphone</th>
+                <th scope="row">Numéro d'assurance</th>
+                <th scope="row">Formule</th>
+            </tr>
+            </thead>
+            <tr>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+            </tr>
+            <tr>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock %}

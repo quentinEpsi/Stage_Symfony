@@ -107,5 +107,6 @@
     <orderEntry type="library" name="fr_FR" level="application" />
     <orderEntry type="library" name="bootstrapValidator" level="application" />
     <orderEntry type="library" name="fr_FR" level="application" />
+    <orderEntry type="library" name="loader" level="application" />
   </component>
 </module>
