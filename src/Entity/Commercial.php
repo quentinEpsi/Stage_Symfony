@@ -15,11 +15,11 @@ class Commercial
     /**
      * @var int
      *
-     * @ORM\Column(name="Id_admin", type="integer", nullable=false)
+     * @ORM\Column(name="Id_commercial", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idAdmin;
+    private $idCommercial;
 
     /**
      * @var string
@@ -35,9 +35,16 @@ class Commercial
      */
     private $motdepasseCommercial;
 
-    public function getIdAdmin(): ?int
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="Reinitialisation_mdp_commercial", type="boolean", nullable=false)
+     */
+    private $reinitialisationMdpCommercial;
+
+    public function getIdCommercial(): ?int
     {
-        return $this->idAdmin;
+        return $this->idCommercial;
     }
 
     public function getMailCommercial(): ?string
@@ -60,6 +67,18 @@ class Commercial
     public function setMotdepasseCommercial(string $motdepasseCommercial): self
     {
         $this->motdepasseCommercial = $motdepasseCommercial;
+
+        return $this;
+    }
+
+    public function getReinitialisationMdpCommercial(): ?bool
+    {
+        return $this->reinitialisationMdpCommercial;
+    }
+
+    public function setReinitialisationMdpCommercial(bool $reinitialisationMdpCommercial): self
+    {
+        $this->reinitialisationMdpCommercial = $reinitialisationMdpCommercial;
 
         return $this;
     }

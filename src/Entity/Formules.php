@@ -24,16 +24,9 @@ class Formules
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom_formule", type="string", length=50, nullable=false)
+     * @ORM\Column(name="Nom_formule", type="string", length=100, nullable=false)
      */
     private $nomFormule;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Montant_paiement", type="decimal", precision=15, scale=3, nullable=false)
-     */
-    private $montantPaiement;
 
     public function getIdFormule(): ?int
     {
@@ -48,18 +41,6 @@ class Formules
     public function setNomFormule(string $nomFormule): self
     {
         $this->nomFormule = $nomFormule;
-
-        return $this;
-    }
-
-    public function getMontantPaiement()
-    {
-        return $this->montantPaiement;
-    }
-
-    public function setMontantPaiement($montantPaiement): self
-    {
-        $this->montantPaiement = $montantPaiement;
 
         return $this;
     }
