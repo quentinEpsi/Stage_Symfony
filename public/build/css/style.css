@@ -5543,6 +5543,11 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
 }
 
 /* MODIF ALEX */
+
+table, th, td {
+  border: 1px solid black;
+}
+
 .tittlefont{
   padding-top: 100px;
   padding-bottom: 75px;

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du prestataire{% endblock %}
+
+{% block body %}
+    <div class="badge-center" style="margin: 0 auto; width: 600px; padding-top: 50px;">
+        <h3>Modification des informations de l'artisan NOM PRENOM</h3><br><br>
+        <div class="badge-modif" style="font-size: 18px!important">
+            <div class ="main-container">
+                <div class=" highlight" style="margin-left:0;">
+                    <div class="row">
+                        <ul class="list-group">
+                            <li class="list-group-item">ID Artisan : </li>
+                            <li class="list-group-item">Nom Artisan : </li>
+                            <li class="list-group-item">Prénom Artisan : </li>
+                            <li class="list-group-item">Adresse Artisan : </li>
+                            <li class="list-group-item">Ville Artisan : </li>
+                            <li class="list-group-item">CP Artisan : </li>
+                            <li class="list-group-item">Mail Artisan : </li>
+                            <li class="list-group-item">Téléphone Artisan : </li>
+                            <li class="list-group-item">Mot de passe (caché) : </li>
+                            <li class="list-group-item">Date d'inscription : </li>
+                            <li class="list-group-item">Formule actuelle : </li>
+                            <li class="list-group-item">Crédits : </li><br>
+                            <input type="submit" class="btn btn-primary" value="Sauvegarder"><br><br>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+{% endblock %}

@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Service
  *
  * @ORM\Table(name="service")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ServiceRepository")
  */
 class Service
 {

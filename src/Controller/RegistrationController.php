@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Artisan;
 use App\Form\RegistrationFormType;
+use Doctrine\DBAL\Types\TextType;
 use function Sodium\add;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -23,9 +24,28 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $artisan = new Artisan();
+        $artisan->setNom("try");
+        $artisan->setRaisonSociale("try");
+        $artisan->setSiren("try");
+        $artisan->setTel("try");
+        $artisan->setDescription("try");
+        $artisan->setNumAssurance("ty");
+        $artisan->setDateInscription(new \DateTime('now'));
+        $artisan->setCredit("0");
+        $artisan->setDevisMax("2");
+        $artisan->setDisponibilite("22");
+        $artisan->setDateDebutArretReception(new \DateTime('now'));
+        $artisan->setDateFinArretReception(new \DateTime('now'));
+        $artisan->setDateFinEngagement(new \DateTime('now'));
+        $artisan->setAvantage("2");
+        $artisan->setReinitialisationMdpArtisan("2");
+        $artisan->setValidationAssurance("2");
+        $artisan->setValidationArtisan("2");
         $form = $this->createFormBuilder($artisan)
             ->add('mail', EmailType::class)
             ->add('motdepasse', PasswordType::class)
+            ->add('nom',EmailType::class)
+
 
         ->add('Valider', SubmitType::class)->getForm();
         $form->handleRequest($request);
@@ -42,6 +62,8 @@ class RegistrationController extends AbstractController
             // do anything else you need here, like send an email
 
             return $this->redirectToRoute('home');
+
+
         }
 
         return $this->render('registration/register.html.twig', [

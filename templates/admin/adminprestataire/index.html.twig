@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau prestataires administrateur{% endblock %}
+
+{% block body %}
+<div class="who_we_area" style="text-align: center; padding-top: 50px;">
+    <h3>Liste des prestataires enregistrés</h3><br><br>
+    <div id="tableauprestataires" style="display: inline-block;">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr style="text-align: center">
+                <th scope="row">Nom artisan</th>
+                <th scope="row">Raison Sociale</th>
+                <th scope="row">Téléphone</th>
+                <th scope="row">Numéro d'assurance</th>
+                <th scope="row">SIREN</th>
+                <th scope="row">ID Formule</th>
+            </tr>
+            </thead>
+            {% for artisan in artisans %}
+            <tr>
+                <th scope="row">{{ artisan.nom }}</th>
+                <th scope="row">{{ artisan.raisonSociale }}</th>
+                <th scope="row">{{ artisan.tel }}</th>
+                <th scope="row">{{ artisan.numAssurance }}</th>
+                <th scope="row">{{ artisan.siren }}</th>
+                <th scope="row">{{ artisan.idFormule }}</th>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

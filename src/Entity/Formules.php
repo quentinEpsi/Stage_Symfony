@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Formules
  *
  * @ORM\Table(name="formules")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\FormulesRepository")
  */
 class Formules
 {
