@@ -3,8 +3,16 @@
 {% block title %}Tableau de bord Administrateur{% endblock %}
 
 {% block body %}
-    <div id="MenuGraphAdmin"> <h1>Menu administrateur</h1><br><br>
-            <div id="GraphAdmin1" style="display: inline-block;">
+    </style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    <style>
+
+
+    <div id="TdbAdmin"> <h1>Tableau de bord administrateur</h1>
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        <div class="flex-container">
+            <div id="GraphAdmin1">
+
                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                 <script type="text/javascript">
                     // Chargement du graph via google
@@ -26,6 +34,7 @@
                         chart.draw(data, options);
                     }
                 </script>
+
             </div>
         </div>
         <div id="BarreHorizontale"></div>
@@ -53,5 +62,31 @@
                 }
             </script>
         </div>
+        </form>
+            <button type="submit" class="btn btn-primary mb-2">Modifier</button>
+        <form class="form-inline">
+            <button type="submit" class="btn btn-primary mb-2">Modifier</button>
+
+
+        <form class="form-inline">
+                <input type="password" class="form-control" id="inputPassword2" placeholder="Service 1">
+            <div class="form-group mx-sm-3 mb-2">
+            </div>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Modifier</button>
+        </form>
+            <button type="submit" class="btn btn-primary mb-2">Modifier</button>
+        
+        <form class="form-inline">
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="password" class="form-control" id="inputPassword2" placeholder="Service 1">
+            </div>
+        </form>
+            <button type="submit" class="btn btn-primary mb-2">Modifier</button>
+
+                <input type="password" class="form-control" id="inputPassword2" placeholder="Service 1">
+            <div class="form-group mx-sm-3 mb-2">
+            <button type="submit" class="btn btn-primary mb-2">Modifier</button>
+
     </div>
 {% endblock %}
