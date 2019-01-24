@@ -16,4 +16,5 @@ class AdmindemandesdetailController extends AbstractController
             'controller_name' => 'AdmindemandesdetailController',
         ]);
     }
+
 }
