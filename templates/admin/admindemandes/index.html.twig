@@ -9,27 +9,22 @@
             <table class="table">
                 <thead class="thead-dark">
                 <tr style="text-align: center">
-                    <th scope="row">Date d'intervention</th>
                     <th scope="row">Nom</th>
                     <th scope="row">Prénom</th>
                     <th scope="row">Date de proposition</th>
+                    <th scope="row">Date de réalisation</th>
                     <th scope="row">État d'avancement</th>
                 </tr>
                 </thead>
+                {% for client in clients %}
                 <tr>
-                    <td>Test</td>
-                    <td>Test</td>
-                    <td>Test</td>
-                    <td>Test</td>
-                    <td>Test</td>
+                    <td>{{ client.nomClient }}</td>
+                    <td>{{ client.prenomClient }}</td>
+                    <td>{{ client.dateProposition|date('Y/m/d') }}</td>
+                    <td>{{ client.dateRealisation|date('Y/m/d') }}</td>
+                    <td>{{ client.etatAvancement }}</td>
                 </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Test</td>
-                    <td>Test</td>
-                    <td>Test</td>
-                    <td>Test</td>
-                </tr>
+                {% endfor %}
             </table>
         </div>
     </div>
