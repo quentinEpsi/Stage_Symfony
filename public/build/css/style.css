@@ -5597,10 +5597,10 @@ table, th, td {
 
 /* tableau de bord admin */
 /* ID */
-#MenuGraphAdmin{
+#TdbAdmin{
   text-align: center;
   margin-top: 3%;
-  width:100%;
+
 }
 
 #BarreVerticale{
@@ -5608,15 +5608,16 @@ table, th, td {
   width: 1px;
 }
 
-#GraphAdmin2{
-
-}
 
 #BarreHorizontale{
   margin-left:20%;
   border:solid;
   width:60%;
   margin-top: 3%;
+}
+
+#service{
+
 }
 
 /* CLASS */
