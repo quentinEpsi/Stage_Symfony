@@ -24,6 +24,7 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $artisan = new Artisan();
+        $artisan->setPrenom("try");
         $artisan->setNom("try");
         $artisan->setRaisonSociale("try");
         $artisan->setSiren("try");
@@ -32,7 +33,6 @@ class RegistrationController extends AbstractController
         $artisan->setNumAssurance("ty");
         $artisan->setDateInscription(new \DateTime('now'));
         $artisan->setCredit("0");
-        $artisan->setDevisMax("2");
         $artisan->setDisponibilite("22");
         $artisan->setDateDebutArretReception(new \DateTime('now'));
         $artisan->setDateFinArretReception(new \DateTime('now'));
@@ -41,6 +41,15 @@ class RegistrationController extends AbstractController
         $artisan->setReinitialisationMdpArtisan("2");
         $artisan->setValidationAssurance("2");
         $artisan->setValidationArtisan("2");
+        $artisan->setDateDebutGratuite(new \DateTime());
+        $artisan->setTempsRestantGratuite(new \DateTime());
+        $artisan->setDateDebutArretReception(new \DateTime());
+        $artisan->setDateFinArretReception(new \DateTime());
+        $artisan->setDateFinEngagement(new \DateTime());
+        $artisan->setValidationArtisan('validation artisan ');
+        $artisan->setValidationAssurance('validation assurance ');
+        $artisan->setCoordonneeLatitude(0.24 );
+        $artisan->setCoordonneeLongitude(47.54 );
         $form = $this->createFormBuilder($artisan)
             ->add('mail', EmailType::class)
             ->add('motdepasse', PasswordType::class)
