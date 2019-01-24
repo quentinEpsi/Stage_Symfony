@@ -50,10 +50,11 @@ class RegistrationController extends AbstractController
         $artisan->setValidationAssurance('validation assurance ');
         $artisan->setCoordonneeLatitude(0.24 );
         $artisan->setCoordonneeLongitude(47.54 );
+        $artisan->setIdFormule(null);
         $form = $this->createFormBuilder($artisan)
             ->add('mail', EmailType::class)
             ->add('motdepasse', PasswordType::class)
-            ->add('nom',EmailType::class)
+            ->add('nom')
 
 
         ->add('Valider', SubmitType::class)->getForm();
