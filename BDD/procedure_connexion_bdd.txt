@@ -95,4 +95,4 @@ class ProductController extends AbstractController
 	Look for *all* Product objects
 		$ products = $repository->findAll();
 
-PS: You can also add custom methods for more complex queries -> https://symfony.com/doc/current/doctrine.html#doctrine-queries 
+PS: You can also add custom methods for more complex queries -> https://symfony.com/doc/current/doctrine.html#doctrine-queries

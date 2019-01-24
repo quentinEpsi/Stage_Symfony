@@ -15,7 +15,7 @@ class AppFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
-        for ($i = 0; $i<4; $i++)
+        for ($i = 0; $i<10; $i++)
         {
             $artisan = new Artisan();
             $artisan->setNom('NomArtisan ' . $i);
