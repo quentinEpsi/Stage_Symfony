@@ -7,9 +7,11 @@ use App\Form\RegistrationFormType;
 use Doctrine\DBAL\Types\TextType;
 use function Sodium\add;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,17 +22,18 @@ class RegistrationController extends AbstractController
 {
     /**
      * @Route("/register", name="app_register")
+     * @throws \Exception
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $artisan = new Artisan();
-        $artisan->setPrenom("try");
-        $artisan->setNom("try");
-        $artisan->setRaisonSociale("try");
-        $artisan->setSiren("try");
-        $artisan->setTel("try");
-        $artisan->setDescription("try");
-        $artisan->setNumAssurance("ty");
+        $artisan->setPrenom("Prenom");
+        $artisan->setNom("Nom");
+        $artisan->setRaisonSociale("RaisonSociale");
+        $artisan->setSiren("SIREN");
+        $artisan->setTel("Telephone");
+        $artisan->setDescription("Description");
+        $artisan->setNumAssurance("NumAssurance");
         $artisan->setDateInscription(new \DateTime('now'));
         $artisan->setCredit("0");
         $artisan->setDisponibilite("22");
@@ -51,10 +54,18 @@ class RegistrationController extends AbstractController
         $artisan->setCoordonneeLatitude(0.24 );
         $artisan->setCoordonneeLongitude(47.54 );
         $artisan->setIdFormule(null);
+        $artisan->setMail("Mail@mail.com");
         $form = $this->createFormBuilder($artisan)
             ->add('mail', EmailType::class)
             ->add('motdepasse', PasswordType::class)
+            ->add('motdepasse', PasswordType::class)
             ->add('nom')
+            ->add('prenom')
+            ->add('tel', TelType::class)
+            ->add('siren')
+            ->add('numassurance')
+            ->add('description')
+
 
 
         ->add('Valider', SubmitType::class)->getForm();
@@ -71,7 +82,7 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('home');
+            //return $this->redirectToRoute('home');
 
 
         }
