@@ -40,9 +40,37 @@ class Client
     /**
      * @var string
      *
-     * @ORM\Column(name="Adresse_intervention", type="string", length=150, nullable=false)
+     * @ORM\Column(name="Adresse_intervention_numero", type="string", length=20, nullable=false)
      */
-    private $adresseIntervention;
+    private $adresseInterventionNumero;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse_intervention_rue", type="string", length=300, nullable=false)
+     */
+    private $adresseInterventionRue;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse_intervention_ville", type="string", length=300, nullable=false)
+     */
+    private $adresseInterventionVille;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse_intervention_cp", type="string", length=6, nullable=false)
+     */
+    private $adresseInterventionCp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse_complementaire_client", type="string", length=200, nullable=false)
+     */
+    private $adresseComplementaireClient;
 
     /**
      * @var string
@@ -75,16 +103,9 @@ class Client
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Date_realisation_debut", type="datetime", nullable=false)
+     * @ORM\Column(name="Date_realisation", type="datetime", nullable=false)
      */
-    private $dateRealisationDebut;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="Date_realisation_fin", type="datetime", nullable=false)
-     */
-    private $dateRealisationFin;
+    private $dateRealisation;
 
     /**
      * @var string
@@ -162,14 +183,62 @@ class Client
         return $this;
     }
 
-    public function getAdresseIntervention(): ?string
+    public function getAdresseInterventionNumero(): ?string
     {
-        return $this->adresseIntervention;
+        return $this->adresseInterventionNumero;
     }
 
-    public function setAdresseIntervention(string $adresseIntervention): self
+    public function setAdresseInterventionNumero(string $adresseInterventionNumero): self
     {
-        $this->adresseIntervention = $adresseIntervention;
+        $this->adresseInterventionNumero = $adresseInterventionNumero;
+
+        return $this;
+    }
+
+    public function getAdresseInterventionRue(): ?string
+    {
+        return $this->adresseInterventionRue;
+    }
+
+    public function setAdresseInterventionRue(string $adresseInterventionRue): self
+    {
+        $this->adresseInterventionRue = $adresseInterventionRue;
+
+        return $this;
+    }
+
+    public function getAdresseInterventionVille(): ?string
+    {
+        return $this->adresseInterventionVille;
+    }
+
+    public function setAdresseInterventionVille(string $adresseInterventionVille): self
+    {
+        $this->adresseInterventionVille = $adresseInterventionVille;
+
+        return $this;
+    }
+
+    public function getAdresseInterventionCp(): ?string
+    {
+        return $this->adresseInterventionCp;
+    }
+
+    public function setAdresseInterventionCp(string $adresseInterventionCp): self
+    {
+        $this->adresseInterventionCp = $adresseInterventionCp;
+
+        return $this;
+    }
+
+    public function getAdresseComplementaireClient(): ?string
+    {
+        return $this->adresseComplementaireClient;
+    }
+
+    public function setAdresseComplementaireClient(string $adresseComplementaireClient): self
+    {
+        $this->adresseComplementaireClient = $adresseComplementaireClient;
 
         return $this;
     }
@@ -222,26 +291,14 @@ class Client
         return $this;
     }
 
-    public function getDateRealisationDebut(): ?\DateTimeInterface
+    public function getDateRealisation(): ?\DateTimeInterface
     {
-        return $this->dateRealisationDebut;
+        return $this->dateRealisation;
     }
 
-    public function setDateRealisationDebut(\DateTimeInterface $dateRealisationDebut): self
+    public function setDateRealisation(\DateTimeInterface $dateRealisation): self
     {
-        $this->dateRealisationDebut = $dateRealisationDebut;
-
-        return $this;
-    }
-
-    public function getDateRealisationFin(): ?\DateTimeInterface
-    {
-        return $this->dateRealisationFin;
-    }
-
-    public function setDateRealisationFin(\DateTimeInterface $dateRealisationFin): self
-    {
-        $this->dateRealisationFin = $dateRealisationFin;
+        $this->dateRealisation = $dateRealisation;
 
         return $this;
     }

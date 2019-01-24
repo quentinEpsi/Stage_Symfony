@@ -43,13 +43,6 @@ class Devis
     private $fichierJoint;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="modifier", type="boolean", nullable=false)
-     */
-    private $modifier;
-
-    /**
      * @var \Artisan
      *
      * @ORM\ManyToOne(targetEntity="Artisan")
@@ -106,18 +99,6 @@ class Devis
     public function setFichierJoint(string $fichierJoint): self
     {
         $this->fichierJoint = $fichierJoint;
-
-        return $this;
-    }
-
-    public function getModifier(): ?bool
-    {
-        return $this->modifier;
-    }
-
-    public function setModifier(bool $modifier): self
-    {
-        $this->modifier = $modifier;
 
         return $this;
     }

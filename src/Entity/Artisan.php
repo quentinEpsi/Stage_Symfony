@@ -33,6 +33,13 @@ class Artisan
     /**
      * @var string
      *
+     * @ORM\Column(name="Prenom", type="string", length=50, nullable=false)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="Raison_sociale", type="string", length=150, nullable=false)
      */
     private $raisonSociale;
@@ -96,16 +103,23 @@ class Artisan
     /**
      * @var int
      *
-     * @ORM\Column(name="Devis_max", type="integer", nullable=false)
-     */
-    private $devisMax;
-
-    /**
-     * @var int
-     *
      * @ORM\Column(name="Disponibilite", type="integer", nullable=false)
      */
     private $disponibilite;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date_debut_gratuite", type="datetime", nullable=false)
+     */
+    private $dateDebutGratuite;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Temps_restant_gratuite", type="datetime", nullable=false)
+     */
+    private $tempsRestantGratuite;
 
     /**
      * @var \DateTime
@@ -155,6 +169,20 @@ class Artisan
      * @ORM\Column(name="Validation_artisan", type="boolean", nullable=false)
      */
     private $validationArtisan;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="Coordonnee_longitude", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $coordonneeLongitude;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="Coordonnee_latitude", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $coordonneeLatitude;
 
     /**
      * @var \Formules
@@ -210,6 +238,18 @@ class Artisan
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
 
         return $this;
     }
@@ -322,18 +362,6 @@ class Artisan
         return $this;
     }
 
-    public function getDevisMax(): ?int
-    {
-        return $this->devisMax;
-    }
-
-    public function setDevisMax(int $devisMax): self
-    {
-        $this->devisMax = $devisMax;
-
-        return $this;
-    }
-
     public function getDisponibilite(): ?int
     {
         return $this->disponibilite;
@@ -342,6 +370,30 @@ class Artisan
     public function setDisponibilite(int $disponibilite): self
     {
         $this->disponibilite = $disponibilite;
+
+        return $this;
+    }
+
+    public function getDateDebutGratuite(): ?\DateTimeInterface
+    {
+        return $this->dateDebutGratuite;
+    }
+
+    public function setDateDebutGratuite(\DateTimeInterface $dateDebutGratuite): self
+    {
+        $this->dateDebutGratuite = $dateDebutGratuite;
+
+        return $this;
+    }
+
+    public function getTempsRestantGratuite(): ?\DateTimeInterface
+    {
+        return $this->tempsRestantGratuite;
+    }
+
+    public function setTempsRestantGratuite(\DateTimeInterface $tempsRestantGratuite): self
+    {
+        $this->tempsRestantGratuite = $tempsRestantGratuite;
 
         return $this;
     }
@@ -426,6 +478,30 @@ class Artisan
     public function setValidationArtisan(bool $validationArtisan): self
     {
         $this->validationArtisan = $validationArtisan;
+
+        return $this;
+    }
+
+    public function getCoordonneeLongitude(): ?float
+    {
+        return $this->coordonneeLongitude;
+    }
+
+    public function setCoordonneeLongitude(float $coordonneeLongitude): self
+    {
+        $this->coordonneeLongitude = $coordonneeLongitude;
+
+        return $this;
+    }
+
+    public function getCoordonneeLatitude(): ?float
+    {
+        return $this->coordonneeLatitude;
+    }
+
+    public function setCoordonneeLatitude(float $coordonneeLatitude): self
+    {
+        $this->coordonneeLatitude = $coordonneeLatitude;
 
         return $this;
     }
