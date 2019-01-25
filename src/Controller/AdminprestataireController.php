@@ -14,7 +14,6 @@ class AdminprestataireController extends AbstractController
     public function index(ArtisanRepository $repo)
     {
         $artisans = $repo->findAll();
-        dump($artisans);
         return $this->render('admin/adminprestataire/index.html.twig', [
             'controller_name' => 'AdminprestataireController',
             'artisans' => $artisans

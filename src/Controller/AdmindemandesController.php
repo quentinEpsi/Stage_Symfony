@@ -11,10 +11,9 @@ class AdmindemandesController extends AbstractController
     /**
      * @Route("/admin/admindemandes", name="admindemandes")
      */
-    public function index(ClientRepository $repos)
+    public function index(ClientRepository $repo)
     {
-        $clients = $repos->findAll();
-        dump($clients);
+        $clients = $repo->findAll();
         return $this->render('admin/admindemandes/index.html.twig', [
             'controller_name' => 'AdmindemandesController',
             'clients' => $clients

@@ -19,22 +19,21 @@ class ArtisanRepository extends ServiceEntityRepository
         parent::__construct($registry, Artisan::class);
     }
 
-    // /**
-    //  * @return Artisan[] Returns an array of Artisan objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Artisan[] Returns an array of Artisan objects
+      */
+
+    public function findByField($id)
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
+            ->andWhere('a.idArtisan = :idArtisan')
+            ->setParameter('val', $id)
+            ->orderBy('a.idArtisan', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Artisan
