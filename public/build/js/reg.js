@@ -82,7 +82,7 @@ $(document).ready(function() {
             assurance: {
                 validators: {
                     notEmpty: {
-                        message: 'Veuillez saisir votre numéro de SIREN valide'
+                        message: 'Veuillez saisir votre numéro d\'assurance'
                     },
                 }
             },
