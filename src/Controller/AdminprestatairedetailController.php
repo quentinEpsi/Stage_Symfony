@@ -12,7 +12,7 @@ class AdminprestatairedetailController extends AbstractController
     /**
      * @Route("/admin/adminprestatairedetail", name="adminprestatairedetail")
      */
-    public function index(ArtisanRepository $repository)
+    public function index(ArtisanRepository $repo)
     {
         return $this->render('admin/adminprestatairedetail/index.html.twig', [
             'controller_name' => 'AdminprestatairedetailController',
