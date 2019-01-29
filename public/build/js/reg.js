@@ -64,6 +64,7 @@ $(document).ready(function() {
                         message: 'Veuillez saisir votre numéro de téléphone'
                     },
                     stringLength: {
+                        message:'Veuillez saisir un numéro de téléphone valide',
                         min: 8,
                         max: 10,
                     }
@@ -81,7 +82,15 @@ $(document).ready(function() {
             assurance: {
                 validators: {
                     notEmpty: {
-                        message: 'Veuillez saisir votre numéro de SIREN valide'
+                        message: 'Veuillez saisir votre numéro d\'assurance'
+                    },
+                }
+            },
+
+            objet: {
+                validators: {
+                    notEmpty: {
+                        message: 'Veuillez saisir l\'objet de votre demande'
                     },
                 }
             },
