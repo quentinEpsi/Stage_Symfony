@@ -23,6 +23,7 @@
                         <td>{{ client.dateProposition|date('Y/m/d') }}</td>
                         <td>{{ client.dateRealisation|date('Y/m/d') }}</td>
                         <td>{{ client.etatAvancement }}</td>
+                        <th scope="row"><a href="{{ path('commercialdemandesdetail', {id: client.idClient}) }}" class="btn btn-primary">Fiche détaillée</a></th>
                     </tr>
                 {% endfor %}
             </table>

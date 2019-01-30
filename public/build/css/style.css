@@ -5616,9 +5616,6 @@ table, th, td {
   margin-top: 3%;
 }
 
-#service{
-
-}
 
 /* CLASS */
 
@@ -5626,4 +5623,9 @@ table, th, td {
   margin-top: 3%;
   margin-left: 15%;
   display: flex;
+}
+.service{
+  padding:5%;
+  display: flex;
+  flex-direction: column;
 }
