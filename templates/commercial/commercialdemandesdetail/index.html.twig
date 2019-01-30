@@ -4,20 +4,29 @@
 
 {% block body %}
     <div class="badge-center" style="margin: 0 auto; width: 600px; padding-top: 50px;">
-        <h3>Fiche détaillée de la demande de devis TITRE DEVIS</h3><br><br>
+        <h3>Fiche détaillée de la demande de {{ clients.nomClient }} {{ clients.prenomClient }}</h3><br><br>
         <div class="badge-modif" style="font-size: 18px!important">
             <div class ="main-container">
                 <div class=" highlight" style="margin-left:0;">
                     <div class="row">
                         <ul class="list-group">
-                            <li class="list-group-item">Titre devis : </li>
-                            <li class="list-group-item">Nom Client : </li>
-                            <li class="list-group-item">Prénom Client : </li>
-                            <li class="list-group-item">Adresse Client : </li>
-                            <li class="list-group-item">Ville Client : </li>
-                            <li class="list-group-item">CP Client : </li>
-                            <li class="list-group-item">État d'avancement : </li>
-                            <li class="list-group-item">Description du devis : </li><br>
+                            <li class="list-group-item">ID demande : {{ clients.idClient }}</li>
+                            <li class="list-group-item">Nom Artisan : {{ artisans.nom }}</li>
+                            <li class="list-group-item">Prénom Artisan : {{ artisans.prenom }}</li>
+                            <li class="list-group-item">Nom Client : {{ clients.nomClient }}</li>
+                            <li class="list-group-item">Prénom Client : {{ clients.prenomClient }}</li>
+                            <li class="list-group-item">Numéro de rue : {{ clients.adresseInterventionNumero }}</li>
+                            <li class="list-group-item">Rue : {{ clients.adresseInterventionRue }}</li>
+                            <li class="list-group-item">Ville : {{ clients.adresseInterventionVille }}</li>
+                            <li class="list-group-item">Code postal : {{ clients.adresseInterventionCp }}</li>
+                            <li class="list-group-item">Téléphone Client : {{ clients.telClient }}</li>
+                            <li class="list-group-item">Mail Client : {{ clients.mailClient }}</li>
+                            <li class="list-group-item">Téléphone Artisan : {{ artisans.tel }}</li>
+                            <li class="list-group-item">Mail Artisan : {{ artisans.mail }}</li>
+                            <li class="list-group-item">Description : {{ clients.descriptionSup }}</li>
+                            <li class="list-group-item">Date de proposition : {{ clients.dateProposition|date('Y/m/d') }}</li>
+                            <li class="list-group-item">Date de réalisation : {{ clients.dateRealisation|date('Y/m/d') }}</li>
+                            <li class="list-group-item">État d'avancement : {{ clients.etatAvancement }}</li>
                         </ul>
                     </div>
                 </div>
