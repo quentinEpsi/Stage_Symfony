@@ -4,20 +4,28 @@
 
 {% block body %}
     <div class="badge-center" style="margin: 0 auto; width: 600px; padding-top: 50px;">
-        <h3>Fiche détaillée de la demande de devis TITRE DEVIS</h3><br><br>
+        <h3>Fiche détaillée de la demande de {{ infoClient.nomClient }} {{ infoClient.prenomClient }}</h3><br><br>
         <div class="badge-modif" style="font-size: 18px!important">
             <div class ="main-container">
                 <div class=" highlight" style="margin-left:0;">
                     <div class="row">
                         <ul class="list-group">
-                            <li class="list-group-item">Titre devis : </li>
-                            <li class="list-group-item">Nom Client : </li>
-                            <li class="list-group-item">Prénom Client : </li>
-                            <li class="list-group-item">Adresse Client : </li>
-                            <li class="list-group-item">Ville Client : </li>
-                            <li class="list-group-item">CP Client : </li>
-                            <li class="list-group-item">État d'avancement : </li>
-                            <li class="list-group-item">Description du devis : </li><br>
+                            <li class="list-group-item">ID demande : {{ infoClient.idClient }} </li>
+                            <li class="list-group-item">Nom Client : {{ infoClient.nomClient }}</li>
+                            <li class="list-group-item">Prénom Client : {{ infoClient.prenomClient }}</li>
+                            <li class="list-group-item">Numéro de rue : {{ infoClient.adresseInterventionNumero }}</li>
+                            <li class="list-group-item">Rue : {{ infoClient.adresseInterventionRue }}</li>
+                            <li class="list-group-item">Ville : {{ infoClient.adresseInterventionVille }}</li>
+                            <li class="list-group-item">Code postal : {{ infoClient.adresseInterventionCp }}</li>
+                            <li class="list-group-item">Téléphone Client : {{ infoClient.telClient }}</li>
+                            <li class="list-group-item">Mail Client : {{ infoClient.mailClient }}</li>
+                            <li class="list-group-item">Description : {{ infoClient.descriptionSup }}</li>
+                            <li class="list-group-item">Date de proposition : {{ infoClient.dateProposition|date('d/m/Y') }}</li>
+                            <li class="list-group-item">Date de réalisation : {{ infoClient.dateRealisation|date('d/m/Y h:m:s') }}</li>
+                            <li class="list-group-item">État d'avancement : {{ infoClient.etatAvancement }}</li>
+                            {% for artisan in infoArtisans %}
+                                <li class="list-group-item">Artisan ayant visualisé la demande : <a href="{{ path('commercialprestatairedetail', {id: artisan.idArtisan}) }}">{{ artisan.nom }} {{ artisan.prenom }}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
