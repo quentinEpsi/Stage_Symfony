@@ -11,17 +11,17 @@
                     <div class="row">
                         <ul class="list-group">
                             <li class="list-group-item">ID demande : {{ infoClient.idClient }} </li>
-                            <li class="list-group-item">Nom Client : {{ infoClient.nomClient }}</li>
-                            <li class="list-group-item">Prénom Client : {{ infoClient.prenomClient }}</li>
+                            <li class="list-group-item">Nom : {{ infoClient.nomClient }}</li>
+                            <li class="list-group-item">Prénom : {{ infoClient.prenomClient }}</li>
                             <li class="list-group-item">Numéro de rue : {{ infoClient.adresseInterventionNumero }}</li>
                             <li class="list-group-item">Rue : {{ infoClient.adresseInterventionRue }}</li>
                             <li class="list-group-item">Ville : {{ infoClient.adresseInterventionVille }}</li>
                             <li class="list-group-item">Code postal : {{ infoClient.adresseInterventionCp }}</li>
-                            <li class="list-group-item">Téléphone Client : {{ infoClient.telClient }}</li>
-                            <li class="list-group-item">Mail Client : {{ infoClient.mailClient }}</li>
+                            <li class="list-group-item">Téléphone : {{ infoClient.telClient }}</li>
+                            <li class="list-group-item">Mail : {{ infoClient.mailClient }}</li>
                             <li class="list-group-item">Description : {{ infoClient.descriptionSup }}</li>
                             <li class="list-group-item">Date de proposition : {{ infoClient.dateProposition|date('d/m/Y') }}</li>
-                            <li class="list-group-item">Date de réalisation : {{ infoClient.dateRealisation|date('d/m/Y h:m:s') }}</li>
+                            <li class="list-group-item">Date de réalisation : {{ infoClient.dateRealisation|date('d/m/Y h:m') }}</li>
                             <li class="list-group-item">État d'avancement : {{ infoClient.etatAvancement }}</li>
                             {% for artisan in infoArtisans %}
                                 <li class="list-group-item">Artisan ayant visualisé la demande : <a href="{{ path('adminprestatairedetail', {id: artisan.idArtisan}) }}">{{ artisan.nom }} {{ artisan.prenom }}</a></li>
