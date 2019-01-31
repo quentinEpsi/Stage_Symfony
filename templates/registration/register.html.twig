@@ -1,12 +1,8 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}SR2F | Inscription{% endblock %}
+
+<title>SR2F | Inscription</title>
 
 {% block body %}
-    <h1>Inscription</h1>
-
-
-<head>
     {% block top_header_area %}
     {% endblock %}
 
@@ -18,42 +14,26 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     {% endblock %}
 
-</head>
 <body>
 <!-- Headrrrrrer -->
 <header id="header">
     <div class="inner">
-
-        <!-- <img src="./images/logotrue.png" width="44" height="32"> -->
-
-        <a href="index.php" class="logo"><strong>SR2F</strong></a>
-        <nav id="ALO">
-            <a href="/" class="buttonreg" style="font-size: 0.7em !important;padding-right: 8px;color: white!important;">&nbsp&nbspAccueil&nbsp&nbsp</a>
-
-        </nav>
+        <a href="{{ path('home') }}" class="logo"><strong>SR2F</strong></a>
     </div>
 </header>
-
-
-<img id="img" src="{{ asset('build/images/banner-bg.jpg') }}">
-
+<img id="img" alt="background" src="{{ asset('build/images/banner-bg.jpg')}}">
 <div class="container">
-
-    <form class="well form-horizontal" method="post"  id="contact_form">
-        {{ form_start(registrationForm) }}
+    <form class="well form-horizontal" method="post" id="contact_form">
         <fieldset>
             <!-- Form Name -->
             <legend><center><h2><b>Formulaire d'inscription</b></h2></center></legend><br>
-
-
-            <!-- Text input -->
+            {{ form_start(registrationForm) }}
+            <!-- Selector GENRE -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="gender">Genre</label>
-                <!-- <div class="controls"> -->
-                <!-- <div class="d-inline"> -->
                 <div class="col-md-4 inputGroupContainer">
                     <label class="input-group-addon" for="gender-0">
-                        <input name="sexe" id="gender-0" value="Homme" type="radio" value="yes" required>
+                        <input name="sexe" id="gender-0" value="Homme" type="radio" required>
                         Homme
                     </label>
                     <label class="input-group-addon" for="gender-1">
@@ -64,14 +44,12 @@
             </div>
             <!-- Text input
             PRENOM -->
-
             <div class="form-group">
                 <label class="col-md-4 control-label">Prénom</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        {{ form_row(registrationForm.prenom, {'label':' '} ) }}
+                        {{ form_row(registrationForm.prenom, {'label':' ', 'attr': {'class':'form-control', 'placeholder':'Prénom'} }) }}
                         {#<input  name="prenom" placeholder="Prénom" class="form-control"  type="text">#}
                     </div>
                 </div>
@@ -84,8 +62,8 @@
                 <label class="col-md-4 control-label">Nom</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        {{ form_row(registrationForm.nom,{'label':' '}) }}
-                        {#<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>#}
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        {{ form_row(registrationForm.nom, {'label':' ', 'attr': {'class':'form-control', 'placeholder':'Nom'} }) }}
                         {#<input name="nom" placeholder="Nom" class="form-control"  type="text">#}
                     </div>
                 </div>
@@ -99,60 +77,65 @@
                 <label class="col-md-4 control-label">Numero de téléphone</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        {{ form_row(registrationForm.tel, {'label':' '}) }}
-                        {#<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>#}
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                        {{ form_row(registrationForm.tel, {'label':' ', 'attr': {'class':'form-control', 'placeholder':'Numéro de téléphone'} }) }}
                         {#<input name="telephone" placeholder="0607080900" class="form-control" type="text">#}
                     </div>
                 </div>
             </div>
 
 
-            <!-- Text input-->
+            <!-- Text input
+            EMAIL -->
             <div class="form-group">
                 <label class="col-md-4 control-label">E-Mail</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        {{ form_row(registrationForm.mail, {'label':' '}) }}
-                        {#<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>#}
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        {{ form_row(registrationForm.mail, {'label':' ', 'attr': {'class':'form-control', 'placeholder':'Adresse e-mail'} }) }}
                         {#<input name="mail" placeholder="Adresse e-mail" class="form-control"  type="text">#}
                     </div>
                 </div>
             </div>
 
-            <!-- Text input-->
+            <!-- Text input
+            MOT DE PASSE -->
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Mot de passe</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        {{ form_row(registrationForm.motdepasse, {'label':' ','attr':{'maxlength':'30'}} ) }}
-                        {#<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>#}
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        {{ form_row(registrationForm.motdepasse,{'label':' ', 'attr': {'class':'form-control', 'placeholder':'Mot de passe'} }) }}
+
                         {#<input name="password" placeholder="Mot de passe" class="form-control"  type="password">#}
                     </div>
                 </div>
             </div>
 
-            <!-- Text input-->
+            <!-- Text input
+            CONFIRM MOT DE PASSE -->
 
             <div class="form-group">
                 <label class="col-md-4 control-label" >Confirmez le Mot de Passe</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        {#<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>#}
-                        {{ form_row(registrationForm.motdepasse, {'label':' ','attr':{'maxlength':'30'}} ) }}
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        {{ form_row(registrationForm.motdepasse, {'label':' ', 'attr': {'class':'form-control','placeholder':'Confirmer le Mot de passe'} }) }}
                         {#<input name="confirm_password" placeholder="Confirmez le mot de passe" class="form-control" data-match="#password" type="password">#}
                     </div>
                 </div>
             </div>
 
-            <!-- Text input-->
+            <!-- Text input
+            TYPE ACTIVITE-->
 
             <div class="form-group">
                 <label class="col-md-4 control-label" >Type d'activité</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
-                        <select class="form-control" required>
+                        <select name="activites" class="form-control" required>
                             <option disabled selected>Choisir une activité..</option>
                             <option value="">Activité 1</option>
                             <option value="">Activité 2</option>
@@ -164,40 +147,43 @@
                 </div>
             </div>
 
-            <!-- Text input-->
+            <!-- Text input
+            SIREN -->
 
             <div class="form-group">
                 <label class="col-md-4 control-label" >SIREN</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        {{ form_row(registrationForm.siren, {'label':' '}) }}
-                        {#<span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>#}
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>
+                        {{ form_row(registrationForm.siren, {'label':' ', 'attr': {'class':'form-control', 'placeholder':'SIREN'} }) }}
                         {#<input name="siren" placeholder="SIREN" class="form-control"  type="text">#}
                     </div>
                 </div>
             </div>
 
-            <!-- Text input-->
+            <!-- Text input
+            N° ASSURANCE-->
 
             <div class="form-group">
                 <label class="col-md-4 control-label" >N° Assurance</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        {{ form_row(registrationForm.numassurance, {'label':' '}) }}
-                        {#<span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>#}
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>
+                        {{ form_row(registrationForm.numassurance, {'label':' ', 'attr': {'class':'form-control', 'placeholder':'Numéro Assurance'} }) }}
                         {#<input name="assurance" placeholder="N° Assurance" class="form-control"  type="text">#}
                     </div>
                 </div>
             </div>
 
-            <!-- Text input-->
+            <!-- Text input
+            DESCRIPTION ACTIVITE-->
 
             <div class="form-group">
                 <label class="col-md-4 control-label" >Description de l'activité</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        {{ form_row(registrationForm.description, {'label':' '}) }}
-                        {#<span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>#}
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>
+                        {{ form_row(registrationForm.description, {'label':' ', 'attr': {'class':'form-control', 'placeholder':'Description de l\'activité'} }) }}
                         {#<input name="description_activite" placeholder="Description.." class="form-control"  type="textarea">#}
                         {#<textarea rows="4" cols="50" name="description_activite" form="contact_form"></textarea>#}
                     </div>
@@ -210,14 +196,9 @@
                 <label class="col-md-7 control-label" for="acceptation" style="min-width:300px;">
                     <input type="checkbox" name="acceptation" id="acceptation" required>
                     J'accepte les <a target="_blank" rel href="{{ path('mentions_legales') }}">mentions légales</a>. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-
                 </label>
             </div>
-
-
-
             <!-- Select Basic -->
-
             <!-- Success message -->
             <div class="alert alert-success" role="alert" id="success_message">Inscription terminée <i class="glyphicon glyphicon-thumbs-up"></i></div>
 

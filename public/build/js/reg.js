@@ -7,17 +7,18 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            prenom: {
+            'form[prenom]': {
                 validators: {
                     stringLength: {
                         min: 2,
+                        max: 10,
                     },
                     notEmpty: {
                         message: 'Veuillez saisir votre prénom'
                     }
                 }
             },
-            nom: {
+            'form[nom]': {
                 validators: {
                     stringLength: {
                         min: 2,
@@ -27,7 +28,7 @@ $(document).ready(function() {
                     }
                 }
             },
-            password: {
+            'form[motdepasse]': {
                 validators: {
                     stringLength: {
                         min: 8,
@@ -48,7 +49,7 @@ $(document).ready(function() {
                     }
                 }
             },
-            mail: {
+            'form[mail]': {
                 validators: {
                     notEmpty: {
                         message: 'Veuillez saisir votre adresse e-mail'
@@ -58,7 +59,7 @@ $(document).ready(function() {
                     }
                 }
             },
-            telephone: {
+            'form[telephone]': {
                 validators: {
                     notEmpty: {
                         message: 'Veuillez saisir votre numéro de téléphone'
@@ -71,7 +72,7 @@ $(document).ready(function() {
                 }
             },
 
-            siren: {
+            'form[siren]': {
                 validators: {
                     notEmpty: {
                         message: 'Veuillez saisir votre numéro de SIREN valide'
@@ -79,7 +80,7 @@ $(document).ready(function() {
                 }
             },
 
-            assurance: {
+            'form[numassurance]': {
                 validators: {
                     notEmpty: {
                         message: 'Veuillez saisir votre numéro d\'assurance'
