@@ -571,4 +571,5 @@ class Artisan
 
         return $this;
     }
+
 }

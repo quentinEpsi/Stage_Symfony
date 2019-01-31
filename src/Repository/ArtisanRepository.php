@@ -19,26 +19,31 @@ class ArtisanRepository extends ServiceEntityRepository
         parent::__construct($registry, Artisan::class);
     }
 
-    /**
-     * @param $id
-     * @return array|artisan[]
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     */
+     /**
+      * @return Artisan[] Returns an array of Artisan objects
+      */
 
-    public function findOneByIdJoined($id)
+    public function findByField($id)
     {
         return $this->createQueryBuilder('a')
-            ->innerJoin('a.idClient', 'i')
-            ->addSelect('i')
             ->andWhere('a.idArtisan = :idArtisan')
-            ->setParameter('idArtisan', $id)
+            ->setParameter('val', $id)
+            ->orderBy('a.idArtisan', 'ASC')
+            ->setMaxResults(10)
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getResult()
+        ;
     }
 
-    public function findOneByIdJoinedQuery()
+    /*
+    public function findOneBySomeField($value): ?Artisan
     {
-        $this->getEntityManager()->createQuery('SELECT * FROM Artisan a, Client c WHERE a.idClient = c.idClient');
-        return array($this);
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
     }
+    */
 }

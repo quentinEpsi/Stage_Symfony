@@ -10,8 +10,6 @@ class CommercialprestataireController extends AbstractController
 {
     /**
      * @Route("/commercial/commercialprestataire", name="commercialprestataire")
-     * @param ArtisanRepository $repo
-     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(ArtisanRepository $repo)
     {

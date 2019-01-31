@@ -10,8 +10,6 @@ class AdmindemandesController extends AbstractController
 {
     /**
      * @Route("/admin/admindemandes", name="admindemandes")
-     * @param ClientRepository $repo
-     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(ClientRepository $repo)
     {

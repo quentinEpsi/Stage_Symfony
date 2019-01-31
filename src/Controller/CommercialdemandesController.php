@@ -10,8 +10,6 @@ class CommercialdemandesController extends AbstractController
 {
     /**
      * @Route("/commercial/commercialdemandes", name="commercialdemandes")
-     * @param ClientRepository $repo
-     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(ClientRepository $repo)
     {

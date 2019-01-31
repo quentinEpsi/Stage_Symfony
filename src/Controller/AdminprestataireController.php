@@ -10,8 +10,6 @@ class AdminprestataireController extends AbstractController
 {
     /**
      * @Route("/admin/adminprestataire", name="adminprestataire")
-     * @param ArtisanRepository $repo
-     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(ArtisanRepository $repo)
     {
