@@ -39,8 +39,8 @@ class AppFixtures extends Fixture
             $artisan->setReinitialisationMdpArtisan('reinitialisation mdp ' . $i);
             $artisan->setValidationArtisan('validation artisan ' . $i);
             $artisan->setValidationAssurance('validation assurance ' . $i);
-            $artisan->setCoordonneeLatitude(0.24 . $i);
-            $artisan->setCoordonneeLongitude(47.54 . $i);
+            $artisan->setCoordonneeLatitude( 47.54 . $i);
+            $artisan->setCoordonneeLongitude(0.24 . $i);
             $manager->persist($artisan);
         }
         $manager->flush();

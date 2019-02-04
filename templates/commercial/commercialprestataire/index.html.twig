@@ -14,7 +14,6 @@
                     <th scope="row">Téléphone</th>
                     <th scope="row">Numéro d'assurance</th>
                     <th scope="row">SIREN</th>
-                    <th scope="row">ID Formule</th>
                 </tr>
                 </thead>
                 {% for artisan in artisans %}
@@ -24,7 +23,7 @@
                         <th scope="row">{{ artisan.tel }}</th>
                         <th scope="row">{{ artisan.numAssurance }}</th>
                         <th scope="row">{{ artisan.siren }}</th>
-                        <th scope="row">{{ artisan.idFormule }}</th>
+                        <th scope="row"> <a href="{{ path('commercialprestatairedetail', {id: artisan.idArtisan}) }}" class="btn btn-primary">Fiche détaillée </a></th>
                     </tr>
                 {% endfor %}
             </table>

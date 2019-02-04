@@ -59,7 +59,7 @@ $(document).ready(function() {
                     }
                 }
             },
-            'form[telephone]': {
+            'form[tel]': {
                 validators: {
                     notEmpty: {
                         message: 'Veuillez saisir votre numéro de téléphone'
@@ -80,7 +80,7 @@ $(document).ready(function() {
                 }
             },
 
-            'form[assurance]': {
+            'form[numassurance]': {
                 validators: {
                     notEmpty: {
                         message: 'Veuillez saisir votre numéro d\'assurance'

@@ -27,13 +27,14 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $artisan = new Artisan();
-        $artisan->setPrenom("Prenom");
-        $artisan->setNom("Nom");
-        $artisan->setRaisonSociale("RaisonSociale");
-        $artisan->setSiren("SIREN");
-        $artisan->setTel("Telephone");
-        $artisan->setDescription("Description");
-        $artisan->setNumAssurance("NumAssurance");
+        //$artisan->setPrenom("Prenom");
+        //$artisan->setNom("Nom");
+        //$artisan->setRaisonSociale("RaisonSociale");
+        //$artisan->setSiren("SIREN");
+        //$artisan->setTel("Telephone");
+        //$artisan->setDescription("Description");
+        //$artisan->setNumAssurance("NumAssurance");
+        //$artisan->setMail("Mail@mail.com");
         $artisan->setDateInscription(new \DateTime('now'));
         $artisan->setCredit("0");
         $artisan->setDisponibilite("22");
@@ -54,7 +55,6 @@ class RegistrationController extends AbstractController
         $artisan->setCoordonneeLatitude(0.24 );
         $artisan->setCoordonneeLongitude(47.54 );
         $artisan->setIdFormule(null);
-        $artisan->setMail("Mail@mail.com");
         $form = $this->createFormBuilder($artisan)
             ->add('mail', EmailType::class)
             ->add('motdepasse', PasswordType::class)
@@ -65,10 +65,7 @@ class RegistrationController extends AbstractController
             ->add('siren')
             ->add('numassurance')
             ->add('description')
-
-
-
-        ->add('Valider', SubmitType::class)->getForm();
+            ->add('Valider', SubmitType::class)->getForm();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
