@@ -59,7 +59,7 @@ $(document).ready(function() {
                     }
                 }
             },
-            'form[telephone]': {
+            'form[tel]': {
                 validators: {
                     notEmpty: {
                         message: 'Veuillez saisir votre numéro de téléphone'
