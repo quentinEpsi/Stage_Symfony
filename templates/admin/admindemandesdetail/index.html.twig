@@ -22,10 +22,11 @@
                             <li class="list-group-item">Description : {{ infoClient.descriptionSup }}</li>
                             <li class="list-group-item">Date de proposition : {{ infoClient.dateProposition|date('d/m/Y') }}</li>
                             <li class="list-group-item">Date de réalisation : {{ infoClient.dateRealisation|date('d/m/Y h:m') }}</li>
-                            <li class="list-group-item">État d'avancement : {{ infoClient.etatAvancement }}</li>
+                            <li class="list-group-item">État d'avancement : {{ infoClient.etatAvancement }}</li><br>
                             {% for artisan in infoArtisans %}
-                                <li class="list-group-item">Artisan ayant visualisé la demande : <a href="{{ path('adminprestatairedetail', {id: artisan.idArtisan}) }}">{{ artisan.nom }} {{ artisan.prenom }}</a></li>
+                                <li class="list-group-item">Artisan ayant visualisé la demande : <a href="{{ path('adminprestatairedetail', {id: infoArtisans.idArtisan}) }}">{{ infoArtisans.nom }} {{ infoArtisans.prenom }}</a></li>
                             {% endfor %}
+                            <a href="{{ path('adminmodifdemandes', {id: infoClient.idClient}) }}"><input type="submit" class="btn btn-primary" value="Modifier les informations"> </a><br><br>
                         </ul>
                     </div>
                 </div>
