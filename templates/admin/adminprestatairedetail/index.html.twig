@@ -24,7 +24,7 @@
                             <li class="list-group-item">Coordonnée latitude : {{ artisans.coordonneeLatitude }}</li>
                             <li class="list-group-item">Coordonnée longitude : {{ artisans.coordonneeLongitude }}</li>
                             <input type="submit" class="btn btn-primary" value="Réinitialiser le mot de passe"><br><br>
-                            <input type="submit" class="btn btn-primary" value="Modifier les informations"><br><br>
+                            <a href="{{ path('adminmodifprestataire', {id: artisans.idArtisan}) }}"><input type="submit" class="btn btn-primary" value="Modifier les informations"> </a><br><br>
                             <input type="submit" class="btn btn-primary" value="Supprimer le compte">
                         </ul>
                     </div>

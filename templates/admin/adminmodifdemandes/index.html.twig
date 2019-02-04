@@ -10,15 +10,27 @@
                 <div class=" highlight" style="margin-left:0;">
                     <div class="row">
                         <ul class="list-group">
-                            <li class="list-group-item">Titre devis : </li>
-                            <li class="list-group-item">Nom Client : </li>
-                            <li class="list-group-item">Prénom Client : </li>
-                            <li class="list-group-item">Adresse Client : </li>
-                            <li class="list-group-item">Ville Client : </li>
-                            <li class="list-group-item">CP Client : </li>
-                            <li class="list-group-item">État d'avancement : </li>
-                            <li class="list-group-item">Description du devis : </li><br>
-                            <input type="submit" class="btn btn-primary" value="Sauvegarder"><br><br>
+                            <label class="list-group-item">Nom :
+                                <input type="text" value="{{ infoClient.nomClient }}"></label>
+                            <label class="list-group-item">Prénom :
+                                <input type="text" value="{{ infoClient.prenomClient }}"></label>
+                            <label class="list-group-item">Numéro de rue :
+                                <input type="text" value="{{ infoClient.adresseInterventionNumero }}"></label>
+                            <label class="list-group-item">Rue :
+                                <input type="text" value="{{ infoClient.adresseInterventionRue }}"></label>
+                            <label class="list-group-item">Ville :
+                                <input type="text" value="{{ infoClient.adresseInterventionVille }}"></label>
+                            <label class="list-group-item">Code postal :
+                                <input type="text" value="{{ infoClient.adresseInterventionCp }}"></label>
+                            <label class="list-group-item">Téléphone :
+                                <input type="text" value="{{ infoClient.telClient }}"></label>
+                            <label class="list-group-item">Mail :
+                                <input type="text" value="{{ infoClient.mailClient }}"></label>
+                            <label class="list-group-item">Description :
+                                <input type="text" value="{{ infoClient.descriptionSup }}"></label>
+                            <label class="list-group-item">État d'avancement :
+                                <input type="text" value="{{ infoClient.etatAvancement }}"></label><br>
+                            <a href="{{ path('admindemandesdetail', {id: infoClient.idClient}) }}"><input type="submit" class="btn btn-primary" value="Sauvegarder"></a>
                         </ul>
                     </div>
                 </div>
