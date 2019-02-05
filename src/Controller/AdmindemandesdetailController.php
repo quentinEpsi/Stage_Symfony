@@ -28,10 +28,8 @@ class AdmindemandesdetailController extends AbstractController
     public function show(ClientRepository $clientRepository, $id)
     {
         $infoClient = $clientRepository->find($id);
-        dump($infoClient);
         $repo = $infoClient->getIdArtisan();
         $infoArtisans = $repo->getValues();
-        dump($infoArtisans);
         return $this->render('admin/admindemandesdetail/index.html.twig', [
             'controller_name' => 'AdmindemandesdetailController',
             'infoClient' => $infoClient,
