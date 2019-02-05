@@ -2,10 +2,8 @@
 
 {% block title %}SR2F | Inscription{% endblock %}
 
-{% block body %}
-    <head>
-        {% block top_header_area %}
-        {% endblock %}
+
+
 
         {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('build/css/reg.css') }}" />
@@ -14,24 +12,23 @@
         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         {% endblock %}
-        <meta charset="utf-8">
-        <title>SR2F | Inscription</title>
-    </head>
-    <body>
-    <!-- Headrrrrrer -->
-    <header id="header">
-        <div class="inner">
 
-            <!-- <img src="./images/logotrue.png" width="44" height="32"> -->
 
-            <a href="index.php" class="logo"><strong>SR2F</strong></a>
-            <nav id="ALO">
-                    <a href="/" class="buttonreg" style="font-size: 0.7em !important;padding-right: 8px;color: white!important;">&nbsp&nbspAccueil&nbsp&nbsp</a>
 
-            </nav>
-        </div>
-    </header>
+    {% block top_header_area %}
+        <header id="header">
+            <div class="inner">
 
+                <!-- <img src="./images/logotrue.png" width="44" height="32"> -->
+
+                <a href="index.php" class="logo"><strong>SR2F</strong></a>
+
+            </div>
+        </header>
+    {% endblock %}
+    {#Headrrrrrer#}
+
+{% block body %}
 
     <img id="img" src="{{ asset('build/images/banner-bg.jpg') }}">
 
@@ -222,7 +219,7 @@
         </form>
     </div><!-- /.container -->
 
-
+{% endblock %}
     {% block javascripts %}
     <!-- Scripts -->
     <script src="{{ asset('build/js/jquery-1.12.0.min.js') }}"></script>
@@ -234,4 +231,3 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/language/fr_FR.js"></script>
     <script src="{{ asset('build/js/reg.js') }}"></script>
       {% endblock %}
-{% endblock %}
