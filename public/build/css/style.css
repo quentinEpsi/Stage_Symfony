@@ -2703,7 +2703,7 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
   background-color:rgba(255,255,255,.8);
 }
 #login-dp .help-block{
-  font-size:12px    
+  font-size:12px
 }
 #login-dp .bottom{
   background-color:rgba(255,255,255,.8);
@@ -2712,7 +2712,7 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
   padding:14px;
 }
 #login-dp .social-buttons{
-  margin:12px 0    
+  margin:12px 0
 }
 #login-dp .social-buttons a{
   width: 49%;
@@ -2726,7 +2726,7 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
 }
 .btn-fb:hover{
   color: #fff;
-  background-color:#496ebc 
+  background-color:#496ebc
 }
 .btn-tw{
   color: #fff;
@@ -5603,17 +5603,52 @@ table, th, td {
 
 }
 
+
+#ServiceTitle{
+  padding-bottom: 2%;
+  text-decoration: underline;
+}
 #BarreVerticale{
   border: solid;
-  width: 1px;
+  height: 300px;
 }
 
 
 #BarreHorizontale{
-  margin-left:20%;
-  border:solid;
-  width:60%;
+  display: flex;
+  border: solid;
   margin-top: 3%;
+  justify-content: center;
+  width: 80%;
+}
+
+#Service2{
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+#ArticleTitle{
+  padding-bottom: 2%;
+  text-decoration: underline;
+}
+#Article2{
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+/* CLASS */
+
+.flex-container{
+  margin-top: 3%;
+  display: flex;
+  justify-content:space-evenly;
+}
+
+.service{
+  margin-top: 2%;
+}
+.article{
+  margin-top: 15%;
 }
 
 
