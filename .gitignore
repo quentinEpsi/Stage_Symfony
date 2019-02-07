@@ -31,3 +31,5 @@
 \.idea/symfony2\.xml
 
 \.idea/vcs\.xml
+
+composer\.json

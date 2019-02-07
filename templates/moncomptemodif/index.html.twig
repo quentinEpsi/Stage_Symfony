@@ -7,29 +7,21 @@
         <h3>Modification de mes informations</h3><br><br>
         <div class="badge-modif" style="font-size: 18px!important">
             <div class ="main-container">
-                <div class=" highlight" style="margin-left:0;">
+                <div class="highlight" style="margin-left:0;">
                     <div class="row">
-                        <ul class="list-group">
-                            <label class="list-group-item">Nom :
-                                <input type="text" value="{{ artisan.nom }}"></label>
-                            <label class="list-group-item">Prénom :
-                                <input type="text" value="{{ artisan.prenom }}"></label>
-                            <label class="list-group-item">Raison sociale :
-                                <input type="text" value="{{ artisan.raisonSociale }}"></label>
-                            <label class="list-group-item">SIREN :
-                                <input type="text" value="{{ artisan.siren }}"></label>
-                            <label class="list-group-item">Téléphone :
-                                <input type="text" value="{{ artisan.tel }}"></label>
-                            <label class="list-group-item">Mail :
-                                <input type="text" value="{{ artisan.mail }}"></label>
-                            <label class="list-group-item">Description :
-                                <input type="text" value="{{ artisan.description }}"></label>
-                            <label class="list-group-item">Numéro d'assurance :
-                                <input type="text" value="{{ artisan.numAssurance }}"></label>
-                            <label class="list-group-item">Crédits :
-                                <input type="text" value="{{ artisan.credit }}"></label><br>
-                            <a href="{{ path('moncompte', {id: artisan.idArtisan}) }}"><input type="submit" class="btn btn-primary" value="Sauvegarder"></a>
-                        </ul>
+                        <div class="formulaire">
+                            {{ form_start(form) }}
+                            {{ form_row(form.nom,{'label':'Nom :','attr':{'class':'form-control', 'name':'nom', 'id':'nom'}}) }}
+                            {{ form_row(form.prenom,{'label':'Prénom :','attr':{'class':'form-control', 'name':'prenom'}}) }}
+                            {{ form_row(form.raisonSociale,{'label':'Raison sociale :','attr':{'class':'form-control', 'name':'raisonSociale'}}) }}
+                            {{ form_row(form.siren,{'label':'SIREN :','attr':{'class':'form-control', 'name':'siren'}}) }}
+                            {{ form_row(form.tel,{'label':'Téléphone :','attr':{'class':'form-control', 'name':'tel'}}) }}
+                            {{ form_row(form.mail,{'label':'Email :','attr':{'class':'form-control', 'name':'mail'}}) }}
+                            {{ form_row(form.description,{'label':'Description :','attr':{'class':'form-control', 'name':'description'}}) }}
+                            {{ form_row(form.numAssurance,{'label':'Numéro assurance :','attr':{'class':'form-control', 'name':'numAssurance'}}) }}
+                            {{ form_row(form.sauvegarde,{'label':'Sauvegarder :','attr':{'class':'form-control', 'name':'sauvegarde', 'id':'idArtisan'}}) }}
+                            {{ form_end(form) }}
+                        </div>
                     </div>
                 </div>
             </div>

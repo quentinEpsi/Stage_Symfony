@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="badge-center" style="margin: 0 auto; width: 600px; padding-top: 50px;">
-        <h3>Fiche détaillée de la demande de {{ infoClient.nomClient }} {{ infoClient.prenomClient }}</h3><br><br>
+        <h3>Fiche détaillée de la demande</h3><br><br>
         <div class="badge-modif" style="font-size: 18px!important">
             <div class ="main-container">
                 <div class=" highlight" style="margin-left:0;">
@@ -22,9 +22,9 @@
                             <li class="list-group-item">Description : {{ infoClient.descriptionSup }}</li>
                             <li class="list-group-item">Date de proposition : {{ infoClient.dateProposition|date('d/m/Y') }}</li>
                             <li class="list-group-item">Date de réalisation : {{ infoClient.dateRealisation|date('d/m/Y h:m') }}</li>
-                            <li class="list-group-item">État d'avancement : {{ infoClient.etatAvancement }}</li><br>
+                            <li class="list-group-item">État d'avancement : {{ infoClient.etatAvancement }}</li>
                             {% for artisan in infoArtisans %}
-                                <li class="list-group-item">Artisan ayant visualisé la demande : <a href="{{ path('adminprestatairedetail', {id: infoArtisans.idArtisan}) }}">{{ infoArtisans.nom }} {{ infoArtisans.prenom }}</a></li>
+                                <li class="list-group-item">Artisan ayant visualisé la demande : <a href="{{ path('adminprestatairedetail', {id: artisan.idArtisan}) }}">{{ artisan.nom }} {{ artisan.prenom }}</a></li>
                             {% endfor %}
                             <a href="{{ path('adminmodifdemandes', {id: infoClient.idClient}) }}"><input type="submit" class="btn btn-primary" value="Modifier les informations"> </a><br><br>
                         </ul>
