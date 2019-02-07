@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h2>Objet du Message : {{ contact.objet }} </h2>
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">Message :
+                <h3>{{ contact.message }}</h3></div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">Nom : {{ contact.firstname }} <br>
+                Prenom : {{ contact.lastname }}  <br>
+                Téléphone :{{ contact.phone }}
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
