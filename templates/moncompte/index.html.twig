@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+<div class="badge-center" style="margin: 0 auto; width: 600px; padding-top: 50px;">
+    <h3>Informations du compte</h3><br><br>
+    <div class="badge-modif" style="font-size: 18px!important">
+        <div class ="main-container">
+            <div class=" highlight" style="margin-left:0;">
+                <div class="row">
+                    <ul class="list-group">
+                        <li class="list-group-item">Nom : {{ artisan.nom }}</li>
+                        <li class="list-group-item">Prénom : {{ artisan.prenom }}</li>
+                        <li class="list-group-item">Services : ???</li>
+                        <li class="list-group-item">Téléphone : {{ artisan.tel }}</li>
+                        <li class="list-group-item">Mail : {{ artisan.mail }}</li>
+                        <li class="list-group-item">SIREN : {{ artisan.siren }}</li>
+                        <li class="list-group-item">Numéro d'assurance : {{ artisan.numAssurance }}</li>
+                        <li class="list-group-item">Description de l'activité : {{ artisan.description }}</li><br>
+                        <input type="submit" class="btn btn-success" value="Changer le mot de passe"><br><br>
+                        <a href="{{ path('moncomptemodif', {id: artisan.idArtisan}) }}"><input type="submit" class="btn btn-primary" value="Modifier mes informations"> </a><br><br>
+                        <input type="submit" class="btn btn-danger" value="Supprimer mon compte">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

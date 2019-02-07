@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="who_we_area" style="text-align: center; padding-top: 50px;">
-        <h3>Liste des demandes de devis en cours</h3><br><br>
+        <h3>Liste des demandes de prestation</h3><br><br>
         <div id="tableauprestataires" style="display: inline-block;">
             <table class="table">
                 <thead class="thead-dark">
@@ -20,8 +20,8 @@
                     <tr>
                         <td>{{ client.nomClient }}</td>
                         <td>{{ client.prenomClient }}</td>
-                        <td>{{ client.dateProposition|date('Y/m/d') }}</td>
-                        <td>{{ client.dateRealisation|date('Y/m/d') }}</td>
+                        <td>{{ client.dateProposition|date('d/m/Y') }}</td>
+                        <td>{{ client.dateRealisation|date('d/m/Y') }}</td>
                         <td>{{ client.etatAvancement }}</td>
                         <th scope="row"> <a href="{{ path('commercialdemandesdetail', {id: client.idClient}) }}" class="btn btn-primary">Fiche détaillée </a></th>
                     </tr>

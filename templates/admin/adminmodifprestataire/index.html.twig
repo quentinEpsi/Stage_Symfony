@@ -4,25 +4,35 @@
 
 {% block body %}
     <div class="badge-center" style="margin: 0 auto; width: 600px; padding-top: 50px;">
-        <h3>Modification des informations de l'artisan NOM PRENOM</h3><br><br>
+        <h3>Modification des informations de l'artisan {{ artisans.nom }} {{ artisans.prenom }}</h3><br><br>
         <div class="badge-modif" style="font-size: 18px!important">
             <div class ="main-container">
                 <div class=" highlight" style="margin-left:0;">
                     <div class="row">
                         <ul class="list-group">
-                            <li class="list-group-item">ID Artisan : </li>
-                            <li class="list-group-item">Nom Artisan : </li>
-                            <li class="list-group-item">Prénom Artisan : </li>
-                            <li class="list-group-item">Adresse Artisan : </li>
-                            <li class="list-group-item">Ville Artisan : </li>
-                            <li class="list-group-item">CP Artisan : </li>
-                            <li class="list-group-item">Mail Artisan : </li>
-                            <li class="list-group-item">Téléphone Artisan : </li>
-                            <li class="list-group-item">Mot de passe (caché) : </li>
-                            <li class="list-group-item">Date d'inscription : </li>
-                            <li class="list-group-item">Formule actuelle : </li>
-                            <li class="list-group-item">Crédits : </li><br>
-                            <input type="submit" class="btn btn-primary" value="Sauvegarder"><br><br>
+                            <label class="list-group-item">Nom :
+                                <input type="text" value="{{ artisans.nom }}"></label>
+                            <label class="list-group-item">Prénom :
+                                <input type="text" value="{{ artisans.prenom }}"></label>
+                            <label class="list-group-item">Raison sociale :
+                                <input type="text" value="{{ artisans.raisonSociale }}"></label>
+                            <label class="list-group-item">SIREN :
+                                <input type="text" value="{{ artisans.siren }}"></label>
+                            <label class="list-group-item">Téléphone :
+                                <input type="text" value="{{ artisans.tel }}"></label>
+                            <label class="list-group-item">Mail :
+                                <input type="text" value="{{ artisans.mail }}"></label>
+                            <label class="list-group-item">Description :
+                                <input type="text" value="{{ artisans.description }}"></label>
+                            <label class="list-group-item">Numéro d'assurance :
+                                <input type="text" value="{{ artisans.numAssurance }}"></label>
+                            <label class="list-group-item">Crédits :
+                                <input type="text" value="{{ artisans.credit }}"></label>
+                            <label class="list-group-item">Coordonnée latitude :
+                                <input type="text" value="{{ artisans.coordonneeLatitude }}"></label>
+                            <label class="list-group-item">Coordonnée longitude :
+                                <input type="text" value="{{ artisans.coordonneeLongitude }}"></label>
+                            <a href="{{ path('adminprestatairedetail', {id: artisans.idArtisan}) }}"><input type="submit" class="btn btn-primary" value="Sauvegarder"></a>
                         </ul>
                     </div>
                 </div>

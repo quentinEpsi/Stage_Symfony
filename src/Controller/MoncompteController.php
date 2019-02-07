@@ -7,10 +7,10 @@ use App\Repository\ArtisanRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AdminmodifprestataireController extends AbstractController
+class MoncompteController extends AbstractController
 {
     /**
-     * @Route("/admin/adminmodifprestataire/{id}", name="adminmodifprestataire")
+     * @Route("/moncompte/{id}", name="moncompte")
      * @param ArtisanRepository $repo
      * @param Artisan $idArtisan
      * @return \Symfony\Component\HttpFoundation\Response
@@ -18,13 +18,9 @@ class AdminmodifprestataireController extends AbstractController
     public function index(ArtisanRepository $repo, Artisan $idArtisan)
     {
         $artisans = $repo->find($idArtisan);
-        return $this->render('admin/adminmodifprestataire/index.html.twig', [
-            'controller_name' => 'AdminmodifprestataireController',
-            'artisans' => $artisans
+        return $this->render('moncompte/index.html.twig', [
+            'controller_name' => 'MoncompteController',
+            'artisan' => $artisans
         ]);
     }
 }
-
-
-
-

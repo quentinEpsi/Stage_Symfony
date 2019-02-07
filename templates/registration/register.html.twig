@@ -24,7 +24,7 @@
     <form class="well form-horizontal" method="post" id="contact_form">
         <fieldset>
             <!-- Form Name -->
-            <legend><center><h2><b>Formulaire d'inscription</b></h2></center></legend><br>
+            <legend style="text-align: center;"><h2><b>Formulaire d'inscription</b></h2></legend><br>
             {{ form_start(registrationForm) }}
             <!-- Selector GENRE -->
             <div class="form-group">
@@ -133,7 +133,7 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
-                        <select name="activites" class="form-control" required>
+                        <select name="activite" class="form-control" required>
                             <option disabled selected>Choisir une activité..</option>
                             <option value="">Activité 1</option>
                             <option value="">Activité 2</option>
@@ -221,7 +221,6 @@
 {% block javascripts %}
     <!-- Scripts -->
     <script src="{{ asset('build/js/jquery-1.12.0.min.js') }}"></script>
-
     <!-- Latest compiled and minified JavaScript -->
     <script src="{{ asset('build/js/bootstrap.min.js') }}" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.css"/>
