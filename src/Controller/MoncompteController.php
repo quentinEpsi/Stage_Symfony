@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Artisan;
 use App\Repository\ArtisanRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,16 +10,19 @@ class MoncompteController extends AbstractController
 {
     /**
      * @Route("/moncompte/{id}", name="moncompte")
-     * @param ArtisanRepository $repo
-     * @param Artisan $idArtisan
+     * @param ArtisanRepository $artisanRepository
+     * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(ArtisanRepository $repo, Artisan $idArtisan)
+    public function index(ArtisanRepository $artisanRepository, $id)
     {
-        $artisans = $repo->find($idArtisan);
+        $infoArtisans = $artisanRepository->find($id);
+        $repository = $infoArtisans->getIdService();
+        $infoService = $repository->getValues();
         return $this->render('moncompte/index.html.twig', [
             'controller_name' => 'MoncompteController',
-            'artisan' => $artisans
+            'infosArtisan' => $infoArtisans,
+            'infoService' => $infoService
         ]);
     }
 }
