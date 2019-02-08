@@ -75,7 +75,7 @@ class AdminmodifdemandesController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
 
-            return $this->redirectToRoute('admindemandesdetail', array('id'=> $idClient->getIdClient(), $idClient->getIdArtisan()));
+            return $this->redirectToRoute('admindemandesdetail', array('id'=> $idClient->getIdClient()));
         }
 
         return $this->render('admin/adminmodifdemandes/index.html.twig', array(

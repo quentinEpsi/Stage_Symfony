@@ -12,13 +12,13 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <a class="container" href="{{ path('moncompte') }}">
+                    <a class="container" href="{{ path('moncompte', {id: artisan.idArtisan}) }}">
                         <img style="width:100%; min-height: 240px" src="{{ asset('build/images/calculator-385506_1920.jpg') }}" alt="Card image cap">
                         <div class="centered"><h4>MON COMPTE</h4><br></div>
                     </a>
                 </div>
                 <div class="col-lg-6">
-                    <a class="container" href="{{ path('mesdisponibilites') }}sd">
+                    <a class="container" href="{{ path('mesdisponibilites') }}">
                         <img style="width:100%; min-height: 327px" src="{{ asset('build/images/clock-1274699_1920.jpg') }}" alt="">
                         <div class="centered"><h4>MES DISPONIBLITÉS</h4><br></div>
                     </a>
