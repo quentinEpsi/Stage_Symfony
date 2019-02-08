@@ -32,4 +32,8 @@
 
 \.idea/vcs\.xml
 
+<<<<<<< HEAD
+composer\.json
+=======
 \.idea/
+>>>>>>> dev

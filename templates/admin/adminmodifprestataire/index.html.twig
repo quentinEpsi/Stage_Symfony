@@ -4,35 +4,26 @@
 
 {% block body %}
     <div class="badge-center" style="margin: 0 auto; width: 600px; padding-top: 50px;">
-        <h3>Modification des informations de l'artisan {{ artisans.nom }} {{ artisans.prenom }}</h3><br><br>
+        {{ form_start(form) }}
+        <h3>Modification des informations de l'artisan</h3><br><br>
         <div class="badge-modif" style="font-size: 18px!important">
             <div class ="main-container">
                 <div class=" highlight" style="margin-left:0;">
                     <div class="row">
                         <ul class="list-group">
-                            <label class="list-group-item">Nom :
-                                <input type="text" value="{{ artisans.nom }}"></label>
-                            <label class="list-group-item">Prénom :
-                                <input type="text" value="{{ artisans.prenom }}"></label>
-                            <label class="list-group-item">Raison sociale :
-                                <input type="text" value="{{ artisans.raisonSociale }}"></label>
-                            <label class="list-group-item">SIREN :
-                                <input type="text" value="{{ artisans.siren }}"></label>
-                            <label class="list-group-item">Téléphone :
-                                <input type="text" value="{{ artisans.tel }}"></label>
-                            <label class="list-group-item">Mail :
-                                <input type="text" value="{{ artisans.mail }}"></label>
-                            <label class="list-group-item">Description :
-                                <input type="text" value="{{ artisans.description }}"></label>
-                            <label class="list-group-item">Numéro d'assurance :
-                                <input type="text" value="{{ artisans.numAssurance }}"></label>
-                            <label class="list-group-item">Crédits :
-                                <input type="text" value="{{ artisans.credit }}"></label>
-                            <label class="list-group-item">Coordonnée latitude :
-                                <input type="text" value="{{ artisans.coordonneeLatitude }}"></label>
-                            <label class="list-group-item">Coordonnée longitude :
-                                <input type="text" value="{{ artisans.coordonneeLongitude }}"></label>
-                            <a href="{{ path('adminprestatairedetail', {id: artisans.idArtisan}) }}"><input type="submit" class="btn btn-primary" value="Sauvegarder"></a>
+                        {{ form_row(form.nom,{'label':'Nom :','attr':{'class':'list-group-item', 'name':'nom'}}) }}
+                        {{ form_row(form.prenom,{'label':'Prénom :','attr':{'class':'list-group-item', 'name':'prenom'}}) }}
+                        {{ form_row(form.raisonSociale,{'label':'Raison sociale :','attr':{'class':'list-group-item', 'name':'raisonSociale'}}) }}
+                        {{ form_row(form.siren,{'label':'SIREN :','attr':{'class':'list-group-item', 'name':'siren'}}) }}
+                        {{ form_row(form.tel,{'label':'Téléphone :','attr':{'class':'list-group-item', 'name':'tel'}}) }}
+                        {{ form_row(form.mail,{'label':'Email :','attr':{'class':'list-group-item', 'name':'mail'}}) }}
+                        {{ form_row(form.description,{'label':'Description :','attr':{'class':'list-group-item', 'name':'description'}}) }}
+                        {{ form_row(form.numAssurance,{'label':'Numéro assurance :','attr':{'class':'list-group-item', 'name':'numAssurance'}}) }}
+                        {{ form_row(form.credit,{'label':'Crédits :','attr':{'class':'list-group-item', 'name':'credit'}}) }}
+                        {{ form_row(form.coordonneeLatitude,{'label':'Coordonnée latitude :','attr':{'class':'list-group-item', 'name':'coordonneeLatitude'}}) }}
+                        {{ form_row(form.coordonneeLongitude,{'label':'Coordonnée longitude :','attr':{'class':'list-group-item', 'name':'coordonneeLongitude'}}) }}
+                        {{ form_row(form.sauvegarde,{'label':'Sauvegarder :','attr':{'class':'list-group-item', 'name':'sauvegarde'}}) }}
+                        {{ form_end(form) }}
                         </ul>
                     </div>
                 </div>

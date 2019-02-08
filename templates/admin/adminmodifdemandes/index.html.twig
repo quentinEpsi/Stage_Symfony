@@ -10,27 +10,19 @@
                 <div class=" highlight" style="margin-left:0;">
                     <div class="row">
                         <ul class="list-group">
-                            <label class="list-group-item">Nom :
-                                <input type="text" value="{{ infoClient.nomClient }}"></label>
-                            <label class="list-group-item">Prénom :
-                                <input type="text" value="{{ infoClient.prenomClient }}"></label>
-                            <label class="list-group-item">Numéro de rue :
-                                <input type="text" value="{{ infoClient.adresseInterventionNumero }}"></label>
-                            <label class="list-group-item">Rue :
-                                <input type="text" value="{{ infoClient.adresseInterventionRue }}"></label>
-                            <label class="list-group-item">Ville :
-                                <input type="text" value="{{ infoClient.adresseInterventionVille }}"></label>
-                            <label class="list-group-item">Code postal :
-                                <input type="text" value="{{ infoClient.adresseInterventionCp }}"></label>
-                            <label class="list-group-item">Téléphone :
-                                <input type="text" value="{{ infoClient.telClient }}"></label>
-                            <label class="list-group-item">Mail :
-                                <input type="text" value="{{ infoClient.mailClient }}"></label>
-                            <label class="list-group-item">Description :
-                                <input type="text" value="{{ infoClient.descriptionSup }}"></label>
-                            <label class="list-group-item">État d'avancement :
-                                <input type="text" value="{{ infoClient.etatAvancement }}"></label><br>
-                            <a href="{{ path('admindemandesdetail', {id: infoClient.idClient}) }}"><input type="submit" class="btn btn-primary" value="Sauvegarder"></a>
+                            {{ form_start(form) }}
+                            {{ form_row(form.nomClient,{'label':'Nom du client :','attr':{'class':'list-group-item', 'name':'nomClient'}}) }}
+                            {{ form_row(form.prenomClient,{'label':'Prénom :','attr':{'class':'list-group-item', 'name':'prenomClient'}}) }}
+                            {{ form_row(form.adresseInterventionNumero,{'label':'Numéro adresse intervention :','attr':{'class':'list-group-item', 'name':'adresseInterventionNumero'}}) }}
+                            {{ form_row(form.adresseInterventionRue,{'label':'Rue adresse intervention :','attr':{'class':'list-group-item', 'name':'adresseInterventionRue'}}) }}
+                            {{ form_row(form.adresseInterventionVille,{'label':'Ville adresse intervention :','attr':{'class':'list-group-item', 'name':'adresseInterventionVille'}}) }}
+                            {{ form_row(form.adresseInterventionCp,{'label':'Code postal adresse intervention :','attr':{'class':'list-group-item', 'name':'adresseInterventionCp'}}) }}
+                            {{ form_row(form.telClient,{'label':'Téléphone client :','attr':{'class':'list-group-item', 'name':'telClient'}}) }}
+                            {{ form_row(form.mailClient,{'label':'Mail client :','attr':{'class':'list-group-item', 'name':'mailClient'}}) }}
+                            {{ form_row(form.descriptionSup,{'label':'Description supplémentaire :','attr':{'class':'list-group-item', 'name':'descriptionSup'}}) }}
+                            {{ form_row(form.etatAvancement,{'label':'État avancement :','attr':{'class':'list-group-item', 'name':'etatAvancement'}}) }}
+                            {{ form_row(form.sauvegarde,{'label':'Sauvegarder :'}) }}
+                            {{ form_end(form) }}
                         </ul>
                     </div>
                 </div>
