@@ -38,6 +38,15 @@ class Contact{
 
     private $email;
 
+
+
+    /**
+     * @var string|null
+     * @Assert\NotBlank()
+     * @Assert\Length(min=5)
+     */
+    private $objet;
+
     /**
      * @var string|null
      * @Assert\NotBlank()
@@ -45,6 +54,22 @@ class Contact{
      */
 
     private $message;
+
+    /**
+     * @return null|string
+     */
+    public function getObjet(): ?string
+    {
+        return $this->objet;
+    }
+
+    /**
+     * @param null|string $objet
+     */
+    public function setObjet(?string $objet): void
+    {
+        $this->objet = $objet;
+    }
 
     /**
      * @return null|string

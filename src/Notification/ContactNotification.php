@@ -23,7 +23,16 @@ class ContactNotification
         $this->renderer = $renderer;
     }
 
-    /*public function notify(Contact $contact){
-        $message = (new \Swift_Message('S2R')->setFrom($contact->getEmail()))
-    }*/
+    public function notify(Contact $contact){
+    $message = (new \Swift_Message('S2R'))
+        ->setFrom('quentin.bernard341995@gmail.com')
+        ->setTo('gelineau@et.esiea.fr')
+        ->setCc($contact->getEmail())
+        ->setReplyTo($contact->getEmail())
+        ->setSubject($contact->getObjet())
+        ->setBody($this->renderer->render('emails/contact.html.twig',[
+            'contact' => $contact
+        ]), 'text/html');
+    $this->mailer->send($message);
+}
 }
