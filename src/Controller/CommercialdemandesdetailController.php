@@ -46,4 +46,6 @@ class CommercialdemandesdetailController extends AbstractController
             'infoArtisans' => $infoArtisans
         ]);
     }
+
+
 }

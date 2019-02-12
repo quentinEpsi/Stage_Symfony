@@ -51,15 +51,6 @@ class ServiceRepository extends ServiceEntityRepository
 
 
 
-/*
-public function GetServicesCount():int {
-    {
-        $entityManager = $this->();
 
-        $query = $entityManager->createQuery(
-            'SELECT count(Id_service)
-               FROM service'
-        );
-        return $query->execute();
-    }
-}*/
+/*
+
