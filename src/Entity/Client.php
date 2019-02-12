@@ -115,11 +115,18 @@ class Client
     private $etatAvancement;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="Liste_id_artisan", type="string", length=400, nullable=false)
+     * @ORM\Column(name="Coordonnee_longitude_client", type="float", precision=10, scale=0, nullable=false)
      */
-    private $listeIdArtisan;
+    private $coordonneeLongitudeClient;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="Coordonnee_latitude_client", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $coordonneeLatitudeClient;
 
     /**
      * @var \Service
@@ -135,7 +142,7 @@ class Client
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Artisan", inversedBy="idClient")
-     * @ORM\JoinTable(name="visualise",
+     * @ORM\JoinTable(name="choisir",
      *   joinColumns={
      *     @ORM\JoinColumn(name="Id_client", referencedColumnName="Id_client")
      *   },
@@ -315,14 +322,26 @@ class Client
         return $this;
     }
 
-    public function getListeIdArtisan(): ?string
+    public function getCoordonneeLongitudeClient(): ?float
     {
-        return $this->listeIdArtisan;
+        return $this->coordonneeLongitudeClient;
     }
 
-    public function setListeIdArtisan(string $listeIdArtisan): self
+    public function setCoordonneeLongitudeClient(float $coordonneeLongitudeClient): self
     {
-        $this->listeIdArtisan = $listeIdArtisan;
+        $this->coordonneeLongitudeClient = $coordonneeLongitudeClient;
+
+        return $this;
+    }
+
+    public function getCoordonneeLatitudeClient(): ?float
+    {
+        return $this->coordonneeLatitudeClient;
+    }
+
+    public function setCoordonneeLatitudeClient(float $coordonneeLatitudeClient): self
+    {
+        $this->coordonneeLatitudeClient = $coordonneeLatitudeClient;
 
         return $this;
     }

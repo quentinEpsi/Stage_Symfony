@@ -3,5 +3,24 @@
 {% block title %}Ma formule{% endblock %}
 
 {% block body %}
-
+    <section class="what_we_area row">
+        <div class="container">
+            <div class="tittlefont text-center" style="padding: 60px;">
+                <h1>MA FORMULE ACTUELLE</h1><br><br>
+                <h3>Vous pouvez modifier ou annuler votre abonnement à une formule</h3>
+            </div>
+            <div class="row construction_iner" style="padding-top: 30px;">
+                <div class="col-lg-offset-4 col-md-4 col-lg-offset-4 construction">
+                    <div class="cns-img">
+                        <img src="{{ asset('build/images/construction-worker-569149_1920.jpg') }}" alt="">
+                    </div>
+                    <div class="cns-content">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                        <a>FORMULE {{ maformule.nomFormule }}</a>
+                        <p>Formule permettant d'approvisionner son compte à son aise avec des crédits</p><br>
+                        <a href="{{ path('formulemodif', {id: artisan.idArtisan}) }}" class="button_all center-block" style="padding-bottom: 12px;">CHANGER DE FORMULE</a>
+                    </div>
+                </div>
+            </div>
+    </section>
 {% endblock %}

@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Commercial
+ * ServiceCommercial
  *
- * @ORM\Table(name="commercial")
- * @ORM\Entity(repositoryClass="App\Repository\CommercialRepository")
+ * @ORM\Table(name="service_commercial")
+ * @ORM\Entity(repositoryClass="App\Repository\ServiceCommercialRepository")
  */
-class Commercial
+class ServiceCommercial
 {
     /**
      * @var int

@@ -5,28 +5,28 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Formules
+ * Article
  *
- * @ORM\Table(name="formules")
- * @ORM\Entity(repositoryClass="App\Repository\FormulesRepository")
+ * @ORM\Table(name="article")
+ * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
  */
-class Formules
+class Article
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="Id_formule", type="integer", nullable=false)
+     * @ORM\Column(name="Id_article", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idFormule;
+    private $idArticle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom_formule", type="string", length=100, nullable=false)
+     * @ORM\Column(name="Photo_article", type="string", length=100, nullable=false)
      */
-    private $nomFormule;
+    private $photoArticle;
 
     /**
      * @var string
@@ -35,19 +35,19 @@ class Formules
      */
     private $descriptionFormule;
 
-    public function getIdFormule(): ?int
+    public function getIdArticle(): ?int
     {
-        return $this->idFormule;
+        return $this->idArticle;
     }
 
-    public function getNomFormule(): ?string
+    public function getPhotoArticle(): ?string
     {
-        return $this->nomFormule;
+        return $this->photoArticle;
     }
 
-    public function setNomFormule(string $nomFormule): self
+    public function setPhotoArticle(string $photoArticle): self
     {
-        $this->nomFormule = $nomFormule;
+        $this->photoArticle = $photoArticle;
 
         return $this;
     }

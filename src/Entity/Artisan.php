@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Artisan
  *
- * @ORM\Table(name="artisan", indexes={@ORM\Index(name="artisan_formules_FK", columns={"Id_formule"})})
+ * @ORM\Table(name="artisan", indexes={@ORM\Index(name="artisan_service_commercial0_FK", columns={"Id_commercial"}), @ORM\Index(name="artisan_formules_FK", columns={"Id_formule"})})
  * @ORM\Entity(repositoryClass="App\Repository\ArtisanRepository")
  */
 class Artisan
@@ -26,7 +26,7 @@ class Artisan
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom", type="string", length=100, nullable=false)
+     * @ORM\Column(name="Nom", type="string", length=50, nullable=false)
      */
     private $nom;
 
@@ -40,7 +40,7 @@ class Artisan
     /**
      * @var string
      *
-     * @ORM\Column(name="Raison_sociale", type="string", length=150, nullable=false)
+     * @ORM\Column(name="Raison_sociale", type="string", length=50, nullable=false)
      */
     private $raisonSociale;
 
@@ -54,7 +54,7 @@ class Artisan
     /**
      * @var string
      *
-     * @ORM\Column(name="Tel", type="string", length=16, nullable=false)
+     * @ORM\Column(name="Tel", type="string", length=10, nullable=false)
      */
     private $tel;
 
@@ -68,14 +68,14 @@ class Artisan
     /**
      * @var string
      *
-     * @ORM\Column(name="Description", type="string", length=250, nullable=false)
+     * @ORM\Column(name="Description", type="string", length=300, nullable=false)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Motdepasse", type="string", length=150, nullable=false)
+     * @ORM\Column(name="Motdepasse", type="string", length=50, nullable=false)
      */
     private $motdepasse;
 
@@ -89,7 +89,7 @@ class Artisan
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Date_inscription", type="date", nullable=false)
+     * @ORM\Column(name="Date_inscription", type="datetime", nullable=false)
      */
     private $dateInscription;
 
@@ -101,39 +101,11 @@ class Artisan
     private $credit;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="Disponibilite", type="integer", nullable=false)
-     */
-    private $disponibilite;
-
-    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Date_debut_gratuite", type="datetime", nullable=false)
+     * @ORM\Column(name="Date_fin_gratuite", type="datetime", nullable=false)
      */
-    private $dateDebutGratuite;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="Temps_restant_gratuite", type="datetime", nullable=false)
-     */
-    private $tempsRestantGratuite;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="Date_debut_arret_reception", type="datetime", nullable=false)
-     */
-    private $dateDebutArretReception;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="Date_fin_arret_reception", type="datetime", nullable=false)
-     */
-    private $dateFinArretReception;
+    private $dateFinGratuite;
 
     /**
      * @var \DateTime
@@ -141,13 +113,6 @@ class Artisan
      * @ORM\Column(name="Date_fin_engagement", type="datetime", nullable=false)
      */
     private $dateFinEngagement;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="Avantage", type="integer", nullable=false)
-     */
-    private $avantage;
 
     /**
      * @var bool
@@ -159,16 +124,16 @@ class Artisan
     /**
      * @var bool
      *
-     * @ORM\Column(name="Validation_assurance", type="boolean", nullable=false)
+     * @ORM\Column(name="Validation_artisan", type="boolean", nullable=false)
      */
-    private $validationAssurance;
+    private $validationArtisan;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="Validation_artisan", type="boolean", nullable=false)
+     * @ORM\Column(name="Validation_assurance", type="boolean", nullable=false)
      */
-    private $validationArtisan;
+    private $validationAssurance;
 
     /**
      * @var float
@@ -185,6 +150,27 @@ class Artisan
     private $coordonneeLatitude;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="Avantage_artisan", type="integer", nullable=false)
+     */
+    private $avantageArtisan;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date_debut_arret_reception", type="datetime", nullable=false)
+     */
+    private $dateDebutArretReception;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date_fin_arret_reception", type="datetime", nullable=false)
+     */
+    private $dateFinArretReception;
+
+    /**
      * @var \Formules
      *
      * @ORM\ManyToOne(targetEntity="Formules")
@@ -195,10 +181,42 @@ class Artisan
     private $idFormule;
 
     /**
+     * @var \ServiceCommercial
+     *
+     * @ORM\ManyToOne(targetEntity="ServiceCommercial")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_commercial", referencedColumnName="Id_commercial")
+     * })
+     */
+    private $idCommercial;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Client", mappedBy="idArtisan")
+     */
+    private $idClient;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Jour", inversedBy="idArtisan")
+     * @ORM\JoinTable(name="etre_dispo",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="Id_artisan", referencedColumnName="Id_artisan")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="Id_horaire", referencedColumnName="Id_horaire")
+     *   }
+     * )
+     */
+    private $idHoraire;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Service", inversedBy="idArtisan")
-     * @ORM\JoinTable(name="appartient",
+     * @ORM\JoinTable(name="proposer",
      *   joinColumns={
      *     @ORM\JoinColumn(name="Id_artisan", referencedColumnName="Id_artisan")
      *   },
@@ -210,19 +228,13 @@ class Artisan
     private $idService;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Client", mappedBy="idArtisan")
-     */
-    private $idClient;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->idService = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idClient = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idHoraire = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idService = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getIdArtisan(): ?int
@@ -362,62 +374,14 @@ class Artisan
         return $this;
     }
 
-    public function getDisponibilite(): ?int
+    public function getDateFinGratuite(): ?\DateTimeInterface
     {
-        return $this->disponibilite;
+        return $this->dateFinGratuite;
     }
 
-    public function setDisponibilite(int $disponibilite): self
+    public function setDateFinGratuite(\DateTimeInterface $dateFinGratuite): self
     {
-        $this->disponibilite = $disponibilite;
-
-        return $this;
-    }
-
-    public function getDateDebutGratuite(): ?\DateTimeInterface
-    {
-        return $this->dateDebutGratuite;
-    }
-
-    public function setDateDebutGratuite(\DateTimeInterface $dateDebutGratuite): self
-    {
-        $this->dateDebutGratuite = $dateDebutGratuite;
-
-        return $this;
-    }
-
-    public function getTempsRestantGratuite(): ?\DateTimeInterface
-    {
-        return $this->tempsRestantGratuite;
-    }
-
-    public function setTempsRestantGratuite(\DateTimeInterface $tempsRestantGratuite): self
-    {
-        $this->tempsRestantGratuite = $tempsRestantGratuite;
-
-        return $this;
-    }
-
-    public function getDateDebutArretReception(): ?\DateTimeInterface
-    {
-        return $this->dateDebutArretReception;
-    }
-
-    public function setDateDebutArretReception(\DateTimeInterface $dateDebutArretReception): self
-    {
-        $this->dateDebutArretReception = $dateDebutArretReception;
-
-        return $this;
-    }
-
-    public function getDateFinArretReception(): ?\DateTimeInterface
-    {
-        return $this->dateFinArretReception;
-    }
-
-    public function setDateFinArretReception(\DateTimeInterface $dateFinArretReception): self
-    {
-        $this->dateFinArretReception = $dateFinArretReception;
+        $this->dateFinGratuite = $dateFinGratuite;
 
         return $this;
     }
@@ -434,18 +398,6 @@ class Artisan
         return $this;
     }
 
-    public function getAvantage(): ?int
-    {
-        return $this->avantage;
-    }
-
-    public function setAvantage(int $avantage): self
-    {
-        $this->avantage = $avantage;
-
-        return $this;
-    }
-
     public function getReinitialisationMdpArtisan(): ?bool
     {
         return $this->reinitialisationMdpArtisan;
@@ -458,18 +410,6 @@ class Artisan
         return $this;
     }
 
-    public function getValidationAssurance(): ?bool
-    {
-        return $this->validationAssurance;
-    }
-
-    public function setValidationAssurance(bool $validationAssurance): self
-    {
-        $this->validationAssurance = $validationAssurance;
-
-        return $this;
-    }
-
     public function getValidationArtisan(): ?bool
     {
         return $this->validationArtisan;
@@ -478,6 +418,18 @@ class Artisan
     public function setValidationArtisan(bool $validationArtisan): self
     {
         $this->validationArtisan = $validationArtisan;
+
+        return $this;
+    }
+
+    public function getValidationAssurance(): ?bool
+    {
+        return $this->validationAssurance;
+    }
+
+    public function setValidationAssurance(bool $validationAssurance): self
+    {
+        $this->validationAssurance = $validationAssurance;
 
         return $this;
     }
@@ -506,6 +458,42 @@ class Artisan
         return $this;
     }
 
+    public function getAvantageArtisan(): ?int
+    {
+        return $this->avantageArtisan;
+    }
+
+    public function setAvantageArtisan(int $avantageArtisan): self
+    {
+        $this->avantageArtisan = $avantageArtisan;
+
+        return $this;
+    }
+
+    public function getDateDebutArretReception(): ?\DateTimeInterface
+    {
+        return $this->dateDebutArretReception;
+    }
+
+    public function setDateDebutArretReception(\DateTimeInterface $dateDebutArretReception): self
+    {
+        $this->dateDebutArretReception = $dateDebutArretReception;
+
+        return $this;
+    }
+
+    public function getDateFinArretReception(): ?\DateTimeInterface
+    {
+        return $this->dateFinArretReception;
+    }
+
+    public function setDateFinArretReception(\DateTimeInterface $dateFinArretReception): self
+    {
+        $this->dateFinArretReception = $dateFinArretReception;
+
+        return $this;
+    }
+
     public function getIdFormule(): ?Formules
     {
         return $this->idFormule;
@@ -518,28 +506,14 @@ class Artisan
         return $this;
     }
 
-    /**
-     * @return Collection|Service[]
-     */
-    public function getIdService(): Collection
+    public function getIdCommercial(): ?ServiceCommercial
     {
-        return $this->idService;
+        return $this->idCommercial;
     }
 
-    public function addIdService(Service $idService): self
+    public function setIdCommercial(?ServiceCommercial $idCommercial): self
     {
-        if (!$this->idService->contains($idService)) {
-            $this->idService[] = $idService;
-        }
-
-        return $this;
-    }
-
-    public function removeIdService(Service $idService): self
-    {
-        if ($this->idService->contains($idService)) {
-            $this->idService->removeElement($idService);
-        }
+        $this->idCommercial = $idCommercial;
 
         return $this;
     }
@@ -567,6 +541,58 @@ class Artisan
         if ($this->idClient->contains($idClient)) {
             $this->idClient->removeElement($idClient);
             $idClient->removeIdArtisan($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Jour[]
+     */
+    public function getIdHoraire(): Collection
+    {
+        return $this->idHoraire;
+    }
+
+    public function addIdHoraire(Jour $idHoraire): self
+    {
+        if (!$this->idHoraire->contains($idHoraire)) {
+            $this->idHoraire[] = $idHoraire;
+        }
+
+        return $this;
+    }
+
+    public function removeIdHoraire(Jour $idHoraire): self
+    {
+        if ($this->idHoraire->contains($idHoraire)) {
+            $this->idHoraire->removeElement($idHoraire);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Service[]
+     */
+    public function getIdService(): Collection
+    {
+        return $this->idService;
+    }
+
+    public function addIdService(Service $idService): self
+    {
+        if (!$this->idService->contains($idService)) {
+            $this->idService[] = $idService;
+        }
+
+        return $this;
+    }
+
+    public function removeIdService(Service $idService): self
+    {
+        if ($this->idService->contains($idService)) {
+            $this->idService->removeElement($idService);
         }
 
         return $this;
