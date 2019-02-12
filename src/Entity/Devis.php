@@ -43,6 +43,27 @@ class Devis
     private $fichierJoint;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="Validation_devis", type="boolean", nullable=false)
+     */
+    private $validationDevis;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="Avantage_devis", type="integer", nullable=false)
+     */
+    private $avantageDevis;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="Refus_devis", type="boolean", nullable=false)
+     */
+    private $refusDevis;
+
+    /**
      * @var \Artisan
      *
      * @ORM\ManyToOne(targetEntity="Artisan")
@@ -99,6 +120,42 @@ class Devis
     public function setFichierJoint(string $fichierJoint): self
     {
         $this->fichierJoint = $fichierJoint;
+
+        return $this;
+    }
+
+    public function getValidationDevis(): ?bool
+    {
+        return $this->validationDevis;
+    }
+
+    public function setValidationDevis(bool $validationDevis): self
+    {
+        $this->validationDevis = $validationDevis;
+
+        return $this;
+    }
+
+    public function getAvantageDevis(): ?int
+    {
+        return $this->avantageDevis;
+    }
+
+    public function setAvantageDevis(int $avantageDevis): self
+    {
+        $this->avantageDevis = $avantageDevis;
+
+        return $this;
+    }
+
+    public function getRefusDevis(): ?bool
+    {
+        return $this->refusDevis;
+    }
+
+    public function setRefusDevis(bool $refusDevis): self
+    {
+        $this->refusDevis = $refusDevis;
 
         return $this;
     }
