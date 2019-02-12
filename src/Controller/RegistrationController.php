@@ -22,31 +22,23 @@ class RegistrationController extends AbstractController
 {
     /**
      * @Route("/register", name="app_register")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return Response
      * @throws \Exception
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $artisan = new Artisan();
-        //$artisan->setPrenom("Prenom");
-        //$artisan->setNom("Nom");
-        //$artisan->setRaisonSociale("RaisonSociale");
-        //$artisan->setSiren("SIREN");
-        //$artisan->setTel("Telephone");
-        //$artisan->setDescription("Description");
-        //$artisan->setNumAssurance("NumAssurance");
-        //$artisan->setMail("Mail@mail.com");
         $artisan->setDateInscription(new \DateTime('now'));
         $artisan->setCredit("0");
-        $artisan->setDisponibilite("22");
         $artisan->setDateDebutArretReception(new \DateTime('now'));
         $artisan->setDateFinArretReception(new \DateTime('now'));
         $artisan->setDateFinEngagement(new \DateTime('now'));
-        $artisan->setAvantage("2");
+        $artisan->setAvantageArtisan("2");
         $artisan->setReinitialisationMdpArtisan("2");
         $artisan->setValidationAssurance("2");
         $artisan->setValidationArtisan("2");
-        $artisan->setDateDebutGratuite(new \DateTime());
-        $artisan->setTempsRestantGratuite(new \DateTime());
         $artisan->setDateDebutArretReception(new \DateTime());
         $artisan->setDateFinArretReception(new \DateTime());
         $artisan->setDateFinEngagement(new \DateTime());
