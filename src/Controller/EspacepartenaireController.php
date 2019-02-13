@@ -15,9 +15,9 @@ class EspacePartenaireController extends AbstractController
      * @param ArtisanRepository $repo
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(Artisan $idArtisan, ArtisanRepository $repo)
+    public function index($id)
     {
-        $artisan = $repo->find($idArtisan);
+        $artisan = $this->getDoctrine()->getRepository(Artisan::class)->find($id);
         return $this->render('espacepartenaire/index.html.twig', [
             'controller_name' => 'EspacepartenaireController',
             'artisan' => $artisan

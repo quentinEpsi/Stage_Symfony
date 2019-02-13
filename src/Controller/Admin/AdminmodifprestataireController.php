@@ -20,9 +20,9 @@ class AdminmodifprestataireController extends AbstractController
      * @param Artisan $idArtisan
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(ArtisanRepository $repo, Artisan $idArtisan)
+    public function index(ArtisanRepository $repo, $id)
     {
-        $artisans = $repo->find($idArtisan);
+        $artisans = $repo->find($id);
         return $this->render('admin/adminmodifprestataire/index.html.twig', [
             'controller_name' => 'AdminmodifprestataireController',
             'artisans' => $artisans
@@ -36,9 +36,9 @@ class AdminmodifprestataireController extends AbstractController
      * @param Artisan $idArtisan
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function edit(Request $request, Artisan $idArtisan){
+    public function edit(Request $request, $id){
         $editartisan = new Artisan();
-        $editartisan = $this->getDoctrine()->getRepository(Artisan::class)->find($idArtisan);
+        $editartisan = $this->getDoctrine()->getRepository(Artisan::class)->find($id);
 
         $form = $this->createFormBuilder($editartisan)
             ->add('nom', TextType::class)
@@ -65,7 +65,7 @@ class AdminmodifprestataireController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
 
-            return $this->redirectToRoute('adminprestatairedetail', array('id'=> $idArtisan->getIdArtisan()));
+            return $this->redirectToRoute('adminprestatairedetail', array('id'=> $id));
         }
 
         return $this->render('admin/adminmodifprestataire/index.html.twig', array(

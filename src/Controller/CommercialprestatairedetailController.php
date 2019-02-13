@@ -11,13 +11,12 @@ class CommercialprestatairedetailController extends AbstractController
 {
     /**
      * @Route("/commercial/commercialprestatairedetail/{id}", name="commercialprestatairedetail")
-     * @param ArtisanRepository $repo
      * @param Artisan $idArtisan
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(ArtisanRepository $repo, Artisan $idArtisan)
+    public function index($id)
     {
-        $artisans = $repo->find($idArtisan);
+        $artisans = $this->getDoctrine()->getRepository(Artisan::class)->find($id);
         return $this->render('commercial/commercialprestatairedetail/index.html.twig', [
             'controller_name' => 'CommercialprestatairedetailController',
             'artisans' => $artisans
