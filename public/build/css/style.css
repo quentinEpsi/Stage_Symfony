@@ -5596,13 +5596,13 @@ table, th, td {
 /* MODIF VINCENT ---------------------------------------------------------------------- */
 
 /* tableau de bord admin */
+
 /* ID */
 #TdbAdmin{
   text-align: center;
   margin-top: 3%;
 
 }
-
 
 #ServiceTitle{
   padding-bottom: 2%;
@@ -5631,6 +5631,7 @@ table, th, td {
   padding-bottom: 2%;
   text-decoration: underline;
 }
+
 #Article2{
   margin-top: 3%;
   margin-bottom: 3%;
@@ -5638,29 +5639,15 @@ table, th, td {
 
 /* CLASS */
 
-.flex-container{
-  margin-top: 3%;
-  display: flex;
-  justify-content:space-evenly;
-}
-
-.service{
-  margin-top: 2%;
-}
-.article{
-  margin-top: 15%;
-}
-
-
-/* CLASS */
 
 .flex-container{
   margin-top: 3%;
-  margin-left: 15%;
   display: flex;
+  justify-content: space-evenly;
 }
 .service{
   padding:5%;
-  display: flex;
-  flex-direction: column;
+}
+.article{
+  padding:5%;
 }
