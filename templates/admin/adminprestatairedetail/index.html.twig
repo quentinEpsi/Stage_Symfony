@@ -3,6 +3,7 @@
 {% block title %}Tableau prestataires administrateur{% endblock %}
 
 {% block body %}
+    {% include 'navbar.html.twig' %}
     <div class="badge-center" style="margin: 0 auto; width: 600px; padding-top: 50px;">
         <h3>Fiche détaillée de l'artisan {{ artisans.nom }} {{ artisans.prenom }}</h3><br><br>
         <div class="badge-modif" style="font-size: 18px!important">

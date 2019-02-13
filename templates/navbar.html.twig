@@ -26,8 +26,8 @@
                     </li>
                     {%   set pathContact = path('contact') %}
                     {% if currentPath == path('home') %}
-                        <h1></h1>
-                    {% endif %}
+
+
                     <li>
                         <a href="/#apropos">À propos</a>
                     </li>
@@ -42,12 +42,11 @@
                     <li>
                         <a href="/#equipe">Notre Équipe</a>
                     </li>
-                    <li>
-                        <a href={{ path('tdbadmin') }}>Admin</a>
-                    </li>
+
                     <li>
                         <a href={{ path('contact') }}>Contact</a>
                     </li>
+                    {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
