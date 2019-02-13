@@ -11,6 +11,7 @@ use App\Entity\Formules;
 use App\Entity\Service;
 use App\Entity\Parametre;
 use App\Entity\Article;
+use App\Entity\Jour;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -184,5 +185,21 @@ Autres');
             $manager->persist($devis);
         }
         $manager->flush();
+		
+		$jour_de_la_semaine = array('Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche');
+		$type_horaires = array('Matin','Après-midi','Soir');
+		for ($i = 0; $i<7; $i++)
+        {
+			for($j=0;$j<3;$j++)
+			{
+				$jour = new Jour();
+				$jour->setNomJour($jour_de_la_semaine[$i]);
+				$jour->setNomTypeHoraire($type_horaires[$j]);
+				$manager->persist($jour);
+			}
+        }
+        $manager->flush();
+		
+		
     }
 }

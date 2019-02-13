@@ -17,14 +17,14 @@
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
                     ['Task', 'Hours per Day'],
-                    ['Work', 1],
+                    ['Work', 2],
                     ['Eat', 1],
                     ['TV', 1],
                     ['Gym', 1],
                     ['Sleep', 1]
                 ]);
                 // Changement de la taille et le titre du graphe
-                var options = {'title': 'Consommation moyenne', 'width': 550, 'height': 400};
+                var options = {'title': 'Artisan par secteur', 'width': 550, 'height': 400};
                 var chart = new google.visualization.PieChart(document.getElementById('GraphAdmin1'));
                 chart.draw(data, options);
             }
@@ -51,13 +51,16 @@
                     ['Sleep', 0]
                 ]);
                 // Changement de la taille et le titre du graphe
-                var options = {'title': 'Consommation moyenne', 'width': 550, 'height': 400};
+                var options = {'title': 'Demande par secteur', 'width': 550, 'height': 400};
                 var chart = new google.visualization.PieChart(document.getElementById('GraphAdmin2'));
                 chart.draw(data, options);
             }
         </script>
     </div>
 </div>
+
+<button ><a href="{{path('adminprestataire')}}">Voir les artisans</a></button>
+<button ><a href="{{path('admindemandes')}}">Voir les demande</a></button>
 <div class="flex-container">
     <div id="BarreHorizontale"></div>
 </div>

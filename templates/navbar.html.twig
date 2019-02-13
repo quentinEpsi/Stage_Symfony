@@ -21,32 +21,34 @@
         <div class="col-md-12 p0">
             <div class="collapse navbar-collapse" id="min_navbar">
                 <ul class="nav navbar-nav navbar-left">
-                    <li>
-                        <a href="index.php" class="logo"><strong>SR2F</strong></a>
-                    </li>
-                    {%   set pathContact = path('contact') %}
-                    {% if currentPath == path('home') %}
-
-
-                    <li>
-                        <a href="/#apropos">À propos</a>
-                    </li>
-
-                    <li>
-                        <a href="/#services">Services</a>
-                    </li>
-
-                    <li>
-                        <a href="/#garanties">Garanties</a>
-                    </li>
-                    <li>
-                        <a href="/#equipe">Notre Équipe</a>
-                    </li>
-
-                    <li>
-                        <a href={{ path('contact') }}>Contact</a>
-                    </li>
-                    {% endif %}
+                    <li><a href="/" class="logo"><strong>SR2F</strong></a></li>
+					
+					{% if currentPath == path('home') %}
+						<li><a href="/#apropos">À propos</a></li>
+					{% endif %}
+					
+					{% if currentPath == path('home') %}
+						<li><a href="/#services">Services</a></li>
+					{% endif %}
+					{% if currentPath == path('home') %}
+						<li><a href="/#garanties">Garanties</a></li>
+					{% endif %}
+					
+					{% if currentPath == path('home') %}
+						<li><a href="/#equipe">Notre Équipe</a></li>
+					{% endif %}
+					
+					{% if currentPath == (path('home')or path('contact')) %}
+						<li><a href="{{ path('demande_prestation')}}">Faire une demande de prestation</a></li>
+					{% endif %}
+					
+					{% if currentPath == (path('home') or path('contact')) %}
+						<li><a href="}">Suivre ma demande de prestation</a></li>
+					{% endif %}
+					
+					
+					
+                    <li><a href={{ path('contact') }}>Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
