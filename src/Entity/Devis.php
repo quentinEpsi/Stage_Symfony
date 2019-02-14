@@ -64,6 +64,13 @@ class Devis
     private $refusDevis;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="visualise_devis", type="boolean", nullable=false)
+     */
+    private $visualiseDevis;
+
+    /**
      * @var \Artisan
      *
      * @ORM\ManyToOne(targetEntity="Artisan")
@@ -156,6 +163,18 @@ class Devis
     public function setRefusDevis(bool $refusDevis): self
     {
         $this->refusDevis = $refusDevis;
+
+        return $this;
+    }
+
+    public function getVisualiseDevis(): ?bool
+    {
+        return $this->visualiseDevis;
+    }
+
+    public function setVisualiseDevis(bool $visualiseDevis): self
+    {
+        $this->visualiseDevis = $visualiseDevis;
 
         return $this;
     }

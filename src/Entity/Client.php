@@ -9,8 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Client
  *
- * @ORM\Table(name="client", indexes={@ORM\Index(name="client_service_FK", columns={"Id_service"})})
- * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
+ * @ORM\Table(name="client", indexes={@ORM\Index(name="client_etat_avancement0_FK", columns={"Id_etat_avancement"}), @ORM\Index(name="client_service_FK", columns={"Id_service"})})
+ * @ORM\Entity
  */
 class Client
 {
@@ -108,13 +108,6 @@ class Client
     private $dateRealisation;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="Etat_avancement", type="string", length=250, nullable=false)
-     */
-    private $etatAvancement;
-
-    /**
      * @var float
      *
      * @ORM\Column(name="Coordonnee_longitude_client", type="float", precision=10, scale=0, nullable=false)
@@ -127,6 +120,16 @@ class Client
      * @ORM\Column(name="Coordonnee_latitude_client", type="float", precision=10, scale=0, nullable=false)
      */
     private $coordonneeLatitudeClient;
+
+    /**
+     * @var \EtatAvancement
+     *
+     * @ORM\ManyToOne(targetEntity="EtatAvancement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_etat_avancement", referencedColumnName="Id_etat_avancement")
+     * })
+     */
+    private $idEtatAvancement;
 
     /**
      * @var \Service
@@ -310,18 +313,6 @@ class Client
         return $this;
     }
 
-    public function getEtatAvancement(): ?string
-    {
-        return $this->etatAvancement;
-    }
-
-    public function setEtatAvancement(string $etatAvancement): self
-    {
-        $this->etatAvancement = $etatAvancement;
-
-        return $this;
-    }
-
     public function getCoordonneeLongitudeClient(): ?float
     {
         return $this->coordonneeLongitudeClient;
@@ -342,6 +333,18 @@ class Client
     public function setCoordonneeLatitudeClient(float $coordonneeLatitudeClient): self
     {
         $this->coordonneeLatitudeClient = $coordonneeLatitudeClient;
+
+        return $this;
+    }
+
+    public function getIdEtatAvancement(): ?EtatAvancement
+    {
+        return $this->idEtatAvancement;
+    }
+
+    public function setIdEtatAvancement(?EtatAvancement $idEtatAvancement): self
+    {
+        $this->idEtatAvancement = $idEtatAvancement;
 
         return $this;
     }

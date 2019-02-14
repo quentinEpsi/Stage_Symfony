@@ -37,21 +37,6 @@ class Jour
      */
     private $nomTypeHoraire;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Artisan", mappedBy="idHoraire")
-     */
-    private $idArtisan;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->idArtisan = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
     public function getIdHoraire(): ?int
     {
         return $this->idHoraire;
@@ -81,32 +66,5 @@ class Jour
         return $this;
     }
 
-    /**
-     * @return Collection|Artisan[]
-     */
-    public function getIdArtisan(): Collection
-    {
-        return $this->idArtisan;
-    }
-
-    public function addIdArtisan(Artisan $idArtisan): self
-    {
-        if (!$this->idArtisan->contains($idArtisan)) {
-            $this->idArtisan[] = $idArtisan;
-            $idArtisan->addIdHoraire($this);
-        }
-
-        return $this;
-    }
-
-    public function removeIdArtisan(Artisan $idArtisan): self
-    {
-        if ($this->idArtisan->contains($idArtisan)) {
-            $this->idArtisan->removeElement($idArtisan);
-            $idArtisan->removeIdHoraire($this);
-        }
-
-        return $this;
-    }
 
 }

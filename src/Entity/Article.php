@@ -31,7 +31,7 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="Description_formule", type="string", length=100, nullable=false)
+     * @ORM\Column(name="Description_formule", type="string", length=200, nullable=false)
      */
     private $descriptionFormule;
 

@@ -117,20 +117,6 @@ class Artisan
     /**
      * @var bool
      *
-     * @ORM\Column(name="Reinitialisation_mdp_artisan", type="boolean", nullable=false)
-     */
-    private $reinitialisationMdpArtisan;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="Validation_artisan", type="boolean", nullable=false)
-     */
-    private $validationArtisan;
-
-    /**
-     * @var bool
-     *
      * @ORM\Column(name="Validation_assurance", type="boolean", nullable=false)
      */
     private $validationAssurance;

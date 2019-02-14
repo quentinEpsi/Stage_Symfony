@@ -12,6 +12,7 @@ use App\Entity\Service;
 use App\Entity\Parametre;
 use App\Entity\Article;
 use App\Entity\Jour;
+use App\Entity\EtatAvancement;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -70,6 +71,20 @@ Autres');
         $manager->persist($formule3);
         $manager->flush();
 
+		//// ETAT AVANCEMENT //////////////////////////////////////
+		$etat = new EtatAvancement();
+		$etat->setNomEtatAvancement('en attende de validation');
+		$manager->persist($etat);
+		
+		$etat1 = new EtatAvancement();
+		$etat1->setNomEtatAvancement('validé, en attente de prestation');
+		$manager->persist($etat1);
+		
+		$etat2 = new EtatAvancement();
+		$etat2->setNomEtatAvancement('expiré');
+		$manager->persist($etat2);
+		$manager->flush();
+		
         //// DEFINITION DES PARAMETRES ////////////////////////////////////////////
         $parametre = new Parametre();
         $parametre->setPeriodeGratuite('2');
@@ -108,7 +123,6 @@ Autres');
             $artisan->setDateFinArretReception(new \DateTime());
             $artisan->setDateFinEngagement(new \DateTime());
             $artisan->setAvantageArtisan(3 + $i);
-            $artisan->setReinitialisationMdpArtisan('ChangeMdp' . $i);
             $artisan->setValidationArtisan('validationArtisan' . $i);
             $artisan->setValidationAssurance('validationAssurance' . $i);
             $artisan->setCoordonneeLatitude(46.54 + $i*10**(-1));
@@ -122,7 +136,7 @@ Autres');
         $manager->flush();
 
         $artisans = $manager->getRepository(Artisan::class)->findAll();
-
+		$etat_avancements = $manager->getRepository(EtatAvancement::class)->findAll();
         for ($i = 0; $i<10; $i++)
         {
             $demande = new Client();
@@ -138,7 +152,7 @@ Autres');
             $demande->setAdresseComplementaireClient('AdresseComplementaire' . $i);
             $demande->setDateProposition(new \DateTime());
             $demande->setDateRealisation(new \DateTime());
-            $demande->setEtatAvancement('EtatAvancement' . $i);
+            $demande->setIdEtatAvancement($etat_avancements{0});
             $demande->setCoordonneeLongitudeClient(44.56+$i);
             $demande->setCoordonneeLatitudeClient(44.56+$i);
             $demande->setIdService($services[0]);
@@ -180,6 +194,7 @@ Autres');
             $devis->setValidationDevis(0);
             $devis->setRefusDevis(0);
             $devis->setAvantageDevis(1);
+            $devis->setVisualiseDevis(false);
             $devis->setIdArtisan($artisans[$i]);
             $devis->setIdClient($clients[$i]);
             $manager->persist($devis);
