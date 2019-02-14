@@ -13,7 +13,6 @@
                     <th scope="row">Prénom</th>
                     <th scope="row">Date de proposition</th>
                     <th scope="row">Date de réalisation</th>
-                    <th scope="row">État d'avancement</th>
                 </tr>
                 </thead>
                 {% for client in clients %}
@@ -22,7 +21,6 @@
                         <td>{{ client.prenomClient }}</td>
                         <td>{{ client.dateProposition|date('d/m/Y') }}</td>
                         <td>{{ client.dateRealisation|date('d/m/Y') }}</td>
-                        <td>{{ client.etatAvancement }}</td>
                         <th scope="row"> <a href="{{ path('commercialdemandesdetail', {id: client.idClient}) }}" class="btn btn-primary">Fiche détaillée </a></th>
                     </tr>
                 {% endfor %}
