@@ -1,6 +1,6 @@
-
+{%extends "base.html.twig"%}
 {% block body %}
-
+{% include 'navbar.html.twig' %}
 <div id="TdbAdmin"><h1>Tableau de bord Administrateur</h1></div>
 
 <div class="flex-container">
@@ -63,52 +63,13 @@
 </div>
 <div class="service">
     <h3 id="ServiceTitle">Services</h3>
-    <form class="form-inline">
-        <div class="form-group mx-sm-3 mb-2">
-            <div>
-                <input type="text" value="{{ service.Nomservice }}" class="form-control" placeholder="Service 1">
-                <button type="submit" class="btn btn-primary mb-2">Modifier</button>
-                <button type="submit" class="btn btn-primary mb-2">Supprimer</button>
-            </div>
-            <div>
-                <input type="text" id="Service2" class="form-control" placeholder="Service 2">
-                <button type="submit" class="btn btn-primary mb-2">Modifier</button>
-                <button type="submit" class="btn btn-primary mb-2">Supprimer</button>
-            </div>
-            <div>
-                <input type="text" class="form-control" placeholder="Service 3">
-                <button type="submit" class="btn btn-primary mb-2">Modifier</button>
-                <button type="submit" class="btn btn-primary mb-2">Supprimer</button>
-            </div>
-        </div>
-    </form>
+
+    <ul >
+        {% for service in services %}
+            <li class="list-group-item">{{ service.nomService }} </li>
+        {% endfor %}
+    </ul>
+
 </div>
 
-<div class="article">
-    <h3 id="ArticleTitle">Articles</h3>
-    <form class="form-inline">
-        <div class="form-group mx-sm-3 mb-2">
-            <div>
-                <input type="text" class="form-control" placeholder="Article 1">
-                <button type="submit" class="btn btn-primary mb-2">Modifier</button>
-                <button type="submit" class="btn btn-primary mb-2">Supprimer</button>
-            </div>
-            <div>
-                <input type="text" id="Article2" class="form-control" placeholder="Article 2">
-                <button type="submit" class="btn btn-primary mb-2">Modifier</button>
-                <button type="submit" class="btn btn-primary mb-2">Supprimer</button>
-            </div>
-            <div>
-                <input type="text" class="form-control" placeholder="Article 3">
-                <button type="submit" class="btn btn-primary mb-2">Modifier</button>
-                <button type="submit" class="btn btn-primary mb-2">Supprimer</button>
-            </div>
-        </div>
-    </form>
-</div>
-
-    {#{% for id in {{GetServicesCount()}}%}
-<input type="text" class="form-control" placeholder="Article{{ service.id_service }}">
-<button type="submit" class="btn btn-primary mb-2">Modifier</button>
-<button type="submit" class="btn btn-primary mb-2">Supprimer</button>#}
 {% endblock %}

@@ -23,4 +23,6 @@ class CommercialprestatairedetailController extends AbstractController
             'artisans' => $artisans
         ]);
     }
+
+
 }
