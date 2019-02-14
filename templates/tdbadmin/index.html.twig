@@ -24,14 +24,18 @@
                     ['Sleep', 1]
                 ]);
                 // Changement de la taille et le titre du graphe
-                var options = {'title': 'Artisan par secteur', 'width': 550, 'height': 400};
+                var options = {'title': 'Artisans par secteur', 'width': 550, 'height': 400};
                 var chart = new google.visualization.PieChart(document.getElementById('GraphAdmin1'));
                 chart.draw(data, options);
             }
         </script>
     </div>
 
+    <!-- A FAIRE POUR QUELQU'UN : AJOUTER LE NOMBRE D'ARTISAN INSCRITS -->
+
     <div id="BarreVerticale"></div>
+
+    <!-- A FAIRE POUR QUELQU'UN : AJOUTER LE NOMBRE DE DEMANDES DE PRESTATION -->
 
     <div id="GraphAdmin2" style="display: inline-block;">
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -51,7 +55,7 @@
                     ['Sleep', 0]
                 ]);
                 // Changement de la taille et le titre du graphe
-                var options = {'title': 'Demande par secteur', 'width': 550, 'height': 400};
+                var options = {'title': 'Demandes par secteur', 'width': 550, 'height': 400};
                 var chart = new google.visualization.PieChart(document.getElementById('GraphAdmin2'));
                 chart.draw(data, options);
             }
@@ -59,20 +63,28 @@
     </div>
 </div>
 
+    <!-- A FAIRE POUR VINCENT : BOUTONS A CENTRER ET METTRE DES VRAIES VALEURS SUR LE GRAPHIQUE -->
 <button ><a href="{{path('adminprestataire')}}">Voir les artisans</a></button>
-<button ><a href="{{path('admindemandes')}}">Voir les demande</a></button>
+<button ><a href="{{path('admindemandes')}}">Voir les demandes</a></button>
 <div class="flex-container">
     <div id="BarreHorizontale"></div>
 </div>
 <div class="service">
     <h3 id="ServiceTitle">Services</h3>
-
+    <!-- A FAIRE POUR VINCENT : FAIRE MARCHER LES BOUTONS MODIFIER/AJOUTER -->
     <ul >
         {% for service in services %}
-            <li class="list-group-item">{{ service.nomService }} </li>
+            <li class="list-group-item">{{ service.nomService }} <button ><a href="">Modifier le service</a></button></li>
         {% endfor %}
     </ul>
+    <input type="text" name="addservice">
+    <button><a href="">Ajouter un service</a></button>
 
 </div>
+
+    <!-- A FAIRE POUR VINCENT : FAIRE UN FORMULAIRE POUR MODIFIER LES VALEURS DE LA TABLE PARAMETRES
+
+     DEMANDE A CLEMENT SI T'AS DES QUESTIONS -->
+
 
 {% endblock %}

@@ -11,16 +11,24 @@
                 <tr style="text-align: center">
                     <th scope="row">Nom</th>
                     <th scope="row">Prénom</th>
+                    <th scope="row">Téléphone</th>
+                    <th scope="row">Mail</th>
+                    <th scope="row">Service</th>
                     <th scope="row">Date de proposition</th>
                     <th scope="row">Date de réalisation</th>
+                    <th scope="row">État d'avancement</th>
                 </tr>
                 </thead>
                 {% for client in clients %}
                     <tr>
                         <td>{{ client.nomClient }}</td>
                         <td>{{ client.prenomClient }}</td>
+                        <td>{{ client.telClient }}</td>
+                        <td>{{ client.mailClient }}</td>
+                        <td>{{ client.idService.nomService }}</td>
                         <td>{{ client.dateProposition|date('d/m/Y') }}</td>
                         <td>{{ client.dateRealisation|date('d/m/Y') }}</td>
+                        <td>{{ client.idEtatAvancement.nomEtatAvancement }}</td>
                         <th scope="row"> <a href="{{ path('commercialdemandesdetail', {id: client.idClient}) }}" class="btn btn-primary">Fiche détaillée </a></th>
                     </tr>
                 {% endfor %}

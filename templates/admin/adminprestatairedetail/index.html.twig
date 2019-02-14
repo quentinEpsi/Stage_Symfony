@@ -18,8 +18,8 @@
                             {% endif %}
                                 {% set lastService = infoService|last %}
                                 {% set lastElement = infoService|slice(0,-1) %}
-                            <li class="list-group-item">Nom Artisan : {{ infoArtisan.nom }}</li>
-                            <li class="list-group-item">Prénom Artisan : {{ infoArtisan.prenom }}</li>
+                            <li class="list-group-item">Nom : {{ infoArtisan.nom }}</li>
+                            <li class="list-group-item">Prénom : {{ infoArtisan.prenom }}</li>
                             <li class="list-group-item">Service(s) :<br>
                                 {% for service in lastElement %}
                                     - {{ service.nomService }} <br>
@@ -27,14 +27,26 @@
                                 -  {{ lastService.nomService }}</li>
                             <li class="list-group-item">SIREN : {{ infoArtisan.siren }}</li>
                             <li class="list-group-item">Téléphone : {{ infoArtisan.tel}}</li>
-                            <li class="list-group-item">Mail Artisan : {{ infoArtisan.mail }}</li>
+                            <li class="list-group-item">Mail : {{ infoArtisan.mail }}</li>
                             <li class="list-group-item">Description : {{ infoArtisan.description }}</li>
                             <li class="list-group-item">Numéro d'assurance : {{ infoArtisan.numAssurance  }}</li>
                             <li class="list-group-item">Date d'inscription : {{ infoArtisan.dateInscription|date('d/m/Y') }}</li>
                             <li class="list-group-item">Formule : {{ infoArtisan.idFormule.nomFormule }}</li>
                             <li class="list-group-item">Crédits : {{ infoArtisan.credit }}</li>
+                            <!-- A FAIRE POUR CLEMENT ET ALEXANDRE : RAJOUTER L'ADRESSE DE L'ARTISAN DANS LA BDD +
+                            TOUT AFFICHER ICI
+
+                            <li class="list-group-item">Adresse : numéro + rue</li>
+                            <li class="list-group-item">Ville : cp + ville</li>
+                            -->
                             <li class="list-group-item">Coordonnée latitude : {{ infoArtisan.coordonneeLatitude }}</li>
                             <li class="list-group-item">Coordonnée longitude : {{ infoArtisan.coordonneeLongitude }}</li>
+                            {% if infoArtisan.idCommercial == null %}
+                                {% set validiteCompte = 'Non valide' %}
+                            {% else %}
+                                {% set validiteCompte = 'Valide' %}
+                            {% endif %}
+                            <li class="list-group-item">Validation du compte : {{ validiteCompte }}</li>
                             <li class="list-group-item">Validation de l'assurance : {{ validite }}</li>
                             <li class="list-group-item">Avantage de l'artisan : {{ infoArtisan.avantageArtisan }} crédits</li><br>
                             <input type="submit" class="btn btn-primary" value="Réinitialiser le mot de passe"><br><br>

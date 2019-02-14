@@ -42,18 +42,6 @@
             </div>
 
             <!-- Text input
-            PRENOM -->
-            <div class="form-group">
-                <label class="col-md-4 control-label">Prénom</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        {{ form_row(registrationForm.prenom, {'label':' ', 'attr': {'class':'form-control', 'placeholder':'Prénom'} }) }}
-                    </div>
-                </div>
-            </div>
-
-            <!-- Text input
             NOM -->
 
             <div class="form-group">
@@ -67,6 +55,17 @@
                 </div>
             </div>
 
+            <!-- Text input
+            PRENOM -->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Prénom</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        {{ form_row(registrationForm.prenom, {'label':' ', 'attr': {'class':'form-control', 'placeholder':'Prénom'} }) }}
+                    </div>
+                </div>
+            </div>
 
             <!-- Text input
             NUMERO TELEPHONE-->
@@ -124,6 +123,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- A FAIRE POUR CLEMENT : RAJOUTER L'ADRESSE -->
 
             <!-- Text input
             TYPE ACTIVITE-->

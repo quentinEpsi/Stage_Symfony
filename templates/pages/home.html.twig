@@ -66,8 +66,7 @@
 						{% endif %}
 						<div class="col-md-3 builder">
 							<i class="fa fa-home" aria-hidden="true"></i>
-							<h4>Porte {{i}}</h4>
-							<p>{{services[i].nomService}}</p>
+							<p style="size: A4"><strong>{{services[i].nomService}}</strong></p>
 						</div>
 					{% endfor %}
 					</div>
@@ -85,10 +84,14 @@
             </div>
             <div class="row about_row">
                 <div class="who_we_area col-md-9 col-sm-6" style="text-align: left;">
-                    <p>Notre service vérifit chaque artisan <br>
-                       Notre service vérifit chaque assurance<br>
-                        Nous nous assurons que vous ayez au moins une reponse correspondant à votre demande<br>
-                    </p>
+                    <div class="row" style="color: black;">
+                    <h1>ICONE DE GARANTIE</h1><br><br>
+                        <ul class="list-group">
+                            <li class="list-group">Vérification de chaque artisan</li>
+                            <li class="list-group">Vérification de leur assurance</li>
+                            <li class="list-group">Assurance d'une reponse à votre demande</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="who_we_area col-md-3 col-sm-6">
                     <img src="{{ asset('build/images/team/tm-2.jpg') }}" alt="">
@@ -102,7 +105,7 @@
         <div class="container">
             <div class="tittle wow fadeInUp">
                 <h2>Notre équipe</h2>
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h4>
+                <h4>Notre équipe est la meilleure de toutes</h4>
             </div>
             <div class="row team_row">
                 <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">

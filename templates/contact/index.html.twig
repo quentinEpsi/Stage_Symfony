@@ -15,8 +15,8 @@
         </div>
         {% endfor %}
         <div class="row">
-            <div class="col-md-4 col-md-offset-3" style="margin-bottom: 50px;">
-                <h1>Formulaire de contact</h1>
+            <div class="col-lg-offset-4 col-md-4 col-lg-offset-4" style="margin-bottom: 50px;">
+                <h2 style="text-align: center; font-size: 40px;">Formulaire de contact</h2>
             </div>
         </div>
 
@@ -28,11 +28,18 @@
             <div class="col-md-3 col-md-offset-3" style="margin-bottom : 50px;">{{ form_row(form.firstname) }}</div>
             <div class="col-md-3 ">{{ form_row(form.lastname) }}</div>
         </div>
+            <!--
+            A FAIRE POUR QUENTIN : RAJOUTER L'ADRESSE DU CLIENT ICI + DANS LE MAIL + DANS L'ENTITY CONTACT + DANS LE CONTROLLER
+            <div class="row">
+                <div class="col-md-3 col-md-offset-3" style="margin-bottom : 50px;">{# form_row(form.numeroderue) #}</div>
+                <div class="col-md-3 ">{# form_row(form.rue) #}</div>
+                <div class="col-md-3 ">{# form_row(form.ville) #}</div>
+                <div class="col-md-3 ">{# form_row(form.cp) #}</div>
+            </div>-->
         <div class="row">
             <div class="col-md-3 col-md-offset-3">{{ form_row(form.phone) }}</div>
             <div class="col-md-3">{{ form_row(form.email) }}</div>
         </div>
-
         <div class="row">
             <div class="col-md-6 col-md-offset-3" style="margin-top : 20px"> {{ form_row(form.objet) }}</div>
         </div>
@@ -40,15 +47,17 @@
             <div class="col-md-6 col-md-offset-3" style="margin-top : 50px">{{ form_row(form.message) }}</div>
         </div>
         {{ form_rest(form) }}
+            <!-- A FAIRE POUR QUENTIN : REDIRIGER VERS UNE NOUVELLE PAGE QUE TU DOIS CREER LORS DE L'ENVOI DU FORMULAIRE AVEC MARQUÉ
+             "VOTRE MESSAGE A BIEN ETE ENVOYE" + BOUTON REDIRIGEANT VERS ACCUEIL
+
+             + CLEMENT DOIT TE PARLER DES MAILS-->
         <div class="form-group">
             <div class="col-md-offset-3" style="margin-top : 20px">
                 <button class="btn btn-primary">Envoyer</button>
             </div>
-
         </div>
         {{ form_end(form) }}
     </div>
     </div>
-
 </div>
 {% endblock %}

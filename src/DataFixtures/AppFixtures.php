@@ -23,9 +23,9 @@ class AppFixtures extends Fixture
         //// DEFINITION DES SERVICES ///////////////////////////////////////////
         $liste_service = array('Ouverture de porte bloquée, claquée ou sans clé','
 Ouverture de coffre-fort bloqué','
-Réparation de tous types d’ouvrage de serrurerie : barillet, cylindre, pêne, serrure, verrou','
+Réparation de tous types d’ouvrage de serrurerie','
 Changement de serrure','
-Installation de porte blindée, de portique, de portail, de rideaux métalliques ou de porte coupe-feu','
+Installation de tout type de portes, de portails, de rideaux métalliques','
 Blindage de porte et/ou de fenêtre','
 Réalisation de double de clé','
 Autres');
