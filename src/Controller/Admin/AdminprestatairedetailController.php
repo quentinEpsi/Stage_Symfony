@@ -18,8 +18,8 @@ class AdminprestatairedetailController extends AbstractController
     {
         $artisans = $this->getDoctrine()->getRepository(Artisan::class)->find($id);
         return $this->render('admin/adminprestatairedetail/index.html.twig', [
-            'controller_name' => 'AdminprestatairedetailController',
-            'artisans' => $artisans
+            'infoArtisan' => $infoArtisans,
+            'infoService' => $infoService
         ]);
     }
 }

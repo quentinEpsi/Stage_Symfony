@@ -44,12 +44,10 @@ class MoncomptemodifController extends AbstractController
         $form = $this->createFormBuilder($editartisan)
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
-            ->add('raisonSociale', TextType::class)
             ->add('siren', TextType::class)
             ->add('tel', TelType::class)
             ->add('mail', EmailType::class)
             ->add('description', TextType::class)
-            ->add('numAssurance', TextType::class)
             ->add('sauvegarde', SubmitType::class)
             ->getForm();
 
