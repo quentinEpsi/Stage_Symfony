@@ -24,7 +24,7 @@ class EtatAvancement
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom_etat_avancement", type="string", length=25, nullable=false)
+     * @ORM\Column(name="Nom_etat_avancement", type="string", length=40, nullable=false)
      */
     private $nomEtatAvancement;
 
