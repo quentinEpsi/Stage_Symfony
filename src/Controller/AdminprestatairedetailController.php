@@ -17,10 +17,12 @@ class AdminprestatairedetailController extends AbstractController
      */
     public function index(ArtisanRepository $repo, Artisan $idArtisan)
     {
-        $artisans = $repo->find($idArtisan);
+        $infoArtisans = $repo->find($idArtisan);
+        $repository = $infoArtisans->getIdService();
+        $infoService = $repository->getValues();
         return $this->render('admin/adminprestatairedetail/index.html.twig', [
-            'controller_name' => 'AdminprestatairedetailController',
-            'artisans' => $artisans
+            'infoArtisan' => $infoArtisans,
+            'infoService' => $infoService
         ]);
     }
 }

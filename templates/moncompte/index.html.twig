@@ -23,9 +23,11 @@
                         <li class="list-group-item">Téléphone : {{ infosArtisan.tel }}</li>
                         <li class="list-group-item">Mail : {{ infosArtisan.mail }}</li>
                         <li class="list-group-item">SIREN : {{ infosArtisan.siren }}</li>
+                        <li class="list-group-item">Raison sociale : {{ infosArtisan.raisonSociale }}</li>
                         <li class="list-group-item">Numéro d'assurance : {{ infosArtisan.numAssurance }}</li>
                         <li class="list-group-item">Description de l'activité : {{ infosArtisan.description }}</li>
-                        <li class="list-group-item">Formule : {{ infosArtisan.idFormule.nomFormule }}</li><br>
+                        <li class="list-group-item">Formule : {{ infosArtisan.idFormule.nomFormule }}</li>
+                        <li class="list-group-item">Crédits : {{ infosArtisan.credit }}</li><br>
                         <input type="submit" class="btn btn-success" value="Changer le mot de passe"><br><br>
                         <a href="{{ path('moncomptemodif', {id: infosArtisan.idArtisan}) }}"><input type="submit" class="btn btn-primary" value="Modifier mes informations"> </a><br><br>
                         <input type="submit" class="btn btn-danger" value="Supprimer mon compte">
