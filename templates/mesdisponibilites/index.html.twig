@@ -1,7 +1,77 @@
 {% extends 'base.html.twig' %}
+{# add this at the beginning of your template #}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
+{# this alternative theme is also available #}
+{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
 {% block title %}Mes disponibilités{% endblock %}
 
 {% block body %}
+{% include 'navbar.html.twig' %}
+
+
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav"></div>
+    <div class="col-sm-8">
+        <div class="tittle wow fadeInUp">
+            <h2>Veuillez entrer vos disponibilités</h2>
+            <br>
+            <br>
+        </div>
+            {{ form_start(form) }}
+                <table class="table table-dark text-center">
+                    <tr>
+                        <th  style="text-align: center; vertical-align: middle;"></th>
+                        <th  style="text-align: center; vertical-align: middle;">Lundi</th>
+                        <th  style="text-align: center; vertical-align: middle;">Mardi</th>
+                        <th  style="text-align: center; vertical-align: middle;">Mercredi</th>
+                        <th  style="text-align: center; vertical-align: middle;">Jeudi</th>
+                        <th  style="text-align: center; vertical-align: middle;">Vendredi</th>
+                        <th  style="text-align: center; vertical-align: middle;">Samedi</th>
+                        <th  style="text-align: center; vertical-align: middle;">Dimanche</th>
+                    </tr>
+                    <tr>
+                        <td >Matin</td>
+                        <td  style="text-align: center; vertical-align: middle;">{{ form_row(form.lundiMatin) }}</td>
+                        <td>{{ form_row(form.mardiMatin) }}</td>
+                        <td>{{ form_row(form.mercrediMatin) }}</td>
+                        <td>{{ form_row(form.jeudiMatin) }}</td>
+                        <td>{{ form_row(form.vendrediMatin) }}</td>
+                        <td>{{ form_row(form.samediMatin) }}</td>
+                        <td>{{ form_row(form.dimancheMatin) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Après-midi</td>
+                        <td>{{ form_row(form.lundiAprem) }}</td>
+                        <td>{{ form_row(form.mardiAprem) }}</td>
+                        <td>{{ form_row(form.mercrediAprem) }}</td>
+                        <td>{{ form_row(form.jeudiAprem) }}</td>
+                        <td>{{ form_row(form.vendrediAprem) }}</td>
+                        <td>{{ form_row(form.samediAprem) }}</td>
+                        <td>{{ form_row(form.dimancheAprem) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Soir</td>
+                        <td>{{ form_row(form.lundiSoir) }}</td>
+                        <td>{{ form_row(form.mardiSoir) }}</td>
+                        <td>{{ form_row(form.mercrediSoir) }}</td>
+                        <td>{{ form_row(form.jeudiSoir) }}</td>
+                        <td>{{ form_row(form.vendrediSoir) }}</td>
+                        <td>{{ form_row(form.samediSoir) }}</td>
+                        <td>{{ form_row(form.dimancheSoir) }}</td>
+                    </tr>
+                </table>
+                
+                {{ form_row(form.Valider) }}
+
+        {{ form_end(form) }}
+    </div>
+    <div class="col-sm-2 sidenav"></div>
+    </div>
+  </div>
+</div>
+
+
 
 {% endblock %}
