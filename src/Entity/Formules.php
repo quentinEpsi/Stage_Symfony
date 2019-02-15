@@ -28,6 +28,13 @@ class Formules
      */
     private $nomFormule;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description_formule", type="string", length=100, nullable=false)
+     */
+    private $descriptionFormule;
+
     public function getIdFormule(): ?int
     {
         return $this->idFormule;
@@ -41,6 +48,18 @@ class Formules
     public function setNomFormule(string $nomFormule): self
     {
         $this->nomFormule = $nomFormule;
+
+        return $this;
+    }
+
+    public function getDescriptionFormule(): ?string
+    {
+        return $this->descriptionFormule;
+    }
+
+    public function setDescriptionFormule(string $descriptionFormule): self
+    {
+        $this->descriptionFormule = $descriptionFormule;
 
         return $this;
     }

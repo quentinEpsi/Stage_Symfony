@@ -9,20 +9,35 @@
             <table class="table">
                 <thead class="thead-dark">
                 <tr style="text-align: center">
+                    <th scope="row">Validité</th>
                     <th scope="row">Nom artisan</th>
+                    <th scope="row">Prénom artisan</th>
                     <th scope="row">Raison Sociale</th>
-                    <th scope="row">Téléphone</th>
-                    <th scope="row">Numéro d'assurance</th>
                     <th scope="row">SIREN</th>
+                    <th scope="row">Téléphone</th>
+                    <th scope="row">Mail</th>
+                    <th scope="row">Numéro d'assurance</th>
+                    <th scope="row">Crédits</th>
+                    <th scope="row">Avantage</th>
                 </tr>
                 </thead>
                 {% for artisan in artisans %}
                     <tr>
+                        {% if artisan.idCommercial == null %}
+                            {% set validite = 'Non valide' %}
+                        {% else %}
+                            {% set validite = 'Valide' %}
+                        {% endif %}
+                        <th scope="row">{{ validite }}</th>
                         <th scope="row">{{ artisan.nom }}</th>
+                        <th scope="row">{{ artisan.prenom }}</th>
                         <th scope="row">{{ artisan.raisonSociale }}</th>
-                        <th scope="row">{{ artisan.tel }}</th>
-                        <th scope="row">{{ artisan.numAssurance }}</th>
                         <th scope="row">{{ artisan.siren }}</th>
+                        <th scope="row">{{ artisan.tel }}</th>
+                        <th scope="row">{{ artisan.mail }}</th>
+                        <th scope="row">{{ artisan.numAssurance }}</th>
+                        <th scope="row">{{ artisan.credit }}</th>
+                        <th scope="row">{{ artisan.avantageArtisan }}</th>
                         <th scope="row"> <a href="{{ path('commercialprestatairedetail', {id: artisan.idArtisan}) }}" class="btn btn-primary">Fiche détaillée </a></th>
                     </tr>
                 {% endfor %}

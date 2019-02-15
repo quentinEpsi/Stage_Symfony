@@ -3,6 +3,7 @@
 {% block title %}Modification du prestataire{% endblock %}
 
 {% block body %}
+    {% include 'navbar.html.twig' %}
     <div class="badge-center" style="margin: 0 auto; width: 600px; padding-top: 50px;">
         {{ form_start(form) }}
         <h3>Modification des informations de l'artisan</h3><br><br>
@@ -20,6 +21,8 @@
                         {{ form_row(form.description,{'label':'Description :','attr':{'class':'list-group-item', 'name':'description'}}) }}
                         {{ form_row(form.numAssurance,{'label':'Numéro assurance :','attr':{'class':'list-group-item', 'name':'numAssurance'}}) }}
                         {{ form_row(form.credit,{'label':'Crédits :','attr':{'class':'list-group-item', 'name':'credit'}}) }}
+                            <!-- A FAIRE POUR CLEMENT ET ALEXANDRE : RAJOUTER L'ADRESSE DE L'ARTISAN DANS LA BDD +
+                            AFFICHER LES 4 SEPAREMMENT -->
                         {{ form_row(form.coordonneeLatitude,{'label':'Coordonnée latitude :','attr':{'class':'list-group-item', 'name':'coordonneeLatitude'}}) }}
                         {{ form_row(form.coordonneeLongitude,{'label':'Coordonnée longitude :','attr':{'class':'list-group-item', 'name':'coordonneeLongitude'}}) }}
                         {{ form_row(form.sauvegarde,{'label':'Sauvegarder :','attr':{'class':'list-group-item', 'name':'sauvegarde'}}) }}

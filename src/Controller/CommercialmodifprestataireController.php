@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Artisan;
-use App\Repository\ArtisanRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -12,46 +11,36 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AdminmodifprestataireController extends AbstractController
+class CommercialmodifprestataireController extends AbstractController
 {
     /**
-     * @Route("/admin/adminmodifprestataire/{id}", name="adminmodifprestataire")
-     * @param ArtisanRepository $repo
-     * @param Artisan $idArtisan
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/commercial/commercialmodifprestataire/{id}", name="commercialmodifprestataire")
      */
-    public function index(ArtisanRepository $repo, Artisan $idArtisan)
+    public function index()
     {
-        $artisans = $repo->find($idArtisan);
-        return $this->render('admin/adminmodifprestataire/index.html.twig', [
-            'controller_name' => 'AdminmodifprestataireController',
-            'artisans' => $artisans
+        return $this->render('commercial/commercialmodifprestataire/index.html.twig', [
+            'controller_name' => 'CommercialmodifprestataireController',
         ]);
     }
 
     /**
-     * @Route("/admin/adminmodifprestataire/{id}", name="adminmodifprestataire")
+     * @Route("/commercialprestatairedetail/{id}", name="commercialmodifprestataire")
      * Method({"GET", "POST"})
      * @param Request $request
-     * @param Artisan $idArtisan
+     * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function edit(Request $request, Artisan $idArtisan){
+    public function edit(Request $request, $id){
         $editartisan = new Artisan();
-        $editartisan = $this->getDoctrine()->getRepository(Artisan::class)->find($idArtisan);
+        $editartisan = $this->getDoctrine()->getRepository(Artisan::class)->find($id);
 
         $form = $this->createFormBuilder($editartisan)
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
-            ->add('raisonSociale', TextType::class)
-            ->add('siren', TextType::class)
             ->add('tel', TelType::class)
             ->add('mail', EmailType::class)
             ->add('description', TextType::class)
-            ->add('numAssurance', TextType::class)
             ->add('credit', TextType::class)
-            ->add('coordonneeLatitude', TextType::class)
-            ->add('coordonneeLongitude', TextType::class)
             ->add('sauvegarde', SubmitType::class, array(
                 'label' => 'Sauvegarder les modifications',
                 'attr' => array('class' => 'btn btn-primary')
@@ -65,15 +54,11 @@ class AdminmodifprestataireController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
 
-            return $this->redirectToRoute('adminprestatairedetail', array('id'=> $idArtisan->getIdArtisan()));
+            return $this->redirectToRoute('commercialprestatairedetail', array('id'=> $id));
         }
 
-        return $this->render('admin/adminmodifprestataire/index.html.twig', array(
+        return $this->render('commercial/commercialmodifprestataire/index.html.twig', array(
             'form' => $form->createView()
         ));
     }
 }
-
-
-
-

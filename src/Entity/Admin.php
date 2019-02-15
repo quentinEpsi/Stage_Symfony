@@ -31,9 +31,9 @@ class Admin
     /**
      * @var string
      *
-     * @ORM\Column(name="Motdepasse_admin", type="string", length=100, nullable=false)
+     * @ORM\Column(name="Mot_de_passe_admin", type="string", length=100, nullable=false)
      */
-    private $motdepasseAdmin;
+    private $motDePasseAdmin;
 
     /**
      * @var bool
@@ -59,14 +59,14 @@ class Admin
         return $this;
     }
 
-    public function getMotdepasseAdmin(): ?string
+    public function getMotDePasseAdmin(): ?string
     {
-        return $this->motdepasseAdmin;
+        return $this->motDePasseAdmin;
     }
 
-    public function setMotdepasseAdmin(string $motdepasseAdmin): self
+    public function setMotDePasseAdmin(string $motDePasseAdmin): self
     {
-        $this->motdepasseAdmin = $motdepasseAdmin;
+        $this->motDePasseAdmin = $motDePasseAdmin;
 
         return $this;
     }

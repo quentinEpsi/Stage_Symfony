@@ -14,6 +14,8 @@ class ContactController extends AbstractController
 {
     /**
      * @Route("/contact", name="contact")
+     * @param Request $request
+     * @param ContactNotification $notification
      * @return Response
      */
     public function index(Request $request, ContactNotification $notification) : Response  // j'injecte la request de l'utilisateur

@@ -3,32 +3,38 @@
 {% block title %}Tableau Prestataires administrateur{% endblock %}
 
 {% block body %}
+    {% include 'navbar.html.twig' %}
 <div class="who_we_area" style="text-align: center; padding-top: 50px;">
     <h3>Liste des prestataires enregistrés</h3><br><br>
     <div id="tableauprestataires" style="display: inline-block;">
         <table class="table">
             <thead class="thead-dark">
             <tr style="text-align: center">
-                <th scope="row">ID artisan</th>
-                <th scope="row">Nom artisan</th>
-                <th scope="row">Prénom artisan</th>
-                <th scope="row">Raison Sociale</th>
-                <th scope="row">Téléphone</th>
-                <th scope="row">Numéro d'assurance</th>
+                <th scope="row">Nom</th>
+                <th scope="row">Prénom</th>
+                <th scope="row">Raison sociale</th>
                 <th scope="row">SIREN</th>
-                <th scope="row">ID Formule</th>
+                <th scope="row">Téléphone</th>
+                <th scope="row">Mail</th>
+                <th scope="row">Formule</th>
+                <!-- A FAIRE POUR CLEMENT ET ALEXANDRE : RAJOUTER DANS LA BDD SUPPRESSION_COMPTE ET L'AFFICHER ICI
+                + AFFICHER LE NOMBRE DE DEMANDES EN COURS + AFFICHER LE NOMBRE DE DEVIS EN COURS
+
+                <th scope="row">SUPPRESSION</th>
+                <th scope="row">DEMANDES</th>
+                 <th scope="row">DEVIS</th>
+                -->
             </tr>
             </thead>
             {% for artisan in artisans %}
             <tr>
-                <th scope="row">{{ artisan.idArtisan }}</th>
                 <th scope="row">{{ artisan.nom }}</th>
                 <th scope="row">{{ artisan.prenom }}</th>
                 <th scope="row">{{ artisan.raisonSociale }}</th>
-                <th scope="row">{{ artisan.tel }}</th>
-                <th scope="row">{{ artisan.numAssurance }}</th>
                 <th scope="row">{{ artisan.siren }}</th>
-                <th scope="row">{{ artisan.idFormule }}</th>
+                <th scope="row">{{ artisan.tel }}</th>
+                <th scope="row">{{ artisan.mail }}</th>
+                <th scope="row">{{ artisan.idFormule.nomFormule }}</th>
                 <th scope="row"> <a href="{{ path('adminprestatairedetail', {id: artisan.idArtisan}) }}" class="btn btn-primary">Fiche détaillée </a></th>
             </tr>
             {% endfor %}

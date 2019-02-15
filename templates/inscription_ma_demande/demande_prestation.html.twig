@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+    {% block head %}
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{% block title %}SR2F{% endblock %}</title>
+        {% block stylesheets %}
+            <!-- Favicon -->
+            <link rel="icon" href="{{ asset('build/images/favicon.png') }}" type="image/x-icon" />
+            <!-- Bootstrap CSS -->
+            <link href="{{ asset('build/css/bootstrap.min.css') }}" rel="stylesheet">
+            <!-- Animate CSS -->
+            <link href="{{ asset('build/vendors/animate/animate.css') }}" rel="stylesheet">
+            <!-- Icon CSS-->
+            <link rel="stylesheet" href="{{ asset('build/vendors/font-awesome/css/font-awesome.min.css') }}">
+            <!-- Camera Slider -->
+            <link rel="stylesheet" href="{{ asset('build/vendors/camera-slider/camera.css') }}">
+            <!-- Owlcarousel CSS-->
+            <link rel="stylesheet" type="text/css" href="{{ asset('build/vendors/owl_carousel/owl.carousel.css') }}" media="all">
+            <!--Theme Styles CSS-->
+            <link rel="stylesheet" type="text/css" href="{{ asset('build/css/style.css') }}" media="all" />
+			<link rel="stylesheet" type="text/css" href="{{ asset('build/css/test_acceuil.css') }}" media="all" />
+		{% endblock %}
+    </head>
+    {% endblock %}<!-- ./END BLOCK head -->
+	{% form_theme form 'bootstrap_4_layout.html.twig' %}
+    {% block body %}
+	<body>
+	{% include 'navbar.html.twig' %}
+	<h2 style="text-align:center;margin-bottom:10px;margin-top:10px;"> Création de la demande de prestation </h2>
+		<div class="formulaire" style="width: 50%;margin:auto;">
+			{{ form_start(form) }}
+			{{ form_row(form.nomClient,{'label':'Nom :','attr':{'placeholder':'Martin','name':'test'}}) }}
+			{{ form_row(form.prenomClient, {'label':'Prénom :','attr':{'placeholder':'Martin'}}) }}
+			{{ form_row(form.adresseInterventionNumero, {'label':'Numéro de la rue :'}) }}
+			{{ form_row(form.adresseInterventionRue, {'label':'Rue :'}) }}
+			{{ form_row(form.adresseInterventionVille, {'label':'Ville :'}) }}
+			{{ form_row(form.adresseInterventionCp, {'label':'Code postal :', 'attr':{'pattern':'\\d{5}','maxlength':'5'}}) }}
+			{{ form_row(form.adresse_complementaire_client, {'label':'Adresse complémentaire :'}) }}
+			{{ form_row(form.telClient, {'label':'Téléphone :', 'attr':{'pattern':'(0)[1-9]\\d{8}','maxlength':'10'}}) }}
+			{{ form_row(form.mailClient, {'label':'Email :'}) }}
+			{{ form_row(form.idService, {'label':'Service :'}) }}
+			{{ form_row(form.descriptionSup, {'label':'Explication de la demande :'}) }}
+			{{ form_row(form.dateRealisation, {'label':'Date souhaité de réalisation :'}) }}
+			{{ form_row(form.Valider) }}
+			{{ form_end(form) }}
+		</div>
+	</body>
+	{% endblock %}
+</html>

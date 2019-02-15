@@ -3,6 +3,7 @@
 {% block title %}Fiche détaillée de demande de devis en cours administrateur{% endblock %}
 
 {% block body %}
+    {% include 'navbar.html.twig' %}
     <div class="badge-center" style="margin: 0 auto; width: 600px; padding-top: 50px;">
         <h3>Fiche détaillée de la demande</h3><br><br>
         <div class="badge-modif" style="font-size: 18px!important">
@@ -10,22 +11,20 @@
                 <div class=" highlight" style="margin-left:0;">
                     <div class="row">
                         <ul class="list-group">
-                            <li class="list-group-item">ID demande : {{ infoClient.idClient }} </li>
                             <li class="list-group-item">Nom : {{ infoClient.nomClient }}</li>
                             <li class="list-group-item">Prénom : {{ infoClient.prenomClient }}</li>
-                            <li class="list-group-item">Numéro de rue : {{ infoClient.adresseInterventionNumero }}</li>
-                            <li class="list-group-item">Rue : {{ infoClient.adresseInterventionRue }}</li>
-                            <li class="list-group-item">Ville : {{ infoClient.adresseInterventionVille }}</li>
-                            <li class="list-group-item">Code postal : {{ infoClient.adresseInterventionCp }}</li>
+                            <li class="list-group-item">Adresse : {{ infoClient.adresseInterventionNumero }} {{ infoClient.adresseInterventionRue }}</li>
+                            <li class="list-group-item">Ville : {{ infoClient.adresseInterventionCp }} {{ infoClient.adresseInterventionVille }}</li>
                             <li class="list-group-item">Téléphone : {{ infoClient.telClient }}</li>
                             <li class="list-group-item">Mail : {{ infoClient.mailClient }}</li>
                             <li class="list-group-item">Description : {{ infoClient.descriptionSup }}</li>
                             <li class="list-group-item">Date de proposition : {{ infoClient.dateProposition|date('d/m/Y') }}</li>
                             <li class="list-group-item">Date de réalisation : {{ infoClient.dateRealisation|date('d/m/Y h:m') }}</li>
-                            <li class="list-group-item">État d'avancement : {{ infoClient.etatAvancement }}</li>
+                            <li class="list-group-item">État d'avancement : {{ infoClient.idEtatAvancement.nomEtatAvancement }}</li>
+                            <li class="list-group-item">Service : {{ infoClient.idService.nomService }}</li>
                             {% for artisan in infoArtisans %}
                                 <li class="list-group-item">Artisan ayant visualisé la demande : <a href="{{ path('adminprestatairedetail', {id: artisan.idArtisan}) }}">{{ artisan.nom }} {{ artisan.prenom }}</a></li>
-                            {% endfor %}
+                            {% endfor %}<br>
                             <a href="{{ path('adminmodifdemandes', {id: infoClient.idClient}) }}"><input type="submit" class="btn btn-primary" value="Modifier les informations"> </a><br><br>
                         </ul>
                     </div>
