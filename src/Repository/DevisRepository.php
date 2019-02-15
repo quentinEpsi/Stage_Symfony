@@ -18,6 +18,20 @@ class DevisRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Devis::class);
     }
+    
+    /**
+    * @return Devis[] Returns an array of Devis objects
+    */
+      public function findDevisByIdArtisan($idArtisan)
+    {
+        return $this->createQueryBuilder('devisArtisan')
+            ->andWhere('devisArtisan.idArtisan = :Id_Artisan')
+            ->setParameter('Id_Artisan', $idArtisan)
+            ->orderBy('devisArtisan.dateEnvoie', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
     // /**
     //  * @return Devis[] Returns an array of Devis objects
