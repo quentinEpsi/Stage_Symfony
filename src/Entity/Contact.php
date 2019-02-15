@@ -10,16 +10,13 @@ class Contact{
      * @Assert\NotBlank()
      * @Assert\Length(min=2, max=100)
      */
-
     private $firstname;
     /**
      * @var string|null
      * @Assert\NotBlank()
      * @Assert\Length(min=2, max=100)
      */
-
     private $lastname;
-
     /**
      * @var string|null
      * @Assert\NotBlank()
@@ -27,34 +24,25 @@ class Contact{
      *     pattern="/[0-9]{10}/"
      * )
      */
-
     private $phone;
-
     /**
      * @var string|null
      * @Assert\NotBlank()
      * @Assert\Email()
      */
-
     private $email;
-
-
-
     /**
      * @var string|null
      * @Assert\NotBlank()
      * @Assert\Length(min=5)
      */
     private $objet;
-
     /**
      * @var string|null
      * @Assert\NotBlank()
      * @Assert\Length(min=10)
      */
-
     private $message;
-
     /**
      * @return null|string
      */
@@ -62,7 +50,6 @@ class Contact{
     {
         return $this->objet;
     }
-
     /**
      * @param null|string $objet
      */
@@ -70,7 +57,6 @@ class Contact{
     {
         $this->objet = $objet;
     }
-
     /**
      * @return null|string
      */
@@ -78,7 +64,6 @@ class Contact{
     {
         return $this->firstname;
     }
-
     /**
      * @param null|string $firstname
      * @return Contact
@@ -88,7 +73,6 @@ class Contact{
         $this->firstname = $firstname;
         return $this;
     }
-
     /**
      * @return null|string
      */
@@ -96,7 +80,6 @@ class Contact{
     {
         return $this->lastname;
     }
-
     /**
      * @param null|string $lastname
      * @return Contact
@@ -106,7 +89,6 @@ class Contact{
         $this->lastname = $lastname;
         return $this;
     }
-
     /**
      * @return null|string
      */
@@ -114,7 +96,6 @@ class Contact{
     {
         return $this->phone;
     }
-
     /**
      * @param null|string $phone
      * @return Contact
@@ -124,7 +105,6 @@ class Contact{
         $this->phone = $phone;
         return $this;
     }
-
     /**
      * @return null|string
      */
@@ -132,7 +112,6 @@ class Contact{
     {
         return $this->email;
     }
-
     /**
      * @param null|string $email
      * @return Contact
@@ -142,7 +121,6 @@ class Contact{
         $this->email = $email;
         return $this;
     }
-
     /**
      * @return null|string
      */
@@ -150,7 +128,6 @@ class Contact{
     {
         return $this->message;
     }
-
     /**
      * @param null|string $message
      * @return Contact
@@ -160,6 +137,4 @@ class Contact{
         $this->message = $message;
         return $this;
     }
-
-
 }

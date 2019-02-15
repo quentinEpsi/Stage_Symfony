@@ -13,13 +13,12 @@ class CommercialdemandesdetailController extends AbstractController
 {
     /**
      * @Route("/commercial/commercialdemandesdetail/{id}", name="commercialdemandesdetail")
-     * @param ClientRepository $repo
      * @param Client $idClient
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(ClientRepository $repo, Client $idClient)
+    public function index($id)
     {
-        $clients = $repo->find($idClient);
+        $clients = $this->getDoctrine()->getRepository(Client::class)->find($id);
         return $this->render('commercial/commercialdemandesdetail/index.html.twig', [
             'controller_name' => 'CommercialdemandesdetailController',
             'clients' => $clients
@@ -28,14 +27,13 @@ class CommercialdemandesdetailController extends AbstractController
 
     /**
      * @Route("/commercial/commercialdemandesdetail/{id}", name="commercialdemandesdetail")
-     * @param ClientRepository $clientRepository
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
 
-    public function show(ClientRepository $clientRepository, $id)
+    public function show($id)
     {
-        $infoClient = $clientRepository->find($id);
+        $infoClient = $this->getDoctrine()->getRepository(Client::class)->find($id);
         dump($infoClient);
         $repo = $infoClient->getIdArtisan();
         $infoArtisans = $repo->getValues();
@@ -46,4 +44,6 @@ class CommercialdemandesdetailController extends AbstractController
             'infoArtisans' => $infoArtisans
         ]);
     }
+
+
 }

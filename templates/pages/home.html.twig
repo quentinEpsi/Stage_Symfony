@@ -3,6 +3,7 @@
 {% block body %}
     {% include 'navbar.html.twig' %}
 {% block slider %}
+<body>
 <!-- Slider area -->
     <section class="slider_area row m0">
         <div class="slider_inner">
@@ -36,11 +37,12 @@
                 <h2>QUI SOMMES-NOUS ?</h2>
             </div>
             <div class="row about_row" style="display: inline-block;">
-                <div class="who_we_area col-md-9">
+                <div class="who_we_area col-md-10">
                     <p>Notre site Internet regroupe les serruriers de votre région et vous permet de faire des demandes de devis concernant la serrurerie qui seront envoyées aux professionnels disponibles aux alentours.</p>
                 </div>
-                <div class="who_we_area col-md-3">
-                    <p>BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2BLOC 2</p>
+                <div class="who_we_area col-md-2">
+					<img src="{{ asset('build/images/interrogation.png') }}" height="42" width="42">
+                    <p>{{ article1.descriptionFormule }}</p>
                 </div>
             </div>
         </div>
@@ -54,49 +56,20 @@
                     <h2 style="padding: 0px !important;">NOS SERVICES</h2>
                     <h4>Les professionnels réalisent leurs prestations dans différents domaines</h4>
                 </div>
-                <div class="container">
-                    <div class="col-md-3 builder">
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                        <h4>Porte</h4>
-                        <p>Ouverture de porte bloquée, claquée</p>
-                    </div>
-                    <div class="col-md-3 builder">
-                        <i class="fa fa-building" aria-hidden="true"></i>
-                        <h4>Coffre-fort</h4>
-                        <p>Ouverture de coffre-fort bloqué</p>
-                    </div>
-                    <div class="col-md-3 builder">
-                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-                        <h4>Réparation</h4>
-                        <p>Réparation de tous types d’ouvrages</p>
-                    </div>
-                    <div class="col-md-3 builder">
-                        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                        <h4>Serrure</h4>
-                        <p>Changement de serrure</p>
-                    </div>
-                </div>
                 <div class="container col-md-12">
-                    <div class="col-md-3 builder">
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                        <h4>Installation</h4>
-                        <p>Installation de portes blindées</p>
-                    </div>
-                    <div class="col-md-3 builder">
-                        <i class="fa fa-building" aria-hidden="true"></i>
-                        <h4>Blindage</h4>
-                        <p>Blindage de porte et/ou de fenêtre</p>
-                    </div>
-                    <div class="col-md-3 builder">
-                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-                        <h4>Double</h4>
-                        <p>Réalisation de double de clé</p>
-                    </div>
-                    <div class="col-md-3 builder">
-                        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                        <h4>Autres</h4>
-                        <p>Autres réalisations supplémentaires</p>
-                    </div>
+					{% set increment=0 %}
+					<div class="container col-md-12">
+					{% for i in 0..longueur %}
+						{% if i%4 ==0%}
+							</div>
+							<div class="container col-md-12">
+						{% endif %}
+						<div class="col-md-3 builder">
+							<i class="fa fa-home" aria-hidden="true"></i>
+							<p style="size: A4"><strong>{{services[i].nomService}}</strong></p>
+						</div>
+					{% endfor %}
+					</div>
                 </div>
             </div>
         </div>
@@ -111,10 +84,14 @@
             </div>
             <div class="row about_row">
                 <div class="who_we_area col-md-9 col-sm-6" style="text-align: left;">
-                    <p>Nous vérifions que ces artisans possedent une assurance<br>
-                        Nous vérifions que les artisans ne sont pas des faux<br>
-                        Nous nous assurons que vous ayez au moins une reponse correspondant à votre devis<br>
-                        etc</p>
+                    <div class="row" style="color: black;">
+                    <h1>ICONE DE GARANTIE</h1><br><br>
+                        <ul class="list-group">
+                            <li class="list-group">Vérification de chaque artisan</li>
+                            <li class="list-group">Vérification de leur assurance</li>
+                            <li class="list-group">Assurance d'une reponse à votre demande</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="who_we_area col-md-3 col-sm-6">
                     <img src="{{ asset('build/images/team/tm-2.jpg') }}" alt="">
@@ -128,7 +105,7 @@
         <div class="container">
             <div class="tittle wow fadeInUp">
                 <h2>Notre équipe</h2>
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h4>
+                <h4>Notre équipe est la meilleure de toutes</h4>
             </div>
             <div class="row team_row">
                 <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
@@ -197,4 +174,5 @@
         </div>
     </footer>
 {% endblock %}
+</body>
 {% endblock %}

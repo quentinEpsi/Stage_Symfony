@@ -9,8 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Client
  *
- * @ORM\Table(name="client", indexes={@ORM\Index(name="client_service_FK", columns={"Id_service"})})
- * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
+ * @ORM\Table(name="client", indexes={@ORM\Index(name="client_etat_avancement0_FK", columns={"Id_etat_avancement"}), @ORM\Index(name="client_service_FK", columns={"Id_service"})})
+ * @ORM\Entity
  */
 class Client
 {
@@ -108,18 +108,28 @@ class Client
     private $dateRealisation;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="Etat_avancement", type="string", length=250, nullable=false)
+     * @ORM\Column(name="Coordonnee_longitude_client", type="float", precision=10, scale=0, nullable=false)
      */
-    private $etatAvancement;
+    private $coordonneeLongitudeClient;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="Liste_id_artisan", type="string", length=400, nullable=false)
+     * @ORM\Column(name="Coordonnee_latitude_client", type="float", precision=10, scale=0, nullable=false)
      */
-    private $listeIdArtisan;
+    private $coordonneeLatitudeClient;
+
+    /**
+     * @var \EtatAvancement
+     *
+     * @ORM\ManyToOne(targetEntity="EtatAvancement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_etat_avancement", referencedColumnName="Id_etat_avancement")
+     * })
+     */
+    private $idEtatAvancement;
 
     /**
      * @var \Service
@@ -135,7 +145,7 @@ class Client
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Artisan", inversedBy="idClient")
-     * @ORM\JoinTable(name="visualise",
+     * @ORM\JoinTable(name="choisir",
      *   joinColumns={
      *     @ORM\JoinColumn(name="Id_client", referencedColumnName="Id_client")
      *   },
@@ -303,26 +313,38 @@ class Client
         return $this;
     }
 
-    public function getEtatAvancement(): ?string
+    public function getCoordonneeLongitudeClient(): ?float
     {
-        return $this->etatAvancement;
+        return $this->coordonneeLongitudeClient;
     }
 
-    public function setEtatAvancement(string $etatAvancement): self
+    public function setCoordonneeLongitudeClient(float $coordonneeLongitudeClient): self
     {
-        $this->etatAvancement = $etatAvancement;
+        $this->coordonneeLongitudeClient = $coordonneeLongitudeClient;
 
         return $this;
     }
 
-    public function getListeIdArtisan(): ?string
+    public function getCoordonneeLatitudeClient(): ?float
     {
-        return $this->listeIdArtisan;
+        return $this->coordonneeLatitudeClient;
     }
 
-    public function setListeIdArtisan(string $listeIdArtisan): self
+    public function setCoordonneeLatitudeClient(float $coordonneeLatitudeClient): self
     {
-        $this->listeIdArtisan = $listeIdArtisan;
+        $this->coordonneeLatitudeClient = $coordonneeLatitudeClient;
+
+        return $this;
+    }
+
+    public function getIdEtatAvancement(): ?EtatAvancement
+    {
+        return $this->idEtatAvancement;
+    }
+
+    public function setIdEtatAvancement(?EtatAvancement $idEtatAvancement): self
+    {
+        $this->idEtatAvancement = $idEtatAvancement;
 
         return $this;
     }

@@ -1,6 +1,6 @@
-
+{%extends "base.html.twig"%}
 {% block body %}
-
+{% include 'navbar.html.twig' %}
 <div id="TdbAdmin"><h1>Tableau de bord Administrateur</h1></div>
 
 <div class="flex-container">
@@ -17,21 +17,25 @@
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
                     ['Task', 'Hours per Day'],
-                    ['Work', 1],
+                    ['Work', 2],
                     ['Eat', 1],
                     ['TV', 1],
                     ['Gym', 1],
                     ['Sleep', 1]
                 ]);
                 // Changement de la taille et le titre du graphe
-                var options = {'title': 'Consommation moyenne', 'width': 550, 'height': 400};
+                var options = {'title': 'Artisans par secteur', 'width': 550, 'height': 400};
                 var chart = new google.visualization.PieChart(document.getElementById('GraphAdmin1'));
                 chart.draw(data, options);
             }
         </script>
     </div>
 
+    <!-- A FAIRE POUR QUELQU'UN : AJOUTER LE NOMBRE D'ARTISAN INSCRITS -->
+
     <div id="BarreVerticale"></div>
+
+    <!-- A FAIRE POUR QUELQU'UN : AJOUTER LE NOMBRE DE DEMANDES DE PRESTATION -->
 
     <div id="GraphAdmin2" style="display: inline-block;">
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -51,64 +55,36 @@
                     ['Sleep', 0]
                 ]);
                 // Changement de la taille et le titre du graphe
-                var options = {'title': 'Consommation moyenne', 'width': 550, 'height': 400};
+                var options = {'title': 'Demandes par secteur', 'width': 550, 'height': 400};
                 var chart = new google.visualization.PieChart(document.getElementById('GraphAdmin2'));
                 chart.draw(data, options);
             }
         </script>
     </div>
 </div>
+
+    <!-- A FAIRE POUR VINCENT : BOUTONS A CENTRER ET METTRE DES VRAIES VALEURS SUR LE GRAPHIQUE -->
+<button ><a href="{{path('adminprestataire')}}">Voir les artisans</a></button>
+<button ><a href="{{path('admindemandes')}}">Voir les demandes</a></button>
 <div class="flex-container">
     <div id="BarreHorizontale"></div>
 </div>
 <div class="service">
     <h3 id="ServiceTitle">Services</h3>
-    <form class="form-inline">
-        <div class="form-group mx-sm-3 mb-2">
-            <div>
-                <input type="text" value="{{ service.Nomservice }}" class="form-control" placeholder="Service 1">
-                <button type="submit" class="btn btn-primary mb-2">Modifier</button>
-                <button type="submit" class="btn btn-primary mb-2">Supprimer</button>
-            </div>
-            <div>
-                <input type="text" id="Service2" class="form-control" placeholder="Service 2">
-                <button type="submit" class="btn btn-primary mb-2">Modifier</button>
-                <button type="submit" class="btn btn-primary mb-2">Supprimer</button>
-            </div>
-            <div>
-                <input type="text" class="form-control" placeholder="Service 3">
-                <button type="submit" class="btn btn-primary mb-2">Modifier</button>
-                <button type="submit" class="btn btn-primary mb-2">Supprimer</button>
-            </div>
-        </div>
-    </form>
+    <!-- A FAIRE POUR VINCENT : FAIRE MARCHER LES BOUTONS MODIFIER/AJOUTER -->
+    <ul >
+        {% for service in services %}
+            <li class="list-group-item">{{ service.nomService }} <button ><a href="">Modifier le service</a></button></li>
+        {% endfor %}
+    </ul>
+    <input type="text" name="addservice">
+    <button><a href="">Ajouter un service</a></button>
+
 </div>
 
-<div class="article">
-    <h3 id="ArticleTitle">Articles</h3>
-    <form class="form-inline">
-        <div class="form-group mx-sm-3 mb-2">
-            <div>
-                <input type="text" class="form-control" placeholder="Article 1">
-                <button type="submit" class="btn btn-primary mb-2">Modifier</button>
-                <button type="submit" class="btn btn-primary mb-2">Supprimer</button>
-            </div>
-            <div>
-                <input type="text" id="Article2" class="form-control" placeholder="Article 2">
-                <button type="submit" class="btn btn-primary mb-2">Modifier</button>
-                <button type="submit" class="btn btn-primary mb-2">Supprimer</button>
-            </div>
-            <div>
-                <input type="text" class="form-control" placeholder="Article 3">
-                <button type="submit" class="btn btn-primary mb-2">Modifier</button>
-                <button type="submit" class="btn btn-primary mb-2">Supprimer</button>
-            </div>
-        </div>
-    </form>
-</div>
+    <!-- A FAIRE POUR VINCENT : FAIRE UN FORMULAIRE POUR MODIFIER LES VALEURS DE LA TABLE PARAMETRES
 
-    {#{% for id in {{GetServicesCount()}}%}
-<input type="text" class="form-control" placeholder="Article{{ service.id_service }}">
-<button type="submit" class="btn btn-primary mb-2">Modifier</button>
-<button type="submit" class="btn btn-primary mb-2">Supprimer</button>#}
+     DEMANDE A CLEMENT SI T'AS DES QUESTIONS -->
+
+
 {% endblock %}
