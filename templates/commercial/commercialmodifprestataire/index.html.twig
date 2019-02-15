@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du prestataire{% endblock %}
+
+{% block body %}
+    {% include 'navbar.html.twig' %}
+    <div class="badge-center" style="margin: 0 auto; width: 600px; padding-top: 50px;">
+        {{ form_start(form) }}
+        <h3>Modification des informations de l'artisan</h3><br><br>
+        <div class="badge-modif" style="font-size: 18px!important">
+            <div class ="main-container">
+                <div class=" highlight" style="margin-left:0;">
+                    <div class="row">
+                        <ul class="list-group">
+                            {{ form_row(form.nom,{'label':'Nom :','attr':{'class':'list-group-item', 'name':'nom'}}) }}
+                            {{ form_row(form.prenom,{'label':'Prénom :','attr':{'class':'list-group-item', 'name':'prenom'}}) }}
+                            {{ form_row(form.tel,{'label':'Téléphone :','attr':{'class':'list-group-item', 'name':'tel'}}) }}
+                            {{ form_row(form.mail,{'label':'Email :','attr':{'class':'list-group-item', 'name':'mail'}}) }}
+                            {{ form_row(form.description,{'label':'Description :','attr':{'class':'list-group-item', 'name':'description'}}) }}
+                            {{ form_row(form.credit,{'label':'Crédits :','attr':{'class':'list-group-item', 'name':'credit'}}) }}
+                            <!-- A FAIRE POUR CLEMENT ET ALEXANDRE : RAJOUTER L'ADRESSE DE L'ARTISAN DANS LA BDD +
+                            AFFICHER LES 4 SEPAREMMENT + POUVOIR MODIFIER FUTURE ADRESSE -->
+                            {{ form_row(form.sauvegarde,{'label':'Sauvegarder :','attr':{'class':'list-group-item', 'name':'sauvegarde'}}) }}
+                            {{ form_end(form) }}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+{% endblock %}

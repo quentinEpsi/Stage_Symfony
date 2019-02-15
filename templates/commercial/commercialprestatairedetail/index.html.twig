@@ -49,10 +49,7 @@
                         <li class="list-group-item">Validation du compte : {{ validiteCompte }}</li>
                         <li class="list-group-item">Validation de l'assurance : {{ validite }}</li>
                         </ul><br>
-                    <!-- A FAIRE POUR ALEXANDRE : POUVOIR MODIFIER TEL, DESCRIPTION, NOM, PRENOM, MAIL, CREDITS, FUTURE ADRESSE
-
-                     <a href="{# path('adminmodifprestataire', {id: infoArtisan.idArtisan}) #}"><input type="submit" class="btn btn-primary" value="Modifier les informations"> </a>
-                     -->
+                    <a href="{{ path('commercialmodifprestataire', {id: infoArtisan.idArtisan}) }}"><input type="submit" class="btn btn-primary" value="Modifier les informations"> </a><br><br>
                     </div>
                 </div>
             </div>

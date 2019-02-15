@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification de la demande{% endblock %}
+
+{% block body %}
+    {% include 'navbar.html.twig' %}
+
+    <div class="badge-center" style="margin: 0 auto; width: 600px; padding-top: 50px;">
+        <h3>Modification des informations de la demande</h3><br><br>
+        <div class="badge-modif" style="font-size: 18px!important">
+            <div class ="main-container">
+                <div class=" highlight" style="margin-left:0;">
+                    <div class="row">
+                        <ul class="list-group">
+                            {{ form_start(form) }}
+                            {{ form_row(form.nomClient,{'label':'Nom du client :','attr':{'class':'list-group-item', 'name':'nomClient'}}) }}
+                            {{ form_row(form.prenomClient,{'label':'Prénom :','attr':{'class':'list-group-item', 'name':'prenomClient'}}) }}
+                            {{ form_row(form.adresseInterventionNumero,{'label':'Numéro adresse intervention :','attr':{'class':'list-group-item', 'name':'adresseInterventionNumero'}}) }}
+                            {{ form_row(form.adresseInterventionRue,{'label':'Rue adresse intervention :','attr':{'class':'list-group-item', 'name':'adresseInterventionRue'}}) }}
+                            {{ form_row(form.adresseInterventionVille,{'label':'Ville adresse intervention :','attr':{'class':'list-group-item', 'name':'adresseInterventionVille'}}) }}
+                            {{ form_row(form.adresseInterventionCp,{'label':'Code postal adresse intervention :','attr':{'class':'list-group-item', 'name':'adresseInterventionCp'}}) }}
+                            {{ form_row(form.telClient,{'label':'Téléphone client :','attr':{'class':'list-group-item', 'name':'telClient'}}) }}
+                            {{ form_row(form.mailClient,{'label':'Mail client :','attr':{'class':'list-group-item', 'name':'mailClient'}}) }}
+                            {{ form_row(form.descriptionSup,{'label':'Description supplémentaire :','attr':{'class':'list-group-item', 'name':'descriptionSup'}}) }}
+                            {{ form_row(form.sauvegarde,{'label':'Sauvegarder'}) }}
+                            {{ form_end(form) }}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+{% endblock %}

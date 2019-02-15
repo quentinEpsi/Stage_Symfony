@@ -24,10 +24,7 @@
                             {% for artisan in infoArtisans %}
                                 <li class="list-group-item">Artisan ayant visualisé la demande : <a href="{{ path('commercialprestatairedetail', {id: artisan.idArtisan}) }}">{{ artisan.nom }} {{ artisan.prenom }}</a></li>
                             {% endfor %}<br>
-                            <!-- A FAIRE POUR ALEXANDRE : POUVOIR MODIFIER TEL, DESCRIPTION, NOM, PRENOM, MAIL, FUTURE ADRESSE
-
-                            <a href="{# path('adminmodifprestataire', {id: infoArtisan.idArtisan}) #}"><input type="submit" class="btn btn-primary" value="Modifier les informations"> </a>
-                            -->
+                            <a href="{{ path('commercialmodifdemandes', {id: infoClient.idClient}) }}"><input type="submit" class="btn btn-primary" value="Modifier les informations"> </a>
                         </ul>
                     </div>
                 </div>
