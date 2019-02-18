@@ -33,9 +33,11 @@ class MesdevisController extends AbstractController
             $nomClient = $clients->getNomClient();
             $prenomClient = $clients->getPrenomClient();
             $adresseIntervention = $clients->getAdresseInterventionNumero()." ".$clients->getAdresseInterventionRue()." ".$clients->getAdresseInterventionVille()." ".$clients->getAdresseInterventionCp();
-            $dateDevis = $each_devis1->getDateEnvoie()->format('Y-m-d H:i:s');
+            $dateDevis = $each_devis1->getDateEnvoie()->format('d-m-Y');
             $fichierJoint = $each_devis1->getFichierJoint();
             $dateRealisation = $clients->getDateRealisation();
+            $datePrevuRealisation = $dateRealisation->format('d-m-Y H:i');
+            $devisVisualise ="";
             $statusDevis = "";
             if ($each_devis1->getValidationDevis() == 1 && $each_devis1->getRefusDevis() == 0)
                 $statusDevis = "Devis Validé";
@@ -43,37 +45,39 @@ class MesdevisController extends AbstractController
                 $statusDevis = "Devis Refusé ";
             else if ($each_devis1->getValidationDevis() == 0 && $each_devis1->getRefusDevis() == 0)
                 $statusDevis = "Devis en attente";
+            if($each_devis1->getVisualiseDevis() == 1)
+                $devisVisualise = "Le devis a été visualisé";
+              else if($each_devis1->getVisualiseDevis() == 0)
+                $devisVisualise = "Le devis n'a pas été visualisé";
+            dump($datePrevuRealisation);
             $unDevi = array();
             if($dateRealisation > (new \DateTime('now'))){
-            array_push($unDevi, $nomClient, $prenomClient, $adresseIntervention,$dateDevis,$fichierJoint, $statusDevis);
+            array_push($unDevi, $nomClient, $prenomClient, $adresseIntervention,$dateDevis,$datePrevuRealisation, $fichierJoint, $statusDevis, $devisVisualise);
             array_push($infoDevisTab,$unDevi);
             }
         }
         											
         $historique = array();
+        $chaineHistorique = array();
         
         foreach($devis as $each_devis2)
         {
             $clients = $each_devis2->getIdClient();
             $nomClient = $clients->getNomClient();
             $dateRealisation = $clients->getDateRealisation();
-            //dump($each_devis);
-            //$client = $this->getDoctrine()->getRepository(Client::class)->find($clients->getIdClient());			
-            //dump($client);									
-            $caractereHistorique = "Devis ".$each_devis2->getIdDevis()." - ".$nomClient;
+            $idDevis = 	$each_devis2->getIdDevis();								
             if($dateRealisation <= (new \DateTime('now')))
-            array_push($historique,$caractereHistorique);
+                {
+                $chaineHistorique[0] = strval($idDevis);
+                $chaineHistorique[1] = $nomClient;
+                array_push($historique,$chaineHistorique);
+                }
         }
-    
-        /*$persistantcollection = $artisan->getIdService();
-        $services = $persistantcollection->getValues();
-        dump($services);*/
-
-        
+         
         return $this->render('mesdevis/index.html.twig', [
             'controller_name' => 'MesdevisController',
             'nombreDevisNonVisualise' => 0,
-            'chaineHistorique' => $historique,
+            'Historique' => $historique,
             'chaineDevis' => $infoDevisTab
        ]);
     }
