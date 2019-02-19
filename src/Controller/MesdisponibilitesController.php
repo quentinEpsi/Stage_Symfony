@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\EtreDispo;
 use App\Entity\Horraire;
 use App\Entity\Jour;
 use App\Entity\Artisan;

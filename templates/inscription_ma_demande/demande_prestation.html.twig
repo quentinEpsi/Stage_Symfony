@@ -1,34 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-    {% block head %}
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>{% block title %}SR2F{% endblock %}</title>
-        {% block stylesheets %}
-            <!-- Favicon -->
-            <link rel="icon" href="{{ asset('build/images/favicon.png') }}" type="image/x-icon" />
-            <!-- Bootstrap CSS -->
-            <link href="{{ asset('build/css/bootstrap.min.css') }}" rel="stylesheet">
-            <!-- Animate CSS -->
-            <link href="{{ asset('build/vendors/animate/animate.css') }}" rel="stylesheet">
-            <!-- Icon CSS-->
-            <link rel="stylesheet" href="{{ asset('build/vendors/font-awesome/css/font-awesome.min.css') }}">
-            <!-- Camera Slider -->
-            <link rel="stylesheet" href="{{ asset('build/vendors/camera-slider/camera.css') }}">
-            <!-- Owlcarousel CSS-->
-            <link rel="stylesheet" type="text/css" href="{{ asset('build/vendors/owl_carousel/owl.carousel.css') }}" media="all">
-            <!--Theme Styles CSS-->
-            <link rel="stylesheet" type="text/css" href="{{ asset('build/css/style.css') }}" media="all" />
-			<link rel="stylesheet" type="text/css" href="{{ asset('build/css/test_acceuil.css') }}" media="all" />
-		{% endblock %}
-    </head>
-    {% endblock %}<!-- ./END BLOCK head -->
-	{% form_theme form 'bootstrap_4_layout.html.twig' %}
-    {% block body %}
-	<body>
-	{% include 'navbar.html.twig' %}
+{% extends 'base.html.twig' %}
+
+{% block title %}SR2F | Demande{% endblock %}
+
+{% block body %}
 	<h2 style="text-align:center;margin-bottom:10px;margin-top:10px;"> Création de la demande de prestation </h2>
 		<div class="formulaire" style="width: 50%;margin:auto;">
 			{{ form_start(form) }}
@@ -47,6 +21,4 @@
 			{{ form_row(form.Valider) }}
 			{{ form_end(form) }}
 		</div>
-	</body>
-	{% endblock %}
-</html>
+{% endblock %}
