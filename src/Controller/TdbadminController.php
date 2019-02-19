@@ -15,6 +15,7 @@ class TdbadminController extends AbstractController
      * @Route("/tdbadmin", name="tdbadmin")
      * @param ServiceRepository $repo
      * @return \Symfony\Component\HttpFoundation\Response
+     * @var private
      */
     public function index(ServiceRepository $repo)
     {
@@ -25,6 +26,14 @@ class TdbadminController extends AbstractController
         ]);
 
     }
+
+
+public function __construct(ServiceRepository $repo)
+{
+
+}
+
+
     /*public function add(){
         $service=new Service();
 
