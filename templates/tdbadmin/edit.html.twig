@@ -1,0 +1,17 @@
+
+
+{% block body %}
+<div class="container m0">
+    <h2>Éditer un service </h2>
+
+
+{{ form_start(form) }}
+
+    {{ form_widget(form.nomService) }}
+    <button class="btn btn-primary">Éditer</button>
+
+{{ form_end(form) }}
+</div>
+
+{% endblock %}
+

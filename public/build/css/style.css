@@ -5651,3 +5651,8 @@ table, th, td {
 .article{
   padding:5%;
 }
+
+.service_button{
+    display: flex;
+    margin-right: 1px;
+}

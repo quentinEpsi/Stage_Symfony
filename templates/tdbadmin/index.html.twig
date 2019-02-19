@@ -73,15 +73,26 @@
 </div>
 <div class="service">
     <h3 id="ServiceTitle">Services</h3>
-    <!-- A FAIRE POUR VINCENT : FAIRE MARCHER LES BOUTONS MODIFIER/AJOUTER -->
-    <ul >
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom du service</th>
+            </tr>
+        </thead>
+        <tbody>
         {% for service in services %}
-            <li class="list-group-item">{{ service.nomService }} <button ><a href="">Modifier le service</a></button></li>
+            <tr>
+                <td>{{ service.idService }}</td>
+                <td>{{ service.nomService }} <button class="service_button" ><a href="{{ path('tdbadmin.service.edit',{id: service.idService}) }}" >Modifier le service</a></button></td>
+            </tr>
         {% endfor %}
-    </ul>
-    <input type="text" name="addservice">
-    <button><a href="">Ajouter un service</a></button>
+        </tbody>
+    </table>
 
+    <label> <h2> Ajouter un service</h2><br>
+        <button class="service_button" ><a href="{{ path('tdbadmin.service.create') }}" >Ajouter un service service</a></button>
+    </label>
 
 </div>
 
