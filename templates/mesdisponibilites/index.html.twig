@@ -1,10 +1,40 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Mes disponibilités{% endblock %}</title>
+        {% block stylesheets %}
+            <!-- Favicon -->
+            <link rel="icon" href="{{ asset('build/images/favicon.png') }}" type="image/x-icon" />
+            <!-- Bootstrap CSS -->
+            <link href="{{ asset('build/css/bootstrap.min.css') }}" rel="stylesheet">
+            <!-- Animate CSS -->
+            <link href="{{ asset('build/vendors/animate/animate.css') }}" rel="stylesheet">
+            <!-- Icon CSS-->
+            <link rel="stylesheet" href="{{ asset('build/vendors/font-awesome/css/font-awesome.min.css') }}">
+            <!-- Camera Slider -->
+            <link rel="stylesheet" href="{{ asset('build/vendors/camera-slider/camera.css') }}">
+            <!-- Owlcarousel CSS-->
+            <link rel="stylesheet" type="text/css" href="{{ asset('build/vendors/owl_carousel/owl.carousel.css') }}" media="all">
+            <!--Theme Styles CSS-->
+            <link rel="stylesheet" type="text/css" href="{{ asset('build/css/style.css') }}" media="all" />
+            
+
+        {% endblock %}
+
+        <style>
+        th {
+            background-color: #337ab7;
+            color: white;
+        }
+        </style>
+    </head>
+
+<body>
 {# add this at the beginning of your template #}
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
-
-{# this alternative theme is also available #}
-{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
-{% block title %}Mes disponibilités{% endblock %}
 
 {% block body %}
 {% include 'navbar.html.twig' %}
@@ -18,9 +48,10 @@
             <h2>Veuillez entrer vos disponibilités</h2>
             <br>
             <br>
+            <br>
         </div>
             {{ form_start(form) }}
-                <table class="table table-dark text-center">
+                <table class="table table-striped table-bordered table-hover text-center">
                     <tr>
                         <th  style="text-align: center; vertical-align: middle;"></th>
                         <th  style="text-align: center; vertical-align: middle;">Lundi</th>
@@ -32,8 +63,8 @@
                         <th  style="text-align: center; vertical-align: middle;">Dimanche</th>
                     </tr>
                     <tr>
-                        <td >Matin</td>
-                        <td  style="text-align: center; vertical-align: middle;">{{ form_row(form.lundiMatin) }}</td>
+                        <td scope="row" style="font-weight:bold;">Matin</td>
+                        <td>{{ form_row(form.lundiMatin) }}</td>
                         <td>{{ form_row(form.mardiMatin) }}</td>
                         <td>{{ form_row(form.mercrediMatin) }}</td>
                         <td>{{ form_row(form.jeudiMatin) }}</td>
@@ -42,7 +73,7 @@
                         <td>{{ form_row(form.dimancheMatin) }}</td>
                     </tr>
                     <tr>
-                        <td>Après-midi</td>
+                        <td scope="row" style="font-weight:bold;">Après-midi</td>
                         <td>{{ form_row(form.lundiAprem) }}</td>
                         <td>{{ form_row(form.mardiAprem) }}</td>
                         <td>{{ form_row(form.mercrediAprem) }}</td>
@@ -52,7 +83,7 @@
                         <td>{{ form_row(form.dimancheAprem) }}</td>
                     </tr>
                     <tr>
-                        <td>Soir</td>
+                        <td scope="row" style="font-weight:bold;">Soir</td>
                         <td>{{ form_row(form.lundiSoir) }}</td>
                         <td>{{ form_row(form.mardiSoir) }}</td>
                         <td>{{ form_row(form.mercrediSoir) }}</td>
@@ -71,7 +102,29 @@
     </div>
   </div>
 </div>
-
-
+</body>
+{% block javascripts %}
+    <!-- jQuery JS -->
+    <script src="{{ asset('build/js/jquery-1.12.0.min.js') }}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{ asset('build/js/bootstrap.min.js') }}"></script>
+    <!-- Animate JS -->
+    <script src="{{ asset('build/vendors/animate/wow.min.js') }}"></script>
+    <!-- Camera Slider -->
+    <script src="{{ asset('build/vendors/camera-slider/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('build/vendors/camera-slider/camera.min.js') }}"></script>
+    <!-- Isotope JS -->
+    <script src="{{ asset('build/vendors/isotope/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('build/vendors/isotope/isotope.pkgd.min.js') }}"></script>
+    <!-- Progress JS -->
+    <script src="{{ asset('build/vendors/Counter-Up/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('build/vendors/Counter-Up/waypoints.min.js') }}"></script>
+    <!-- Owlcarousel JS -->
+    <script src="{{ asset('build/vendors/owl_carousel/owl.carousel.min.js') }}"></script>
+    <!-- Stellar JS -->
+    <script src="{{ asset('build/vendors/stellar/jquery.stellar.js') }}"></script>
+    <!-- Theme JS -->
+    <script src="{{ asset('build/js/min/theme.min.js') }}"></script>
+{% endblock %}
 
 {% endblock %}

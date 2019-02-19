@@ -89,7 +89,6 @@ class InscriptionDemandePrestationController extends AbstractController
 		date_default_timezone_set ( "Europe/Paris" );    								// on set l'heure sur le bon UTC pour le datetime 
 		 
 		$service = $this->getDoctrine()->getRepository(Service::class)->findAll();  	// on prend tout les services éxistants 
-		 
 		$nom_service = array();															// Récupération des noms des services 
 		 
 		foreach($service as $each_service)												// Parcours de tout les services existants 
@@ -122,7 +121,7 @@ class InscriptionDemandePrestationController extends AbstractController
 		{ 
 			//// Initialisation //// 
 			$entityManager = $this->getDoctrine()->getManager(); 
-			$client->setEtatAvancement("attente de de validation");						// Création de l'avancement 
+									// Création de l'avancement 
 			$client->setDateProposition(new \DateTime('now')); 
 			$adresse = $client->getAdresseInterventionNumero() . " " . $client->getAdresseInterventionRue() . "," .  $client->getAdresseInterventionCp() . " " . $client->getAdresseInterventionVille(); 
 			dump($adresse); 
@@ -214,6 +213,8 @@ class InscriptionDemandePrestationController extends AbstractController
 				//$disponibilite = $persistentcollection->getValues(); 
 				//($disponibilite); 
 				//$binary = decbin($disponibilite); 
+				$test = $one_artisan->getIdHoraire()->getValues();
+				dump($test);
 				$collection_object = $one_artisan->getIdService(); 
 				$services = $collection_object->getValues(); 
 				$bool_service=false; 
