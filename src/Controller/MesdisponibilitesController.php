@@ -103,7 +103,7 @@ class MesdisponibilitesController extends AbstractController
             ->add('vendrediSoir',CheckboxType::class, array( 'label' => false, 'required' => false))
             ->add('samediSoir',CheckboxType::class, array( 'label' => false, 'required' => false))
             ->add('dimancheSoir',CheckboxType::class, array( 'label' => false, 'required' => false))
-            ->add('Valider',SubmitType::class)
+            ->add('Valider',SubmitType::class, ['attr' => ['class' => 'btn btn-outline-dark ']])
             ->getForm(); 
         
 
