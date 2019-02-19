@@ -23,8 +23,7 @@ class MesdevisController extends AbstractController
         date_default_timezone_set ( "Europe/Paris" );  
 
         $devis = $this->getDoctrine()->getRepository(Devis::class)->findDevisByIdArtisan($id);
-        dump($devis);
-        
+                
         $infoDevisTab = array();
 
         foreach($devis as $each_devis1)
