@@ -19,6 +19,20 @@ class ClientRepository extends ServiceEntityRepository
         parent::__construct($registry, Client::class);
     }
 
+        /**
+    * @return Devis[] Returns an array of Devis objects
+    */
+    public function findByIdArtisan($idArtisan)
+    {
+        return $this->createQueryBuilder('demandes')
+            ->andWhere('demandes.idArtisan = :Id_Artisan')
+            ->setParameter('Id_Artisan', $idArtisan)
+            ->orderBy('demandes.dateEnvoie', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Client[] Returns an array of Client objects
     //  */
