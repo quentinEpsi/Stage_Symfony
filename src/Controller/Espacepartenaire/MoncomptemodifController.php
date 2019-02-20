@@ -1,50 +1,54 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Espacepartenaire;
 
 use App\Entity\Artisan;
+use App\Repository\ArtisanRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TelType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CommercialmodifprestataireController extends AbstractController
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+
+class MoncomptemodifController extends AbstractController
 {
     /**
-     * @Route("/commercial/commercialmodifprestataire/{id}", name="commercialmodifprestataire")
+     * @Route("/moncomptemodif/{id}", name="moncomptemodif")
+     * @param Artisan $idArtisan
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index()
+    public function index($id)
     {
-        return $this->render('commercial/commercialmodifprestataire/index.html.twig', [
-            'controller_name' => 'CommercialmodifprestataireController',
+        $artisans = $this->getDoctrine()->getRepository(Artisan::class)->find($id);
+
+        return $this->render('moncomptemodif/index.html.twig', [
+            'controller_name' => 'MoncomptemodifController',
+            'artisan' => $artisans
         ]);
     }
 
     /**
-     * @Route("/commercialprestatairedetail/{id}", name="commercialmodifprestataire")
+     * @Route("/moncomptemodif/{id}", name="moncomptemodif")
      * Method({"GET", "POST"})
      * @param Request $request
-     * @param $id
+     * @param Artisan $idArtisan
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function edit(Request $request, $id){
+    public function edit(Request $request, $id) {
         $editartisan = new Artisan();
         $editartisan = $this->getDoctrine()->getRepository(Artisan::class)->find($id);
 
         $form = $this->createFormBuilder($editartisan)
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
+            ->add('siren', TextType::class)
             ->add('tel', TelType::class)
             ->add('mail', EmailType::class)
             ->add('description', TextType::class)
-            ->add('credit', TextType::class)
-            ->add('sauvegarde', SubmitType::class, array(
-                'label' => 'Sauvegarder les modifications',
-                'attr' => array('class' => 'btn btn-primary')
-            ))
+            ->add('sauvegarde', SubmitType::class)
             ->getForm();
 
         $form->handleRequest($request);
@@ -54,10 +58,10 @@ class CommercialmodifprestataireController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
 
-            return $this->redirectToRoute('commercialprestatairedetail', array('id'=> $id));
+            return $this->redirectToRoute('moncompte', array('id'=> $id));
         }
 
-        return $this->render('commercial/commercialmodifprestataire/index.html.twig', array(
+        return $this->render('moncomptemodif/index.html.twig', array(
             'form' => $form->createView()
         ));
     }

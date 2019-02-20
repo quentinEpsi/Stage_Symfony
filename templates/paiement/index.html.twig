@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement{% endblock %}
+
+{% block body %}
+
+    {% include 'navbar.html.twig' %}
+
+    <div class="text-center col-lg-offset-2 col-md-4">
+        <div class="our_team_area">
+            <h3 class="text-center card-header">Acheter du crédit en toute sécurité :</h3>
+            <h4 class="text-center card-header">(1 crédit<img alt="" src="build/images/{{ asset('build/images/coin.png') }}" style="width: 15px"> = 1,00€)</h4><br>
+            <div style="text-align: center">
+                <button type="submit" class="btn btn-success">1€
+                    <img alt="" src="build/images/{{ asset('build/images/paypal.png') }}" style="width: 80px"> = 1 crédits<img alt="" src="build/images/{{ asset('build/images/coin.png') }}" style="width:20px"></button><br><br>
+
+                <button type="submit" class="btn btn-success">2€
+                    <img alt="" src="build/images/{{ asset('build/images/paypal.png') }}" style="width: 80px"> = 2 crédits<img alt="" src="build/images/{{ asset('build/images/coin.png') }}" style="width:20px"></button><br><br>
+
+                <button type="submit" class="btn btn-success">5€
+                    <img alt="" src="build/images/{{ asset('build/images/paypal.png') }}" style="width: 80px"> = 5 crédits<img alt="" src="build/images/{{ asset('build/images/coin.png') }}" style="width:20px"></button><br><br>
+
+                <button type="submit" class="btn btn-success">10€
+                    <img alt="" src="build/images/{{ asset('build/images/paypal.png') }}" style="width: 80px"> = 10 crédits<img alt="" src="build/images/{{ asset('build/images/coin.png') }}" style="width:20px"></button><br><br>
+
+                <button type="submit" class="btn btn-success">20€
+                    <img alt="" src="build/images/{{ asset('build/images/paypal.png') }}" style="width: 80px"> = 20 crédits<img alt="" src="build/images/{{ asset('build/images/coin.png') }}" style="width:20px"></button><br><br>
+
+                <button type="submit" class="btn btn-success">100€
+                    <img alt="" src="build/images/{{ asset('build/images/paypal.png') }}" style="width: 80px"> = 100 crédits<img alt="" src="build/images/{{ asset('build/images/coin.png') }}" style="width:20px"></button><br><br>
+            </div>
+        </div>
+    </div>
+    <div class="text-center col-md-4">
+        <div class="our_team_area">
+            <h4 class="text-center">Mes crédits actuels : {{ artisan.credit }} <img alt="" src="build/images/{{ asset('build/images/coin.png') }}"></h4><br>
+
+            <label class="text-center">Nombre de demandes de prestation souhaitées :
+                <input id="calcul" class="text-center" onkeyup="calcul()"><br>
+            </label>
+
+            <label id="resultat" class="text-center">Nombre de crédits nécessaires : </label>
+
+            <script>
+                function calcul() {
+                    let nombre;
+                    let chaine;
+                    chaine = "Nombre de crédits nécessaires : ";
+                    nombre = parseInt(document.getElementById("calcul").value);
+                    let resultat = nombre * {{ prixReceptionDemande }};
+                    if (isNaN(nombre)){
+                        document.getElementById("resultat").innerHTML = chaine + "Nombre invalide !";
+                    }
+                    else {
+                        document.getElementById("resultat").innerHTML = chaine + resultat;
+                    }
+                }
+            </script>
+        </div>
+    </div>
+{% endblock %}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Espacepartenaire;
 use App\Entity\EtreDispo;
 use App\Entity\Horraire;
 use App\Entity\Artisan;

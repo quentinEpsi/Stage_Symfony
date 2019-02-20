@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Espacepartenaire;
 
 use App\Entity\Artisan;
 use App\Repository\ArtisanRepository;
