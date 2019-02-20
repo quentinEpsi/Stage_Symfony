@@ -98,10 +98,26 @@ Autres');
         $formules = $manager->getRepository(Formules::class)->findAll();
         $services = $manager->getRepository(Service::class)->findAll();
 
+		
+		$jour_de_la_semaine = array('Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche');
+		$type_horaires = array('Matin','Après-midi','Soir');
+		for ($i = 0; $i<7; $i++)
+        {
+			for($j=0;$j<3;$j++)
+			{
+				$jour = new Jour();
+				$jour->setNomJour($jour_de_la_semaine[$i]);
+				$jour->setNomTypeHoraire($type_horaires[$j]);
+				$manager->persist($jour);
+			}
+        }
+        $manager->flush();
+		
+		$jours = $manager->getRepository(Jour::class)->findAll();
         // $product = new Product();
         // $manager->persist($product);
-        $temps_nom = array('lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche','lundi mardi','jeudi dimanche','mardi mercredi vendredi');
-        $type_horaire_nom = array('matin','apres-midi','soir','matin','apres-midi','soir','matin apres-midi','matin soir','apres-midi soir','matin apres-midi soir');
+        $temps_nom = array('lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche','lundi','mardi','mercredi');
+        $type_horaire_nom = array('matin','apres-midi','soir','matin','apres-midi','soir','matin','apres-midi','soir','matin');
         $temps = array('6','5','4','3','2','1','0','6:5','3:0','5:4:2');
         $type_horaire = array('2','1','0','2','1','0','2:1','2:0','1:0','2:1:0');
         for ($i = 0; $i<10; $i++)
@@ -131,6 +147,7 @@ Autres');
             $artisan->addIdService($services[0]);
             $artisan->addIdService($services[1]);
             $artisan->addIdService($services[2]);
+			$artisan->addIdHoraire($jours[$i%7]);
             $manager->persist($artisan);
         }
         $manager->flush();
@@ -201,19 +218,7 @@ Autres');
         }
         $manager->flush();
 		
-		$jour_de_la_semaine = array('Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche');
-		$type_horaires = array('Matin','Après-midi','Soir');
-		for ($i = 0; $i<7; $i++)
-        {
-			for($j=0;$j<3;$j++)
-			{
-				$jour = new Jour();
-				$jour->setNomJour($jour_de_la_semaine[$i]);
-				$jour->setNomTypeHoraire($type_horaires[$j]);
-				$manager->persist($jour);
-			}
-        }
-        $manager->flush();
+		
 		
 		
     }

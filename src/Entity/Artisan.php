@@ -117,6 +117,13 @@ class Artisan
     /**
      * @var bool
      *
+     * @ORM\Column(name="Validation_artisan", type="boolean", nullable=false)
+     */
+    private $validationArtisan;
+
+    /**
+     * @var bool
+     *
      * @ORM\Column(name="Validation_assurance", type="boolean", nullable=false)
      */
     private $validationAssurance;
@@ -380,18 +387,6 @@ class Artisan
     public function setDateFinEngagement(\DateTimeInterface $dateFinEngagement): self
     {
         $this->dateFinEngagement = $dateFinEngagement;
-
-        return $this;
-    }
-
-    public function getReinitialisationMdpArtisan(): ?bool
-    {
-        return $this->reinitialisationMdpArtisan;
-    }
-
-    public function setReinitialisationMdpArtisan(bool $reinitialisationMdpArtisan): self
-    {
-        $this->reinitialisationMdpArtisan = $reinitialisationMdpArtisan;
 
         return $this;
     }

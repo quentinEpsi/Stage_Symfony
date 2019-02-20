@@ -57,7 +57,6 @@ function disponibilite_date_to_decimal($date)
 		$y=1; 
 	else 
 		$y=0; 
-	dump($date); 
  
 	if($date_matin<=$date && $date<$date_aprem) 
 		$w=1; 
@@ -68,12 +67,11 @@ function disponibilite_date_to_decimal($date)
 		$t=1; 
 	else 
 		$t=0; 
-			 
+	
 	$day = date_format($date,'N'); 
-	$day = intval($day); 
-	$day = -($day-7); 
+	$day = intval($day)-1; 
 	 
-	return 2**(3*$day+2)*$y + 2**(3*$day+1)*$w + 2**(3*$day)*$t; 
+	return 3*$day+0*$y+1*$w+2*$t; 
 } 
  
 /** 
@@ -89,7 +87,6 @@ class InscriptionDemandePrestationController extends AbstractController
 		date_default_timezone_set ( "Europe/Paris" );    								// on set l'heure sur le bon UTC pour le datetime 
 		 
 		$service = $this->getDoctrine()->getRepository(Service::class)->findAll();  	// on prend tout les services éxistants 
-		 
 		$nom_service = array();															// Récupération des noms des services 
 		 
 		foreach($service as $each_service)												// Parcours de tout les services existants 
@@ -122,7 +119,7 @@ class InscriptionDemandePrestationController extends AbstractController
 		{ 
 			//// Initialisation //// 
 			$entityManager = $this->getDoctrine()->getManager(); 
-			$client->setEtatAvancement("attente de de validation");						// Création de l'avancement 
+									// Création de l'avancement 
 			$client->setDateProposition(new \DateTime('now')); 
 			$adresse = $client->getAdresseInterventionNumero() . " " . $client->getAdresseInterventionRue() . "," .  $client->getAdresseInterventionCp() . " " . $client->getAdresseInterventionVille(); 
 			dump($adresse); 
@@ -201,10 +198,8 @@ class InscriptionDemandePrestationController extends AbstractController
 			 
 			//// Check de la date //// 
 			$date_realisation= $client->getDateRealisation(); 
-			$test = disponibilite_date_to_decimal($date_realisation); 
-			dump($test); 
-			$mask_client = decbin(disponibilite_date_to_decimal($date_realisation)); 
-			dump($mask_client); 
+			$horaire_client = disponibilite_date_to_decimal($date_realisation); 
+			dump($horaire_client); 
 			 
 			 
 			foreach($allArtisan as $one_artisan) 											// Parcours de tout les artisans 
@@ -214,9 +209,11 @@ class InscriptionDemandePrestationController extends AbstractController
 				//$disponibilite = $persistentcollection->getValues(); 
 				//($disponibilite); 
 				//$binary = decbin($disponibilite); 
-				$collection_object = $one_artisan->getIdService(); 
-				$services = $collection_object->getValues(); 
+				$horaires = $one_artisan->getIdHoraire()->getValues();
+				dump($horaires);
+				$services = $one_artisan->getIdService()->getValues(); 
 				$bool_service=false; 
+				$bool_horaire = false;
 				 
 				foreach($services as $service) 
 				{ 
@@ -224,7 +221,15 @@ class InscriptionDemandePrestationController extends AbstractController
 						$bool_service=true; 
 				} 
  
-				if( $one_artisan->getCredit()>=$prix_reception_demande && $bool_service) 
+				foreach($horaires as $horaire)
+				{
+					dump($horaire);
+					dump($jours[$horaire_client]);
+					if($horaire == $jours[$horaire_client])
+						$bool_horaire = true;
+				}
+
+				if( $one_artisan->getCredit()>=$prix_reception_demande && $bool_service && $bool_horaire) 
 				{ 
 					$artisan_longitude =$one_artisan->getCoordonneeLongitude(); 
 					$artisan_latitude = $one_artisan->getCoordonneeLatitude(); 
