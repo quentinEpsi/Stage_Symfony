@@ -1,11 +1,7 @@
 <?php
 
-<<<<<<< HEAD:src/Controller/Espacepartenaire/MesdisponibilitesController.php
 namespace App\Controller\Espacepartenaire;
 use App\Entity\EtreDispo;
-=======
-namespace App\Controller;
->>>>>>> dev:src/Controller/MesdisponibilitesController.php
 use App\Entity\Horraire;
 use App\Entity\Jour;
 use App\Entity\Artisan;
@@ -24,6 +20,9 @@ class MesdisponibilitesController extends AbstractController
 {
     /**
      * @Route("/mesdisponibilites/{id}", name="mesdisponibilites")
+     * @param Request $request
+     * @param $id
+     * @return Response
      */
     public function mes_disponibilite(Request $request, $id)
     {
