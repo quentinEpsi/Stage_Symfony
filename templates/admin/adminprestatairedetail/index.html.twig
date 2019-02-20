@@ -10,11 +10,12 @@
                 <div class=" highlight" style="margin-left:0;">
                     <div class="row">
                         <ul class="list-group">
-                            {% if infoArtisan.validationAssurance == false %}
-                            {% set validite = 'Non validé' %}
-                            {% else %}
-                            {% set validite = 'Validé' %}
-                            {% endif %}
+                            {# if infoArtisan.validationAssurance == false #}
+                            {# set validite = 'Non validé' #}
+                            {# else #}
+                            {# set validite = 'Validé' #}
+                            {# endif #}
+							{% set validite = 'Non validé' %}
                                 {% set lastService = infoService|last %}
                                 {% set lastElement = infoService|slice(0,-1) %}
                             <li class="list-group-item">Nom : {{ infoArtisan.nom }}</li>

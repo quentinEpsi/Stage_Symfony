@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FormulemodifController extends AbstractController
 {
     /**
-     * @Route("/formulemodif", name="formulemodif")
+     * @Route("/artisan/formulemodif", name="formulemodif")
      */
     public function index()
     {

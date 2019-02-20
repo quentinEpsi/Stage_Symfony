@@ -32,7 +32,7 @@ class TdbadminController extends AbstractController
 
 
     /**
-     * @Route("/tdbadmin", name="tdbadmin")
+     * @Route("/admin/tdbadmin", name="tdbadmin")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index()
@@ -51,45 +51,45 @@ class TdbadminController extends AbstractController
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-public function edit(Service $serviceEntity,\Symfony\Component\HttpFoundation\Request $request){
-    $services=$this->repository->findAll();
-    $form=$this->createForm(ServiceType::class,$serviceEntity);
-    $form->handleRequest($request);
+	public function edit(Service $serviceEntity,\Symfony\Component\HttpFoundation\Request $request){
+		$services=$this->repository->findAll();
+		$form=$this->createForm(ServiceType::class,$serviceEntity);
+		$form->handleRequest($request);
 
-        if ($form->isSubmitted()&& $form->isValid()){
-            $this->om->flush();
-            return $this->redirectToRoute('tdbadmin');
-        }
+			if ($form->isSubmitted()&& $form->isValid()){
+				$this->om->flush();
+				return $this->redirectToRoute('tdbadmin');
+			}
 
 
-        return $this->render('tdbadmin/edit.html.twig',[
-           'services'=>$services,
-            'form'=>$form->createView()
-    ]);
-}
+			return $this->render('tdbadmin/edit.html.twig',[
+			   'services'=>$services,
+				'form'=>$form->createView()
+		]);
+	}
 
     /**
      * @Route ("/tdbadmin/create",name="tdbadmin.service.create")
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-public function create(\Symfony\Component\HttpFoundation\Request $request){
-    $ServiceCreated= new Service();
-    $form=$this->createForm(ServiceType::class,$ServiceCreated);
-    $form->handleRequest($request);
+	public function create(\Symfony\Component\HttpFoundation\Request $request){
+		$ServiceCreated= new Service();
+		$form=$this->createForm(ServiceType::class,$ServiceCreated);
+		$form->handleRequest($request);
 
-    if ( $form->isSubmitted() && $form->isValid()){
-    $this->om->persist($ServiceCreated);
-    $this->om->flush();
-    return $this->redirectToRoute('tdbadmin');
-    }
+		if ( $form->isSubmitted() && $form->isValid()){
+		$this->om->persist($ServiceCreated);
+		$this->om->flush();
+		return $this->redirectToRoute('tdbadmin');
+		}
 
-    return $this->render('tdbadmin/create.html.twig',[
-        'services'=>$ServiceCreated,
-        'form'=>$form->createView()
-    ]);
+		return $this->render('tdbadmin/create.html.twig',[
+			'services'=>$ServiceCreated,
+			'form'=>$form->createView()
+		]);
 
-}
+	}
 
     /*public function add(){
         $service=new Service();

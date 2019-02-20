@@ -9,19 +9,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class MoncompteController extends AbstractController
 {
     /**
-     * @Route("/moncompte/{id}", name="moncompte")
+     * @Route("/artisan/moncompte", name="moncompte")
      * @param ArtisanRepository $artisanRepository
-     * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(ArtisanRepository $artisanRepository, $id)
+    public function index(ArtisanRepository $artisanRepository)
     {
-        $infoArtisans = $artisanRepository->find($id);
-        $repository = $infoArtisans->getIdService();
-        $infoService = $repository->getValues();
+        $infoArtisan= $this->get('security.token_storage')->getToken()->getUser();
+		dump($infoArtisan);
+        $infoService = $infoArtisan->getIdService()->getValues();
+
         return $this->render('moncompte/index.html.twig', [
             'controller_name' => 'MoncompteController',
-            'infosArtisan' => $infoArtisans,
+            'infosArtisan' => $infoArtisan,
             'infoService' => $infoService
         ]);
     }

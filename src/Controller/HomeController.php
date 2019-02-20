@@ -21,8 +21,6 @@ class HomeController extends AbstractController
     public function index(): Response
     {
 		$devis = $this->getDoctrine()->getRepository(Devis::class)->findAll();
-		$test = $devis[0]->getIdClient();
-		$nom = $test->getNomClient();
 
 		
 		$clients = $this->getDoctrine()->getRepository(Client::class)->findAll();

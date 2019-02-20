@@ -29,7 +29,7 @@
                         <li class="list-group-item">Formule : {{ infosArtisan.idFormule.nomFormule }}</li>
                         <li class="list-group-item">Crédits : {{ infosArtisan.credit }}</li><br>
                         <input type="submit" class="btn btn-success" value="Changer le mot de passe"><br><br>
-                        <a href="{{ path('moncomptemodif', {id: infosArtisan.idArtisan}) }}"><input type="submit" class="btn btn-primary" value="Modifier mes informations"> </a><br><br>
+                        <a href="{{ path('moncomptemodif') }}"><input type="submit" class="btn btn-primary" value="Modifier mes informations"> </a><br><br>
                         <input type="submit" class="btn btn-danger" value="Supprimer mon compte">
                     </ul>
                 </div>

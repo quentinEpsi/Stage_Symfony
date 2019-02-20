@@ -10,12 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class MesdemandesController extends AbstractController
 {
     /**
-     * @Route("/mesdemandes/{id}", name="mesdemandes")
+     * @Route("/artisan/mesdemandes", name="mesdemandes")
      */
-    public function mesdemandes($id)
+    public function mesdemandes()
     {
         date_default_timezone_set ( "Europe/Paris" );  
 
+		$artisan= $this->get('security.token_storage')->getToken()->getUser();
         //$mesDemandes = $this->getDoctrine()->getRepository(Client::class)->findByIdArtisan($id);
 
         //dump($mesDemandes);

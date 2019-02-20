@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Artisan
@@ -12,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="artisan", indexes={@ORM\Index(name="artisan_service_commercial0_FK", columns={"Id_commercial"}), @ORM\Index(name="artisan_formules_FK", columns={"Id_formule"})})
  * @ORM\Entity(repositoryClass="App\Repository\ArtisanRepository")
  */
-class Artisan
+class Artisan implements UserInterface
 {
     /**
      * @var int
@@ -64,6 +65,11 @@ class Artisan
      * @ORM\Column(name="Mail", type="string", length=100, nullable=false)
      */
     private $mail;
+	
+	/**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
     /**
      * @var string
@@ -75,7 +81,7 @@ class Artisan
     /**
      * @var string
      *
-     * @ORM\Column(name="Motdepasse", type="string", length=50, nullable=false)
+     * @ORM\Column(name="Motdepasse", type="string", length=100, nullable=false)
      */
     private $motdepasse;
 
@@ -113,20 +119,6 @@ class Artisan
      * @ORM\Column(name="Date_fin_engagement", type="datetime", nullable=false)
      */
     private $dateFinEngagement;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="Validation_artisan", type="boolean", nullable=false)
-     */
-    private $validationArtisan;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="Validation_assurance", type="boolean", nullable=false)
-     */
-    private $validationAssurance;
 
     /**
      * @var float
@@ -182,6 +174,16 @@ class Artisan
      * })
      */
     private $idCommercial;
+
+    /**
+     * @var \ServiceCommercial
+     *
+     * @ORM\ManyToOne(targetEntity="ServiceCommercial")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_commercial_service_commercial", referencedColumnName="Id_commercial")
+     * })
+     */
+    private $idCommercialServiceCommercial;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -330,6 +332,67 @@ class Artisan
 
         return $this;
     }
+	
+	 /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->mail;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return (string) $this->motdepasse;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->motdepasse = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
 
     public function getNumAssurance(): ?string
     {
@@ -387,30 +450,6 @@ class Artisan
     public function setDateFinEngagement(\DateTimeInterface $dateFinEngagement): self
     {
         $this->dateFinEngagement = $dateFinEngagement;
-
-        return $this;
-    }
-
-    public function getValidationArtisan(): ?bool
-    {
-        return $this->validationArtisan;
-    }
-
-    public function setValidationArtisan(bool $validationArtisan): self
-    {
-        $this->validationArtisan = $validationArtisan;
-
-        return $this;
-    }
-
-    public function getValidationAssurance(): ?bool
-    {
-        return $this->validationAssurance;
-    }
-
-    public function setValidationAssurance(bool $validationAssurance): self
-    {
-        $this->validationAssurance = $validationAssurance;
 
         return $this;
     }
@@ -499,6 +538,18 @@ class Artisan
         return $this;
     }
 
+    public function getIdCommercialServiceCommercial(): ?ServiceCommercial
+    {
+        return $this->idCommercialServiceCommercial;
+    }
+
+    public function setIdCommercialServiceCommercial(?ServiceCommercial $idCommercialServiceCommercial): self
+    {
+        $this->idCommercialServiceCommercial = $idCommercialServiceCommercial;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Client[]
      */
@@ -539,6 +590,7 @@ class Artisan
     {
         if (!$this->idHoraire->contains($idHoraire)) {
             $this->idHoraire[] = $idHoraire;
+            $idHoraire->addIdArtisan($this);
         }
 
         return $this;
@@ -548,6 +600,7 @@ class Artisan
     {
         if ($this->idHoraire->contains($idHoraire)) {
             $this->idHoraire->removeElement($idHoraire);
+            $idHoraire->removeIdArtisan($this);
         }
 
         return $this;
