@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Espacepartenaire;
 
 use App\Repository\ArtisanRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MaformuleController extends AbstractController
 {
     /**
-     * @Route("/maformule", name="maformule")
+     * @Route("/artisan/maformule", name="maformule")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index()
@@ -20,19 +20,18 @@ class MaformuleController extends AbstractController
     }
 
     /**
-     * @Route("/maformule/{id}", name="maformule")
+     * @Route("/artisan/maformule/", name="maformule")
      * @param ArtisanRepository $artisanRepository
-     * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function show(ArtisanRepository $artisanRepository, $id)
+    public function show(ArtisanRepository $artisanRepository)
     {
-        $infoArtisan = $artisanRepository->find($id);
-        $repo = $infoArtisan->getIdFormule();
+		$artisan= $this->get('security.token_storage')->getToken()->getUser();
+        $formule = $artisan->getIdFormule();
         return $this->render('maformule/index.html.twig', [
             'controller_name' => 'MaformuleController',
-            'maformule' => $repo,
-            'artisan' => $infoArtisan
+            'maformule' => $formule,
+            'artisan' => $artisan
         ]);
     }
 }

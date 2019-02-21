@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Commercial;
 
 use App\Entity\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

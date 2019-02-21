@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Commercial;
 
 use App\Repository\ArtisanRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

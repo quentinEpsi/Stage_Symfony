@@ -3,7 +3,6 @@
 {% block title %}Tableau prestataires administrateur{% endblock %}
 
 {% block body %}
-    {% include 'navbar.html.twig' %}
     <div class="badge-center" style="margin: 0 auto; width: 600px; padding-top: 50px;">
         <h3>Fiche détaillée de l'artisan {{ infoArtisan.nom }} {{ infoArtisan.prenom }}</h3><br><br>
         <div class="badge-modif" style="font-size: 18px!important">
@@ -11,11 +10,12 @@
                 <div class=" highlight" style="margin-left:0;">
                     <div class="row">
                         <ul class="list-group">
-                            {% if infoArtisan.validationAssurance == false %}
-                            {% set validite = 'Non validé' %}
-                            {% else %}
-                            {% set validite = 'Validé' %}
-                            {% endif %}
+                            {# if infoArtisan.validationAssurance == false #}
+                            {# set validite = 'Non validé' #}
+                            {# else #}
+                            {# set validite = 'Validé' #}
+                            {# endif #}
+							{% set validite = 'Non validé' %}
                                 {% set lastService = infoService|last %}
                                 {% set lastElement = infoService|slice(0,-1) %}
                             <li class="list-group-item">Nom : {{ infoArtisan.nom }}</li>

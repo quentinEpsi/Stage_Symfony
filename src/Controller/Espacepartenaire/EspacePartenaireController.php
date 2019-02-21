@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Espacepartenaire;
 
 use App\Entity\Artisan;
 use App\Repository\ArtisanRepository;
@@ -10,17 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class EspacePartenaireController extends AbstractController
 {
     /**
-     * @Route("/espacepartenaire/{id}", name="espacepartenaire")
-     * @param Artisan $idArtisan
-     * @param ArtisanRepository $repo
+     * @Route("/artisan/espacepartenaire/", name="espacepartenaire")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index($id)
+    public function index()
     {
-        $artisan = $this->getDoctrine()->getRepository(Artisan::class)->find($id);
         return $this->render('espacepartenaire/index.html.twig', [
             'controller_name' => 'EspacepartenaireController',
-            'artisan' => $artisan
         ]);
     }
 }

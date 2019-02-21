@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Espacepartenaire;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FormulemodifController extends AbstractController
 {
     /**
-     * @Route("/formulemodif", name="formulemodif")
+     * @Route("/artisan/formulemodif", name="formulemodif")
      */
     public function index()
     {

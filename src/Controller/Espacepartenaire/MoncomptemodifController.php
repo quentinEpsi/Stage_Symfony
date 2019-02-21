@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Espacepartenaire;
 
 use App\Entity\Artisan;
 use App\Repository\ArtisanRepository;
@@ -16,13 +16,13 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 class MoncomptemodifController extends AbstractController
 {
     /**
-     * @Route("/moncomptemodif/{id}", name="moncomptemodif")
+     * @Route("/artisan/moncomptemodif", name="moncomptemodif")
      * @param Artisan $idArtisan
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index($id)
     {
-        $artisans = $this->getDoctrine()->getRepository(Artisan::class)->find($id);
+        $artisans = $this->get('security.token_storage')->getToken()->getUser();
 
         return $this->render('moncomptemodif/index.html.twig', [
             'controller_name' => 'MoncomptemodifController',
@@ -31,15 +31,14 @@ class MoncomptemodifController extends AbstractController
     }
 
     /**
-     * @Route("/moncomptemodif/{id}", name="moncomptemodif")
+     * @Route("/artisan/moncomptemodif", name="moncomptemodif")
      * Method({"GET", "POST"})
      * @param Request $request
      * @param Artisan $idArtisan
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function edit(Request $request, $id) {
-        $editartisan = new Artisan();
-        $editartisan = $this->getDoctrine()->getRepository(Artisan::class)->find($id);
+    public function edit(Request $request) {
+        $editartisan = $this->get('security.token_storage')->getToken()->getUser();
 
         $form = $this->createFormBuilder($editartisan)
             ->add('nom', TextType::class)
@@ -58,7 +57,7 @@ class MoncomptemodifController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
 
-            return $this->redirectToRoute('moncompte', array('id'=> $id));
+            return $this->redirectToRoute('moncompte');
         }
 
         return $this->render('moncomptemodif/index.html.twig', array(

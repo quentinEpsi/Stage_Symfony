@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Commercial;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TdbcommercialController extends AbstractController
 {
     /**
-     * @Route("/tdbcommercial", name="tdbcommercial")
+     * @Route("/commercial/tdbcommercial", name="tdbcommercial")
      */
     public function index()
     {
