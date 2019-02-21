@@ -34,6 +34,18 @@ class ContactType extends AbstractType
                 'label' => 'Votre message',
                 'attr' => ['rows' => 10 ]
             ])
+            ->add('numDeRue',TextType::class,[
+                'label' => 'Votre numéro de rue'
+            ])
+            ->add('rue',TextType::class,[
+                'label' => 'Votre nom de rue'
+            ])
+            ->add('cp',TextType::class,[
+                'label' => 'Votre code postal'
+            ])
+            ->add('ville',TextType::class,[
+                'label' => 'Votre ville'
+            ])
         ;
     }
 

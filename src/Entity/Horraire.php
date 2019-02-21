@@ -2,12 +2,9 @@
  
 namespace App\Entity; 
  
-use Doctrine\ORM\Mapping as ORM; 
- 
+
 /** 
- * Horraire 
- * 
- * @ORM\Entity 
+ * Horraire
  */ 
 class Horraire 
 { 
