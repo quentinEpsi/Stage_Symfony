@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Mes disponibilités{% endblock %}</title>
+        <title>{% block title %}Mes demandes{% endblock %}</title>
         {% block stylesheets %}
             <!-- Favicon -->
             <link rel="icon" href="{{ asset('build/images/favicon.png') }}" type="image/x-icon" />
@@ -19,8 +19,7 @@
             <!-- Owlcarousel CSS-->
             <link rel="stylesheet" type="text/css" href="{{ asset('build/vendors/owl_carousel/owl.carousel.css') }}" media="all">
             <!--Theme Styles CSS-->
-            <link rel="stylesheet" type="text/css" href="{{ asset('build/css/style.css') }}" media="all" />
-            
+            <link rel="stylesheet" type="text/css" href="{{ asset('build/css/style.css') }}" media="all" />            
             
 
         {% endblock %}
@@ -65,6 +64,10 @@
 	<div class="col-md-2 sidenav" >
 	<h2>Historique</h2>
 		<hr>
+    		  {% for Element in Historique %}
+				<div style="display: inline;"> <a href="{{ path('mondevisdetail', {id: Element['0']}) }}"> Devis n° {{Element['0']}} : {{Element['1']}} </a></div> <br>
+					
+    {% endfor %}
 
 	</div>
 
@@ -83,15 +86,21 @@
                 <th  style="text-align: center; vertical-align: middle;">Nom</th>
                 <th  style="text-align: center; vertical-align: middle;">Prénom</th>
                 <th  style="text-align: center; vertical-align: middle;">Date proposition</th>
-                <th  style="text-align: center; vertical-align: middle;">Distance</th>
+                <th  style="text-align: center; vertical-align: middle;">Distance en km</th>
+                <th  style="text-align: center; vertical-align: middle;">Détails</th>
+                <th  style="text-align: center; vertical-align: middle;">Refuser</th>
 		</tr>
 		
+		{% for Demandes in mesDemandes %}
 			<tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+				<td>{{Demandes[0]}}</td>
+				<td>{{Demandes[1]}}</td>
+				<td>{{Demandes[2]}}</td>
+				<td>{{Demandes[3]}}</td>
+        <td><a href="#"><button type="button" class="btn btn-outline-dark btn">Détails</button></a></td>
+        <td><a href="#"><button type="button" class="btn btn-outline-warning btn">Refuser</button></a></td>
 			</tr>
+		{% endfor %}
 		
 		</table>
 	</div>
