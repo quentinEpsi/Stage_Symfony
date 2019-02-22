@@ -1,0 +1,11 @@
+# config/packages/payment.yaml
+jms_payment_core:
+    encryption:
+        secret: def000007cffdee789d05120c0824f31688b70e634d589ea6a67c02c0396721302e358d4c8fa1ae51b16a5af23edba5beb1cbfaa80051e7f21d2fa95c428e7a1d113aa98
+
+jms_payment_paypal:
+    return_url: "https://www.paypal.com/fr/home"
+    cancel_url: "https://www.google.com"
+    username: "Velikyan34_api1.gmail.com"
+    password: "NLKWPBTYD3T4P69H"
+    signature: "AUmv9J3knY3wGGZoAYL5LM.8OzizAzixWp5W58oIu07A4RjICecl0yYl"

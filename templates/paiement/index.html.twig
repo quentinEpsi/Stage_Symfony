@@ -4,8 +4,6 @@
 
 {% block body %}
 
-    {% include 'navbar.html.twig' %}
-
     <div class="text-center col-lg-offset-2 col-md-4">
         <div class="our_team_area">
             <h3 class="text-center card-header">Acheter du crédit en toute sécurité :</h3>
@@ -57,5 +55,20 @@
                 }
             </script>
         </div>
+    </div>
+
+    <div class="text-center">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Pay € {{ order.amount }}" />
+        {{ form_end(form) }}
+
+        {% block _jms_choose_payment_method_method_label %}{% endblock %}
+
+        {% block _jms_choose_payment_method_method_widget %}
+            <div style="display: none;">
+                {{ parent() }}
+            </div>
+        {% endblock %}
     </div>
 {% endblock %}
