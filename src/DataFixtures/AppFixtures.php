@@ -15,9 +15,17 @@ use App\Entity\Jour;
 use App\Entity\EtatAvancement;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
+	private $passwordEncoder;
+
+     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+     {
+         $this->passwordEncoder = $passwordEncoder;
+     }
+
     public function load(ObjectManager $manager)
     {
         //// DEFINITION DES SERVICES ///////////////////////////////////////////
@@ -91,6 +99,7 @@ Autres');
         $parametre->setPrixReceptionDemande(2);
         $parametre->setPrixValidationDemande(3);
         $parametre->setDistanceMaxClientArtisan(100);
+		$parametre->setPrixUnCredit(2.0);
         $manager->persist($parametre);
         $manager->flush();
 
@@ -120,6 +129,7 @@ Autres');
         $type_horaire_nom = array('matin','apres-midi','soir','matin','apres-midi','soir','matin','apres-midi','soir','matin');
         $temps = array('6','5','4','3','2','1','0','6:5','3:0','5:4:2');
         $type_horaire = array('2','1','0','2','1','0','2:1','2:0','1:0','2:1:0');
+		$roles = array("ROLE_ARTISAN");
         for ($i = 0; $i<10; $i++)
         {
             $artisan = new Artisan();
@@ -128,9 +138,10 @@ Autres');
             $artisan->setRaisonSociale('RaisonSociale' . $i);
             $artisan->setSIREN('1234' . $i);
             $artisan->setTel('07070707' . $i);
-            $artisan->setMail('artisan@artisan.fr' . $i);
+            $artisan->setMail('artisan@artisan' . $i);
             $artisan->setDescription('Description' . $i);
-            $artisan->setMotdepasse('MotdepasseArtisan' . $i);
+            $artisan->setPassword($this->passwordEncoder->encodePassword($artisan,'artisan'));
+			$artisan->setRoles($roles);
             $artisan->setNumAssurance('123456' . $i);
             $artisan->setDateInscription(new \DateTime());
             $artisan->setCredit(30 + $i);
@@ -139,8 +150,6 @@ Autres');
             $artisan->setDateFinArretReception(new \DateTime());
             $artisan->setDateFinEngagement(new \DateTime());
             $artisan->setAvantageArtisan(3 + $i);
-            $artisan->setValidationArtisan('validationArtisan' . $i);
-            $artisan->setValidationAssurance('validationAssurance' . $i);
             $artisan->setCoordonneeLatitude(46.54 + $i*10**(-1));
             $artisan->setCoordonneeLongitude(0.24);
             $artisan->setIdFormule($formules[1]);
@@ -154,13 +163,14 @@ Autres');
 
         $artisans = $manager->getRepository(Artisan::class)->findAll();
 		$etat_avancements = $manager->getRepository(EtatAvancement::class)->findAll();
+		
         for ($i = 0; $i<10; $i++)
         {
             $demande = new Client();
             $demande->setNomClient('Durant');
             $demande->setPrenomClient('Jean');
             $demande->setTelClient('07070707');
-            $demande->setMailClient('artisan@artisan.fr' . $i);
+            $demande->setMailClient('artisan@artisan' . $i);
             $demande->setDescriptionSup('Description' . $i);
             $demande->setAdresseInterventionNumero('23'. $i);
             $demande->setAdresseInterventionRue('Rue des bois' . $i);
@@ -181,7 +191,14 @@ Autres');
 
 
         $clients = $manager->getRepository(Client::class)->findAll();
-
+		$roles = array("ROLE_ADMIN","ROLE_COMMERCIAL");
+		$admin = new Admin();
+		$admin->setMailAdmin("admin@admin");
+		$admin->setPassword($this->passwordEncoder->encodePassword($admin,'admin'));
+		$admin->setRoles($roles);
+		$admin->setReinitialisationMdpAdmin(0);
+		$manager->persist($admin);
+		/*
         for ($i = 0; $i<10; $i++)
         {
             $admin = new Admin();
@@ -189,17 +206,25 @@ Autres');
             $admin->setMotdepasseAdmin('MotdepasseAdm' . $i);
             $admin->setReinitialisationMdpAdmin(0);
             $manager->persist($admin);
-        }
+        }*/
         $manager->flush();
 
-        for ($i = 0; $i<10; $i++)
+		$roles_commercial = array("ROLE_COMMERCIAL");
+		$commercial = new ServiceCommercial();
+        $commercial->setMailCommercial('commercial@commercial');
+        $commercial->setPassword($this->passwordEncoder->encodePassword($commercial,'commercial'));
+		$commercial->setRoles($roles_commercial);
+        $commercial->setReinitialisationMdpCommercial(0);
+        $manager->persist($commercial);
+			
+        /*for ($i = 0; $i<10; $i++)
         {
             $commercial = new ServiceCommercial();
             $commercial->setMailCommercial('commercial@commercial.com' . $i);
             $commercial->setMotdepasseCommercial('MotdepasseCom' . $i);
             $commercial->setReinitialisationMdpCommercial(0);
             $manager->persist($commercial);
-        }
+        }*/
         $manager->flush();
 
         for ($i = 0; $i<10; $i++)
@@ -207,7 +232,6 @@ Autres');
             $devis = new Devis();
             $devis->setDateEnvoie(new \DateTime());
             $devis->setFichierJoint('FichierJoint' . $i);
-            $devis->setNomDevis('Objet' . $i);
             $devis->setValidationDevis(0);
             $devis->setRefusDevis(0);
             $devis->setAvantageDevis(1);
@@ -217,9 +241,5 @@ Autres');
             $manager->persist($devis);
         }
         $manager->flush();
-		
-		
-		
-		
     }
 }

@@ -16,13 +16,14 @@ use Symfony\Component\HttpFoundation\Request;
 class MesDevisDetailController extends AbstractController
 {
     /**
-     * @Route("/mondevisdetail/{id}", name="mondevisdetail")
+     * @Route("/artisan/mondevisdetail/{id}", name="mondevisdetail")
      */
     public function index($id)
     {
         date_default_timezone_set ( "Europe/Paris" );  
-        
+
         $devis = $this->getDoctrine()->getRepository(Devis::class)->find($id);
+
         $client = $devis->getIdCLient();
         $dateDevis = $devis->getDateEnvoie()->format('d-m-Y');
         $dateRealisation = $client->getDateRealisation()->format('d-m-Y H:i');   

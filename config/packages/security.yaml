@@ -1,22 +1,65 @@
 security:
     encoders:
-        App\Entity\User:
-            algorithm: bcrypt
+        App\Entity\Admin:
+            algorithm: argon2i
+        App\Entity\ServiceCommercial:
+            algorithm: argon2i
+        App\Entity\Artisan:
+            algorithm: argon2i
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
-            entity:
-                class: App\Entity\User
-                property: email
+        app_admin_provider:
+            entity: { class: 'App\Entity\Admin',property: 'mailAdmin' }
+        app_commercial_provider:        
+            entity: { class: 'App\Entity\ServiceCommercial', property: 'mailCommercial'}
+        app_artisan_provider:        
+            entity: { class: 'App\Entity\Artisan', property: 'mail' }
+        # used to reload user from session & other features (e.g. switch_user)
+        
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        admin:
+            pattern: '^(/admin)|^/secure$'
+            anonymous: true
+            provider: app_admin_provider
+            guard:
+                authenticators:
+                    - App\Security\AdminAuthenticator
+            form_login:
+                login_path: login_admin
+                check_path: login_admin
+            logout:
+                path:   app_logout_admin
+        commercial:
+            pattern: '^(/commercial)|^/secure/commercial$'
+            anonymous: true
+            provider: app_commercial_provider
+            guard:
+                authenticators:
+                    - App\Security\ServiceCommercialAuthenticator
+            form_login:
+                login_path: login_commercial
+                check_path: login_commercial
+            logout:
+                path:   app_logout_commercial
+        artisan:
+            pattern: '^(/artisan)|^/connexion$'
+            anonymous: true
+            provider: app_artisan_provider
+            guard:
+                authenticators:
+                    - App\Security\ArtisanAuthenticator
+            form_login:
+                login_path: login_artisan
+                check_path: login_artisan
+            logout:
+                path:   app_logout_artisan
         main:
             anonymous: true
-
             # activate different ways to authenticate
 
             # http_basic: true
@@ -28,5 +71,6 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/commercial/, roles: [ROLE_COMMERCIAL,ROLE_ADMIN] }
+         - { path: ^/admin/, roles: ROLE_ADMIN }
+         - { path: ^/artisan/, roles: ROLE_ARTISAN }

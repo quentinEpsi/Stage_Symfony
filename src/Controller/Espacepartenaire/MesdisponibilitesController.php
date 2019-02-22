@@ -19,20 +19,17 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class MesdisponibilitesController extends AbstractController
 {
     /**
-     * @Route("/mesdisponibilites/{id}", name="mesdisponibilites")
+     * @Route("/artisan/mesdisponibilites", name="mesdisponibilites")
      * @param Request $request
-     * @param $id
      * @return Response
      */
-    public function mes_disponibilite(Request $request, $id)
+    public function mes_disponibilite(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager(); // Le manageur permet d'inserer un ellement dans la bdd
         $lesJours = $this->getDoctrine()->getRepository(Jour::class)->findAll(); //récupère les jours
-        $artisan = $this->getDoctrine()->getRepository(Artisan::class)->find($id); //récupère l'artisan
+        $artisan= $this->get('security.token_storage')->getToken()->getUser();
 
         $Horraire = new Horraire();
-
-        dump($artisan->getIdHoraire()->getValues()); 
         
         $horaires = $artisan->getIdHoraire()->getValues();
         $y = $lesJours[0]->getIdHoraire();

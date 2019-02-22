@@ -1,3 +1,26 @@
 #index:
 #    path: /
 #    controller: App\Controller\HomeController::index
+
+login_admin:
+    path: /secure
+    controller: App\Controller\AdminSecurityController::login
+    
+app_logout_admin:
+    path: /admin/logout_admin
+    
+    
+login_commercial:
+    path: /secure/commercial
+    controller: App\Controller\ServiceCommercialSecurityController::login
+    
+app_logout_commercial:
+    path: /commercial/logout_commercial
+    
+ 
+login_artisan:
+    path: /connexion
+    controller: App\Controller\ArtisanSecurityController::login
+    
+app_logout_artisan:
+    path: /artisan/logout_artisan

@@ -46,6 +46,101 @@ class Contact{
     /**
      * @return null|string
      */
+
+    /**
+     * @var string|null
+     * @Assert\NotBlank()
+     *
+     */
+    private $rue;
+    /**
+     * @var string|null
+     * @Assert\NotBlank()
+     * @Assert\Regex(
+     *     pattern="/[0-9]{5}/"
+     * )
+     */
+    private $cp;
+    /**
+     * @var string|null
+     * @Assert\NotBlank()
+     *
+     */
+    private $ville;
+
+    /**
+     * @return null|string
+     */
+    public function getRue(): ?string
+    {
+        return $this->rue;
+    }
+
+    /**
+     * @param null|string $rue
+     */
+    public function setRue(?string $rue): void
+    {
+        $this->rue = $rue;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getCp(): ?string
+    {
+        return $this->cp;
+    }
+
+    /**
+     * @param null|string $cp
+     */
+    public function setCp(?string $cp): void
+    {
+        $this->cp = $cp;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    /**
+     * @param null|string $ville
+     */
+    public function setVille(?string $ville): void
+    {
+        $this->ville = $ville;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getNumDeRue(): ?string
+    {
+        return $this->numDeRue;
+    }
+
+    /**
+     * @param null|string $numDeRue
+     */
+    public function setNumDeRue(?string $numDeRue): void
+    {
+        $this->numDeRue = $numDeRue;
+    }
+    /**
+     * @var string|null
+     * @Assert\NotBlank()
+     * @Assert\Regex(
+     *     pattern="/[0-9]/"
+     * )
+     */
+    private $numDeRue;
+
+
     public function getObjet(): ?string
     {
         return $this->objet;

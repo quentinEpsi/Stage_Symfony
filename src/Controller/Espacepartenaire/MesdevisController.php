@@ -16,13 +16,14 @@ use Symfony\Component\HttpFoundation\Request;
 class MesdevisController extends AbstractController
 {
     /**
-     * @Route("/mesdevis/{id}", name="mesdevis")
+     * @Route("/artisan/mesdevis", name="mesdevis")
      */
-    public function index($id)
+    public function index()
     {
         date_default_timezone_set ( "Europe/Paris" );  
 
-        $devis = $this->getDoctrine()->getRepository(Devis::class)->findDevisByIdArtisan($id);
+		$artisan= $this->get('security.token_storage')->getToken()->getUser();
+        $devis = $this->getDoctrine()->getRepository(Devis::class)->findDevisByIdArtisan($artisan->getIdArtisan());
                 
         $infoDevisTab = array();
 

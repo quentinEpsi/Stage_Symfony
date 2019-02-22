@@ -24,7 +24,7 @@ class ReinitialisationMdp
     /**
      * @var string
      *
-     * @ORM\Column(name="Token", type="string", length=21, nullable=false)
+     * @ORM\Column(name="Token", type="string", length=44, nullable=false)
      */
     private $token;
 
@@ -66,6 +66,8 @@ class ReinitialisationMdp
 
         return $this;
     }
+
+
 
 
 }

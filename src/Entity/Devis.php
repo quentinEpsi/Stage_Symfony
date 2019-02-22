@@ -22,13 +22,6 @@ class Devis
     private $idDevis;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="Nom_devis", type="string", length=100, nullable=false)
-     */
-    private $nomDevis;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="Date_envoie", type="datetime", nullable=false)
@@ -38,7 +31,7 @@ class Devis
     /**
      * @var string
      *
-     * @ORM\Column(name="Fichier_joint", type="string", length=100, nullable=false)
+     * @ORM\Column(name="Fichier_joint", type="string", length=200, nullable=false)
      */
     private $fichierJoint;
 
@@ -93,18 +86,6 @@ class Devis
     public function getIdDevis(): ?int
     {
         return $this->idDevis;
-    }
-
-    public function getNomDevis(): ?string
-    {
-        return $this->nomDevis;
-    }
-
-    public function setNomDevis(string $nomDevis): self
-    {
-        $this->nomDevis = $nomDevis;
-
-        return $this;
     }
 
     public function getDateEnvoie(): ?\DateTimeInterface

@@ -49,6 +49,13 @@ class Parametre
      */
     private $distanceMaxClientArtisan;
 
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="Prix_un_credit", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $prixUnCredit;
+
     public function getIdParametre(): ?int
     {
         return $this->idParametre;
@@ -98,6 +105,18 @@ class Parametre
     public function setDistanceMaxClientArtisan(int $distanceMaxClientArtisan): self
     {
         $this->distanceMaxClientArtisan = $distanceMaxClientArtisan;
+
+        return $this;
+    }
+
+    public function getPrixUnCredit(): ?float
+    {
+        return $this->prixUnCredit;
+    }
+
+    public function setPrixUnCredit(float $prixUnCredit): self
+    {
+        $this->prixUnCredit = $prixUnCredit;
 
         return $this;
     }
