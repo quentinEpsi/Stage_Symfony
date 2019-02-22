@@ -76,7 +76,6 @@ class MesdevisController extends AbstractController
          
         return $this->render('mesdevis/index.html.twig', [
             'controller_name' => 'MesdevisController',
-            'nombreDevisNonVisualise' => 0,
             'Historique' => $historique,
             'chaineDevis' => $infoDevisTab
        ]);
