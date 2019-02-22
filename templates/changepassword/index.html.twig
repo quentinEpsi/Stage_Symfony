@@ -93,30 +93,20 @@
         background: #2288bb;
     }
 </style>
-{#<form method="post">#}
-    {#<div id="sc-password">#}
-        {#<h1>Reinitialiser mon mot de passe</h1>#}
-        {#<div class="sc-container">#}
-            {#<input class="ll" type="text" placeholder="Email" />#}
-            {#<input type="submit" value="Envoyer" />#}
-        {#</div>#}
-    {#</div>#}
-{#</form>#}
-    {##}
-
+<div id="sc-password">
+    <h1>Reinitialiser mon mot de passe</h1>
+    <div class="sc-container">
     {{ form_start(form) }}
     {{ form_row(form.mail,{'label':'E-mail :','attr':{'placeholder':'Email','name':'mail'}}) }}
     {{ form_row(form.valider) }}
     {{ form_end(form) }}
+    </div>
+</div>
+    <div style="text-align: center">
     {% for message in app.flashes('danger') %}
         <div class="flash-notice">
             {{ message }}
         </div>
     {% endfor %}
-
-
-
-
-
-
+    </div>
 {% endblock %}
