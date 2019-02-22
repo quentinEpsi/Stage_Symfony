@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,11 +30,15 @@ class Devis
      */
     private $dateEnvoie;
 
-    /**
-     * @var string
-     *
+
+     /**
+    * @var string
      * @ORM\Column(name="Fichier_joint", type="string", length=200, nullable=false)
+     *
+     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
+     * @Assert\File(mimeTypes={ "application/pdf" })
      */
+
     private $fichierJoint;
 
     /**
@@ -183,6 +189,6 @@ class Devis
 
         return $this;
     }
-
-
+    
+      
 }

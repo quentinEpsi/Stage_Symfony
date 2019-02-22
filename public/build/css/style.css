@@ -2759,7 +2759,7 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
 .container {
   position: relative;
   text-align: center;
-  color: white;
+  color: black;
 }
 
 .bottom-left {
@@ -5559,7 +5559,7 @@ table, th, td {
 .container {
   position: relative;
   text-align: center;
-  color: white;
+  color: black;
 }
 
 .bottom-left {

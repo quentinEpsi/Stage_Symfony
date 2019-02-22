@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Artisan;
 use App\Entity\ReinitialisationMdp;
-use Doctrine\DBAL\Types\StringType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -48,48 +47,49 @@ class ChangepasswordController extends AbstractController
             $user = $entityManager->getRepository(Artisan::class)->findOneBy(array('mail'=>$email));
             dump($user);
             /* @var $user Artisan */
-
+            $token = $tokenGenerator->generateToken();
             if ($user === null) {
                 dump("Marche pas");
-                $this->addFlash('danger', 'Email Inconnu');
+                $this->addFlash('danger', 'Cette adresse e-mail n\'existe pas');
             }
             else
                 {
-                $token = $tokenGenerator->generateToken();
+
                 dump($token);
                 $mdp = new ReinitialisationMdp();
-                $mdp->setToken($mdp);
+                dump($mdp);
+                $mdp->setToken($token);
+                dump($mdp);
                 $mdp->setIdArtisan($user);
                 $entityManager->persist($mdp); //Prépare objet créé pour le mettre en bdd
                     $entityManager->flush(); //Met l'objet en bdd
-
+                    $this->addFlash('danger', 'Un e-mail de réinitialisation du mot de passe a été envoyé à '. $artisan->getMail() );
             }
 
             try{
                 $entityManager->flush();
             } catch (\Exception $e) {
                 $this->addFlash('warning', $e->getMessage());
-
             }
 
             $url = $this->generateUrl('changepassword', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
 
             $message = (new \Swift_Message('Forgot Password'))
-                ->setFrom('g.ponty@dev-web.io')
+                ->setFrom('no-reply@serrurierdemaville.fr')
                 ->setTo($artisan->getMail())
                 ->setBody(
                     "blablabla voici le token pour reseter votre mot de passe : " . $url,
                     'text/html'
                 );
 
+
             $mailer->send($message);
+            dump($mailer);
 
             $this->addFlash('notice', 'Mail envoyé');
 
         }
 
         return $this->render('changepassword/index.html.twig', ['form' => $form -> createView()]);
-
-
     }
 }
