@@ -62,17 +62,17 @@ class MesdemandesController extends AbstractController
             }
             if(!$auMoinsUnValidé && !$refuse && !$dejaValideParLartisan)
             {
-                array_push($tabDemandeEtMorif, $demande, "normal")
+                array_push($tabDemandeEtMorif, $demande, "normal");
                 array_push($mesDemandes, $tabDemandeEtMorif);
             }
             else if ($demandeDejaAccepterParQqunDautre) 
             {
-                array_push($tabDemandeEtMorif, $demande, "AccepteParUnAutre")
+                array_push($tabDemandeEtMorif, $demande, "AccepteParUnAutre");
                 array_push($mesDemandesHisto, $tabDemandeEtMorif);
             }
             else if($refuse) 
             {
-                array_push($tabDemandeEtMorif, $demande, "refus")
+                array_push($tabDemandeEtMorif, $demande, "refus");
                 array_push($mesDemandesHisto, $tabDemandeEtMorif);
             }
         }
