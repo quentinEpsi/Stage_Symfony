@@ -8,8 +8,6 @@ use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
-use JMS\Payment\CoreBundle\JMSPaymentCoreBundle;
-use JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle;
 
 class Kernel extends BaseKernel
 {
@@ -38,8 +36,7 @@ class Kernel extends BaseKernel
 
         $bundles = array(
             // ...
-            new JMSPaymentCoreBundle(),
-            new JMSPaymentPaypalBundle(),
+
         );
     }
 
