@@ -6,8 +6,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %} {% endblock %}</title>
+<<<<<<< HEAD
         {% block head %}
         {% endblock %}
+=======
+		{% block head %}
+		{% endblock %}
+>>>>>>> dev
         {% include 'css.html.twig' %}
     </head>
 	{% endblock %}
@@ -16,6 +21,12 @@
 		{% block body %}{% endblock %}
 	</body>
 
+<<<<<<< HEAD
 	{% block js %}{% endblock %}
     {% include 'js.html.twig' %}
+=======
+	{% block js %}
+	{% endblock %}
+	{% include 'js.html.twig' %}
+>>>>>>> dev
 </html>
