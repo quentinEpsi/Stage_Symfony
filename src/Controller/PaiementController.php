@@ -10,13 +10,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class PaiementController extends AbstractController
 {
     /**
-     * @Route("/paiement/{id}", name="paiement")
-     * @param $id
+     * @Route("/artisan/paiement", name="paiement")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index($id)
+    public function index()
     {
-        $artisan = $this->getDoctrine()->getRepository(Artisan::class)->find($id);
+        $artisan= $this->get('security.token_storage')->getToken()->getUser();
         $parametre = $this->getDoctrine()->getRepository(Parametre::class)->findAll();
         $prixReceptionDemande = $parametre[0]->getPrixReceptionDemande();
         return $this->render('paiement/index.html.twig', [

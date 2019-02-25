@@ -1,20 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PaypalbuttonController!{% endblock %}
+{% block title %}Paiement{% endblock %}
 
+{% block head %}
+<script
+        src="https://www.paypal.com/sdk/js?client-id=ASzkvhTwuzBDo-qRfwJz7kn0YU8DFncNUu79LGwbcVSS_SS7esEp0D7T-HsP3VWO9M5IEK-8q8S-CvuA&currency=EUR">
+</script>
+{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div id="paypal-button-container"></div>
+{% endblock %}
+{% block js %}
+    <script>
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '{{ prix }}'
+                        }
+                    }]
+                });
+            },
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Alexandre/Documents/EPSI/Stages/savee/stageb2/src/Controller/PaypalbuttonController.php'|file_link(0) }}">src/Controller/PaypalbuttonController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Alexandre/Documents/EPSI/Stages/savee/stageb2/templates/paypalbutton/index.html.twig'|file_link(0) }}">templates/paypalbutton/index.html.twig</a></code></li>
-    </ul>
-</div>
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Transaction completed by ' + details.payer.name.given_name);
+                    // Call your server to save the transaction
+                    return fetch('/paypal-transaction-complete', {
+                        method: 'post',
+                        body: JSON.stringify({
+                            orderID: data.orderID
+                        })
+                    });
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
 {% endblock %}

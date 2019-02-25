@@ -1,41 +1,29 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Paiement{% endblock %}
-
+<!DOCTYPE html>
 {% block body %}
-
-<<<<<<< HEAD
-=======
-
->>>>>>> dev
+<html lang="fr">
+<head>
+    <title>Paiement</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+<body>
     <div class="text-center col-lg-offset-2 col-md-4">
         <div class="our_team_area">
             <h3 class="text-center card-header">Acheter du crédit en toute sécurité :</h3>
-            <h4 class="text-center card-header">(1 crédit<img alt="" src="build/images/{{ asset('build/images/coin.png') }}" style="width: 15px"> = 1,00€)</h4><br>
+            <h4 class="text-center card-header">(1 crédit = 1,00€)</h4><br>
             <div style="text-align: center">
-                <button type="submit" class="btn btn-success">1€
-                    <img alt="" src="build/images/{{ asset('build/images/paypal.png') }}" style="width: 80px"> = 1 crédits<img alt="" src="build/images/{{ asset('build/images/coin.png') }}" style="width:20px"></button><br><br>
-
-                <button type="submit" class="btn btn-success">2€
-                    <img alt="" src="build/images/{{ asset('build/images/paypal.png') }}" style="width: 80px"> = 2 crédits<img alt="" src="build/images/{{ asset('build/images/coin.png') }}" style="width:20px"></button><br><br>
-
-                <button type="submit" class="btn btn-success">5€
-                    <img alt="" src="build/images/{{ asset('build/images/paypal.png') }}" style="width: 80px"> = 5 crédits<img alt="" src="build/images/{{ asset('build/images/coin.png') }}" style="width:20px"></button><br><br>
-
-                <button type="submit" class="btn btn-success">10€
-                    <img alt="" src="build/images/{{ asset('build/images/paypal.png') }}" style="width: 80px"> = 10 crédits<img alt="" src="build/images/{{ asset('build/images/coin.png') }}" style="width:20px"></button><br><br>
-
-                <button type="submit" class="btn btn-success">20€
-                    <img alt="" src="build/images/{{ asset('build/images/paypal.png') }}" style="width: 80px"> = 20 crédits<img alt="" src="build/images/{{ asset('build/images/coin.png') }}" style="width:20px"></button><br><br>
-
-                <button type="submit" class="btn btn-success">100€
-                    <img alt="" src="build/images/{{ asset('build/images/paypal.png') }}" style="width: 80px"> = 100 crédits<img alt="" src="build/images/{{ asset('build/images/coin.png') }}" style="width:20px"></button><br><br>
+                <button type="submit" class="btn btn-success"><a href="{{ path('paypalpaiement', {prix: 1}) }}">1€ = 1 crédits</a></button><br><br>
+                <button type="submit" class="btn btn-success"><a href="{{ path('paypalpaiement', {prix: 2}) }}">2€ = 2 crédits</a></button><br><br>
+                <button type="submit" class="btn btn-success"><a href="{{ path('paypalpaiement', {prix: 5}) }}">5€ = 5 crédits</a></button><br><br>
+                <button type="submit" class="btn btn-success"><a href="{{ path('paypalpaiement', {prix: 10}) }}">10€ = 10 crédits</a></button><br><br>
+                <button type="submit" class="btn btn-success"><a href="{{ path('paypalpaiement', {prix: 20}) }}">20€ = 20 crédits</a></button><br><br>
+                <button type="submit" class="btn btn-success"><a href="{{ path('paypalpaiement', {prix: 100}) }}">100€ = 100 crédits</a></button><br><br>
             </div>
         </div>
     </div>
     <div class="text-center col-md-4">
         <div class="our_team_area">
-            <h4 class="text-center">Mes crédits actuels : {{ artisan.credit }} <img alt="" src="build/images/{{ asset('build/images/coin.png') }}"></h4><br>
+            <h4 class="text-center">Mes crédits actuels : {{ artisan.credit }}</h4><br>
 
             <label class="text-center">Nombre de demandes de prestation souhaitées :
                 <input id="calcul" class="text-center" onkeyup="calcul()"><br>
@@ -60,19 +48,6 @@
             </script>
         </div>
     </div>
-
-    <div class="text-center">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Pay € {{ order.amount }}" />
-        {{ form_end(form) }}
-
-        {% block _jms_choose_payment_method_method_label %}{% endblock %}
-
-        {% block _jms_choose_payment_method_method_widget %}
-            <div style="display: none;">
-                {{ parent() }}
-            </div>
-        {% endblock %}
-    </div>
+</body>
+</html>
 {% endblock %}
