@@ -29,7 +29,7 @@ class CreationDevisController extends AbstractController
     /**
      * @Route("/artisan/macreationdevis/{id}", name="macreationdevis")
      */
-    public function index(Request $request, $id, SessionInterface $session, FileUploader $fileUploader)
+    public function index(Request $request, $id, FileUploader $fileUploader)
     {
         date_default_timezone_set ( "Europe/Paris" );  
         
@@ -39,7 +39,7 @@ class CreationDevisController extends AbstractController
         $devis = new Devis();   //Création du nouveau devis
         $form = $this->createFormBuilder($devis)
         //->add('fichierJoint', TextType::class)
-        ->add('fichierJoint', FileType::class, ['label' => ''])
+        ->add('fichierJoint', FileType::class, ['label' => '','mapped' => false])
         ->add('Valider',SubmitType::class, ['attr' => ['class' => 'btn btn-outline-dark ']])
         ->getForm();
         
@@ -54,14 +54,20 @@ class CreationDevisController extends AbstractController
             $devis->setVisualiseDevis(0);
             $devis->setIdArtisan($artisan);
             $devis->setIdClient($client);
-            //$file = $devis->getdevisFichierJoint();
-            
-            $file = $devis->getFichierJoint();
+            /*$file = $devis->getdevisFichierJoint();*/
+            dump($devis);
+            $file = $request->files->get('form');
             dump($file);
-            //$element = pathinfo($file);
-            $fileName = $fileUploader->upload($file);
-           // $devis->setdevisFichierJoint($fileName);
+            dump($request);
+            dump(uniqid());
+            /*$fileName = md5(uniqid()).'.'.$file->guessExtension();*/
+      
+            /*$file->move($this->getParameter('devisFichierJoint_directory'),$fileName);*/
             
+            /*$element = pathinfo($file);*/
+            $fileName = $fileUploader->upload($file['fichierJoint'],$artisan->getIdArtisan());
+           /*$devis->setdevisFichierJoint($fileName);*/
+          
             $devis->setFichierJoint($fileName);
            
             $entityManager->persist($devis);
