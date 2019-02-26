@@ -64,18 +64,18 @@ Autres');
 
         //// DEFINITION DES FORMULES ///////////////////////////////////////////
         $formule1 = new Formules();
-        $formule1->setNomFormule('Gratuit');
-        $formule1->setDescriptionFormule("Bah c'est gratuit");
+        $formule1->setNomFormule('FORMULE GRATUITE');
+        $formule1->setDescriptionFormule("Formule entièrement gratuite avec un nombre de devis limités par mois");
         $manager->persist($formule1);
 
         $formule2 = new Formules();
-        $formule2->setNomFormule('Esprit Libre');
-        $formule2->setDescriptionFormule("Tu payes");
+        $formule2->setNomFormule('FORMULE ESPRIT LIBRE');
+        $formule2->setDescriptionFormule("Formule permettant d'approvisionner son compte à son aise avec des crédits");
         $manager->persist($formule2);
 
         $formule3 = new Formules();
-        $formule3->setNomFormule('Abonnement');
-        $formule3->setDescriptionFormule("Tu payes encore plus mais pour rien");
+        $formule3->setNomFormule('FORMULE ABONNEMENT');
+        $formule3->setDescriptionFormule("Formule permettant de bénéficier de nos services à tarif réduit");
         $manager->persist($formule3);
         $manager->flush();
 
