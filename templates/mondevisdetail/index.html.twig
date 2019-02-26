@@ -3,19 +3,27 @@
 {% block title %}Détail du devis{% endblock %}
 
 {% block body %}
-<div class="badge-center" style="margin: 0 auto; width: 600px; padding-top: 50px;">
-    <h3>Informations du Devis</h3><br><br>
-    <div class="badge-modif" style="font-size: 18px!important">
-        <div class ="main-container">
-            <div class=" highlight" style="margin-left:0;">
+
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav"></div>
+    <div class="col-sm-8">
+        <div class="tittle wow fadeInUp">
+            <h2 style="padding-top: 10px">Détails du devis</h2>
+            <br>
+            <br>
+            <br>
+        </div>
                 <div class="row">
                     <ul class="list-group">
-                        <li class="list-group-item">Numéro du devis: {{ Devis.idDevis }}</li>
-                         <li class="list-group-item">Nom du client: {{ Client.nomClient }}</li>
-                         <li class="list-group-item">Prenom du client: {{ Client.prenomClient }}</li>
-                         <li class="list-group-item">Date envoie du devis: {{ dateDevis }}</li>
-                         <li class="list-group-item">Date réalisation de la prestation: {{ dateRealisation}}</li>
-                         <li class="list-group-item">Fichier joint devis: {{ Devis.fichierJoint }}</li>
+                        <li class="list-group-item"><b>Numéro du devis:</b> {{ Devis.idDevis }}</li>
+                         <li class="list-group-item"><b>Nom du client:</b> {{ Client.nomClient }}</li>
+                         <li class="list-group-item"><b>Prenom du client:</b> {{ Client.prenomClient }}</li>
+                         <li class="list-group-item"><b>Date envoie du devis:</b> {{ dateDevis }}</li>
+                         <li class="list-group-item"><b>Date réalisation de la prestation:</b> {{ dateRealisation}}</li>
+                         <li class="list-group-item"><b>Fichier joint devis:</b> <a href="..\..\documents\devisFichierJoint\{{ idArtisan }}\{{ Devis.fichierJoint}}"
+                         download="{{ fichierJointCoupe}}"> {{ fichierJointCoupe}}</a></li>
+                         <br>
                         <INPUT type="button" value="Retour" onClick="window.history.back()">
                     </ul>
                 </div>
