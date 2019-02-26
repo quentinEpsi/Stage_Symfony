@@ -65,10 +65,15 @@
 	<h2>Historique</h2>
 		<hr>
     {% for Element in Historique %}
-      {% if Element['3'] == true %}
-				<div style="display: inline;"><p>Devis n° {{Element['0']}} : {{Element['1']}} {{Element['2']}} </p></div> <br>
-		  {% else %}
-        <div style="display: inline; color: red;"><p style="color: red;">Devis n° {{Element['0']}} : {{Element['1']}} {{Element['2']}} </p></div> <br>
+      {% if Element[1] == "valide" %}
+				<div><p style="display: inline; color: green;">Devis n° {{Element['0']['0']}} : {{Element['0']['1']}} {{Element['0']['2']}}</p></div> <br>
+
+      {% elseif Element[1] == "refus" %}
+				<div><p style="display: inline; color: red;">Devis n° {{Element['0']['0']}} : {{Element['0']['1']}} {{Element['0']['2']}} (refus)</p></div> <br>
+		  {% elseif Element[1] == "AccepteParUnAutre" %}
+        <div><p style="display: inline; color: orange;">Devis n° {{Element['0']['0']}} : {{Element['0']['1']}} {{Element['0']['2']}} (expiré) </p></div> <br>
+      {% elseif Element[1] == "DelaiDepasse" %}
+        <div><p style="display: inline; color: red;">Devis n° {{Element['0']['0']}} : {{Element['0']['1']}} {{Element['0']['2']}} (expiré) </p></div> <br>
       {% endif %}
     {% endfor %}
 
@@ -99,11 +104,11 @@
 		{% for Demandes in mesDemandes %}
 			<tr>
         <td><span class="badge badge-pill badge-primary">Nouveau !</span></td>
-				<td>{{Demandes[0]}}</td>
-				<td>{{Demandes[1]}}</td>
-				<td>{{Demandes[2]}}</td>
-				<td>{{Demandes[3]}}</td>
-        <td>{{Demandes[4]}}</td>
+				<td>{{Demandes[0][0]}}</td>
+				<td>{{Demandes[0][1]}}</td>
+				<td>{{Demandes[0][2]}}</td>
+				<td>{{Demandes[0][3]}}</td>
+        <td>{{Demandes[0][4]}}</td>
         <td><a href="#"><button type="button" class="btn btn-outline-dark btn">Détails</button></a></td>
         <td><a href="#"><button type="button" class="btn btn-outline-warning btn">Refuser</button></a></td>
 			</tr>
