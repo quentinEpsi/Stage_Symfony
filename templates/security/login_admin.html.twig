@@ -100,14 +100,14 @@
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
     <div id="sc-password">
-    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Connexion Administrateur</h1>
         <div id="sc-container">
     <label for="inputMailAdmin" class="sr-only">Mail Admin</label>
     <input type="text" value="{{ last_username }}" name="mailAdmin" id="inputMailAdmin" class="form-control" placeholder="Mail Administrateur" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de Passe" required>
         </div>
-        <button class="btn btn-primary" type="submit">
+        <button class="btn btn-primary center-block" type="submit">
             Connexion
         </button>
     </div>
