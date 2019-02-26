@@ -72,7 +72,7 @@ class AdminAuthenticator extends AbstractFormLoginAuthenticator
         if (!$user) {
             // fail authentication with a custom error
 			dump("erreur");
-            throw new CustomUserMessageAuthenticationException('Mail Admin could not be found.');
+            throw new CustomUserMessageAuthenticationException('L\'email administrateur est invalide');
         }
 
         return $user;

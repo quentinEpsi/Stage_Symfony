@@ -70,7 +70,7 @@ class ServiceCommercialAuthenticator extends AbstractFormLoginAuthenticator
 		dump($user);
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Mail Commercial could not be found.');
+            throw new CustomUserMessageAuthenticationException('L\'email commercial est invalide');
         }
 
         return $user;

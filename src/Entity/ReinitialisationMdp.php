@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ReinitialisationMdp
  *
  * @ORM\Table(name="reinitialisation_mdp", uniqueConstraints={@ORM\UniqueConstraint(name="reinitialisation_mdp_artisan_AK", columns={"Id_artisan"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ReinitialisationMdpRepository")
  */
 class ReinitialisationMdp
 {

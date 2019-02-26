@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}SR2F | Authentification{% endblock %}
+{% block title %}SR2F | Mot de passe oublié{% endblock %}
 
 {% block body %}
-
     <style>
         @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
         /* css class for the login generated errors */
@@ -94,38 +93,21 @@
             background: #2288bb;
         }
     </style>
-
-
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
     <div id="sc-password">
-    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-        <div id="sc-container">
-    <label for="inputMail" class="sr-only">Mail</label>
-    <input type="text" value="{{ last_username }}" name="mail" id="inputMail" class="form-control" placeholder="Mail" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de Passe" required>
+        <h1>Reinitialiser mon mot de passe</h1>
+        <div class="sc-container">
+            {{ form_start(form) }}
+            {{ form_row(form.motdepasse,{'label':'Nouveau mot de passe :','attr':{'placeholder':'Mot de passe','name':'newpassword'}}) }}
+            {{ form_row(form.verif_motdepasse,{'label':'Vérifier mot de passe :','attr':{'placeholder':'Vérifier Mot de passe','name':'newpassword'}}) }}
+            {{ form_row(form.valider) }}
+            {{ form_end(form) }}
         </div>
-        <button class="btn btn-primary" type="submit">
-            Connexion
-        </button>
     </div>
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}">
-</form>
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
-
+    <div style="text-align: center">
+        {% for message in app.flashes('danger') %}
+            <div class="flash-notice">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

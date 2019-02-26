@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -84,6 +83,14 @@ class Artisan implements UserInterface
      * @ORM\Column(name="Motdepasse", type="string", length=100, nullable=false)
      */
     private $motdepasse;
+
+
+    /**
+     * @var string
+     */
+    private $verif_motdepasse;
+
+
 
     /**
      * @var string
@@ -322,6 +329,18 @@ class Artisan implements UserInterface
     public function setMotdepasse(string $motdepasse): self
     {
         $this->motdepasse = $motdepasse;
+
+        return $this;
+    }
+
+    public function getVerifMotdepasse(): ?string
+    {
+        return $this->verif_motdepasse;
+    }
+
+    public function setVerifMotdepasse(string $verifmotdepasse): self
+    {
+        $this->verif_motdepasse = $verifmotdepasse;
 
         return $this;
     }
