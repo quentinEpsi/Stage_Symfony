@@ -32,13 +32,9 @@ class Devis
 
 
      /**
-    * @var string
      * @ORM\Column(name="Fichier_joint", type="string", length=200, nullable=false)
-     *
-     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
-     * @Assert\File(mimeTypes={ "application/pdf" })
+     * @var string
      */
-
     private $fichierJoint;
 
     /**
@@ -106,12 +102,12 @@ class Devis
         return $this;
     }
 
-    public function getFichierJoint(): ?string
+    public function getFichierJoint()
     {
         return $this->fichierJoint;
     }
 
-    public function setFichierJoint(string $fichierJoint): self
+    public function setFichierJoint(string $fichierJoint)
     {
         $this->fichierJoint = $fichierJoint;
 

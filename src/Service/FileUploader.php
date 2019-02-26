@@ -15,12 +15,12 @@ class FileUploader
         $this->targetDirectory = $targetDirectory;
     }
 
-    public function upload(UploadedFile $file)
+    public function upload(UploadedFile $file, string $idArtisan)
     {
-        $fileName = md5(uniqid()).'.'.$file->guessExtension();
+        $fileName =md5(uniqid())."-". $file->getClientOriginalName();
 
         try {
-            $file->move($this->getTargetDirectory(), $fileName);
+            $file->move($this->getTargetDirectory()."/".$idArtisan, $fileName);
         } catch (FileException $e) {
             // ... handle exception if something happens during file upload
         }
