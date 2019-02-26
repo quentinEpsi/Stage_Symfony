@@ -4,6 +4,7 @@ namespace App\Controller\Espacepartenaire;
 
 use App\Entity\Devis;
 use App\Entity\Client;
+use App\Entity\Choisir;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,9 +30,13 @@ class MesdemandesController extends AbstractController
 
         $artisan= $this->get('security.token_storage')->getToken()->getUser();
 
-
-        $mesDemandesAvantTri = $artisan->getIdClient()->getValues();
-
+        $mesChoisir =  $this->getDoctrine()->getRepository(Choisir::class)->findBy(array("idArtisan"=>$artisan));
+        $mesDemandesAvantTri = array();
+        foreach($mesChoisir as $leChoi) 
+        {
+            array_push($mesDemandesAvantTri,$leChoi->getIdClient());
+        }
+        dump($mesDemandesAvantTri);
         $mesDemandes = array();
         $mesDemandesHisto = array();
         foreach($mesDemandesAvantTri as $demande)  
