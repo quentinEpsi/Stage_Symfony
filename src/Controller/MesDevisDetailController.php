@@ -25,15 +25,27 @@ class MesDevisDetailController extends AbstractController
         $devis = $this->getDoctrine()->getRepository(Devis::class)->find($id);
 
         $client = $devis->getIdCLient();
+        $artisan = $devis->getIdArtisan();
         $dateDevis = $devis->getDateEnvoie()->format('d-m-Y');
-        $dateRealisation = $client->getDateRealisation()->format('d-m-Y H:i');   
+        $dateRealisation = $client->getDateRealisation()->format('d-m-Y H:i');
+        $fichierJoint = $devis->getFichierJoint();
+        $chaineFichierJoint="";
+        $fichierJointCoupe = explode("-", $fichierJoint);
+        for($i=1;$i<count($fichierJointCoupe);$i++)
+        {
+            $chaineFichierJoint = $chaineFichierJoint.$fichierJointCoupe[$i].'-';
+        }
+        $chaineFichierJoint= substr($chaineFichierJoint, 0, -1);
+        $idArtisan = $artisan->getIdArtisan();  
          
         return $this->render('mondevisdetail/index.html.twig', [
             'controller_name' => 'MesDevisDetailController',
             'Devis' => $devis,
             'Client'=> $client,
             'dateDevis'=>$dateDevis,
-            'dateRealisation'=>$dateRealisation
+            'dateRealisation'=>$dateRealisation,
+            'fichierJointCoupe'=>$chaineFichierJoint,
+            'idArtisan'=>$idArtisan
        ]);
     }
 }

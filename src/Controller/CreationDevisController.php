@@ -40,7 +40,7 @@ class CreationDevisController extends AbstractController
         $form = $this->createFormBuilder($devis)
         //->add('fichierJoint', TextType::class)
         ->add('fichierJoint', FileType::class, ['label' => '','mapped' => false])
-        ->add('Valider',SubmitType::class, ['attr' => ['class' => 'btn btn-outline-dark ']])
+        ->add('Valider',SubmitType::class, ['attr' => ['class' => 'btn btn-success ']])
         ->getForm();
         
         $form->handleRequest($request); // je demande au formulaire de gérer la requête
