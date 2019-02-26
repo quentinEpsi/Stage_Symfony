@@ -45,10 +45,10 @@ class AdminmodifdemandesController extends AbstractController
      * @Route("/admin/adminmodifdemandes/{id}", name="adminmodifdemandes")
      * Method({"GET", "POST"})
      * @param Request $request
-     * @param Client $idClient
+     * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function edit(Request $request,$id){
+    public function edit(Request $request, $id){
         $editdemandes = new Client();
         $editdemandes = $this->getDoctrine()->getRepository(Client::class)->find($id);
 
