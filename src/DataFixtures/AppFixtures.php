@@ -183,7 +183,6 @@ Autres');
             $demande->setCoordonneeLongitudeClient(44.56+$i);
             $demande->setCoordonneeLatitudeClient(44.56+$i);
             $demande->setIdService($services[0]);
-            $demande->addIdArtisan($artisans[$i]);
             $manager->persist($demande);
         }
         $manager->flush();

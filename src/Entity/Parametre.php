@@ -56,6 +56,27 @@ class Parametre
      */
     private $prixUnCredit;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="Prix_abonnement", type="integer", nullable=false)
+     */
+    private $prixAbonnement;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="Prix_reception_demande_abonnement", type="integer", nullable=false)
+     */
+    private $prixReceptionDemandeAbonnement;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="Prix_validation_demande_abonnement", type="integer", nullable=false)
+     */
+    private $prixValidationDemandeAbonnement;
+
     public function getIdParametre(): ?int
     {
         return $this->idParametre;
@@ -121,5 +142,39 @@ class Parametre
         return $this;
     }
 
+    public function getPrixAbonnement(): ?int
+    {
+        return $this->prixAbonnement;
+    }
 
+    public function setPrixAbonnement(int $prixAbonnement): self
+    {
+        $this->prixAbonnement = $prixAbonnement;
+
+        return $this;
+    }
+
+    public function getPrixReceptionDemandeAbonnement(): ?float
+    {
+        return $this->prixReceptionDemandeAbonnement;
+    }
+
+    public function setPrixReceptionDemandeAbonnement(float $PrixReceptionDemandeAbonnement): self
+    {
+        $this->prixReceptionDemandeAbonnement = $PrixReceptionDemandeAbonnement;
+
+        return $this;
+    }
+
+    public function getPrixValidationDemandeAbonnement(): ?float
+    {
+        return $this->prixValidationDemandeAbonnement;
+    }
+
+    public function setPrixValidationDemandeAbonnement(float $PrixValidationDemandeAbonnement): self
+    {
+        $this->prixValidationDemandeAbonnement = $PrixValidationDemandeAbonnement;
+
+        return $this;
+    }
 }

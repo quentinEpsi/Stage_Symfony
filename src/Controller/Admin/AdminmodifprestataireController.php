@@ -63,6 +63,7 @@ class AdminmodifprestataireController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
 
             $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($editartisan);
             $entityManager->flush();
 
             return $this->redirectToRoute('adminprestatairedetail', array('id'=> $id));
