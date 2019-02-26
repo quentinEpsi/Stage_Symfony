@@ -3,5 +3,53 @@
 {% block title %}Modification de la formule{% endblock %}
 
 {% block body %}
-
+    <section class="what_we_area row" style="background-color: #E8E8E8;">
+        <div class="container">
+            <div class="tittlefont text-center" style="padding: 60px;">
+                <h1>CHOISIR UNE FORMULE</h1><br><br>
+                <h3>Choisissez parmi ces trois formules celle qui vous correspond !</h3>
+            </div>
+            {{ form_start(form) }}
+            <div class="row construction_iner" style="padding-top: 30px;">
+                <div class="col-md-4 construction">
+                    <div class="cns-img">
+                        <img src="{{ asset('build/images/office-worker-1149557_1920.jpg') }}" alt="">
+                    </div>
+                    <div class="cns-content">
+                        <i class="fa fa-coffee"></i>
+                        <a>FORMULE GRATUITE</a>
+                        <p>Formule entièrement gratuite avec un nombre de devis limités par mois</p><br>
+                        {{ form_row(form.Formulegratuite) }}
+                        <a href="{{ path('maformule') }}" class="button_all center-block" style="padding-bottom: 12px; background-color: #E8E8E8;">S'ABONNER GRATUITEMENT</a>
+                    </div>
+                </div>
+                <div class="col-md-4 construction">
+                    <div class="cns-img">
+                        <img src="{{ asset('build/images/construction-worker-569149_1920.jpg') }}" alt="">
+                    </div>
+                    <div class="cns-content">
+                        <i class="fa fa-book"></i>
+                        <a>FORMULE ESPRIT LIBRE</a>
+                        <p>Formule permettant d'approvisionner son compte à son aise avec des crédits</p><br>
+                        {{ form_row(form.Formuleespritlibre) }}
+                        <a href="{{ path('paypalpaiement', {prix: 29.99}) }}" class="button_all center-block" style="padding-bottom: 12px; background-color: #E8E8E8;">S'ABONNER POUR 29,99€</a>
+                    </div>
+                </div>
+                <div class="col-md-4 construction">
+                    <div class="cns-img">
+                        <img src="{{ asset('build/images/door-1089560_1920.jpg') }}" alt="">
+                    </div>
+                    <div class="cns-content">
+                        <i class="fa fa-history"></i>
+                        <a>FORMULE ABONNEMENT</a>
+                        <p>Formule permettant de bénéficier de nos services à tarif réduit</p><br>
+                        {{ form_row(form.Formuleabonnement) }}
+                        <a href="{{ path('paypalpaiement', {prix: 4.99}) }}" class="button_all center-block" style="padding-bottom: 12px; background-color: #E8E8E8;">S'ABONNER POUR 4,99€ / MOIS</a>
+                    </div>
+                </div>
+            </div>
+            {{ form_row(form.valider) }}
+            {{ form_end(form) }}
+        </div>
+    </section>
 {% endblock %}
