@@ -81,8 +81,6 @@ class ChangepasswordController extends AbstractController
                     "blablabla voici le token pour reseter votre mot de passe : " . $url,
                     'text/html'
                 );
-
-
             $mailer->send($message);
             dump($mailer);
 

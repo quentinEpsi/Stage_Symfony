@@ -4,6 +4,7 @@ namespace App\Controller\Espacepartenaire;
 
 use App\Entity\Devis;
 use App\Entity\Client;
+use App\Entity\Choisir;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,14 +30,19 @@ class MesdemandesController extends AbstractController
 
         $artisan= $this->get('security.token_storage')->getToken()->getUser();
 
-
-        $mesDemandesAvantTri = $artisan->getIdClient()->getValues();
-
+        $mesChoisir =  $this->getDoctrine()->getRepository(Choisir::class)->findBy(array("idArtisan"=>$artisan));
+        $mesDemandesAvantTri = array();
+        foreach($mesChoisir as $leChoi) 
+        {
+            array_push($mesDemandesAvantTri,$leChoi->getIdClient());
+        }
+        dump($mesDemandesAvantTri);
         $mesDemandes = array();
         $mesDemandesHisto = array();
         foreach($mesDemandesAvantTri as $demande)  
         {
-            $tabDemandeEtMorif = array();
+            $tabDemandeEtMotifHisto = array();
+            $tabDemandeEtMotifPrincipal = array();
             $lesDevis = $this->getDoctrine()->getRepository(Devis::class)->findBy(array("idClient"=>$demande));
 
             $devisRefuserParLeClient = false;
@@ -44,51 +50,11 @@ class MesdemandesController extends AbstractController
             $refuse = false;
             $dejaValideParLartisan = false;
             $demandeDejaAccepterParQqunDautre = false;
-            foreach($lesDevis as $leDevi) 
-            {
-                dump($demande);
-                if($leDevi->getValidationDevis()) 
-                {
-                    $auMoinsUnValidé = true;
-                    if($leDevi->getIdArtisan() != $artisan) $demandeDejaAccepterParQqunDautre = true;
-                }
-                if($leDevi->getIdArtisan() == $artisan)
-                {
-                    if($leDevi->getRefusDevis()) $refuse = true;
+            $avecDevis = false;
 
-                    if($leDevi->getValidationDevis()) $dejaValideParLartisan = true;
-                }
-
-            }
-            if(!$auMoinsUnValidé && !$refuse && !$dejaValideParLartisan)
-            {
-                array_push($tabDemandeEtMorif, $demande, "normal");
-                array_push($mesDemandes, $tabDemandeEtMorif);
-            }
-            else if ($demandeDejaAccepterParQqunDautre) 
-            {
-                array_push($tabDemandeEtMorif, $demande, "AccepteParUnAutre");
-                array_push($mesDemandesHisto, $tabDemandeEtMorif);
-            }
-            else if($refuse) 
-            {
-                array_push($tabDemandeEtMorif, $demande, "refus");
-                array_push($mesDemandesHisto, $tabDemandeEtMorif);
-            }
-        }
-
-        $tabDemandes = array();
-        
-        $historique = array();
-        $chaineHistorique = array();
-
-        foreach($mesDemandes as $demande)   
-        {
             $idClient = $demande->getIdClient();
             $nomClient = $demande->getNomClient();
             $prenomClient = $demande->getPrenomClient();
-            //$ServiceClient = $demande->
-            //$adresseIntervention = $demande->getAdresseInterventionNumero()." ".$demande->getAdresseInterventionRue()." ".$demande->getAdresseInterventionVille()." ".$demande->getAdresseInterventionCp();
             $dateRealisationNonFormat = $demande->getDateRealisation()->format('d-m-Y');
             $dateProposition = $demande->getDateProposition()->format('d-m-Y H:i');
             $leNomService = $demande->getIdService()->getNomService();
@@ -101,44 +67,81 @@ class MesdemandesController extends AbstractController
 
             $distance = round((calcul_distance($LatCli, $LongCli, $LatArt, $LongArt)), 1);
 
+            //$dejaVu = $demande->get
 
             $datePropositionFormatOriginal = $demande->getDateProposition();
+            //Si c'est un histo
+            $chaineHistorique = array();
 
-            if($datePropositionFormatOriginal < (new \DateTime('now'))){ //après les test inverser le signe pour afficher les proposition futur et non passé
-            $uneDemande = array();
-            array_push($uneDemande, $nomClient, $prenomClient, $dateProposition, $distance, $leNomService);
-            array_push($tabDemandes,$uneDemande);
-            } else {
-                $idClient = $demande->getIdClient();
-                $nomClient = $demande->getNomClient();
-                $prenomClient = $demande->getPrenomClient();
-                $chaineHistorique[0] = strval($idClient);
-                $chaineHistorique[1] = $nomClient;
-                $chaineHistorique[2] = $prenomClient;
-                $chaineHistorique[3] = true;
-                array_push($historique,$chaineHistorique);
-            }
-        }
-        foreach($mesDemandesHisto as $demande)   
-        {
-            $idClient = $demande->getIdClient();
-            $nomClient = $demande->getNomClient();
-            $prenomClient = $demande->getPrenomClient();
             $chaineHistorique[0] = strval($idClient);
             $chaineHistorique[1] = $nomClient;
             $chaineHistorique[2] = $prenomClient;
-            $chaineHistorique[3] = false;
-            array_push($historique,$chaineHistorique);
+
+            //Si c'est un affichage
+            $chaineDemande = array();
+            array_push($chaineDemande, $nomClient, $prenomClient, $dateProposition, $distance, $leNomService);
+
+
+            foreach($lesDevis as $leDevi) 
+            {
+
+                if($leDevi->getValidationDevis()) 
+                {
+                    $auMoinsUnValidé = true;
+                    if($leDevi->getIdArtisan() != $artisan) $demandeDejaAccepterParQqunDautre = true;
+                }
+                if($leDevi->getIdArtisan() == $artisan)
+                {
+                    if($leDevi->getRefusDevis()) $refuse = true;
+
+                    if($leDevi->getValidationDevis()) $dejaValideParLartisan = true;
+                }
+                if($leDevi->getIdArtisan() == $artisan) $avecDevis = true;
+
+
+            }
+            if(!$auMoinsUnValidé && !$refuse && $dejaValideParLartisan)
+            {
+                $stringNormal = "valide";
+                array_push($tabDemandeEtMotifHisto, $chaineHistorique, $stringNormal);
+                array_push($mesDemandes, $tabDemandeEtMotifHisto);
+            }
+            else if ($refuse) 
+            {
+                $stringAccepte = "refus";
+                array_push($tabDemandeEtMotifHisto, $chaineHistorique, $stringAccepte);
+                array_push($mesDemandesHisto, $tabDemandeEtMotifHisto);
+            }
+            else if($demandeDejaAccepterParQqunDautre) 
+            {
+                $stringRefus = "AccepteParUnAutre";
+                array_push($tabDemandeEtMotifHisto, $chaineHistorique, $stringRefus);
+                array_push($mesDemandesHisto, $tabDemandeEtMotifHisto);
+            } else if ($datePropositionFormatOriginal < (new \DateTime('now')))
+            {
+                $stringDelai = "DelaiDepasse";
+                array_push($tabDemandeEtMotifHisto, $chaineHistorique, $stringDelai);
+                array_push($mesDemandesHisto, $tabDemandeEtMotifHisto);
+            } else if (!$avecDevis)
+            {
+                $stringDelai = "attenteDevi";
+                array_push($tabDemandeEtMotifPrincipal, $chaineDemande, $stringDelai);
+                array_push($mesDemandes, $tabDemandeEtMotifPrincipal);
+            } else
+            {
+                $stringDelai = "AttenteValidation";
+                array_push($tabDemandeEtMotifPrincipal, $chaineDemande, $stringDelai);
+                array_push($mesDemandes, $tabDemandeEtMotifPrincipal);
+            }
         }
-        
-        dump($tabDemandes);
-        
-        dump($historique);
+
+        dump($mesDemandesHisto);
+        dump($mesDemandes);
 
         return $this->render('mesdemandes/index.html.twig', [
             'controller_name' => 'MesdemandesController',
-            'Historique' => $historique,
-            'mesDemandes' => $tabDemandes,
+            'Historique' => $mesDemandesHisto,
+            'mesDemandes' => $mesDemandes,
         ]);
     }
 }
