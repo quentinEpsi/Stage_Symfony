@@ -142,21 +142,6 @@ class Client
     private $idService;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Artisan", inversedBy="idClient")
-     * @ORM\JoinTable(name="choisir",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="Id_client", referencedColumnName="Id_client")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="Id_artisan", referencedColumnName="Id_artisan")
-     *   }
-     * )
-     */
-    private $idArtisan;
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -360,31 +345,4 @@ class Client
 
         return $this;
     }
-
-    /**
-     * @return Collection|Artisan[]
-     */
-    public function getIdArtisan(): Collection
-    {
-        return $this->idArtisan;
-    }
-
-    public function addIdArtisan(Artisan $idArtisan): self
-    {
-        if (!$this->idArtisan->contains($idArtisan)) {
-            $this->idArtisan[] = $idArtisan;
-        }
-
-        return $this;
-    }
-
-    public function removeIdArtisan(Artisan $idArtisan): self
-    {
-        if ($this->idArtisan->contains($idArtisan)) {
-            $this->idArtisan->removeElement($idArtisan);
-        }
-
-        return $this;
-    }
-
 }

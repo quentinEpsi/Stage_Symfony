@@ -188,13 +188,6 @@ class Artisan implements UserInterface
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Client", mappedBy="idArtisan")
-     */
-    private $idClient;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
      * @ORM\ManyToMany(targetEntity="Jour", inversedBy="idArtisan")
      * @ORM\JoinTable(name="etre_dispo",
      *   joinColumns={
@@ -546,34 +539,6 @@ class Artisan implements UserInterface
     public function setIdCommercialServiceCommercial(?ServiceCommercial $idCommercialServiceCommercial): self
     {
         $this->idCommercialServiceCommercial = $idCommercialServiceCommercial;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Client[]
-     */
-    public function getIdClient(): Collection
-    {
-        return $this->idClient;
-    }
-
-    public function addIdClient(Client $idClient): self
-    {
-        if (!$this->idClient->contains($idClient)) {
-            $this->idClient[] = $idClient;
-            $idClient->addIdArtisan($this);
-        }
-
-        return $this;
-    }
-
-    public function removeIdClient(Client $idClient): self
-    {
-        if ($this->idClient->contains($idClient)) {
-            $this->idClient->removeElement($idClient);
-            $idClient->removeIdArtisan($this);
-        }
 
         return $this;
     }
