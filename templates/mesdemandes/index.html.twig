@@ -67,7 +67,7 @@
     {% for Element in Historique %}
     {% if Element[2] == false %}
       {% if Element[1] == "valide" %}
-				<div><p style="display: inline; color: green;">Devis n° {{Element['0']['0']}} : {{Element['0']['1']}} {{Element['0']['2']}}</p></div> <br>
+				<div><a href="mondevisdetail/{{Element[0][3]}}"><p style="display: inline; color: green;">Devis n° {{Element['0']['0']}} : {{Element['0']['1']}} {{Element['0']['2']}}</p><a></div> <br>
 
       {% elseif Element[1] == "refus" %}
 				<div><p style="display: inline; color: red;">Devis n° {{Element['0']['0']}} : {{Element['0']['1']}} {{Element['0']['2']}} (refus)</p></div> <br>
