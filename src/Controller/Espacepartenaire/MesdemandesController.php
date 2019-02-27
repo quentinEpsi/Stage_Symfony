@@ -80,6 +80,7 @@ class MesdemandesController extends AbstractController
             $chaineHistorique[0] = strval($idClient);
             $chaineHistorique[1] = $nomClient;
             $chaineHistorique[2] = $prenomClient;
+            $chaineHistorique[3] = $idClient;
 
             //Si c'est un affichage
             $chaineDemande = array();
