@@ -71,6 +71,6 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-         - { path: ^/commercial/, roles: [ROLE_COMMERCIAL,ROLE_ADMIN] }
+         - { path: ^/commercial/, roles: ROLE_COMMERCIAL }
          - { path: ^/admin/, roles: ROLE_ADMIN }
          - { path: ^/artisan/, roles: ROLE_ARTISAN }
