@@ -83,7 +83,7 @@ class MesdemandesController extends AbstractController
 
             //Si c'est un affichage
             $chaineDemande = array();
-            array_push($chaineDemande, $nomClient, $prenomClient, $dateProposition, $distance, $leNomService);
+            array_push($chaineDemande, $nomClient, $prenomClient, $dateProposition, $distance, $leNomService, $idClient);
 
 
             foreach($lesDevis as $leDevi) 
