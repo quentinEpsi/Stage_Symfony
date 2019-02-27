@@ -10,6 +10,7 @@ use App\Entity\Artisan;
 use App\Entity\Service; 
 use App\Entity\Parametre; 
 use App\Entity\Jour; 
+use App\Entity\EtatAvancement; 
  
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController; 
  
@@ -75,7 +76,7 @@ function disponibilite_date_to_decimal($date)
 } 
  
 /** 
- * @Route("/Suivi_de_ma_demande") 
+ * @Route("/demande") 
  */	 
 class InscriptionDemandePrestationController extends AbstractController 
 { 
@@ -166,7 +167,7 @@ class InscriptionDemandePrestationController extends AbstractController
 					} 
 					// Maximum trouvées 
 					 
-					array_push($liste,$element); 										// Je mets l'element dans le nouveau tableau 
+					array_push($liste,$element); 										// Je mets le maximum dans le nouveau tableau 
 					$key = array_search($element, $choice); 							// Je cherche la position de cet element dans l'ancien tableau 
 					unset($choice[$key]); 												// Je l'enleve de l'ancien tableau 
 				} 
@@ -174,11 +175,25 @@ class InscriptionDemandePrestationController extends AbstractController
 				dump($liste); 
 			} 
 			 
-			$first_address = array_shift($choice); 										// Je prend le premier element du tableau trié 
+			$first_address = array_shift($choice); 										// Je prend le premier element du tableau trié (position la plus probable)
 			$client_longitude = $first_address["geometry"]['lng']; 
 			$client_latitude = $first_address["geometry"]['lat']; 
 			$client->setCoordonneeLongitudeClient($client_longitude); 
 			$client->setCoordonneeLatitudeClient($client_latitude); 
+			
+			/*
+			$url = "https://data.opendatasoft.com/api/records/1.0/search/?dataset=sirene_v3%40public&sort=datederniertraitementetablissement&facet=etablissementsiege&facet=libellecommuneetablissement&facet=etatadministratifetablissement&facet=nomenclatureactiviteprincipaleetablissement&facet=caractereemployeuretablissement&facet=departementetablissement&facet=regionetablissement&facet=sectionetablissement&facet=classeetablissement&facet=statutdiffusionunitelegale&facet=unitepurgeeunitelegale&facet=sexeunitelegale&facet=categorieentreprise&facet=sectionunitelegale&facet=classeunitelegale&facet=naturejuridiqueunitelegale&refine.siren=sdfsdf"
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json')); // Assuming you're requesting JSON
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+			$response = curl_exec($ch);
+
+			
+			// If using JSON...
+			$data = json_decode($response);
+			dump($data);*/
 			 
 			$parametre = $this->getDoctrine()->getRepository(Parametre::class)->findAll(); // liste des parametre 
 			$max_distance = $parametre[0]->getDistanceMaxClientArtisan(); 				// distance maximum entre le client et l'artisan 
@@ -188,7 +203,10 @@ class InscriptionDemandePrestationController extends AbstractController
 			 
 			/////////////////////////////////////////////////////////////////////////// DETERMINATION DES DEVIS DANS LE MEME SECTEUR QUE LE DEVIS ACTUEL //////////////////////////////////////////// 
 			//$allClient = $this->getDoctrine()->getRepository(Client::class)->findAll(); // liste des parametre 
-			 
+			$etat_avancement = $this->getDoctrine()->getRepository(EtatAvancement::class)->findAll(); 
+			
+			dump($etat_avancement[0]);
+			$client->setIdEtatAvancement($etat_avancement);
 			//// Détermination de la distance entre le client et les artisans //// 
 			$jours = $this->getDoctrine()->getRepository(Jour::class)->findAll(); 
 			$allArtisan = $this->getDoctrine()->getRepository(Artisan::class)->findAll(); // Je récupere tout les artisans de la base de donnée 
@@ -210,7 +228,6 @@ class InscriptionDemandePrestationController extends AbstractController
 				//($disponibilite); 
 				//$binary = decbin($disponibilite); 
 				$horaires = $one_artisan->getIdHoraire()->getValues();
-				dump($horaires);
 				$services = $one_artisan->getIdService()->getValues(); 
 				$bool_service=false; 
 				$bool_horaire = false;
@@ -223,12 +240,9 @@ class InscriptionDemandePrestationController extends AbstractController
  
 				foreach($horaires as $horaire)
 				{
-					dump($horaire);
-					dump($jours[$horaire_client]);
 					if($horaire == $jours[$horaire_client])
 						$bool_horaire = true;
 				}
-
 				if( $one_artisan->getCredit()>=$prix_reception_demande && $bool_service && $bool_horaire) 
 				{ 
 					$artisan_longitude =$one_artisan->getCoordonneeLongitude(); 
@@ -240,8 +254,6 @@ class InscriptionDemandePrestationController extends AbstractController
 					{ 
 						$date_artisan = $one_artisan->getDateFinEngagement(); 
 						$ajd = $client->getDateProposition(); 
-						dump($date_artisan); 
-						dump($ajd); 
 						if($date_artisan > $ajd) 											// Prise en compte de l'abonnement de l'artisan 
 							$distance = $distance * 0.8; 
 						array_push($list_distance,$distance); 
@@ -275,47 +287,27 @@ class InscriptionDemandePrestationController extends AbstractController
 			} 
 			dump($artisan_classement); 
 			dump($distance_classement); 
-			 
-			//// Stockage des artisans qui vont etre concerné par la demande //// 
-			$longueur = count($artisan_classement); 
-			$mod=0; 
-			$chaine = ""; 
-			if($longueur>5) // on veut 5 devis max 
-			{ 
-				$mod = $longueur%5; 
-				$multiple = ($longueur-$mod)/5; 
-				for($i=0;$i<$longueur - $mod;$i++) 
-				{ 
-					if($i<5) 
-						$client->addIdArtisan($artisan_classement[$i]); 
-					else 
-					{ 
-						$val = $artisan_classement[$i]->getIdArtisan(); 
-						$chaine = $chaine . strval($val) . ':'; 
-					} 
-				} 
-			} 
-			else 
-			{ 
-				foreach($artisan_classement as $artisan_choice) 
-				{ 
-					$client->addIdArtisan($artisan_choice); 
-				} 
-			} 
+
+			$longueur = count($artisan_classement);
+			
+			if($longueur>5)
+				$longueur = 5;
+			
+			for($i=0;$i<$longueur;$i++)
+			{
+				$client->addIdArtisan($artisan_classement[$i]);
+			}
 			 
 			 
-			$entityManager->persist($client); 
-			$entityManager->flush(); 
-			 
-			foreach($artisan_classement as $theartisan) 
-			{ 
-				 
-			} 
-			 
+			
+			
+			$entityManager->persist($client);
+			$entityManager->flush();
+			
+			return $this->redirectToRoute('fin_inscription_demande');
 			 
 			 
-			 
-			/* 
+			/**
 			//// Envoie du mail au client concernant sa demande de prestation 
 			$mail = new PHPMailer(true);                              // Passing `true` enables exceptions 
 			try { 
@@ -344,9 +336,9 @@ class InscriptionDemandePrestationController extends AbstractController
 				} 
 			catch (Exception $e) { 
 				echo 'Message could not be sent. Mailer Error: ' . $e, $mail->ErrorInfo; 
-			}*/			 
+			}	**/ 
 		} 
 					 
-		return $this->render('inscription_ma_demande/demande_prestation.html.twig',['form' =>$form->createView(),'services'=>$service]); 
+		return $this->render('inscription_ma_demande/demande_prestation.html.twig',['form' =>$form->createView(),'services'=>$service,'redirect'=>'0']); 
 	} 
 }

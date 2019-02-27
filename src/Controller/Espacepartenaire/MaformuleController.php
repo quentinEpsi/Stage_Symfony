@@ -20,7 +20,7 @@ class MaformuleController extends AbstractController
     }
 
     /**
-     * @Route("/artisan/maformule/", name="maformule")
+     * @Route("/artisan/maformule", name="maformule")
      * @param ArtisanRepository $artisanRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */

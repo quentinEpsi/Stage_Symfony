@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -84,6 +83,47 @@ class Artisan implements UserInterface
      * @ORM\Column(name="Motdepasse", type="string", length=100, nullable=false)
      */
     private $motdepasse;
+	
+	/**
+     * @var string
+     */
+    private $verif_motdepasse;
+	
+	 /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse_intervention_numero_artisan", type="string", length=20, nullable=false)
+     */
+    private $adresseInterventionNumeroArtisan;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse_intervention_rue_artisan", type="string", length=300, nullable=false)
+     */
+    private $adresseInterventionRueArtisan;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse_intervention_ville_artisan", type="string", length=300, nullable=false)
+     */
+    private $adresseInterventionVilleArtisan;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse_intervention_cp_artisan", type="string", length=6, nullable=false)
+     */
+    private $adresseInterventionCpArtisan;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse_complementaire_artisan", type="string", length=200, nullable=false)
+     */
+    private $adresseComplementaireArtisan;
+
 
     /**
      * @var string
@@ -104,21 +144,21 @@ class Artisan implements UserInterface
      *
      * @ORM\Column(name="Credit", type="integer", nullable=false)
      */
-    private $credit;
+    private $credit = 0;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Date_fin_gratuite", type="datetime", nullable=false)
+     * @ORM\Column(name="Date_fin_gratuite", type="datetime", nullable=true)
      */
-    private $dateFinGratuite;
+    private $dateFinGratuite = null;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Date_fin_engagement", type="datetime", nullable=false)
+     * @ORM\Column(name="Date_fin_engagement", type="datetime", nullable=true)
      */
-    private $dateFinEngagement;
+    private $dateFinEngagement = null;
 
     /**
      * @var float
@@ -139,21 +179,21 @@ class Artisan implements UserInterface
      *
      * @ORM\Column(name="Avantage_artisan", type="integer", nullable=false)
      */
-    private $avantageArtisan;
+    private $avantageArtisan = 0;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Date_debut_arret_reception", type="datetime", nullable=false)
+     * @ORM\Column(name="Date_debut_arret_reception", type="datetime", nullable=true)
      */
-    private $dateDebutArretReception;
+    private $dateDebutArretReception = null;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Date_fin_arret_reception", type="datetime", nullable=false)
+     * @ORM\Column(name="Date_fin_arret_reception", type="datetime", nullable=true)
      */
-    private $dateFinArretReception;
+    private $dateFinArretReception = null;
 
     /**
      * @var \Formules
@@ -214,13 +254,18 @@ class Artisan implements UserInterface
      * )
      */
     private $idService;
+	
+	/**
+     * @var array
+     *
+     */
+    private $tableauService = array();
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->idClient = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idHoraire = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idService = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -290,6 +335,66 @@ class Artisan implements UserInterface
         return $this;
     }
 
+	 public function getAdresseInterventionNumeroArtisan(): ?string
+    {
+        return $this->adresseInterventionNumeroArtisan;
+    }
+
+    public function setAdresseInterventionNumeroArtisan(string $adresseInterventionNumeroArtisan): self
+    {
+        $this->adresseInterventionNumeroArtisan = $adresseInterventionNumeroArtisan;
+
+        return $this;
+    }
+
+    public function getAdresseInterventionRueArtisan(): ?string
+    {
+        return $this->adresseInterventionRueArtisan;
+    }
+
+    public function setAdresseInterventionRueArtisan(string $adresseInterventionRueArtisan): self
+    {
+        $this->adresseInterventionRueArtisan = $adresseInterventionRueArtisan;
+
+        return $this;
+    }
+
+    public function getAdresseInterventionVilleArtisan(): ?string
+    {
+        return $this->adresseInterventionVilleArtisan;
+    }
+
+    public function setAdresseInterventionVilleArtisan(string $adresseInterventionVilleArtisan): self
+    {
+        $this->adresseInterventionVilleArtisan = $adresseInterventionVilleArtisan;
+
+        return $this;
+    }
+
+    public function getAdresseInterventionCpArtisan(): ?string
+    {
+        return $this->adresseInterventionCpArtisan;
+    }
+
+    public function setAdresseInterventionCpArtisan(string $adresseInterventionArtisan): self
+    {
+        $this->adresseInterventionCpArtisan = $adresseInterventionArtisan;
+
+        return $this;
+    }
+
+    public function getAdresseComplementaireArtisan(): ?string
+    {
+        return $this->adresseComplementaireArtisan;
+    }
+
+    public function setAdresseComplementaireArtisan(string $adresseComplementaireArtisan): self
+    {
+        $this->adresseComplementaireArtisan = $adresseComplementaireArtisan;
+
+        return $this;
+    }
+	
     public function getMail(): ?string
     {
         return $this->mail;
@@ -325,7 +430,19 @@ class Artisan implements UserInterface
 
         return $this;
     }
-	
+
+    public function getVerifMotdepasse(): ?string
+    {
+        return $this->verif_motdepasse;
+    }
+
+    public function setVerifMotdepasse(string $verifmotdepasse): self
+    {
+        $this->verif_motdepasse = $verifmotdepasse;
+
+        return $this;
+    }
+
 	 /**
      * A visual identifier that represents this user.
      *
@@ -596,5 +713,16 @@ class Artisan implements UserInterface
 
         return $this;
     }
+	
+	public function getTableauService(): Array
+    {
+        return $this->tableauService;
+    }
 
+    public function setTableauService(Array $tableauservice): self
+    {
+        $this->tableauService = $tableauservice;
+
+        return $this;
+    }
 }

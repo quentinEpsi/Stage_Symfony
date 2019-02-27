@@ -67,7 +67,7 @@ class ArtisanAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Mail could not be found.');
+            throw new CustomUserMessageAuthenticationException('L\'email indiqué est invalide.');
         }
 
         return $user;

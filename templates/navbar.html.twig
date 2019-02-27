@@ -3,7 +3,7 @@
 %}
 {% block top_header_area %}
 {% endblock %}
-<nav class="navbar navbar-default header_aera" id="main_navbar">
+<nav class="navbar navbar-default header_aera" id="main_navbar"style=" position: fixed; padding-top: -20px;">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="col-md-2 p0">
@@ -38,11 +38,11 @@
 						<li><a href="/#equipe">Notre Équipe</a></li>
 					{% endif %}
 					
-					{% if currentPath == (path('home')or path('contact')) %}
+					{% if currentPath == path('home')or currentPath == path('contact') %}
 						<li><a href="{{ path('demande_prestation')}}">Faire une demande de prestation</a></li>
 					{% endif %}
 					
-					{% if currentPath == (path('home') or path('contact')) %}
+					{% if currentPath == path('home') or path('contact') %}
 						<li><a href="}">Suivre ma demande de prestation</a></li>
 					{% endif %}
 					
@@ -50,6 +50,17 @@
 					
                     <li><a href={{ path('contact') }}>Contact</a></li>
                 </ul>
+				{{ currentPath }}
+				{{ path('home') }}
+				{{ path('contact')}}
+				{% if currentPath == path('home') or currentPath ==path('contact') %}
+					{% set var = "oui" %}
+				{% else %}
+					{% set var = "non" %}
+				{% endif %}
+				
+				{{ var }}
+				
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Connexion</b> <span class="caret"></span></a>
