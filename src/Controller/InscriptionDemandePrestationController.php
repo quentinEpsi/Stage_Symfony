@@ -11,6 +11,7 @@ use App\Entity\Service;
 use App\Entity\Parametre; 
 use App\Entity\Jour; 
 use App\Entity\EtatAvancement; 
+use App\Entity\Choisir; 
  
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController; 
  
@@ -26,7 +27,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType; 
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType; 
  
-use Symfony\Component\Validator\Constraints\DateTime; 
  
 ///////////////////////////////////////////////////////////////////////// Require ////////////////////////////////////////// 
 //require "C:/Users/cleme/Desktop/Mes_documents/Etude/Stage/symfony/vendor/autoload.php"; 
@@ -95,7 +95,6 @@ class InscriptionDemandePrestationController extends AbstractController
  
 		/////////// Création de l'objet de type formulaire et lien avec la base de donnée //////////// 
 		$client = new Client(); 
-		$dateNow = new \DateTime('now');
 		$form = $this->createFormBuilder($client)										// Création du formulaire 
 			->add('nomClient',TextType::class) 
 			->add('prenomClient',TextType::class) 
@@ -108,7 +107,7 @@ class InscriptionDemandePrestationController extends AbstractController
 			->add('mailClient',EmailType::class) 
 			->add('idService',ChoiceType::class,[ 'choices' => $nom_service ]) 
 			->add('descriptionSup',TextareaType::class) 
-			->add('dateRealisation',DateTimeType::class, [ 'data' => $dateNow ]) 
+			->add('dateRealisation',DateTimeType::class) 
 			->add('Valider',SubmitType::class, ['attr' => ['class' => 'btn btn-success ']])
 			->getForm(); 
 				 
@@ -206,7 +205,7 @@ class InscriptionDemandePrestationController extends AbstractController
 			$etat_avancement = $this->getDoctrine()->getRepository(EtatAvancement::class)->findAll(); 
 			
 			dump($etat_avancement[0]);
-			$client->setIdEtatAvancement($etat_avancement);
+			$client->setIdEtatAvancement($etat_avancement[0]);
 			//// Détermination de la distance entre le client et les artisans //// 
 			$jours = $this->getDoctrine()->getRepository(Jour::class)->findAll(); 
 			$allArtisan = $this->getDoctrine()->getRepository(Artisan::class)->findAll(); // Je récupere tout les artisans de la base de donnée 
@@ -289,19 +288,28 @@ class InscriptionDemandePrestationController extends AbstractController
 			dump($distance_classement); 
 
 			$longueur = count($artisan_classement);
+			$entityManager->persist($client);
+			$entityManager->flush();
 			
 			if($longueur>5)
 				$longueur = 5;
+			$client = $this->getDoctrine()->getRepository(Client::class)->findOneBy(["mailClient" =>$client->getMailClient()]); 
 			
 			for($i=0;$i<$longueur;$i++)
 			{
-				$client->addIdArtisan($artisan_classement[$i]);
+				$choisir = new Choisir();
+				$choisir->setVisualise(0);
+				$choisir->setRefuser(0);
+				$choisir->setIdArtisan($artisan_classement[$i]);
+				$choisir->setIdClient($client);
+				
 			}
-			 
+			
+			
 			 
 			
 			
-			$entityManager->persist($client);
+			$entityManager->persist($choisir);
 			$entityManager->flush();
 			
 			return $this->redirectToRoute('fin_inscription_demande');

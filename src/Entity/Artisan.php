@@ -144,7 +144,7 @@ class Artisan implements UserInterface
      *
      * @ORM\Column(name="Credit", type="integer", nullable=false)
      */
-    private $credit = 0;
+    private $credit = 3;
 
     /**
      * @var \DateTime

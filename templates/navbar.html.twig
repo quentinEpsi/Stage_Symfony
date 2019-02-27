@@ -76,16 +76,6 @@
 					
                     <li><a href={{ path('contact') }}>Contact</a></li>
                 </ul>
-				{{ currentPath }}
-				{{ path('home') }}
-				{{ path('contact')}}
-				{% if currentPath == path('home') or currentPath ==path('contact') %}
-					{% set var = "oui" %}
-				{% else %}
-					{% set var = "non" %}
-				{% endif %}
-				
-				{{ var }}
 				
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">

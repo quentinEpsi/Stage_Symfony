@@ -17,6 +17,7 @@ class PaiementController extends AbstractController
     {
         $artisan= $this->get('security.token_storage')->getToken()->getUser();
         $parametre = $this->getDoctrine()->getRepository(Parametre::class)->findAll();
+		
         $prixReceptionDemande = $parametre[0]->getPrixReceptionDemande();
         return $this->render('paiement/index.html.twig', [
             'artisan' => $artisan,

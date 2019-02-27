@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Artisan;
 use App\Entity\Service;
+use App\Entity\Formules;
 use App\Form\RegistrationFormType;
 
 use function Sodium\add;
@@ -92,7 +93,8 @@ class RegistrationController extends AbstractController
 			// If using JSON...
 			$data = json_decode($response);
 			dump($data);
-			
+			$artisan->setRaisonSociale($data->records[0]->fields->denominationunitelegale);
+			dump($data->records[0]->fields->denominationunitelegale);
 			
 			//// Détermination de la position GPS du client //// 
 			$geocoder = new \OpenCage\Geocoder\Geocoder('b2df980a2f144759aa5c4f8d5fe448f8'); // utilisation de l'api Geocoder avec la clef API du compte 4rThem1s 
@@ -154,14 +156,15 @@ class RegistrationController extends AbstractController
 			
 			dump($artisan);
 
-			/*
+			$formules = $this->getDoctrine()->getRepository(Formules::class)->findAll(); //récupère les jours
+			$artisan->setIdFormule($formules[0]);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($artisan);
             $entityManager->flush();
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('formules');*/
+            /*return $this->redirectToRoute('formules');*/
 
 
         }

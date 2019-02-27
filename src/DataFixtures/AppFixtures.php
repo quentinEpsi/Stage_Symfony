@@ -100,6 +100,10 @@ Autres');
         $parametre->setPrixValidationDemande(3);
         $parametre->setDistanceMaxClientArtisan(100);
 		$parametre->setPrixUnCredit(2.0);
+		$parametre->setPrixAbonnement(5);
+		$parametre->setPrixReceptionDemandeAbonnement(1);
+		$parametre->setPrixValidationDemandeAbonnement(3);
+		
         $manager->persist($parametre);
         $manager->flush();
 
@@ -152,6 +156,12 @@ Autres');
             $artisan->setAvantageArtisan(3 + $i);
             $artisan->setCoordonneeLatitude(46.54 + $i*10**(-1));
             $artisan->setCoordonneeLongitude(0.24);
+            $artisan->setAdresseInterventionNumeroArtisan("6");
+            $artisan->setAdresseInterventionRueArtisan("Rue de turfu");
+            $artisan->setAdresseInterventionVilleArtisan("Aix");
+            $artisan->setAdresseInterventionCpArtisan(72000);
+            $artisan->setAdresseComplementaireArtisan("étage -1");
+			
             $artisan->setIdFormule($formules[1]);
             $artisan->addIdService($services[0]);
             $artisan->addIdService($services[1]);
