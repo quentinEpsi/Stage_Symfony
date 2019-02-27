@@ -190,7 +190,7 @@ Autres');
 
 
         $clients = $manager->getRepository(Client::class)->findAll();
-		$roles = array("ROLE_ADMIN","ROLE_COMMERCIAL");
+		$roles = array("ROLE_ADMIN");
 		$admin = new Admin();
 		$admin->setMailAdmin("admin@admin");
 		$admin->setPassword($this->passwordEncoder->encodePassword($admin,'admin'));
