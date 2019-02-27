@@ -34,7 +34,6 @@ class CreationDevisController extends AbstractController
         $artisan= $this->get('security.token_storage')->getToken()->getUser();
         $client = $this->getDoctrine()->getRepository(Client::class)->find($id);
         $devis = $this->getDoctrine()->getRepository(Devis::class)->findDevisByIdArtisan($artisan->getIdArtisan());
-        dump($devis);
         $acces = false;
 
         foreach($devis as $devi) 
@@ -86,7 +85,7 @@ class CreationDevisController extends AbstractController
         }
           
           
- 
+        
          
         return $this->render('macreationdevis/index.html.twig', [
             'controller_name' => 'CreationDevisController',
