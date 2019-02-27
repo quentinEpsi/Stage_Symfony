@@ -3,22 +3,66 @@
 {% block title %}SR2F | Demande{% endblock %}
 
 {% block body %}
-	<h2 style="text-align:center;margin-bottom:10px;margin-top:10px;"> Création de la demande de prestation </h2>
-		<div class="formulaire" style="width: 50%;margin:auto;">
-			{{ form_start(form) }}
-			{{ form_row(form.nomClient,{'label':'Nom :','attr':{'placeholder':'Martin','name':'test'}}) }}
-			{{ form_row(form.prenomClient, {'label':'Prénom :','attr':{'placeholder':'Martin'}}) }}
-			{{ form_row(form.adresseInterventionNumero, {'label':'Numéro de la rue :'}) }}
-			{{ form_row(form.adresseInterventionRue, {'label':'Rue :'}) }}
-			{{ form_row(form.adresseInterventionVille, {'label':'Ville :'}) }}
-			{{ form_row(form.adresseInterventionCp, {'label':'Code postal :', 'attr':{'pattern':'\\d{5}','maxlength':'5'}}) }}
-			{{ form_row(form.adresse_complementaire_client, {'label':'Adresse complémentaire :'}) }}
-			{{ form_row(form.telClient, {'label':'Téléphone :', 'attr':{'pattern':'(0)[1-9]\\d{8}','maxlength':'10'}}) }}
-			{{ form_row(form.mailClient, {'label':'Email :'}) }}
-			{{ form_row(form.idService, {'label':'Service :'}) }}
-			{{ form_row(form.descriptionSup, {'label':'Explication de la demande :'}) }}
-			{{ form_row(form.dateRealisation, {'label':'Date souhaité de réalisation :'}) }}
-			{{ form_row(form.Valider) }}
-			{{ form_end(form) }}
-		</div>
+<div class="jumbotron" style="padding-top : 5%; padding-bottom: 10%">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="container-fluid text-center">    
+                <div class="row content">
+                    <div class="col-sm-2 sidenav"></div>
+                        <div class="col-sm-8">
+                            <div class="tittle wow fadeInUp">
+                                <h2 style="padding-top: 0px">Création de la demande de prestation</h2>
+                                <br>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{ form_start(form) }}
+
+        <div class="row">
+            <div class="col-md-3 col-md-offset-3">{{ form_row(form.nomClient,{'label':'Nom :','attr':{'placeholder':'Martin','name':'test'}}) }}</div>
+            <div class="col-md-3 ">{{ form_row(form.prenomClient, {'label':'Prénom :','attr':{'placeholder':'Matin'}}) }}</div>
+        </div>
+
+            <div class="row">
+                <div class="col-md-3 col-md-offset-3" style="margin-bottom : 10px;">{{ form_row(form.adresseInterventionNumero, {'label':'Numéro de la rue :'})  }}</div>
+                <div class="col-md-3 ">{{ form_row(form.adresseInterventionRue, {'label':'Rue :'})  }}</div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-3">{{ form_row(form.adresseInterventionVille, {'label':'Ville :'}) }}</div>
+                <div class="col-md-3 ">{{ form_row(form.adresseInterventionCp, {'label':'Code postal :', 'attr':{'pattern':'\\d{5}','maxlength':'5'}}) }}</div>
+            </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-3">{{ form_row(form.adresse_complementaire_client, {'label':'Adresse complémentaire :'})  }}</div>
+            <div class="col-md-3">{{ form_row(form.telClient, {'label':'Téléphone :', 'attr':{'pattern':'(0)[1-9]\\d{8}','maxlength':'10'}}) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3" > {{ form_row(form.mailClient, {'label':'Email :'}) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">{{ form_row(form.idService, {'label':'Service :'}) }}</div>
+        </div>
+         <div class="row">
+            <div class="col-md-6 col-md-offset-3">{{ form_row(form.descriptionSup, {'label':'Explication de la demande :'}) }}</div>
+        </div>
+		<div class="row">
+            <div class="col-md-6 col-md-offset-3">{{ form_row(form.dateRealisation, {'label':'Date souhaité de réalisation :'}) }}</div>
+        </div>
+
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">{{ form_row(form.Valider) }}</div>
+		 </div>
+
+
+        {{ form_end(form) }}
+    </div>
+    </div>
+</div>
 {% endblock %}
