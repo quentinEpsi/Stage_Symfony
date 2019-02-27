@@ -55,8 +55,8 @@ class MesdemandesController extends AbstractController
             $idClient = $demande->getIdClient();
             $nomClient = $demande->getNomClient();
             $prenomClient = $demande->getPrenomClient();
-            $dateRealisationNonFormat = $demande->getDateRealisation()->format('d-m-Y');
-            $dateProposition = $demande->getDateProposition()->format('d-m-Y H:i');
+            $dateRealisationFormat = $demande->getDateRealisation()->format('d-m-Y H:i');
+            $dateProposition = $demande->getDateProposition()->format('d-m-Y');
             $leNomService = $demande->getIdService()->getNomService();
 
             $LongCli = $demande->getCoordonneeLongitudeClient();
@@ -67,9 +67,13 @@ class MesdemandesController extends AbstractController
 
             $distance = round((calcul_distance($LatCli, $LongCli, $LatArt, $LongArt)), 1);
 
-            //$dejaVu = $demande->get
+            $leChoisir = $this->getDoctrine()->getRepository(Choisir::class)->findleChoix($idClient,$artisan->getIdArtisan())[0];
 
-            $datePropositionFormatOriginal = $demande->getDateProposition();
+            $leRefus = $leChoisir->getRefuser();
+            $leVisualise = $leChoisir->getVisualise();
+
+
+            $dateRealisationFormatOriginal = $demande->getDateRealisation();
             //Si c'est un histo
             $chaineHistorique = array();
 
@@ -79,7 +83,7 @@ class MesdemandesController extends AbstractController
 
             //Si c'est un affichage
             $chaineDemande = array();
-            array_push($chaineDemande, $nomClient, $prenomClient, $dateProposition, $distance, $leNomService);
+            array_push($chaineDemande, $nomClient, $prenomClient, $dateProposition, $distance, $leNomService, $idClient);
 
 
             foreach($lesDevis as $leDevi) 
@@ -100,37 +104,37 @@ class MesdemandesController extends AbstractController
 
 
             }
-            if(!$auMoinsUnValidé && !$refuse && $dejaValideParLartisan)
+            if(!$refuse && $dejaValideParLartisan)
             {
                 $stringNormal = "valide";
-                array_push($tabDemandeEtMotifHisto, $chaineHistorique, $stringNormal);
-                array_push($mesDemandes, $tabDemandeEtMotifHisto);
+                array_push($tabDemandeEtMotifHisto, $chaineHistorique, $stringNormal, $leRefus, $leVisualise);
+                array_push($mesDemandesHisto, $tabDemandeEtMotifHisto);
             }
             else if ($refuse) 
             {
                 $stringAccepte = "refus";
-                array_push($tabDemandeEtMotifHisto, $chaineHistorique, $stringAccepte);
+                array_push($tabDemandeEtMotifHisto, $chaineHistorique, $stringAccepte, $leRefus, $leVisualise);
                 array_push($mesDemandesHisto, $tabDemandeEtMotifHisto);
             }
             else if($demandeDejaAccepterParQqunDautre) 
             {
                 $stringRefus = "AccepteParUnAutre";
-                array_push($tabDemandeEtMotifHisto, $chaineHistorique, $stringRefus);
+                array_push($tabDemandeEtMotifHisto, $chaineHistorique, $stringRefus, $leRefus, $leVisualise);
                 array_push($mesDemandesHisto, $tabDemandeEtMotifHisto);
-            } else if ($datePropositionFormatOriginal < (new \DateTime('now')))
+            } else if ($dateRealisationFormatOriginal < (new \DateTime('now')))
             {
                 $stringDelai = "DelaiDepasse";
-                array_push($tabDemandeEtMotifHisto, $chaineHistorique, $stringDelai);
+                array_push($tabDemandeEtMotifHisto, $chaineHistorique, $stringDelai, $leRefus, $leVisualise);
                 array_push($mesDemandesHisto, $tabDemandeEtMotifHisto);
             } else if (!$avecDevis)
             {
                 $stringDelai = "attenteDevi";
-                array_push($tabDemandeEtMotifPrincipal, $chaineDemande, $stringDelai);
+                array_push($tabDemandeEtMotifPrincipal, $chaineDemande, $stringDelai, $leRefus, $leVisualise);
                 array_push($mesDemandes, $tabDemandeEtMotifPrincipal);
             } else
             {
                 $stringDelai = "AttenteValidation";
-                array_push($tabDemandeEtMotifPrincipal, $chaineDemande, $stringDelai);
+                array_push($tabDemandeEtMotifPrincipal, $chaineDemande, $stringDelai, $leRefus, $leVisualise);
                 array_push($mesDemandes, $tabDemandeEtMotifPrincipal);
             }
         }

@@ -21,19 +21,18 @@ class ChoisirRepository extends ServiceEntityRepository
 	
 	// /**
 	
-    //  * @return Client[] Returns an array of Client objects
+    //  * @return Chosisir Returns the Choisir object
     //  */
-    /*
-    public function findByExampleField($value)
+    public function findleChoix($idCli, $idArt)
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('choix')
+            ->andWhere('choix.idArtisan = :Id_artisan')
+            ->andWhere('choix.idClient = :Id_client')
+            ->setParameter('Id_artisan', $idArt)
+            ->setParameter('Id_client', $idCli)
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
+    
 }

@@ -95,7 +95,7 @@ class InscriptionDemandePrestationController extends AbstractController
  
 		/////////// Création de l'objet de type formulaire et lien avec la base de donnée //////////// 
 		$client = new Client(); 
- 
+		$dateNow = new \DateTime('now');
 		$form = $this->createFormBuilder($client)										// Création du formulaire 
 			->add('nomClient',TextType::class) 
 			->add('prenomClient',TextType::class) 
@@ -108,8 +108,8 @@ class InscriptionDemandePrestationController extends AbstractController
 			->add('mailClient',EmailType::class) 
 			->add('idService',ChoiceType::class,[ 'choices' => $nom_service ]) 
 			->add('descriptionSup',TextareaType::class) 
-			->add('dateRealisation',DateTimeType::class) 
-			->add('Valider',SubmitType::class) 
+			->add('dateRealisation',DateTimeType::class, [ 'data' => $dateNow ]) 
+			->add('Valider',SubmitType::class, ['attr' => ['class' => 'btn btn-success ']])
 			->getForm(); 
 				 
 		////////// Prise en charge de la validation du formulaire ////////// 

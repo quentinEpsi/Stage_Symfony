@@ -27,7 +27,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class CreationDevisController extends AbstractController
 {
     /**
-     * @Route("/artisan/macreationdevis/{id}", name="macreationdevis")
+     * @Route("/artisan/mesdemandes/macreationdevis/{id}", name="macreationdevis")
      */
     public function index(Request $request, $id, FileUploader $fileUploader)
     {

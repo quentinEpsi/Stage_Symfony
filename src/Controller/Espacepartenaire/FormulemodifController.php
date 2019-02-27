@@ -4,7 +4,6 @@ namespace App\Controller\Espacepartenaire;
 
 use App\Entity\Formuleform;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,11 +37,12 @@ class FormulemodifController extends AbstractController
             if ($Formuleform->getFormuleabonnement()){
                 return $this->redirectToRoute('paypalpaiement', ['prix'=>4.99]);
             }
-            /*$entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($Formuleform);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('maformule');*/
+            if ($Formuleform->getFormuleespritlibre()){
+                return $this->redirectToRoute('paypalpaiement', ['prix'=>29.99]);
+            }
+            if ($Formuleform->getFormulegratuite()){
+                return $this->redirectToRoute('maformule');
+            }
         }
 
         return $this->render('formulemodif/index.html.twig', array(
