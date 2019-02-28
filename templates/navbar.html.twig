@@ -75,52 +75,20 @@
 
 					
                     <li><a href={{ path('contact') }}>Contact</a></li>
-                </ul>
-				
+                {% endif %}
+            </ul>
+
+                {% if currentRole != 'ROLE_ARTISAN' and currentRole != 'ROLE_COMMERCIAL' and currentRole != 'ROLE_ADMIN' %}
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Connexion</b> <span class="caret"></span></a>
-                        <ul id="login-dp" class="dropdown-menu">
-                            <li>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p>Connexion avec :</p>
-                                        <div class="social-buttons">
-                                            <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                                            <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
-                                        </div>
-                                        <p>ou</p>
-                                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                            <div class="form-group">
-                                                <label class="sr-only" for="exampleInputEmail2">Email</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="sr-only" for="exampleInputPassword2">Mot de passe</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Mot de passe" required>
-                                                <div class="help-block text-right"><a href="{{ path('changepassword') }}">Mot de passe oublié ?</a></div>
-                                            </div>
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-primary btn-block">Connexion</button>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Se souvenir de moi
-                                                </label>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="bottom text-center">
-                                        <a href="{{ path('app_register') }}"><b>Créer un compte</b></a>
-                                    </div>
-
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    {% endif %}
-
+                    <li><a href="{{ path('app_login_artisan')}}">Connexion</a></li>
+                    <li><a href="{{ path('app_register')}}">Inscription</a></li>
                 </ul>
+                {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ path('app_login_artisan')}}">Déconnexion</a></li>
+                </ul>
+                {% endif %}
+
             </div><!-- /.navbar-collapse -->
         </div>
     </div><!-- /.container -->
