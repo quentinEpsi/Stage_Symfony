@@ -3,6 +3,7 @@
 namespace App\Controller\Espacepartenaire;
 
 use App\Entity\Client;
+use App\Entity\Choisir;
 use App\Entity\Devis;
 use App\Entity\Artisan;
 
@@ -33,14 +34,10 @@ class CreationDevisController extends AbstractController
     {
         $artisan= $this->get('security.token_storage')->getToken()->getUser();
         $client = $this->getDoctrine()->getRepository(Client::class)->find($id);
-        $devis = $this->getDoctrine()->getRepository(Devis::class)->findDevisByIdArtisan($artisan->getIdArtisan());
-        $acces = false;
+        $devis = $this->getDoctrine()->getRepository(Choisir::class)->findleChoix($client->getIdClient(), $artisan->getIdArtisan());
+        dump($devis);
 
-        foreach($devis as $devi) 
-        {
-            if($devi->getIdClient() == $client) $acces = true;
-        }
-        if($acces)
+        if(count($devis) != 0)
         {
             date_default_timezone_set ( "Europe/Paris" );  
         
