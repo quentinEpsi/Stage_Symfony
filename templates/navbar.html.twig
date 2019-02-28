@@ -40,13 +40,13 @@
                     <li><a href="/" class="logo"><strong>SR2F</strong></a></li>
                     {# TABLEAU ADMIN #}
                     {% if currentRole == 'ROLE_ADMIN' %}
-                    <li><a href="{{ path('tdbadmin') }}"><b>Voir Tableau Admin</b></a></li>
+                    <li><a href="{{ path('tdbadmin') }}"><b>Tableau Admin</b></a></li>
                     {% endif %}
                     {# FIN TABLEAU ADMIN#}
 
                     {# TABLEAU COMMERCIAL #}
                     {% if currentRole == 'ROLE_COMMERCIAL' %}
-                        <li><a href="{{ path('tdbcommercial') }}"><b>Voir le Tableau Commercial</b></a></li>
+                        <li><a href="{{ path('tdbcommercial') }}"><b>Tableau Commercial</b></a></li>
                     {% endif %}
                     {# FIN TABLEAU COMMERCIAL#}
 
@@ -83,6 +83,9 @@
                 <li><a href="{{ path('mesdevis')}}">Mes devis</a></li>
                 <li><a href="{{ path('paiement')}}">Mes crédits</a></li>
 
+                {% elseif currentRole == 'ROLE_COMMERCIAL' %}
+                <li><a href="{{ path('commercialdemandes')}}">Les demandes</a></li>
+                <li><a href="{{ path('commercialprestataire')}}">Les artisans</a></li>
                 {% endif %}
             </ul>
 
