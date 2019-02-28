@@ -5,6 +5,7 @@ namespace App\Controller\Espacepartenaire;
 use App\Entity\Client;
 use App\Entity\Devis;
 use App\Entity\Artisan;
+use App\Entity\Choisir;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -21,15 +22,11 @@ class MesDevisDetailController extends AbstractController
     public function index($id)
     {
         $artisan= $this->get('security.token_storage')->getToken()->getUser();
-        $client = $this->getDoctrine()->getRepository(Client::class)->find($id);
-        $devis = $this->getDoctrine()->getRepository(Devis::class)->findDevisByIdArtisan($artisan->getIdArtisan());
-        $acces = false;
+        $devis = $this->getDoctrine()->getRepository(Devis::class)->find($id);
         dump($devis);
-        foreach($devis as $devi) 
-        {
-            if($devi->getIdClient() == $client) $acces = true;
-        }
-        if(true)
+        if($devis->getIdArtisan() == $artisan) $acces = true; else $acces = false;
+
+        if($acces)
         {
         date_default_timezone_set ( "Europe/Paris" );  
 

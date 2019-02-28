@@ -33,6 +33,19 @@ class DevisRepository extends ServiceEntityRepository
             ;
     }
 
+        /**
+    * @return Devis[] Returns an array of Devis objects
+    */
+    public function findDevis($idClient)
+    {
+        return $this->createQueryBuilder('devisArtisan')
+            ->andWhere('devisArtisan.idClient = :Id_client')
+            ->setParameter('Id_client', $idClient)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Devis[] Returns an array of Devis objects
     //  */
