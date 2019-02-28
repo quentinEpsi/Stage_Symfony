@@ -108,7 +108,13 @@ class MesdemandesController extends AbstractController
             if(!$refuse && $dejaValideParLartisan)
             {
                 $stringNormal = "valide";
-                array_push($tabDemandeEtMotifHisto, $chaineHistorique, $stringNormal, $leRefus, $leVisualise);
+                $Devis = $this->getDoctrine()->getRepository(Devis::class)->findDevis($idClient);
+                foreach($Devis as $devi)
+                {
+                    if($devi->getIdArtisan() == $artisan) $idDevis = $devi->getIdDevis();
+                }
+                dump($idDevis);
+                array_push($tabDemandeEtMotifHisto, $chaineHistorique, $stringNormal, $leRefus, $leVisualise, strval($idDevis));
                 array_push($mesDemandesHisto, $tabDemandeEtMotifHisto);
             }
             else if ($refuse) 
