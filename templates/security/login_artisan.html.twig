@@ -111,6 +111,9 @@
         <button class="btn btn-primary center-block" type="submit">
             Connexion
         </button>
+        <br>
+        <p style="text-align: center;"><a href="{{ path('changepassword')}}">Mot de passe oublié?</a></p>
+        <br>
     </div>
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}">
