@@ -75,6 +75,14 @@
 
 					
                     <li><a href={{ path('contact') }}>Contact</a></li>
+                {% elseif currentRole == 'ROLE_ARTISAN' %}
+                <li><a href="{{ path('moncompte')}}">Mon compte</a></li>
+                <li><a href="{{ path('mesdisponibilites')}}">Mes disponibilités</a></li>
+                <li><a href="{{ path('maformule')}}">Ma formule</a></li>
+                <li><a href="{{ path('mesdemandes')}}">Mes demandes</a></li>
+                <li><a href="{{ path('mesdevis')}}">Mes devis</a></li>
+                <li><a href="{{ path('paiement')}}">Mes crédits</a></li>
+
                 {% endif %}
             </ul>
 
