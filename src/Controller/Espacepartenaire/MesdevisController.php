@@ -24,7 +24,7 @@ class MesdevisController extends AbstractController
 
 		$artisan= $this->get('security.token_storage')->getToken()->getUser();
         $devis = $this->getDoctrine()->getRepository(Devis::class)->findDevisByIdArtisan($artisan->getIdArtisan());
-                
+        $idArtisan = $artisan->getIdArtisan();          
         $infoDevisTab = array();
 
         foreach($devis as $each_devis1)
@@ -35,6 +35,13 @@ class MesdevisController extends AbstractController
             $adresseIntervention = $clients->getAdresseInterventionNumero()." ".$clients->getAdresseInterventionRue()." ".$clients->getAdresseInterventionVille()." ".$clients->getAdresseInterventionCp();
             $dateDevis = $each_devis1->getDateEnvoie()->format('d-m-Y');
             $fichierJoint = $each_devis1->getFichierJoint();
+            $chaineFichierJoint="";
+            $fichierJointCoupe = explode("-", $fichierJoint);
+            for($i=1;$i<count($fichierJointCoupe);$i++)
+            {
+            $chaineFichierJoint = $chaineFichierJoint.$fichierJointCoupe[$i].'-';
+            }
+            $chaineFichierJoint= substr($chaineFichierJoint, 0, -1);
             $dateRealisation = $clients->getDateRealisation();
             $datePrevuRealisation = $dateRealisation->format('d-m-Y H:i');
             $devisVisualise ="";
@@ -52,7 +59,7 @@ class MesdevisController extends AbstractController
             dump($datePrevuRealisation);
             $unDevi = array();
             if($dateRealisation > (new \DateTime('now'))){
-            array_push($unDevi, $nomClient, $prenomClient, $adresseIntervention,$dateDevis,$datePrevuRealisation, $fichierJoint, $statusDevis, $devisVisualise);
+            array_push($unDevi, $nomClient, $prenomClient, $adresseIntervention,$dateDevis,$datePrevuRealisation, $fichierJoint, $statusDevis, $devisVisualise,$chaineFichierJoint);
             array_push($infoDevisTab,$unDevi);
             }
         }
@@ -77,7 +84,8 @@ class MesdevisController extends AbstractController
         return $this->render('mesdevis/index.html.twig', [
             'controller_name' => 'MesdevisController',
             'Historique' => $historique,
-            'chaineDevis' => $infoDevisTab
+            'chaineDevis' => $infoDevisTab,
+            'idArtisan'=>$idArtisan
        ]);
     }
 }
