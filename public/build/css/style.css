@@ -5660,6 +5660,7 @@ table, th, td {
 
 .badge-warning{color:#212529;background-color:#ffc107}.badge-warning[href]:focus,.badge-warning[href]:hover{color:#212529;text-decoration:none;background-color:#d39e00}
 
-.espace:hover{
+
+.espace{
   color:#f8b81d;
 }
