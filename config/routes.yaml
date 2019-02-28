@@ -3,7 +3,7 @@
 #    controller: App\Controller\HomeController::index
 
 login_admin:
-    path: /secure
+    path: /secure/admin
     controller: App\Controller\AdminSecurityController::login
     
 app_logout_admin:

@@ -23,7 +23,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         admin:
-            pattern: '^(/admin)|^/secure$'
+            pattern: '^(/admin)|^/secure/admin$'
             anonymous: true
             provider: app_admin_provider
             guard:
