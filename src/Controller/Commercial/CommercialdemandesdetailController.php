@@ -34,10 +34,15 @@ class CommercialdemandesdetailController extends AbstractController
     public function show($id)
     {
         $infoClient = $this->getDoctrine()->getRepository(Client::class)->find($id);
-        dump($infoClient);
-        $repo = $infoClient->getIdArtisan();
-        $infoArtisans = $repo->getValues();
-        dump($infoArtisans);
+        $infoArtisans = $this->getDoctrine()->getRepository(Artisan::class)->find($id);
+        /*dump($infoClient);*/
+        $repo = $infoClient->getIdClient();
+        /*$infoClient = $repo->getValues();*/
+        $repoArtisans = $infoArtisans->getIdArtisan();
+        /*$infoArtisans = $repoArtisans->getValues();*/
+
+        
+        
         return $this->render('commercial/commercialdemandesdetail/index.html.twig', [
             'controller_name' => 'CommercialdemandesdetailController',
             'infoClient' => $infoClient,
