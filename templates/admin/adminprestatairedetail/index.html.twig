@@ -51,7 +51,8 @@
                             <li class="list-group-item">Avantage de l'artisan : {{ infoArtisan.avantageArtisan }} crédits</li><br>
                             <input type="submit" class="btn btn-primary" value="Réinitialiser le mot de passe"><br><br>
                             <a href="{{ path('adminmodifprestataire', {id: infoArtisan.idArtisan}) }}"><input type="submit" class="btn btn-primary" value="Modifier les informations"> </a><br><br>
-                            <input type="submit" class="btn btn-primary" value="Supprimer le compte">
+                            <input type="submit" class="btn btn-primary" value="Supprimer le compte"><br><br>
+                            <input type="button" class="btn btn-primary" value="Retour" onClick="window.history.back()">
                         </ul>
                     </div>
                 </div>
