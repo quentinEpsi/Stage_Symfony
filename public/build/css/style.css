@@ -5609,6 +5609,13 @@ table, th, td {
   padding-bottom: 2%;
   text-decoration: underline;
 }
+
+#parametreTitle{
+  padding-bottom: 2%;
+  text-decoration: underline;
+  }
+
+
 #BarreVerticale{
   border: solid;
   height: 300px;
@@ -5649,6 +5656,10 @@ table, th, td {
 .service{
   padding:5%;
 }
+.parametre{
+  padding:5%;
+}
+
 .article{
   padding:5%;
 }

@@ -1,0 +1,37 @@
+
+{% block body %}
+<div class="container m0">
+    <h2>Éditer un paramètre</h2>
+
+<div class="parametre">
+       <table class="table table-striped">
+              <tr>
+                <th>Période Gratuité</th>
+                <th>Prix réception de la demande</th>
+                <th>Prix validation de la demande</th>
+                <th>Distance max client/artisan</th>
+                <th>Prix du crédit</th>
+                <th>Prix de l'abonnement</th>
+                <th>Prix récéption de la demande avec un abonnement</th>
+                <th>Prix récéption de la validation de la demande avec un abonnement</th>
+            </tr>
+       
+{{ form_start(form) }}
+    <tr>
+    <td>{{ form_widget(form.periodeGratuite) }}</td>
+    <td>{{ form_widget(form.prixReceptionDemande) }}</td>
+    <td>{{ form_widget(form.prixValidationDemande) }}</td>
+    <td>{{ form_widget(form.distanceMaxClientArtisan) }}</td>
+    <td>{{ form_widget(form.prixUnCredit) }}</td>
+    <td>{{ form_widget(form.prixAbonnement) }}</td>
+    <td>{{ form_widget(form.prixReceptionDemandeAbonnement) }}</td>
+    <td>{{ form_widget(form.prixValidationDemandeAbonnement) }}</td>
+    </tr>
+    <td><button class="btn btn-primary">Éditer</button><td>
+   
+
+{{ form_end(form) }}
+</table>
+</div>
+
+{% endblock %}

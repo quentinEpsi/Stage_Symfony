@@ -3,8 +3,14 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Service;
+use App\Entity\Parametre;
+
 use App\Form\ServiceType;
+use App\Form\ParametreType;
+
 use App\Repository\ServiceRepository;
+use App\Repository\ParametreRepository;
+
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,14 +21,21 @@ class TdbadminController extends AbstractController
      * @var ServiceRepository
      */
     private $repository;
+
+    /**
+     * @var ParametreRepository
+     */
+    private $repositoryParam;
+
     /**
      * @var ObjectManager
      */
     private $om;
 
-    public function __construct(ServiceRepository $repo,ObjectManager $om)
+    public function __construct(ServiceRepository $repo,ObjectManager $om,ParametreRepository $repoParam)
     {
         $this->repository=$repo;
+        $this->repositoryParam=$repoParam;
         $this->om = $om;
     }
 
@@ -35,9 +48,12 @@ class TdbadminController extends AbstractController
     public function index()
     {
         $service=$this->repository->findAll();
+        $parametre=$this->repositoryParam->findAll();
+
         return $this->render('tdbadmin/index.html.twig', [
             'controller_name' => 'TdbadminController',
-            'services'=>$service
+            'services'=>$service,
+            'parametre'=>$parametre
         ]);
 
     }
@@ -100,4 +116,28 @@ class TdbadminController extends AbstractController
 
 
     }*/
+
+    
+    /**
+     * @Route ("/tdbadmin/editParametre/{id} ",name="tdbadmin.parametre.edit")
+     * @param Parametre $parametreEntity
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+	public function editParametre(Parametre $parametreEntity,\Symfony\Component\HttpFoundation\Request $request){
+		$parametre=$this->repositoryParam->findAll();
+		$form=$this->createForm(ParametreType::class,$parametreEntity);
+		$form->handleRequest($request);
+
+			if ($form->isSubmitted()&& $form->isValid()){
+				$this->om->flush();
+				return $this->redirectToRoute('tdbadmin');
+			}
+
+
+			return $this->render('tdbadmin/editParametre.html.twig',[
+			   'parametre'=>$parametre,
+				'form'=>$form->createView()
+		]);
+	}
 }

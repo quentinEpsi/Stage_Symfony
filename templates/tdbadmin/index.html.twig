@@ -96,9 +96,38 @@
 
 </div>
 
-    <!-- A FAIRE POUR VINCENT : FAIRE UN FORMULAIRE POUR MODIFIER LES VALEURS DE LA TABLE PARAMETRES
-
-     DEMANDE A CLEMENT SI T'AS DES QUESTIONS -->
-
+<div class="parametre">
+    <h3 id="parametreTitle">Parametre</h3>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Période Gratuité</th>
+                <th>Prix réception de la demande</th>
+                <th>Prix validation de la demande</th>
+                <th>Distance max client/artisan</th>
+                <th>Prix du crédit</th>
+                <th>Prix de l'abonnement</th>
+                <th>Prix récéption de la demande avec un abonnement</th>
+                <th>Prix récéption de la validation de la demande avec un abonnement</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for parametre in parametre %}
+            <tr>
+                <td>{{ parametre.periodeGratuite }} </td>
+                <td>{{ parametre.prixReceptionDemande }}</td>
+                <td>{{ parametre.prixValidationDemande }}</td>
+                <td>{{ parametre.distanceMaxClientArtisan }}</td>
+                <td>{{ parametre.prixUnCredit }}</td>
+                <td>{{ parametre.prixAbonnement }}</td>
+                <td>{{ parametre.prixReceptionDemandeAbonnement }}</td>
+                <td>{{ parametre.prixValidationDemandeAbonnement }}</td>
+                <td><button class="parametre_button" ><a href="{{ path('tdbadmin.parametre.edit',{id: parametre.idParametre}) }}" >Modifier le parametre</a></button><td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}
