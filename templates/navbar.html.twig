@@ -66,7 +66,7 @@
                 <li><a href="{{ path('mesdevis')}}">Mes devis</a></li>
                 <li><a href="{{ path('paiement')}}">Mes crédits</a></li>
                 {% endif %}
-                {% if currentRole == 'ROLE_ADMIN' or (currentPath == path('admindemandes') or currentPath == path('adminprestataire') or currentPath == path('tdbadmin') ) %}
+                {% if currentRole == 'ROLE_ADMIN' and (currentPath == path('admindemandes') or currentPath == path('adminprestataire') or currentPath == path('tdbadmin') ) %}
                 <li><a href="{{ path('tdbadmin') }}"><b>Tableau Admin</b></a></li>
                 <li><a href="{{ path('admindemandes')}}">Les demandes admin</a></li>
                 <li><a href="{{ path('adminprestataire')}}">Les artisans admin</a></li>
@@ -83,9 +83,17 @@
                     <li><a href="{{ path('app_login_artisan')}}">Connexion</a></li>
                     <li><a href="{{ path('app_register')}}">Inscription</a></li>
                 </ul>
-                {% else %}
+                {% elseif currentRole == 'ROLE_ARTISAN' %}
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/">Déconnexion</a></li>
+                    <li><a href="/artisan/logout_artisan">Déconnexion</a></li>
+                </ul>
+                {% elseif currentRole == 'ROLE_COMMERCIAL' %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/commercial/logout_commercial">Déconnexion</a></li>
+                </ul>
+                {% elseif currentRole == 'ROLE_ADMIN' %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/admin/logout_admin">Déconnexion</a></li>
                 </ul>
                 {% endif %}
 
