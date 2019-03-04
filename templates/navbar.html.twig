@@ -38,24 +38,6 @@
             <div class="collapse navbar-collapse" id="min_navbar">
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="/" class="logo"><strong>SR2F</strong></a></li>
-                    {# TABLEAU ADMIN #}
-                    {% if currentRole == 'ROLE_ADMIN' %}
-                    <li><a href="{{ path('tdbadmin') }}"><b>Tableau Admin</b></a></li>
-                    {% endif %}
-                    {# FIN TABLEAU ADMIN#}
-
-                    {# TABLEAU COMMERCIAL #}
-                    {% if currentRole == 'ROLE_COMMERCIAL' %}
-                        <li><a href="{{ path('tdbcommercial') }}"><b>Tableau Commercial</b></a></li>
-                    {% endif %}
-                    {# FIN TABLEAU COMMERCIAL#}
-
-                    {# TABLEAU COMMERCIAL #}
-                    {% if currentRole == 'ROLE_ARTISAN' %}
-                        <li><a href="{{ path('espacepartenaire') }}"><b>Voir mon espace partenaire</b></a></li>
-                    {% endif %}
-                    {# FIN TABLEAU COMMERCIAL#}
-
 
 					{% if currentPath == path('home') or currentPath == path('contact') or currentPath == path('demande_prestation') %}
 						<li><a href="/#apropos">À propos</a></li>
@@ -85,10 +67,12 @@
                 <li><a href="{{ path('paiement')}}">Mes crédits</a></li>
                 {% endif %}
                 {% if currentRole == 'ROLE_ADMIN' or (currentPath == path('admindemandes') or currentPath == path('adminprestataire') or currentPath == path('tdbadmin') ) %}
+                <li><a href="{{ path('tdbadmin') }}"><b>Tableau Admin</b></a></li>
                 <li><a href="{{ path('admindemandes')}}">Les demandes admin</a></li>
                 <li><a href="{{ path('adminprestataire')}}">Les artisans admin</a></li>
                 {% endif %}
                 {% if currentRole == 'ROLE_COMMERCIAL' and (currentPath == path('commercialdemandes') or currentPath == path('commercialprestataire') or currentPath == path('tdbcommercial') ) %}
+                <li><a href="{{ path('tdbcommercial') }}"><b>Tableau Commercial</b></a></li>
                 <li><a href="{{ path('commercialdemandes')}}">Les demandes commercial</a></li>
                 <li><a href="{{ path('commercialprestataire')}}">Les artisans commercial</a></li>
                 {% endif %}
