@@ -15,15 +15,12 @@
     <h2>Service d'achat de crédits</h2>
     <div class="text-center col-lg-offset-2 col-md-4" style="padding-top: 30px">
         <div class="professional_builder row">
-            <h3 class="text-center card-header">Acheter du crédit en toute sécurité :</h3>
-            <h4 class="text-center card-header">(1 crédit = 1,00€)</h4><br><br><br>
+            <h3 class="text-center card-header">Acheter des crédits en toute sécurité :</h3>
+            <h4 class="text-center card-header">(1 crédit = {{ param.prixUnCredit }}€)</h4><br><br><br>
             <div style="text-align: center">
-                <button type="submit" class="btn btn-success"><a href="{{ path('paypalpaiement', {prix: 1}) }}" style="color: white">1€ = 1 crédits</a></button><br><br>
-                <button type="submit" class="btn btn-success"><a href="{{ path('paypalpaiement', {prix: 2}) }}" style="color: white">2€ = 2 crédits</a></button><br><br>
-                <button type="submit" class="btn btn-success"><a href="{{ path('paypalpaiement', {prix: 5}) }}" style="color: white">5€ = 5 crédits</a></button><br><br>
-                <button type="submit" class="btn btn-success"><a href="{{ path('paypalpaiement', {prix: 10}) }}" style="color: white">10€ = 10 crédits</a></button><br><br>
-                <button type="submit" class="btn btn-success"><a href="{{ path('paypalpaiement', {prix: 20}) }}" style="color: white">20€ = 20 crédits</a></button><br><br>
-                <button type="submit" class="btn btn-success"><a href="{{ path('paypalpaiement', {prix: 100}) }}" style="color: white">100€ = 100 crédits</a></button><br><br>
+            {% for lePrix in prixCredits %}
+                <button type="submit" class="btn btn-success"><a href="{{ path('paypalpaiement', {prix: lePrix[0]}) }}" style="color: white">{{lePrix[0]}}€ = {{lePrix[1]}} crédits</a></button><br><br>
+            {% endfor %}
             </div>
         </div>
     </div>
@@ -45,7 +42,7 @@
                     let chaine;
                     chaine = "Nombre de crédits nécessaires : ";
                     nombre = parseInt(document.getElementById("calcul").value);
-                    let resultat = nombre * {{ prixReceptionDemande }};
+                    let resultat = nombre * ({{ param.prixReceptionDemande }} + {{ param.prixValidationDemande }});
                     if (isNaN(nombre)){
                         document.getElementById("resultat").innerHTML = chaine + "Nombre invalide !";
                     }
