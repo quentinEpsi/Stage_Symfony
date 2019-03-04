@@ -8,10 +8,10 @@
 		<div style="margin-top:30px">Formulaire d'inscription</div>
         {{ form_start(registrationForm) }}
 
-		{{ form_row(registrationForm.nom, {'label':'Nom: ', 'attr': {'class':'input-group', 'placeholder':'Jean'} }) }}
-		{{ form_row(registrationForm.prenom, {'label':'Prénom: ', 'attr': {'class':'input-group', 'placeholder':'Martin'} }) }}
-		{{ form_row(registrationForm.mail, {'label':'E-mail: ', 'attr': {'class':'input-group', 'placeholder':'jean.martin@gmail.fr'} }) }}
-		{{ form_row(registrationForm.tel, {'label':'Téléphone: ', 'attr': {'class':'input-group', 'placeholder':'Nom','pattern':'(0)[1-9]\\d{8}','maxlength':'10'}}) }}
+		{{ form_row(registrationForm.nom, {'label':'Nom: ', 'attr': {'class':'input-group', 'placeholder':'Votre nom'} }) }}
+		{{ form_row(registrationForm.prenom, {'label':'Prénom: ', 'attr': {'class':'input-group', 'placeholder':'Votre prénom'} }) }}
+		{{ form_row(registrationForm.mail, {'label':'E-mail: ', 'attr': {'class':'input-group', 'placeholder':'Votre email'} }) }}
+		{{ form_row(registrationForm.tel, {'label':'Téléphone: ', 'attr': {'class':'input-group', 'placeholder':'Votre numéro de téléphone','pattern':'(0)[1-9]\\d{8}','maxlength':'10'}}) }}
 		{{ form_row(registrationForm.motdepasse, {'label':'Mot de passe: ', 'attr': {'class':'input-group'} }) }}
 		{{ form_row(registrationForm.verif_motdepasse, {'label':'Vérification: ', 'attr': {'class':'input-group'} }) }}
 		{{ form_row(registrationForm.adresseInterventionNumeroArtisan, {'label':'Numéro rue: ', 'attr': {'class':'input-group'} }) }}
@@ -19,9 +19,9 @@
 		{{ form_row(registrationForm.adresseInterventionVilleArtisan, {'label':'Ville: ', 'attr': {'class':'input-group'} }) }}
 		{{ form_row(registrationForm.adresseInterventionCpArtisan, {'label':'Code postal: ', 'attr': {'class':'input-group','pattern':'\\d{5}','maxlength':'5'} }) }}
 		{{ form_row(registrationForm.adresseComplementaireArtisan, {'label':"Complément d'adresse: ", 'attr': {'class':'input-group'} }) }}
-		{{ form_row(registrationForm.siren, {'label':'SIREN: ', 'attr': {'class':'input-group', 'placeholder':'012345678','pattern':'\\d{9}','maxlength':'9'}} ) }}
+		{{ form_row(registrationForm.siren, {'label':'SIREN: ', 'attr': {'class':'input-group', 'placeholder':'Le siren de votre entreprise','pattern':'\\d{9}','maxlength':'9'}} ) }}
 		{{ form_row(registrationForm.tableauService, {'label':'Services proposés: ', 'attr': {'class':'input-group col-md-5 col-md-offset-3'} }) }}
-		{{ form_row(registrationForm.description, {'label':"Description de l'entreprise: ", 'attr': {'class':'input-group', 'placeholder':'Nom'} }) }}
+		{{ form_row(registrationForm.description, {'label':"Description de l'entreprise: ", 'attr': {'class':'input-group', 'placeholder':'Une petite description de votr entreprise'} }) }}
 		{{ form_row(registrationForm.numassurance, {'label':'Numéro assurance décennale: ', 'attr': {'class':'input-group','pattern':'\\d+'} }) }}
 		{{ form_row(registrationForm.Valider, {'label':'Valider'}) }}
 

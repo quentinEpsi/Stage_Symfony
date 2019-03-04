@@ -9,7 +9,6 @@
                 <h1>CHOISIR UNE FORMULE</h1><br><br>
                 <h3>Choisissez parmi ces trois formules celle qui vous correspond !</h3>
             </div>
-            {{ form_start(form) }}
             <div class="row construction_iner" style="padding-top: 30px;">
                 <div class="col-md-4 construction">
                     <div class="cns-img">
@@ -19,8 +18,7 @@
                         <i class="fa fa-coffee"></i>
                         <a>FORMULE GRATUITE</a>
                         <p>Formule entièrement gratuite avec un nombre de devis limités par mois</p><br>
-                        {{ form_row(form.Formulegratuite) }}
-                        <a href="{{ path('maformule') }}" class="button_all center-block" style="padding-bottom: 12px; background-color: #E8E8E8;">S'ABONNER GRATUITEMENT</a>
+                        <a href="" class="button_all center-block" style="padding-bottom: 12px; background-color: #E8E8E8;">FORMULE INDISPONIBLE</a>
                     </div>
                 </div>
                 <div class="col-md-4 construction">
@@ -30,9 +28,9 @@
                     <div class="cns-content">
                         <i class="fa fa-book"></i>
                         <a>FORMULE ESPRIT LIBRE</a>
-                        <p>Formule permettant d'approvisionner son compte à son aise avec des crédits</p><br>
-                        {{ form_row(form.Formuleespritlibre) }}
-                        <a href="{{ path('paypalpaiement', {prix: 29.99}) }}" class="button_all center-block" style="padding-bottom: 12px; background-color: #E8E8E8;">S'ABONNER POUR 29,99€</a>
+                        <p>Formule permettant d'approvisionner son compte à son aise avec des crédits</p>
+                        <p>1 crédits = {{ param.prixUnCredit }}€</p><br>
+                        <a href="{{ path('paypalpaiement', {prix: 30 }) }}" class="button_all center-block" style="padding-bottom: 12px; background-color: #E8E8E8;">ACHETER 30 crédits</a>
                     </div>
                 </div>
                 <div class="col-md-4 construction">
@@ -43,13 +41,10 @@
                         <i class="fa fa-history"></i>
                         <a>FORMULE ABONNEMENT</a>
                         <p>Formule permettant de bénéficier de nos services à tarif réduit</p><br>
-                        {{ form_row(form.Formuleabonnement) }}
-                        <a href="{{ path('paypalpaiement', {prix: 4.99}) }}" class="button_all center-block" style="padding-bottom: 12px; background-color: #E8E8E8;">S'ABONNER POUR 4,99€ / MOIS</a>
+                        <a href="{{ path('paypalpaiement', {prix: param.prixAbonnement}) }}" class="button_all center-block" style="padding-bottom: 12px; background-color: #E8E8E8;">S'ABONNER POUR {{ param.prixAbonnement }}€ / MOIS</a>
                     </div>
                 </div>
             </div>
-            {{ form_row(form.valider) }}
-            {{ form_end(form) }}
         </div>
     </section>
 {% endblock %}

@@ -56,7 +56,7 @@ class RegistrationController extends AbstractController
 			->add('adresseInterventionRueArtisan',TextType::class)
 			->add('adresseInterventionVilleArtisan',TextType::class)
 			->add('adresseInterventionCpArtisan',TextType::class)
-			->add('adresseComplementaireArtisan',TextType::class)
+			->add('adresseComplementaireArtisan',TextType::class, array('required' => false	))
             ->add('siren',TextType::class)
             ->add('numassurance',TextType::class)
             ->add('description',TextareaType::class)
@@ -81,6 +81,7 @@ class RegistrationController extends AbstractController
 				$artisan->addIdService($service);
 				
 			$siren = $artisan->getSiren();
+			dump($siren);
 			$url = "https://data.opendatasoft.com/api/records/1.0/search/?dataset=sirene_v3%40public&sort=datederniertraitementetablissement&facet=etablissementsiege&facet=libellecommuneetablissement&facet=etatadministratifetablissement&facet=nomenclatureactiviteprincipaleetablissement&facet=caractereemployeuretablissement&facet=departementetablissement&facet=regionetablissement&facet=sectionetablissement&facet=classeetablissement&facet=statutdiffusionunitelegale&facet=unitepurgeeunitelegale&facet=sexeunitelegale&facet=categorieentreprise&facet=sectionunitelegale&facet=classeunitelegale&facet=naturejuridiqueunitelegale&refine.siren=".$siren;
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $url);
@@ -88,6 +89,7 @@ class RegistrationController extends AbstractController
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 			$response = curl_exec($ch);
+			dump($response);
 
 			
 			// If using JSON...

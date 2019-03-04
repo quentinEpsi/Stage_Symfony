@@ -9,44 +9,24 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+use App\Entity\Artisan;
+use App\Entity\Parametre;
+
 class FormulemodifController extends AbstractController
 {
     /**
      * @Route("/artisan/formulemodif", name="formulemodif")
-     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function edit(Request $request){
+    public function edit(){
 
         $artisan = $this->get('security.token_storage')->getToken()->getUser();
 
-        $Formuleform = new Formuleform();
+        $param = $this->getDoctrine()->getRepository(Parametre::class)->findAll()[0];
+        dump($param);
 
-        $form = $this->createFormBuilder($Formuleform)
-            ->add('Formulegratuite',CheckboxType::class, array( 'label' => false, 'required' => false))
-            ->add('Formuleespritlibre',CheckboxType::class, array( 'label' => false, 'required' => false))
-            ->add('Formuleabonnement',CheckboxType::class, array( 'label' => false, 'required' => false))
-            ->add('valider', SubmitType::class)
-            ->getForm();
-
-        $form->handleRequest($request);
-        dump($request);
-        dump($Formuleform);
-        if($form->isSubmitted() && $form->isValid()) {
-
-            if ($Formuleform->getFormuleabonnement()){
-                return $this->redirectToRoute('paypalpaiement', ['prix'=>4.99]);
-            }
-            if ($Formuleform->getFormuleespritlibre()){
-                return $this->redirectToRoute('paypalpaiement', ['prix'=>29.99]);
-            }
-            if ($Formuleform->getFormulegratuite()){
-                return $this->redirectToRoute('maformule');
-            }
-        }
-
-        return $this->render('formulemodif/index.html.twig', array(
-            'form' => $form->createView()
-        ));
+        return $this->render('formulemodif/index.html.twig', [
+            'param' => $param,
+        ]);
     }
 }
