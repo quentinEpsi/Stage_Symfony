@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-require "D:\Travaille\Projets\Stage\stage_project\stageb2\\vendor\autoload.php";
+require "../vendor\autoload.php";
 
 use App\Entity\Artisan;
 use App\Entity\Service;
@@ -116,6 +116,7 @@ class RegistrationController extends AbstractController
 			dump($result);
 			$choice = $result['results']; 												// je prends tous les résultats pour la requete 
 			dump($choice); 
+			
 			 
 			//// Réduction des possibilités par exclusion des country(régions), //// 
 			$longueur = count($choice); 												// Calcul du nombre d'adresses potentielles trouvées 
