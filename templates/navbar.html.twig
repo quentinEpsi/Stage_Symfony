@@ -66,14 +66,14 @@
                 <li><a href="{{ path('mesdevis')}}">Mes devis</a></li>
                 <li><a href="{{ path('paiement')}}">Mes crédits</a></li>
                 {% endif %}
-                {% if currentRole == 'ROLE_ADMIN' or (currentPath == path('admindemandes') or currentPath == path('adminprestataire') or currentPath == path('tdbadmin') ) %}
+                {% if currentRole == 'ROLE_ADMIN' and (currentPath == path('admindemandes') or currentPath == path('adminprestataire') or currentPath == path('tdbadmin') ) %}
                 <li><a href="{{ path('tdbadmin') }}"><b>Tableau Admin</b></a></li>
                 <li><a href="{{ path('admindemandes')}}">Les demandes admin</a></li>
                 <li><a href="{{ path('adminprestataire')}}">Les artisans admin</a></li>
                 {% endif %}
                 {% if currentRole == 'ROLE_COMMERCIAL' and (currentPath == path('commercialdemandes') or currentPath == path('commercialprestataire') or currentPath == path('tdbcommercial') ) %}
-                <li><a href="{{ path('tdbcommercial') }}"><b>Tableau commercial</b></a></li>
-                <li><a href="{{ path('commercialdemandes')}}">Les demandes Ccommercial</a></li>
+                <li><a href="{{ path('tdbcommercial') }}"><b>Tableau Commercial</b></a></li>
+                <li><a href="{{ path('commercialdemandes')}}">Les demandes commercial</a></li>
                 <li><a href="{{ path('commercialprestataire')}}">Les artisans commercial</a></li>
                 {% endif %}
             </ul>
