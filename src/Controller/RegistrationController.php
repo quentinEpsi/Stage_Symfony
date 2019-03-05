@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+require "D:\Travaille\Projets\Stage\stage_project\stageb2\\vendor\autoload.php";
 
 use App\Entity\Artisan;
 use App\Entity\Service;
@@ -23,7 +24,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Form\FormError;
-
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class RegistrationController extends AbstractController
 {
@@ -83,12 +84,22 @@ class RegistrationController extends AbstractController
 			$siren = $artisan->getSiren();
 			dump($siren);
 			$url = "https://data.opendatasoft.com/api/records/1.0/search/?dataset=sirene_v3%40public&sort=datederniertraitementetablissement&facet=etablissementsiege&facet=libellecommuneetablissement&facet=etatadministratifetablissement&facet=nomenclatureactiviteprincipaleetablissement&facet=caractereemployeuretablissement&facet=departementetablissement&facet=regionetablissement&facet=sectionetablissement&facet=classeetablissement&facet=statutdiffusionunitelegale&facet=unitepurgeeunitelegale&facet=sexeunitelegale&facet=categorieentreprise&facet=sectionunitelegale&facet=classeunitelegale&facet=naturejuridiqueunitelegale&refine.siren=".$siren;
+			//$url = "http://www.exmple.com/";
 			$ch = curl_init();
+	
 			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE); //A mettre si vous rencontrer des probleme de certificats SSL
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // cette ligne aussi lol
+
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json')); // Assuming you're requesting JSON
+	
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
+
 			$response = curl_exec($ch);
+			if ($response === false) {
+				throw new Exception(curl_error($ch), curl_errno($ch));
+			}
 			dump($response);
 
 			
@@ -100,7 +111,9 @@ class RegistrationController extends AbstractController
 			
 			//// Détermination de la position GPS du client //// 
 			$geocoder = new \OpenCage\Geocoder\Geocoder('b2df980a2f144759aa5c4f8d5fe448f8'); // utilisation de l'api Geocoder avec la clef API du compte 4rThem1s 
+			dump($geocoder);
 			$result = $geocoder->geocode('6 Impasse des Airaults, 49250 Beaufort-en-Vallée',['language' => 'fr', 'countrycode' => 'fr']); // requete a l'api 
+			dump($result);
 			$choice = $result['results']; 												// je prends tous les résultats pour la requete 
 			dump($choice); 
 			 
