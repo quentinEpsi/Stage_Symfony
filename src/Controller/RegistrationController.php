@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-require "D:\Travaille\Projets\Stage\stage_project\stageb2\\vendor\autoload.php";
+require_once(__DIR__.'/../../vendor/autoload.php');
 
 use App\Entity\Artisan;
 use App\Entity\Service;
