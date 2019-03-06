@@ -100,10 +100,12 @@ class RegistrationController extends AbstractController
 			dump($data);
 			$artisan->setRaisonSociale($data->records[0]->fields->denominationunitelegale);
 			dump($data->records[0]->fields->denominationunitelegale);
-			
+
 			//// Détermination de la position GPS du client //// 
 			$geocoder = new \OpenCage\Geocoder\Geocoder('b2df980a2f144759aa5c4f8d5fe448f8'); // utilisation de l'api Geocoder avec la clef API du compte 4rThem1s 
 			$result = $geocoder->geocode('6 Impasse des Airaults, 49250 Beaufort-en-Vallée',['language' => 'fr', 'countrycode' => 'fr']); // requete a l'api 
+			dump($result);
+
 			$choice = $result['results']; 												// je prends tous les résultats pour la requete 
 			dump($choice); 
 			
