@@ -34,6 +34,13 @@ class CreationDevisController extends AbstractController
     {
         $artisan= $this->get('security.token_storage')->getToken()->getUser();
         $client = $this->getDoctrine()->getRepository(Client::class)->find($id);
+
+        $leChoisir = $this->getDoctrine()->getRepository(Choisir::class)->findleChoix($id,$artisan->getIdArtisan())[0];
+        $entityManager = $this->getDoctrine()->getManager();
+        $leChoisir->setVisualise(1);
+        $entityManager->persist($leChoisir);
+        $entityManager->flush();
+
         $devis = $this->getDoctrine()->getRepository(Choisir::class)->findleChoix($client->getIdClient(), $artisan->getIdArtisan());
         dump($devis);
 
