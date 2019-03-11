@@ -120,7 +120,7 @@ class Artisan implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="Adresse_complementaire_artisan", type="string", length=200, nullable=false)
+     * @ORM\Column(name="Adresse_complementaire_artisan", type="string", length=200, nullable=true)
      */
     private $adresseComplementaireArtisan;
 

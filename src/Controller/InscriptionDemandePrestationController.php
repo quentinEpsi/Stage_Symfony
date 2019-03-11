@@ -121,22 +121,31 @@ class InscriptionDemandePrestationController extends AbstractController
 			$entityManager = $this->getDoctrine()->getManager(); 
 									// Création de l'avancement 
 			$client->setDateProposition(new \DateTime('now')); 
-			$adresse = $client->getAdresseInterventionNumero() . " " . $client->getAdresseInterventionRue() . "," .  $client->getAdresseInterventionCp() . " " . $client->getAdresseInterventionVille(); 
-			dump($adresse); 
+			$adressedeBase = $client->getAdresseInterventionNumero() . " " . $client->getAdresseInterventionRue() . ", " .  $client->getAdresseInterventionCp() . " " . $client->getAdresseInterventionVille(); 
 			 
 			//// Détermination de la position GPS du client //// 
-			$geocoder = new \OpenCage\Geocoder\Geocoder('b2df980a2f144759aa5c4f8d5fe448f8'); // utilisation de l'api Geocoder avec la clef API du compte 4rThem1s 
-			$result = $geocoder->geocode('6 Impasse des Airaults, 49250 Beaufort-en-Vallée',['language' => 'fr', 'countrycode' => 'fr']); // requete a l'api 
-			$choice = $result['results']; 												// je prends tous les résultats pour la requete 
-			dump($choice); 
+			$adresseEncode = urlencode($adressedeBase);
+			dump($adresseEncode);
+			$url = "https://api.opencagedata.com/geocode/v1/json?q=".$adresseEncode."&key=b2df980a2f144759aa5c4f8d5fe448f8&language=fr&pretty=1";
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // ligne magique
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json')); // Assuming you're requesting JSON
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+			$response = curl_exec($ch);
+			dump($response);
+			$data = json_decode($response);
+			dump($data);
+			$choice = $data->results; 
 			 
 			//// Réduction des possibilités par exclusion des country(régions), //// 
 			$longueur = count($choice); 												// Calcul du nombre d'adresses potentielles trouvées 
 			for($i =0;$i < $longueur;$i++) 												// Parcours de tous les résultats 
 			{ 
-				if($choice[$i]["components"]["_type"] == "county") 						// Si le résultat potentiel est égale a county (région) alors on l'enleve 
+				if($choice[$i]->components->_type == "county") 						// Si le résultat potentiel est égale a county (région) alors on l'enleve 
 					unset($choice[$i]); 
-				else if($choice[$i]["confidence"] <= 5) 
+				else if($choice[$i]->confidence <= 5) 
 					unset($choice[$i]); 
 			} 
  
@@ -175,8 +184,8 @@ class InscriptionDemandePrestationController extends AbstractController
 			} 
 			 
 			$first_address = array_shift($choice); 										// Je prend le premier element du tableau trié (position la plus probable)
-			$client_longitude = $first_address["geometry"]['lng']; 
-			$client_latitude = $first_address["geometry"]['lat']; 
+			$client_longitude = $first_address->geometry->lng; 
+			$client_latitude = $first_address->geometry->lat; 
 			$client->setCoordonneeLongitudeClient($client_longitude); 
 			$client->setCoordonneeLatitudeClient($client_latitude); 
 			
@@ -302,15 +311,12 @@ class InscriptionDemandePrestationController extends AbstractController
 				$choisir->setRefuser(0);
 				$choisir->setIdArtisan($artisan_classement[$i]);
 				$choisir->setIdClient($client);
+				$entityManager->persist($choisir);
+				$entityManager->flush();
 				
 			}
 			
 			
-			 
-			
-			
-			$entityManager->persist($choisir);
-			$entityManager->flush();
 			
 			return $this->redirectToRoute('fin_inscription_demande');
 			 

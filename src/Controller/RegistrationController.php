@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Controller;
-require_once(__DIR__.'/../../vendor/autoload.php');
+//require_once(__DIR__.'/../../vendor/autoload.php');
+//require "../vendor/autoload.php";
 
 use App\Entity\Artisan;
 use App\Entity\Service;
@@ -86,14 +87,14 @@ class RegistrationController extends AbstractController
 			$url = "https://data.opendatasoft.com/api/records/1.0/search/?dataset=sirene_v3%40public&sort=datederniertraitementetablissement&facet=etablissementsiege&facet=libellecommuneetablissement&facet=etatadministratifetablissement&facet=nomenclatureactiviteprincipaleetablissement&facet=caractereemployeuretablissement&facet=departementetablissement&facet=regionetablissement&facet=sectionetablissement&facet=classeetablissement&facet=statutdiffusionunitelegale&facet=unitepurgeeunitelegale&facet=sexeunitelegale&facet=categorieentreprise&facet=sectionunitelegale&facet=classeunitelegale&facet=naturejuridiqueunitelegale&refine.siren=".$siren;
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $url);
-			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE); //A mettre si vous rencontrer des probleme de certificats SSL
+			//curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE); //A mettre si vous rencontrer des probleme de certificats SSL
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // cette ligne aussi lol
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json')); // Assuming you're requesting JSON
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 			$response = curl_exec($ch);
 			dump($response);
-
+			
 			
 			// If using JSON...
 			$data = json_decode($response);
@@ -102,11 +103,30 @@ class RegistrationController extends AbstractController
 			dump($data->records[0]->fields->denominationunitelegale);
 
 			//// Détermination de la position GPS du client //// 
-			$geocoder = new \OpenCage\Geocoder\Geocoder('b2df980a2f144759aa5c4f8d5fe448f8'); // utilisation de l'api Geocoder avec la clef API du compte 4rThem1s 
-			$result = $geocoder->geocode('6 Impasse des Airaults, 49250 Beaufort-en-Vallée',['language' => 'fr', 'countrycode' => 'fr']); // requete a l'api 
-			dump($result);
+			//$geocoder = new \OpenCage\Geocoder\Geocoder('b2df980a2f144759aa5c4f8d5fe448f8'); // utilisation de l'api Geocoder avec la clef API du compte 4rThem1s 
+			// If using JSON...
+			//$data = json_decode($response);$result = $geocoder->geocode('6 Impasse des Airaults, 49250 Beaufort-en-Vallée',['language' => 'fr', 'countrycode' => 'fr']); // requete a l'api 
+			//dump($result);
+			
+			$adressedeBase = $artisan->getAdresseInterventionNumeroArtisan()." ".$artisan->getAdresseInterventionRueArtisan().", ".$artisan->getAdresseInterventionCpArtisan()." ".$artisan->getAdresseInterventionVilleArtisan();
+			$adresseEncode = urlencode($adressedeBase);
+			dump($adresseEncode);
+			$url = "https://api.opencagedata.com/geocode/v1/json?q=".$adresseEncode."&key=b2df980a2f144759aa5c4f8d5fe448f8&language=fr&pretty=1";
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // ligne magique
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json')); // Assuming you're requesting JSON
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-			$choice = $result['results']; 												// je prends tous les résultats pour la requete 
+			$response = curl_exec($ch);
+			dump($response);
+			$data = json_decode($response);
+			dump($data);
+			$choice = $data->results; 
+
+			
+			
+			
 			dump($choice); 
 			
 			 
@@ -114,9 +134,9 @@ class RegistrationController extends AbstractController
 			$longueur = count($choice); 												// Calcul du nombre d'adresses potentielles trouvées 
 			for($i =0;$i < $longueur;$i++) 												// Parcours de tous les résultats 
 			{ 
-				if($choice[$i]["components"]["_type"] == "county") 						// Si le résultat potentiel est égale a county (région) alors on l'enleve 
+				if($choice[$i]->components->_type == "county") 						// Si le résultat potentiel est égale a county (région) alors on l'enleve 
 					unset($choice[$i]); 
-				else if($choice[$i]["confidence"] <= 5) 
+				else if($choice[$i]->confidence <= 5) 
 					unset($choice[$i]); 
 			} 
  
@@ -155,8 +175,8 @@ class RegistrationController extends AbstractController
 			} 
 			 
 			$first_address = array_shift($choice); 										// Je prend le premier element du tableau trié (position la plus probable)
-			$artisan_longitude = $first_address["geometry"]['lng']; 
-			$artisan_latitude = $first_address["geometry"]['lat']; 
+			$artisan_longitude = $first_address->geometry->lng; 
+			$artisan_latitude = $first_address->geometry->lat; 
 			$artisan->setCoordonneeLongitude($artisan_longitude); 
 			$artisan->setCoordonneeLatitude($artisan_latitude); 
 			
