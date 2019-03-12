@@ -35,7 +35,7 @@ class MaformuleController extends AbstractController
         $nomFormule = $formule->getNomFormule();
         $param = $this->getDoctrine()->getRepository(Parametre::class)->findAll()[0];
         if ($nomFormule == "Gratuit")
-            $formuleDescri = $formule -> getDescriptionFormule()."( Durée: ".$param->getPeriodeGratuite()." mois )";
+            $formuleDescri = $formule -> getDescriptionFormule()."( Durée: ".$param->getPeriodeGratuite()." semaines )";
         else 
         $formuleDescri = $formule -> getDescriptionFormule();
         return $this->render('maformule/index.html.twig', [
