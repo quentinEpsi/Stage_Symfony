@@ -23,6 +23,16 @@
      </div>
  </div>
 
+ {% if erreur is defined %}
+<div class="row">
+     <div class="col-md-6 col-md-offset-3">
+     <div class="alert alert-danger">
+                Cette entreprise ou cette adresse email est déjà enregistré
+        </div>
+	 </div>
+</div>
+{% endif %}
+
 <div id="registerForm">
 
 		

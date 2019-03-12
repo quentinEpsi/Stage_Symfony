@@ -74,6 +74,26 @@ class RegistrationController extends AbstractController
 		}
 		
         if ($form->isSubmitted() && $form->isValid()) {
+
+			//verfier que l'Email et le SIREN n'existe pas
+			$lesArtisans = $this->getDoctrine()->getRepository(Artisan::class)->findAll();
+			$isExiste = false;
+			foreach($lesArtisans as $leArtisan)
+			{
+				if($artisan->getMail() == $leArtisan->getMail())
+				{
+					$isExiste = true;
+				}
+				else if($artisan->getSiren() == $leArtisan->getSiren())
+				{
+					$isExiste = true;
+				}
+
+			}
+
+			if(!$isExiste)
+			{
+
             // encode the plain password
 			$artisan->setDateInscription(new \DateTime('now'));
             $artisan->setMotdepasse($passwordEncoder->encodePassword($artisan, $artisan->getMotdepasse()));
@@ -197,7 +217,12 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('maformule');
 
-
+							
+		} else return $this->render('registration/register.html.twig', [
+            'registrationForm' => $form->createView(),
+			'current_page' => 'register',
+			'erreur' => true
+        ]);
         }
 
         return $this->render('registration/register.html.twig', [
