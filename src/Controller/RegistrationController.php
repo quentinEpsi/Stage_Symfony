@@ -58,7 +58,7 @@ class RegistrationController extends AbstractController
 			->add('adresseInterventionRueArtisan',TextType::class)
 			->add('adresseInterventionVilleArtisan',TextType::class)
 			->add('adresseInterventionCpArtisan',TextType::class)
-			->add('adresseComplementaireArtisan',TextType::class, array('required' => false	))
+			->add('adresseComplementaireArtisan',TextType::class, ['required' => false,'empty_data' => ''])
             ->add('siren',TextType::class)
             ->add('numassurance',TextType::class)
             ->add('description',TextareaType::class)
