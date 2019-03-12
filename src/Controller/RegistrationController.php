@@ -186,6 +186,9 @@ class RegistrationController extends AbstractController
 
 			$formules = $this->getDoctrine()->getRepository(Formules::class)->findAll(); //récupère les jours
 			$artisan->setIdFormule($formules[0]);
+			$artisan->setCredit(0);
+			$dateNowPlus2Semaine = date_add(new \DateTime('now'), date_interval_create_from_date_string('14 days'));
+			$artisan->setDateFinGratuite($dateNowPlus2Semaine);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($artisan);
             $entityManager->flush();
