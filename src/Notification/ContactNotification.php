@@ -25,8 +25,8 @@ class ContactNotification
 
     public function notify(Contact $contact){
     $message = (new \Swift_Message('S2R'))
-        ->setFrom('quentin.bernard341995@gmail.com')
-        ->setTo('gelineau@et.esiea.fr')
+        ->setFrom($contact->getEmail())
+        ->setTo('hyacinthe.yao@yahoo.fr')
         ->setCc($contact->getEmail())
         ->setReplyTo($contact->getEmail())
         ->setSubject($contact->getObjet())

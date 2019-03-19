@@ -239,7 +239,6 @@ class InscriptionDemandePrestationController extends AbstractController
 				$services = $one_artisan->getIdService()->getValues(); 
 				$bool_service=false; 
 				$bool_horaire = false;
-				 
 				foreach($services as $service) 
 				{ 
 					if($service->getIdService() == $id_service_client) 
